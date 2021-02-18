@@ -1,10 +1,7 @@
 ﻿using UnityEngine;
-
 using LightDev;
 using LightDev.Core;
-
 using DG.Tweening;
-
 using SliceFramework;
 
 namespace MeshSlice

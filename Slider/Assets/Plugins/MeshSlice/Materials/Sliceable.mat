@@ -96,3 +96,4 @@ Material:
     - _Point2: {r: 0.42402405, g: 2, b: 0.26495963, a: 0}
     - _SColor: {r: 0.195, g: 0.195, b: 0.195, a: 1}
     - _SliceColor: {r: 1, g: 1, b: 1, a: 1}
+  m_BuildTextureStacks: []
