@@ -4,56 +4,56 @@ using LightDev;
 
 namespace MeshSlice
 {
-  public class GameManager : MonoBehaviour
-  {
-    private static bool isGameStarted;
-
-    private void Awake()
+    public class GameManager : MonoBehaviour
     {
-      Events.SceneLoaded += Reset;
-      Events.PointerUp += OnPointerUp;
-      Events.RequestFinish += OnRequestFinish;
-      Events.RequestReset += Reset;
-    }
+        private static bool isGameStarted;
 
-    private void OnDestroy()
-    {
-      Events.SceneLoaded -= Reset;
-      Events.PointerUp -= OnPointerUp;
-      Events.RequestFinish -= OnRequestFinish;
-      Events.RequestReset -= Reset;
-    }
+        private void Awake()
+        {
+            Events.SceneLoaded += Reset;
+            Events.PointerUp += OnPointerUp;
+            Events.RequestFinish += OnRequestFinish;
+            Events.RequestReset += Reset;
+        }
 
-    private void OnRequestFinish()
-    {
-      FinishGame();
-    }
+        private void OnDestroy()
+        {
+            Events.SceneLoaded -= Reset;
+            Events.PointerUp -= OnPointerUp;
+            Events.RequestFinish -= OnRequestFinish;
+            Events.RequestReset -= Reset;
+        }
 
-    private void OnPointerUp()
-    {
-      if (isGameStarted == false)
-      {
-        StartGame();
-      }
-    }
+        private void OnRequestFinish()
+        {
+            FinishGame();
+        }
 
-    private void Reset()
-    {
-      isGameStarted = false;
+        private void OnPointerUp()
+        {
+            if (isGameStarted == false)
+            {
+                StartGame();
+            }
+        }
 
-      Events.PreReset.Call();
-      Events.PostReset.Call();
-    }
+        private void Reset()
+        {
+            isGameStarted = false;
 
-    private void StartGame()
-    {
-      isGameStarted = true;
-      Events.GameStart.Call();
-    }
+            Events.PreReset.Call();
+            Events.PostReset.Call();
+        }
 
-    private void FinishGame()
-    {
-      Events.GameFinish.Call();
+        private void StartGame()
+        {
+            isGameStarted = true;
+            Events.GameStart.Call();
+        }
+
+        private void FinishGame()
+        {
+            Events.GameFinish.Call();
+        }
     }
-  }
 }
