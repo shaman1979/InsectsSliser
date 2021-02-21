@@ -5,30 +5,30 @@ using LightDev;
 
 namespace MeshSlice.UI
 {
-  public class Touchpad : MonoBehaviour, IDragHandler, IPointerUpHandler, IPointerDownHandler
-  {
-    public float sensitivity = 1;
-    private float _pixelDelta;
-
-    public void OnDrag(PointerEventData eventData)
+    public class Touchpad : MonoBehaviour, IDragHandler, IPointerUpHandler, IPointerDownHandler
     {
-      _pixelDelta = eventData.delta.x * 0.001f * sensitivity;
-    }
+        public float sensitivity = 1;
+        private float _pixelDelta;
 
-    private void Update()
-    {
-      InputManager.SetHorizontal(_pixelDelta);
-      _pixelDelta = 0;
-    }
+        public void OnDrag(PointerEventData eventData)
+        {
+            _pixelDelta = eventData.delta.x * 0.001f * sensitivity;
+        }
 
-    public void OnPointerUp(PointerEventData eventData)
-    {
-      Events.PointerUp.Call();
-    }
+        private void Update()
+        {
+            InputManager.SetHorizontal(_pixelDelta);
+            _pixelDelta = 0;
+        }
 
-    public void OnPointerDown(PointerEventData eventData)
-    {
-      Events.PointerDown.Call();
+        public void OnPointerUp(PointerEventData eventData)
+        {
+            Events.PointerUp.Call();
+        }
+
+        public void OnPointerDown(PointerEventData eventData)
+        {
+            Events.PointerDown.Call();
+        }
     }
-  }
 }
