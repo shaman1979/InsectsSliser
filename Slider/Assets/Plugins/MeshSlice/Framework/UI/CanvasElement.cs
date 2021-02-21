@@ -11,10 +11,10 @@ namespace LightDev.UI
     /// </summary>
     public abstract class CanvasElement : Base
     {
-        [Range(0, 10)]
-        public float showTime;
-        [Range(0, 10)]
-        public float hideTime;
+        [Range(0, 10), SerializeField]
+        private float showTime;
+        [Range(0, 10), SerializeField]
+        private float hideTime;
 
         private Coroutine showCoroutine;
         private Coroutine hideCoroutine;
