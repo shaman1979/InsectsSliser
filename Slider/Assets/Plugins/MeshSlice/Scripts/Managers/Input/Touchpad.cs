@@ -10,6 +10,12 @@ namespace MeshSlice.UI
         public float sensitivity = 1;
         private float _pixelDelta;
 
+        private void Start()
+        {
+            Events.ShopShow += Deactive;
+            Events.ShopHide += Active;
+        }
+
         public void OnDrag(PointerEventData eventData)
         {
             _pixelDelta = eventData.delta.x * 0.001f * sensitivity;
@@ -29,6 +35,16 @@ namespace MeshSlice.UI
         public void OnPointerDown(PointerEventData eventData)
         {
             Events.PointerDown.Call();
+        }
+
+        private void Active()
+        {
+            gameObject.SetActive(true);
+        }
+
+        private void Deactive()
+        {
+            gameObject.SetActive(false);
         }
     }
 }

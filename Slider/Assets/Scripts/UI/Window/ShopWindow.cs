@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Slicer.Shop
+namespace Slicer.UI.Windows
 {
     public class ShopWindow : CanvasElement
     {

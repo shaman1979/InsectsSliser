@@ -3,6 +3,7 @@ using LightDev;
 using LightDev.Core;
 using DG.Tweening;
 using SliceFramework;
+using Slicer.Cutter;
 
 namespace MeshSlice
 {
@@ -25,6 +26,9 @@ namespace MeshSlice
         [Header("Slice Parameters")]
         public Transform slicePoint;
         public Material material;
+
+        [SerializeField]
+        private CutterMovening movening;
 
         private bool canCut;
 
@@ -52,15 +56,18 @@ namespace MeshSlice
         {
             if (canCut)
             {
-                float cutterLocalZ = cutter.GetLocalPositionZ() - InputManager.GetHorizontal();
-                cutterLocalZ = Mathf.Clamp(cutterLocalZ, minCutterLocalPosZ, maxCutterLocalPosZ);
-                cutter.SetLocalPositionZ(cutterLocalZ);
+                //float cutterLocalZ = cutter.GetLocalPositionZ() - InputManager.GetHorizontal();
+                //cutterLocalZ = Mathf.Clamp(cutterLocalZ, minCutterLocalPosZ, maxCutterLocalPosZ);
+
+                //cutter.MoveLocalZ(maxCutterLocalPosZ, 1f * Time.deltaTime).Loops();
+                //cutter.SetLocalPositionZ(cutterLocalZ);
             }
         }
 
         private void OnPostReset()
         {
             canCut = false;
+            movening.StopMovening();
             objectToSlice.SetActive(false);
             AnimateCutterToStartState();
         }
@@ -95,7 +102,7 @@ namespace MeshSlice
                 );
                 b.Sequence(
                   b.RotateY(info.rotation.y, 0.4f).SetEase(Ease.InSine),
-                  OnFinish(() => canCut = true)
+                  OnFinish(() => { canCut = true; movening.StartMovening(); })
                 );
             }
             else
@@ -106,34 +113,35 @@ namespace MeshSlice
 
         private void AnimateCutterToStartState()
         {
-            cutter.KillSequences();
-            cutter.SetPosition(new Vector3(0, 1, 0));
-            AnimateCutterIdle();
+            //cutter.KillSequences();
+            //cutter.SetPosition(new Vector3(0, 1, 0));
+            //AnimateCutterIdle();
         }
 
         private void AnimateCutterToGameState()
         {
-            cutter.KillSequences();
-            cutter.Sequence(
-              cutter.Move(new Vector3(0, 2f, 0), 0.5f).SetEase(Ease.InSine),
-              OnFinish(() => AnimateCutterIdle())
-            );
+            //cutter.KillSequences();
+            //cutter.Sequence(
+            //  cutter.Move(new Vector3(0, 2f, 0), 0.5f).SetEase(Ease.InSine),
+            //  OnFinish(() => AnimateCutterIdle())
+            //);
         }
 
         private void AnimateCutterIdle()
         {
-            cutter.KillSequences();
-            float upPosition = cutter.GetPositionY() + 0.14f;
-            float position = cutter.GetPositionY();
-            cutter.Sequence(
-              cutter.MoveY(upPosition, 0.6f).SetEase(Ease.InOutQuad),
-              cutter.MoveY(position, 0.6f).SetEase(Ease.InOutQuad)
-            ).SetLoops(-1);
+            //cutter.KillSequences();
+            //float upPosition = cutter.GetPositionY() + 0.14f;
+            //float position = cutter.GetPositionY();
+            //cutter.Sequence(
+            //  cutter.MoveY(upPosition, 0.6f).SetEase(Ease.InOutQuad),
+            //  cutter.MoveY(position, 0.6f).SetEase(Ease.InOutQuad)
+            //).SetLoops(-1);
         }
 
         private void AnimateCut()
         {
             canCut = false;
+            movening.StopMovening();
             SlicedHull hull = objectToSlice.Slice(slicePoint.position, slicePoint.up, material);
 
             cutter.KillSequences();
@@ -151,6 +159,7 @@ namespace MeshSlice
                   if (hull == null)
                   {
                       canCut = true;
+                      movening.StartMovening();
                   }
               })
             );

@@ -9,9 +9,17 @@ namespace MeshSlice
 {
     public class CameraMain : Base
     {
-        public CameraState startState;
-        public CameraState gameState;
-        public CameraState finishState;
+        [SerializeField]
+        private CameraState startState;
+
+        [SerializeField]
+        private CameraState gameState;
+
+        [SerializeField]
+        private CameraState finishState;
+
+        [SerializeField]
+        private CameraState shopState;
 
         private new Camera camera;
 
@@ -25,6 +33,7 @@ namespace MeshSlice
             Events.GameStart += OnGameStart;
             Events.GameFinish += OnGameFinish;
             Events.SuccessfulSlice += OnSuccessfulCut;
+            Events.ShopShow += OnShopShow;
         }
 
         private void OnDestroy()
@@ -33,12 +42,19 @@ namespace MeshSlice
             Events.GameStart -= OnGameStart;
             Events.GameFinish -= OnGameFinish;
             Events.SuccessfulSlice -= OnSuccessfulCut;
+            Events.ShopShow -= OnShopShow;
         }
 
         private void OnPreReset()
         {
             ChangeState(startState);
         }
+
+        private void OnShopShow()
+        {
+            ChangeState(shopState);
+        }
+
 
         private void OnGameStart()
         {
