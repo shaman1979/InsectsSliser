@@ -13,23 +13,97 @@ MonoBehaviour:
   m_Name: Levels
   m_EditorClassIdentifier: 
   levels:
-  - name: Level 1
+  - name: Primitive
     meshes:
-    - mesh: {fileID: 4300036, guid: 90b031fd0e3ce4ae68d8823337d7a167, type: 3}
+    - mesh: {fileID: 3613567641014311022, guid: 5fc49788639c1214d849eb6006b988b7,
+        type: 3}
       rotation: {x: 0, y: 0, z: 0}
-    - mesh: {fileID: 4300010, guid: 90b031fd0e3ce4ae68d8823337d7a167, type: 3}
-      rotation: {x: 0, y: 45, z: 0}
-    - mesh: {fileID: 4300028, guid: 90b031fd0e3ce4ae68d8823337d7a167, type: 3}
-      rotation: {x: 0, y: 45, z: 0}
-    - mesh: {fileID: 4300002, guid: 90b031fd0e3ce4ae68d8823337d7a167, type: 3}
-      rotation: {x: 0, y: 39.83, z: 0}
-  - name: Level 2
+    - mesh: {fileID: -5495902117074765545, guid: 76b1974876ed499499ec5061df5e3473,
+        type: 3}
+      rotation: {x: 0, y: 0, z: 0}
+    - mesh: {fileID: 2534964839176971238, guid: f0de51fa7e618a3488860984966fb289,
+        type: 3}
+      rotation: {x: 0, y: 0, z: 0}
+    - mesh: {fileID: 13562882237320842, guid: 9590bd3e7ece79f4ab7ed786dad07eec, type: 3}
+      rotation: {x: 0, y: 0, z: 0}
+    - mesh: {fileID: 4711208715938537054, guid: 7dbbfefd9d52bad4b9a1a03c27d8289b,
+        type: 3}
+      rotation: {x: 0, y: 0, z: 0}
+    - mesh: {fileID: -8803937527578110353, guid: 2fece9d6aef26c447977255f9a94bbd7,
+        type: 3}
+      rotation: {x: 0, y: 0, z: 0}
+    - mesh: {fileID: -309684176625119091, guid: 436f0417c8b7a574dae77a1394eb76fb,
+        type: 3}
+      rotation: {x: 0, y: 0, z: 0}
+  - name: Primitive 2
     meshes:
-    - mesh: {fileID: 4300012, guid: 90b031fd0e3ce4ae68d8823337d7a167, type: 3}
-      rotation: {x: 0, y: -156.2, z: 0}
-    - mesh: {fileID: 4300000, guid: 90b031fd0e3ce4ae68d8823337d7a167, type: 3}
-      rotation: {x: 0, y: -29.42, z: 0}
-    - mesh: {fileID: 4300024, guid: 90b031fd0e3ce4ae68d8823337d7a167, type: 3}
-      rotation: {x: 0, y: -79.6, z: 0}
-    - mesh: {fileID: 4300026, guid: 90b031fd0e3ce4ae68d8823337d7a167, type: 3}
-      rotation: {x: 0, y: -91.6, z: 0}
+    - mesh: {fileID: -9114703323446395147, guid: aa74f69c6c7be6c44a856fa7b1d08098,
+        type: 3}
+      rotation: {x: 0, y: 0, z: 0}
+    - mesh: {fileID: -8766285794052278757, guid: 6fb26b35966c629489897e69e7d4eb45,
+        type: 3}
+      rotation: {x: 0, y: 0, z: 0}
+    - mesh: {fileID: -5451344162544451742, guid: b711a864ca5771841a2b23597978a823,
+        type: 3}
+      rotation: {x: 0, y: 0, z: 0}
+    - mesh: {fileID: 532591105809680800, guid: 4103d14a5ebc23a45bb1df68977c7e82, type: 3}
+      rotation: {x: 0, y: 0, z: 0}
+    - mesh: {fileID: 532591105809680800, guid: 5dbde6bacf95d334b87049e4a79ed3f2, type: 3}
+      rotation: {x: 0, y: 0, z: 0}
+    - mesh: {fileID: -7959841479066705382, guid: ed89759c460c5f44a87d9ab998f9e9f3,
+        type: 3}
+      rotation: {x: 0, y: 0, z: 0}
+  - name: Number
+    meshes:
+    - mesh: {fileID: -3882611372106342973, guid: 3ffc143f7c4c96a44829e5c09f96efe9,
+        type: 3}
+      rotation: {x: 0, y: 0, z: 0}
+    - mesh: {fileID: 4315614857224594244, guid: 18418d060772f5243837cbbeacf2c017,
+        type: 3}
+      rotation: {x: 0, y: 0, z: 0}
+    - mesh: {fileID: 7334270578504219148, guid: ad221f09eacbf31478a24efc4455bbbe,
+        type: 3}
+      rotation: {x: 0, y: 0, z: 0}
+    - mesh: {fileID: 6290431648208581162, guid: bced8eb9cc7d286419f8fe9312a5fc4a,
+        type: 3}
+      rotation: {x: 0, y: 0, z: 0}
+    - mesh: {fileID: 7386718088890663932, guid: e6446bb2a5da39e46b9a5f7631f182af,
+        type: 3}
+      rotation: {x: 0, y: 0, z: 0}
+    - mesh: {fileID: -6011460572206640370, guid: dc13843cc1ed7474d88bb72848fc8f92,
+        type: 3}
+      rotation: {x: 0, y: 0, z: 0}
+    - mesh: {fileID: -7389802222989577195, guid: dcbe6ec78e070334f87d05b5c9f5de7a,
+        type: 3}
+      rotation: {x: 0, y: 0, z: 0}
+    - mesh: {fileID: 3668085550070551478, guid: 4d04515d3ea41ac4c8d4cc1663e12e8f,
+        type: 3}
+      rotation: {x: 0, y: 0, z: 0}
+    - mesh: {fileID: -3943131958215907173, guid: a98e565178fbd5b4e9c1928e7035afba,
+        type: 3}
+      rotation: {x: 0, y: 0, z: 0}
+  - name: Letters
+    meshes:
+    - mesh: {fileID: 6157117880141131119, guid: 81256ee78db25ea43a2cb681b370f6d5,
+        type: 3}
+      rotation: {x: 0, y: 0, z: 0}
+    - mesh: {fileID: -4909277789374002350, guid: f0b6226b67f3b3145b692df8feaccf94,
+        type: 3}
+      rotation: {x: 0, y: 0, z: 0}
+    - mesh: {fileID: 8939266724133516769, guid: f74c97446e3952c4cb74fd0a07eb4017,
+        type: 3}
+      rotation: {x: 0, y: 0, z: 0}
+    - mesh: {fileID: 281315202980364329, guid: b4cb2eb237a15364d8b74072a1a42225, type: 3}
+      rotation: {x: 0, y: 0, z: 0}
+    - mesh: {fileID: -7746497135072881621, guid: 266003b93cc819c489a8d1f81b514e30,
+        type: 3}
+      rotation: {x: 0, y: 0, z: 0}
+    - mesh: {fileID: -1644355878584749679, guid: bbdc39366bc4aab43be5622b9914642d,
+        type: 3}
+      rotation: {x: 0, y: 0, z: 0}
+    - mesh: {fileID: 1907795020790290496, guid: 3c4df4ad59b4cb1409ddbded5bcde016,
+        type: 3}
+      rotation: {x: 0, y: 0, z: 0}
+    - mesh: {fileID: -6048717895273133781, guid: 9a0795c34f351da499f6d92a474388d7,
+        type: 3}
+      rotation: {x: 0, y: 0, z: 0}

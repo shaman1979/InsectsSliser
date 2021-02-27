@@ -96,7 +96,7 @@ namespace MeshSlice
                 b.SetRotationY(info.rotation.y - 180);
                 b.Activate();
                 b.Sequence(
-                  b.Scale(2, 0.4f).SetEase(Ease.OutBack)
+                  b.Scale(1.5f, 0.4f).SetEase(Ease.OutBack)
                 );
                 b.Sequence(
                   b.RotateY(info.rotation.y, 0.4f).SetEase(Ease.InSine),
