@@ -21,7 +21,9 @@ namespace Slicer.Cutter
 
             Sequence(
                 transform.DOLocalMoveZ(minPositionZ, 0.5f).SetEase(Ease.InSine),
-                OnFinish(Movening));
+                OnFinish(MoveningState));
+
+            StartIdleState();
         }
 
         public void StopMovening()
@@ -29,7 +31,17 @@ namespace Slicer.Cutter
             KillSequences();
         }
 
-        private void Movening()
+        private void StartIdleState()
+        {
+            float upPosition = GetPositionY() + 0.1f;
+            float position = GetPositionY();
+            Sequence(
+              MoveY(upPosition, 0.6f).SetEase(Ease.InOutQuad),
+              MoveY(position, 0.6f).SetEase(Ease.InOutQuad)
+            ).SetLoops(-1);
+        }
+
+        private void MoveningState()
         {
             Sequence(
                 transform.DOLocalMoveZ(maxPositionZ, speed, false).SetEase(Ease.InSine), 
