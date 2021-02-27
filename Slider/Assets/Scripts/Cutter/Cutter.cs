@@ -69,12 +69,10 @@ namespace MeshSlice
             canCut = false;
             movening.StopMovening();
             objectToSlice.SetActive(false);
-            AnimateCutterToStartState();
         }
 
         private void OnGameStart()
         {
-            AnimateCutterToGameState();
             AnimateNextMesh();
         }
 
@@ -98,7 +96,7 @@ namespace MeshSlice
                 b.SetRotationY(info.rotation.y - 180);
                 b.Activate();
                 b.Sequence(
-                  b.Scale(1, 0.4f).SetEase(Ease.OutBack)
+                  b.Scale(2, 0.4f).SetEase(Ease.OutBack)
                 );
                 b.Sequence(
                   b.RotateY(info.rotation.y, 0.4f).SetEase(Ease.InSine),
@@ -109,33 +107,6 @@ namespace MeshSlice
             {
                 Events.RequestFinish.Call();
             }
-        }
-
-        private void AnimateCutterToStartState()
-        {
-            //cutter.KillSequences();
-            //cutter.SetPosition(new Vector3(0, 1, 0));
-            //AnimateCutterIdle();
-        }
-
-        private void AnimateCutterToGameState()
-        {
-            //cutter.KillSequences();
-            //cutter.Sequence(
-            //  cutter.Move(new Vector3(0, 2f, 0), 0.5f).SetEase(Ease.InSine),
-            //  OnFinish(() => AnimateCutterIdle())
-            //);
-        }
-
-        private void AnimateCutterIdle()
-        {
-            //cutter.KillSequences();
-            //float upPosition = cutter.GetPositionY() + 0.14f;
-            //float position = cutter.GetPositionY();
-            //cutter.Sequence(
-            //  cutter.MoveY(upPosition, 0.6f).SetEase(Ease.InOutQuad),
-            //  cutter.MoveY(position, 0.6f).SetEase(Ease.InOutQuad)
-            //).SetLoops(-1);
         }
 
         private void AnimateCut()
@@ -155,7 +126,6 @@ namespace MeshSlice
               cutter.MoveY(2, 0.6f).SetEase(Ease.InOutQuad),
               cutter.OnFinish(() =>
               {
-                  AnimateCutterIdle();
                   if (hull == null)
                   {
                       canCut = true;
