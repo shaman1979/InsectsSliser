@@ -1,10 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using DG.Tweening;
 using System;
-
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
-using DG.Tweening;
 
 namespace LightDev.Core
 {
@@ -31,28 +29,28 @@ namespace LightDev.Core
 
             sequence.OnKill(() =>
             {
-                this.sequences.Remove(sequence);
+                sequences.Remove(sequence);
             });
 
-            this.sequences.Add(sequence);
+            sequences.Add(sequence);
 
             return sequence;
         }
 
         public virtual void PauseSequence(string id)
         {
-            for (int i = 0; i < this.sequences.Count; i++)
+            for (int i = 0; i < sequences.Count; i++)
             {
-                if (this.sequences[i].stringId != null && this.sequences[i].stringId.Equals(id))
+                if (sequences[i].stringId != null && sequences[i].stringId.Equals(id))
                 {
-                    this.sequences[i].Pause();
+                    sequences[i].Pause();
                 }
             }
         }
 
         public virtual void PauseSequences()
         {
-            foreach (Sequence sequence in this.sequences)
+            foreach (Sequence sequence in sequences)
             {
                 sequence.Pause();
             }
@@ -60,18 +58,18 @@ namespace LightDev.Core
 
         public virtual void ResumeSequence(string id)
         {
-            for (int i = 0; i < this.sequences.Count; i++)
+            for (int i = 0; i < sequences.Count; i++)
             {
-                if (this.sequences[i].stringId != null && this.sequences[i].stringId.Equals(id))
+                if (sequences[i].stringId != null && sequences[i].stringId.Equals(id))
                 {
-                    this.sequences[i].Play();
+                    sequences[i].Play();
                 }
             }
         }
 
         public virtual void ResumeSequences()
         {
-            foreach (Sequence sequence in this.sequences)
+            foreach (Sequence sequence in sequences)
             {
                 sequence.Play();
             }
@@ -79,12 +77,12 @@ namespace LightDev.Core
 
         public virtual void KillSequence(string id, bool complete = false)
         {
-            for (int i = this.sequences.Count - 1; i >= 0; i--)
+            for (int i = sequences.Count - 1; i >= 0; i--)
             {
-                if (this.sequences[i].stringId != null && this.sequences[i].stringId.Equals(id))
+                if (sequences[i].stringId != null && sequences[i].stringId.Equals(id))
                 {
-                    var sequence = this.sequences[i];
-                    this.sequences.RemoveAt(i);
+                    var sequence = sequences[i];
+                    sequences.RemoveAt(i);
                     sequence.Kill(complete);
                 }
             }
@@ -92,17 +90,17 @@ namespace LightDev.Core
 
         public virtual void KillSequences(bool complete = false)
         {
-            for (int i = this.sequences.Count - 1; i >= 0; i--)
+            for (int i = sequences.Count - 1; i >= 0; i--)
             {
-                this.sequences[i].Kill(complete);
+                sequences[i].Kill(complete);
             }
 
-            this.sequences.Clear();
+            sequences.Clear();
         }
 
         public virtual bool ContainsSequence(string id)
         {
-            for (int i = 0; i < this.sequences.Count; i++)
+            for (int i = 0; i < sequences.Count; i++)
             {
                 if (sequences[i].stringId != null && sequences[i].stringId.Equals(id))
                 {
