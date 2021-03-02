@@ -91,7 +91,7 @@ namespace MeshSlice
                 MeshInfo info = LevelsManager.GetNextMeshInfo();
                 objectToSlice.GetComponent<MeshFilter>().mesh = info.mesh;
                 Base b = objectToSlice.GetComponent<Base>();
-                b.SetLocalPositionZ(Random.Range(objectToSliceMinLocalPosZ, objectToSliceMaxLocalPosZ));
+                b.SetLocalPositionZ(0);
                 b.SetScale(0);
                 b.SetRotationY(info.rotation.y - 180);
                 b.Activate();
