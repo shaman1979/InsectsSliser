@@ -14,6 +14,8 @@ namespace MeshSlice
             Events.PointerUp += OnPointerUp;
             Events.RequestFinish += OnRequestFinish;
             Events.RequestReset += Reset;
+
+            Events.RequestReset.Call();
         }
 
         private void OnDestroy()

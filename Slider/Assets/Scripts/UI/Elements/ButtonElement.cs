@@ -12,24 +12,32 @@ namespace Slicer.UI.Elements
     {
         private Button button;
 
-        private void Awake()
+        private Button Button
         {
-            button = GetComponent<Button>();
+            get
+            {
+                if(button == null)
+                {
+                    button = GetComponent<Button>();
+                }
+
+                return button;
+            }
         }
 
         public void AddListener(Action listener)
         {
-            button.onClick.AddListener(() => listener.Invoke());
+            Button.onClick.AddListener(() => listener.Invoke());
         }
 
         public void RemoveListener(Action listener)
         {
-            button.onClick.RemoveListener(() => listener.Invoke());
+            Button.onClick.RemoveListener(() => listener.Invoke());
         }
 
         public void ListenerClear()
         {
-            button.onClick.RemoveAllListeners();
+            Button.onClick.RemoveAllListeners();
         }
     }
 }
