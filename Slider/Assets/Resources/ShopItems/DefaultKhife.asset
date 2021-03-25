@@ -10,6 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dc682bc672d59214bb65f5849c770cc7, type: 3}
-  m_Name: ShopItem
+  m_Name: DefaultKhife
   m_EditorClassIdentifier: 
   <Name>k__BackingField: "\u041A\u0438\u043D\u0436\u0430\u043B"
+  <type>k__BackingField: 0
