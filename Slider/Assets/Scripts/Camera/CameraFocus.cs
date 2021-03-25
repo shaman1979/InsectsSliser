@@ -18,18 +18,18 @@ namespace Slicer.Camera
 
         private void Awake()
         {
-            ShopEvents.ItemChanged += ChangeFocus;
+            ShopEvents.ItemTypeChanged += ChangeFocus;
 
             stateChanger = GetComponent<CameraStateChanger>();
         }
 
-        private void ChangeFocus(ShopItem item)
+        private void ChangeFocus(ItemTypes type)
         {
-            var focus = focuses.FirstOrDefault(x => x.Type == item.type);
+            var focus = focuses.FirstOrDefault(x => x.Type == type);
 
             if (focus == null)
             {
-                Debug.LogError($"Камера не может сфокусировать на объекте с типом {item.type}");
+                Debug.LogError($"Камера не может сфокусировать на объекте с типом {type}");
                 return;
             }
 
