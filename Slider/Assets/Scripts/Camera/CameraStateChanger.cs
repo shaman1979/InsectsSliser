@@ -82,7 +82,7 @@ namespace MeshSlice
             camera.fieldOfView = state.fov;
         }
 
-        private void ChangeState(CameraState state)
+        public void ChangeState(CameraState state)
         {
             KillSequences();
             Sequence(

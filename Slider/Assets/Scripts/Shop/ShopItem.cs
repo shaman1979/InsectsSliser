@@ -9,5 +9,8 @@ namespace Slicer.Shop
     {
         [field: SerializeField]
         public string Name { get; private set; }
+
+        [field: SerializeField]
+        public ItemTypes type { get; private set; }
     }
 }
