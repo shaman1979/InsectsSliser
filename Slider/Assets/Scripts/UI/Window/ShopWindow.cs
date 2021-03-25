@@ -1,5 +1,6 @@
 ﻿using LightDev;
 using LightDev.UI;
+using Slicer.Shop.Events;
 using Slicer.UI.Elements;
 using System.Collections;
 using System.Collections.Generic;
@@ -27,14 +28,14 @@ namespace Slicer.UI.Windows
 
         public override void Subscribe()
         {
-            Events.ShopShow += Show;
-            Events.ShopHide += Hide;
+            ShopEvents.ShopShow += Show;
+            ShopEvents.ShopHide += Hide;
         }
 
         public override void Unsubscribe()
         {
-            Events.ShopShow -= Show;
-            Events.ShopHide -= Hide;
+            ShopEvents.ShopShow -= Show;
+            ShopEvents.ShopHide -= Hide;
         }
 
         private void NextElement()

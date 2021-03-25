@@ -2,6 +2,7 @@
 using UnityEngine.EventSystems;
 
 using LightDev;
+using Slicer.Shop.Events;
 
 namespace MeshSlice.UI
 {
@@ -12,8 +13,8 @@ namespace MeshSlice.UI
 
         private void Start()
         {
-            Events.ShopShow += Deactive;
-            Events.ShopHide += Active;
+            ShopEvents.ShopShow += Deactive;
+            ShopEvents.ShopHide += Active;
         }
 
         public void OnDrag(PointerEventData eventData)

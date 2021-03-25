@@ -7,10 +7,11 @@ using LightDev.UI;
 using DG.Tweening;
 using MeshSlice;
 using Slicer.UI.Elements;
+using Slicer.Shop.Events;
 
 namespace Slicer.UI.Windows
 {
-    public class StartWindow : CanvasElement
+    public class MenuWindow : CanvasElement
     {
         [Header("Buttons")]
         [SerializeField]
@@ -40,16 +41,16 @@ namespace Slicer.UI.Windows
         {
             Events.PreReset += Show;
             Events.GameStart += Hide;
-            Events.ShopShow += Hide;
-            Events.ShopHide += Show;
+            ShopEvents.ShopShow += Hide;
+            ShopEvents.ShopHide += Show;
         }
 
         public override void Unsubscribe()
         {
             Events.PreReset -= Show;
             Events.GameStart -= Hide;
-            Events.ShopShow -= Hide;
-            Events.ShopHide -= Show;
+            ShopEvents.ShopShow -= Hide;
+            ShopEvents.ShopHide -= Show;
         }
 
         protected override void OnStartShowing()
@@ -115,7 +116,7 @@ namespace Slicer.UI.Windows
         private void ShopButtonInitialize()
         {
             shopButton.ListenerClear();
-            shopButton.AddListener(() => Events.ShopShow.Call());
+            shopButton.AddListener(() => ShopEvents.ShopShow.Call());
         }
 
         private void HideTapToStart()

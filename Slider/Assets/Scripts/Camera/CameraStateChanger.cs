@@ -4,10 +4,11 @@ using LightDev;
 using LightDev.Core;
 
 using DG.Tweening;
+using Slicer.Shop.Events;
 
 namespace MeshSlice
 {
-    public class CameraMain : Base
+    public class CameraStateChanger : Base
     {
         [SerializeField]
         private CameraState startState;
@@ -33,7 +34,7 @@ namespace MeshSlice
             Events.GameStart += OnGameStart;
             Events.GameFinish += OnGameFinish;
             Events.SuccessfulSlice += OnSuccessfulCut;
-            Events.ShopShow += OnShopShow;
+            ShopEvents.ShopShow += OnShopShow;
         }
 
         private void OnDestroy()
@@ -42,7 +43,7 @@ namespace MeshSlice
             Events.GameStart -= OnGameStart;
             Events.GameFinish -= OnGameFinish;
             Events.SuccessfulSlice -= OnSuccessfulCut;
-            Events.ShopShow -= OnShopShow;
+            ShopEvents.ShopShow -= OnShopShow;
         }
 
         private void OnPreReset()

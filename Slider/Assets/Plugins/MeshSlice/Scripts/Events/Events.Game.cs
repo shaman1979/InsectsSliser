@@ -8,9 +8,6 @@
         public static Event GameStart;
         public static Event GameFinish;
 
-        public static Event ShopShow;
-        public static Event ShopHide;
-
         public static Event RequestFinish;
         public static Event RequestReset;
         public static Event RequestSplash;
