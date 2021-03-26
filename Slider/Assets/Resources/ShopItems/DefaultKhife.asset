@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: DefaultKhife
   m_EditorClassIdentifier: 
   <Name>k__BackingField: "\u041A\u0438\u043D\u0436\u0430\u043B"
-  <type>k__BackingField: 0
+  <Type>k__BackingField: 0
+  <Price>k__BackingField: 1000

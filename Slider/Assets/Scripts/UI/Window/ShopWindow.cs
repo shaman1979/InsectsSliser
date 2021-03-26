@@ -1,15 +1,22 @@
 ﻿using LightDev;
 using LightDev.UI;
+using Slicer.Shop;
 using Slicer.Shop.Events;
 using Slicer.UI.Elements;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Slicer.UI.Windows
 {
     public class ShopWindow : CanvasElement
     {
+        public event Action NextElementSwitched;
+
+        public event Action BackElementSwitched;
+
         [SerializeField]
         private ButtonElement backButton;
 
@@ -19,11 +26,19 @@ namespace Slicer.UI.Windows
         [SerializeField]
         private ButtonElement buyButton;
 
+        [SerializeField]
+        private Text price;
+
+        [SerializeField]
+        private Text name;
+
         private void Awake()
         {
             nextButton.AddListener(NextElement);
             backButton.AddListener(BackElement);
             buyButton.AddListener(BuyElement);
+
+            ShopEvents.ItemChanged += UpdateCurrentItem;
         }
 
         public override void Subscribe()
@@ -40,17 +55,33 @@ namespace Slicer.UI.Windows
 
         private void NextElement()
         {
-            Debug.Log($"Следующий элемент");
+            NextElementSwitched?.Invoke();
         }
 
         private void BackElement()
         {
-            Debug.Log($"Предедущий элемент");
+            BackElementSwitched?.Invoke();
         }
 
         private void BuyElement()
         {
             Debug.Log($"Купить элемент");
+        }
+
+        private void UpdateCurrentItem(ShopItem item)
+        {
+            UpdateNameText(item.Name);
+            UpdatePriceText(item.Price.ToString());
+        }
+
+        private void UpdatePriceText(string text)
+        {
+            price.text = text;
+        }
+
+        private void UpdateNameText(string text)
+        {
+            name.text = text;
         }
     }
 }

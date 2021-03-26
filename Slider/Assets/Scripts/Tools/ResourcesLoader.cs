@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Slicer.Shop;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -16,6 +17,25 @@ namespace Slicer.Tools
             }
 
             return items;
+        }
+
+        public static Dictionary<ItemTypes, List<ShopItem>> ShopElementsLoad(string path)
+        {
+            var itemList = Load<ShopItem>(path);
+
+            var itemDictionary = new Dictionary<ItemTypes, List<ShopItem>>();
+
+            foreach (var item in itemList)
+            {
+                if(!itemDictionary.ContainsKey(item.Type))
+                {
+                    itemDictionary.Add(item.Type, new List<ShopItem>());
+                }
+
+                itemDictionary[item.Type].Add(item);
+            }
+
+            return itemDictionary;
         }
     }
 }
