@@ -25,6 +25,11 @@ namespace Slicer.UI.Elements
             }
         }
 
+        public void SetInteractable(bool isInterectable)
+        {
+            button.interactable = isInterectable;
+        }
+
         public void AddListener(Action listener)
         {
             Button.onClick.AddListener(() => listener.Invoke());

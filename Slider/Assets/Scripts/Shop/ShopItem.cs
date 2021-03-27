@@ -14,6 +14,6 @@ namespace Slicer.Shop
         public ItemTypes Type { get; private set; }
 
         [field: SerializeField]
-        public int Price { get; private set; }
+        public int LevelOpen { get; private set; }
     }
 }

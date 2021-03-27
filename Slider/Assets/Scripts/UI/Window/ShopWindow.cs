@@ -17,6 +17,8 @@ namespace Slicer.UI.Windows
 
         public event Action BackElementSwitched;
 
+        public event Action ElementSelected;
+
         [SerializeField]
         private ButtonElement backButton;
 
@@ -24,10 +26,10 @@ namespace Slicer.UI.Windows
         private ButtonElement nextButton;
 
         [SerializeField]
-        private ButtonElement buyButton;
+        private ButtonElement selectButton;
 
         [SerializeField]
-        private Text price;
+        private Text level;
 
         [SerializeField]
         private Text name;
@@ -36,7 +38,7 @@ namespace Slicer.UI.Windows
         {
             nextButton.AddListener(NextElement);
             backButton.AddListener(BackElement);
-            buyButton.AddListener(BuyElement);
+            selectButton.AddListener(SelectedElement);
 
             ShopEvents.ItemChanged += UpdateCurrentItem;
         }
@@ -63,20 +65,42 @@ namespace Slicer.UI.Windows
             BackElementSwitched?.Invoke();
         }
 
-        private void BuyElement()
+        private void SelectedElement()
         {
-            Debug.Log($"Купить элемент");
+            ElementSelected?.Invoke();
         }
 
-        private void UpdateCurrentItem(ShopItem item)
+        private void UpdateCurrentItem(ShopItem item, ItemStatus status)
         {
             UpdateNameText(item.Name);
-            UpdatePriceText(item.Price.ToString());
+
+            switch (status)
+            {
+                case ItemStatus.Unavailable:
+                    UpdateLevelText(item.LevelOpen.ToString());
+                    SetSelectedButtonInterectable(false);
+                    break;
+                case ItemStatus.Available:
+                    SetSelectedButtonInterectable(true);
+                    break;
+                case ItemStatus.Selected:
+                    SetSelectedButtonInterectable(false);
+                    break;
+                default:
+                    break;
+            }
+
+            
         }
 
-        private void UpdatePriceText(string text)
+        private void UpdateLevelText(string text)
         {
-            price.text = text;
+            level.text = text;
+        }
+
+        private void SetSelectedButtonInterectable(bool isInterectable)
+        {
+            selectButton.SetInteractable(isInterectable);
         }
 
         private void UpdateNameText(string text)

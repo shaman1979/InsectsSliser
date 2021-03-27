@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static Slicer.Shop.ItemsShop;
 
 namespace Slicer.Tools
 {
@@ -19,20 +20,20 @@ namespace Slicer.Tools
             return items;
         }
 
-        public static Dictionary<ItemTypes, List<ShopItem>> ShopElementsLoad(string path)
+        public static Dictionary<ItemTypes, DoublyLinkedList<ShopItem>> ShopElementsLoad(string path)
         {
             var itemList = Load<ShopItem>(path);
 
-            var itemDictionary = new Dictionary<ItemTypes, List<ShopItem>>();
+            var itemDictionary = new Dictionary<ItemTypes, DoublyLinkedList<ShopItem>>();
 
             foreach (var item in itemList)
             {
                 if(!itemDictionary.ContainsKey(item.Type))
                 {
-                    itemDictionary.Add(item.Type, new List<ShopItem>());
+                    itemDictionary.Add(item.Type, new DoublyLinkedList<ShopItem>());
                 }
 
-                itemDictionary[item.Type].Add(item);
+                itemDictionary[item.Type].AddElement(item);
             }
 
             return itemDictionary;
