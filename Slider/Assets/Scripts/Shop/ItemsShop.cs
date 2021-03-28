@@ -41,7 +41,7 @@ namespace Slicer.Shop
         {
             currentType = types;
             currentElementNumber = 0;
-            UpdateItem(items[types].CurrentElement);
+            UpdateItem(items[types].SelectedElement);
         }
 
         private void NextElement()
@@ -56,7 +56,7 @@ namespace Slicer.Shop
 
         private void SelectItem()
         {
-            
+            items[currentType].Selection();
         }
 
         private void UpdateItem(ShopItem item)
@@ -68,24 +68,28 @@ namespace Slicer.Shop
         public class DoublyLinkedList<T>
         {
             private List<T> list;
-            private T currentElement;
-            private int currentElementNumber;
 
             public DoublyLinkedList()
             {
                 list = new List<T>();
             }
 
-            public int CurrentElementNumber => currentElementNumber;
-            public T CurrentElement => currentElement;
+            public int CurrentElementNumber { get; private set; }
+            public T CurrentElement { get; private set; }
+            public T SelectedElement { get; private set; }
 
             public void AddElement(T element)
             {
                 list.Add(element);
 
-                if(currentElement == null)
+                if(CurrentElement == null)
                 {
-                    currentElement = element;
+                    CurrentElement = element;
+                }
+
+                if(SelectedElement == null)
+                {
+                    SelectedElement = element;
                 }
             }
 
@@ -96,31 +100,36 @@ namespace Slicer.Shop
 
             public T NextElement()
             {
-                if (currentElementNumber >= list.Count - 1)
+                if (CurrentElementNumber >= list.Count - 1)
                 {
-                    currentElementNumber = 0;
+                    CurrentElementNumber = 0;
                 }
                 else
                 {
-                    currentElementNumber++;
+                    CurrentElementNumber++;
                 }
-                currentElement = list[currentElementNumber];
-                return currentElement;
+                CurrentElement = list[CurrentElementNumber];
+                return CurrentElement;
+            }
+
+            public void Selection()
+            {
+                SelectedElement = CurrentElement;
             }
 
             public T BackElement()
             {
-                if (currentElementNumber <= 0)
+                if (CurrentElementNumber <= 0)
                 {
-                    currentElementNumber = list.Count - 1;
+                    CurrentElementNumber = list.Count - 1;
                 }
                 else
                 {
-                    currentElementNumber--;
+                    CurrentElementNumber--;
                 }
 
-                currentElement = list[currentElementNumber];
-                return currentElement;
+                CurrentElement = list[CurrentElementNumber];
+                return CurrentElement;
             }
         }
     }
