@@ -35,6 +35,7 @@ namespace MeshSlice
             Events.GameFinish += OnGameFinish;
             Events.SuccessfulSlice += OnSuccessfulCut;
             ShopEvents.ShopShow += OnShopShow;
+            ShopEvents.ShopHide += OnShopHide;
         }
 
         private void OnDestroy()
@@ -44,6 +45,7 @@ namespace MeshSlice
             Events.GameFinish -= OnGameFinish;
             Events.SuccessfulSlice -= OnSuccessfulCut;
             ShopEvents.ShopShow -= OnShopShow;
+            ShopEvents.ShopHide -= OnShopHide;
         }
 
         private void OnPreReset()
@@ -54,6 +56,11 @@ namespace MeshSlice
         private void OnShopShow()
         {
             ChangeState(shopState);
+        }
+
+        private void OnShopHide()
+        {
+            ChangeState(startState);
         }
 
 

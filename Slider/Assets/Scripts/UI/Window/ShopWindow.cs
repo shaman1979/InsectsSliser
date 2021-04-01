@@ -29,6 +29,9 @@ namespace Slicer.UI.Windows
         private ButtonElement selectButton;
 
         [SerializeField]
+        private ButtonElement backToMenu;
+
+        [SerializeField]
         private Text level;
 
         [SerializeField]
@@ -39,6 +42,7 @@ namespace Slicer.UI.Windows
             nextButton.AddListener(NextElement);
             backButton.AddListener(BackElement);
             selectButton.AddListener(SelectedElement);
+            backToMenu.AddListener(BackToMenu);
 
             ShopEvents.ItemChanged += UpdateCurrentItem;
         }
@@ -101,6 +105,11 @@ namespace Slicer.UI.Windows
         private void SetSelectedButtonInterectable(bool isInterectable)
         {
             selectButton.SetInteractable(isInterectable);
+        }
+
+        private void BackToMenu()
+        {
+            ShopEvents.ShopHide?.Call();
         }
 
         private void UpdateNameText(string text)
