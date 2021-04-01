@@ -18,13 +18,7 @@ namespace Slicer.Shop
 
         private Dictionary<ItemTypes, DoublyLinkedList<ShopItem>> items;
 
-        private int currentElementNumber;
         private ItemTypes currentType;
-
-        private ShopItem currentElement;
-
-        private int selectedKnife;
-        private int selectedTable;
 
         private void Awake()
         {
@@ -40,7 +34,6 @@ namespace Slicer.Shop
         private void ChangeCurrentType(ItemTypes types)
         {
             currentType = types;
-            currentElementNumber = 0;
             UpdateItem(items[types].SelectedElement);
         }
 
@@ -61,8 +54,8 @@ namespace Slicer.Shop
 
         private void UpdateItem(ShopItem item)
         {
-            currentElement = item;
-            ShopEvents.ItemChanged.Call(currentElement, ItemStatus.Available);
+            items[currentType].ChangeCurrentElement(item);
+            ShopEvents.ItemChanged.Call(item, ItemStatus.Available);
         }
 
         public class DoublyLinkedList<T>
@@ -91,6 +84,12 @@ namespace Slicer.Shop
                 {
                     SelectedElement = element;
                 }
+            }
+
+            public void ChangeCurrentElement(T element)
+            {
+                CurrentElement = element;
+                CurrentElementNumber = list.IndexOf(element);
             }
 
             public void Remove(T element)
