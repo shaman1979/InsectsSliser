@@ -85,16 +85,16 @@ namespace Slicer.UI.Windows
                     SetSelectedButtonInterectable(false);
                     break;
                 case ItemStatus.Available:
+                    UpdateLevelText(string.Empty);
                     SetSelectedButtonInterectable(true);
                     break;
                 case ItemStatus.Selected:
+                    UpdateLevelText(string.Empty);
                     SetSelectedButtonInterectable(false);
                     break;
                 default:
                     break;
-            }
-
-            
+            }         
         }
 
         private void UpdateLevelText(string text)

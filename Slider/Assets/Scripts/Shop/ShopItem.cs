@@ -15,5 +15,13 @@ namespace Slicer.Shop
 
         [field: SerializeField]
         public int LevelOpen { get; private set; }
+
+        public int Id
+        {
+            get
+            {
+                return GetInstanceID();
+            }
+        }
     }
 }
