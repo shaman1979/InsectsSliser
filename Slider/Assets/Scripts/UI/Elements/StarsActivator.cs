@@ -21,11 +21,16 @@ namespace Slicer.UI
         private string starKey = "Stars";
 
         private static int totalStar = 0;
-        private int starSession = 0;
+        private static int starSession = 0;
 
         public static int GetTotalStar()
         {
             return totalStar;
+        }
+
+        public static bool HasLevelUp()
+        {
+            return starSession > 0;
         }
 
         private void Awake()

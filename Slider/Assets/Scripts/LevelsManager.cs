@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using LightDev;
+using Slicer.UI;
 
 namespace MeshSlice
 {
@@ -50,7 +51,8 @@ namespace MeshSlice
 
         private void OnGameFinish()
         {
-            PlayerPrefs.SetInt(levelKey, currentLevelIndex + 1);
+            if(StarsActivator.HasLevelUp())
+                PlayerPrefs.SetInt(levelKey, currentLevelIndex + 1);
         }
 
         public static int GetLevel()
