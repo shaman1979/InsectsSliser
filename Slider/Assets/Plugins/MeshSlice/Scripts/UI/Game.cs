@@ -41,7 +41,7 @@ namespace MeshSlice.UI
         private void OnGameFinish()
         {
             progress.Sequence(
-              progress.MoveY(-900, 0.4f).SetEase(Ease.InOutSine)
+              progress.MoveY(-1000, 0.4f).SetEase(Ease.InOutSine)
             );
         }
 
