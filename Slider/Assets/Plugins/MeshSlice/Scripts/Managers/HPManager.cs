@@ -15,14 +15,36 @@ namespace MeshSlice
         private static int currentProgress;
         private static int maxProgress;
 
-        public static int GetHP() { return PlayerPrefs.GetInt(XpKey, 0); }
+        public static int GetHP()
+        {
+            return PlayerPrefs.GetInt(XpKey, 0);
+        }
 
-        public static int GetCurrentProgress() { return currentProgress; }
-        public static int GetMaxProgress() { return maxProgress; }
-        public static void IncreaseProgress(float value) { SetProgress(GetCurrentProgress() + (int)(value * XpForSlicedObject)); }
+        public static int GetCurrentProgress() 
+        {
+            return currentProgress;
+        }
 
-        private static void SetHP(int value) { PlayerPrefs.SetInt(XpKey, value); Events.HpChanged.Call(); }
-        private static void SetProgress(int value) { currentProgress = value; Events.ProgressChanged.Call(); }
+        public static int GetMaxProgress()
+        {
+            return maxProgress;
+        }
+
+        public static void IncreaseProgress(float value)
+        {
+            SetProgress(GetCurrentProgress() + (int)(value * XpForSlicedObject));
+        }
+
+        private static void SetHP(int value) 
+        {
+            PlayerPrefs.SetInt(XpKey, value);
+            Events.HpChanged.Call();
+        }
+        private static void SetProgress(int value) 
+        { 
+            currentProgress = value;
+            Events.ProgressChanged.Call();
+        }
 
         private void Awake()
         {

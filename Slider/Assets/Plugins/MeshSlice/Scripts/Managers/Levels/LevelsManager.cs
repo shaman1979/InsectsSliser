@@ -71,7 +71,9 @@ namespace MeshSlice
         public static MeshInfo GetNextMeshInfo()
         {
             nextMeshIndex++;
-            return IsRandomLevel() ? new MeshInfo(meshRandomer.GetNext(), new Vector3(0, Random.Range(0, 360), 0)) : GetCurrentLevelMeshes()[nextMeshIndex - 1];
+            return IsRandomLevel()
+                ? new MeshInfo(meshRandomer.GetNext(), new Vector3(0, Random.Range(0, 360), 0)) 
+                :GetCurrentLevelMeshes()[nextMeshIndex - 1];
         }
 
         private static MeshInfo[] GetCurrentLevelMeshes()
