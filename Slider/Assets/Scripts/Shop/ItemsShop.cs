@@ -29,10 +29,25 @@ namespace Slicer.Shop
             items = ResourcesLoader.ShopElementsLoad(itemPath);
 
             ShopEvents.ItemTypeChanged += ChangeCurrentType;
+            ShopEvents.ShopShow += ShopEnable;
 
             window.NextElementSwitched += NextElement;
             window.BackElementSwitched += BackElement;
             window.ElementSelected += SelectItem;
+        }
+
+        private void ShopEnable()
+        {
+            InitializeSelectedItem(ItemTypes.Khife);
+            InitializeSelectedItem(ItemTypes.Table);
+            ChangeCurrentType(ItemTypes.Table);
+        }
+
+        private void InitializeSelectedItem(ItemTypes type)
+        {
+            var selectedItem = SelectedItems.GetItemForType(type);
+            var currentItem = items[type].FindElementByID(selectedItem.Id);
+            items[type].ChangeCurrentElement(currentItem);
         }
 
         private void ChangeCurrentType(ItemTypes types)

@@ -25,6 +25,11 @@ namespace Slicer.Items
             return false;
         }
 
+        public static ShopItem GetItemForType(ItemTypes itemTypes)
+        {
+            return selectedItems[itemTypes];
+        }
+
         public static int GetCurrentKnifeID()
         {
             return selectedItems[ItemTypes.Khife].Id;

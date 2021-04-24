@@ -1,10 +1,12 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
 
 namespace Slicer.Shop
 {
     public partial class ItemsShop
     {
-        public class DoublyLinkedList<T>
+        public class DoublyLinkedList<T> where T : ScriptableObject
         {
             private List<T> list;
 
@@ -41,6 +43,11 @@ namespace Slicer.Shop
             public void Remove(T element)
             {
                 list.Remove(element);
+            }
+
+            public T FindElementByID(int id)
+            {
+                return list.FirstOrDefault(x => x.GetInstanceID().Equals(id));
             }
 
             public T NextElement()
