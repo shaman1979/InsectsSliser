@@ -16,6 +16,9 @@ namespace Slicer.Shop
         [field: SerializeField]
         public int LevelOpen { get; private set; }
 
+        [field: SerializeField]
+        public GameObject Model { get; private set; }
+
         public int Id
         {
             get

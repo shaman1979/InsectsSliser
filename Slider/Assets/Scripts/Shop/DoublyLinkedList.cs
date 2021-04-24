@@ -34,6 +34,11 @@ namespace Slicer.Shop
                 }
             }
 
+            public void ChangeSelectedElement(T element)
+            {
+                SelectedElement = element;
+            }
+
             public void ChangeCurrentElement(T element)
             {
                 CurrentElement = element;

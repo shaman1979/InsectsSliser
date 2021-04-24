@@ -51,6 +51,12 @@ namespace Slicer.Items
             }
         }
 
+        private void Start()
+        {
+            ItemEvents.ItemInitialize.Call(selectedItems[ItemTypes.Khife]);
+            ItemEvents.ItemInitialize.Call(selectedItems[ItemTypes.Table]);
+        }
+
         private void LoadDefaultItem()
         {
             var items = ResourcesLoader.ShopElementsLoad(itemPath);

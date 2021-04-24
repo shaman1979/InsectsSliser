@@ -47,7 +47,7 @@ namespace Slicer.Shop
         {
             var selectedItem = SelectedItems.GetItemForType(type);
             var currentItem = items[type].FindElementByID(selectedItem.Id);
-            items[type].ChangeCurrentElement(currentItem);
+            items[type].ChangeSelectedElement(currentItem);
         }
 
         private void ChangeCurrentType(ItemTypes types)
