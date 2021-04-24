@@ -15,6 +15,8 @@ namespace Slicer.Shop
         {
             ShopEvents.ShopShow += Activate;
             ShopEvents.ShopHide += Deactivate;
+
+            Deactivate();
         }
 
         private void OnDestroy()

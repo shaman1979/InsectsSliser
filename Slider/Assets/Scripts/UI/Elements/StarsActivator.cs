@@ -17,10 +17,24 @@ namespace Slicer.UI
         [SerializeField]
         private StarView highStar;
 
+        [SerializeField]
+        private string starKey = "Stars";
+
+        private static int totalStar = 0;
+        private int starSession = 0;
+
+        public static int GetTotalStar()
+        {
+            return totalStar;
+        }
+
         private void Awake()
         {
             Events.ProgressChanged += OnProgressChanged;
             Events.GameStart += ResetAll;
+            Events.GameFinish += () => totalStar += starSession;
+
+            Load();
         }
 
         private void OnProgressChanged()
@@ -29,19 +43,22 @@ namespace Slicer.UI
 
             progress = Mathf.Clamp(progress, 0, 1);
 
-            if(progress >= 0.45f)
+            if(progress > 0.45f)
             {
                 StarActivator(lowStar);
+                starSession = 1;
             }
 
             if (progress >= 0.68f)
             {
                 StarActivator(middleStar);
+                starSession = 2;
             }
 
             if (progress >= 0.89f)
             {
                 StarActivator(highStar);
+                starSession = 3;
             }
         }
 
@@ -55,6 +72,23 @@ namespace Slicer.UI
             lowStar.ResetState();
             middleStar.ResetState();
             highStar.ResetState();
+            starSession = 0;
+        }
+
+        private void OnDestroy()
+        {
+            Save();
+        }
+
+        private void Load()
+        {
+            if(PlayerPrefs.HasKey(starKey))
+                totalStar = PlayerPrefs.GetInt(starKey);
+        }
+
+        private void Save()
+        {
+            PlayerPrefs.SetInt(starKey, totalStar);
         }
     }
 }

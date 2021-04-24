@@ -37,6 +37,9 @@ namespace Slicer.UI.Windows
         [SerializeField]
         private BaseText hpText;
 
+        [SerializeField]
+        private BaseText starText;
+
         public override void Subscribe()
         {
             Events.PreReset += Show;
@@ -69,6 +72,11 @@ namespace Slicer.UI.Windows
             HideLogoHolder();
         }
 
+        private void UpdateStarCount()
+        {
+            starText.SetText(StarsActivator.GetTotalStar());
+        }
+
         private void UpdateTexts()
         {
             hpText.SetText($"xp: {HPManager.GetHP()}");
@@ -78,6 +86,8 @@ namespace Slicer.UI.Windows
             float levelWidth = levelText.GetTextComponent().preferredWidth;
 
             float fullSize = hpWidth + knobWidth + levelWidth;
+
+            UpdateStarCount();
 
             float hpPos = -fullSize / 2 + hpWidth / 2;
             float knobPos = hpPos + hpWidth / 2 + knobWidth / 2;

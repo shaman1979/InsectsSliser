@@ -6,10 +6,11 @@ using LightDev.Core;
 using LightDev.UI;
 
 using DG.Tweening;
+using Slicer.UI;
 
 namespace MeshSlice.UI
 {
-    public class Game : CanvasElement
+    public class GameWindow: CanvasElement
     {
         [Header("References")]
         public Base holder;
@@ -21,9 +22,6 @@ namespace MeshSlice.UI
 
         [Header("Progress")]
         public Image progressImage;
-
-        [SerializeField]
-        private BaseText starText;
 
         public override void Subscribe()
         {
