@@ -37,20 +37,17 @@ namespace Slicer.UI.Windows
         [SerializeField]
         private Text name;
 
-        private void Awake()
+        public override void Subscribe()
         {
+            ShopEvents.ShopShow += Show;
+            ShopEvents.ShopHide += Hide;
+            
             nextButton.AddListener(NextElement);
             backButton.AddListener(BackElement);
             selectButton.AddListener(SelectedElement);
             backToMenu.AddListener(BackToMenu);
 
             ShopEvents.ItemChanged += UpdateCurrentItem;
-        }
-
-        public override void Subscribe()
-        {
-            ShopEvents.ShopShow += Show;
-            ShopEvents.ShopHide += Hide;
         }
 
         public override void Unsubscribe()

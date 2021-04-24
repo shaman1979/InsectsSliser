@@ -70,6 +70,7 @@ namespace Slicer.Shop
         {
             items[currentType].Selection();
             selectedItems.SelectedItemChange(items[currentType].CurrentElement);
+            UpdateItem(items[currentType].SelectedElement);
         }
 
         private void UpdateItem(ShopItem item)
