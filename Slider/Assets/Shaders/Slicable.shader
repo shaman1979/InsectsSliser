@@ -3,6 +3,7 @@
     Properties
     {
         _Color ("Color", Color) = (1,1,1,1)
+        _MainTex ("Texture", 2D) = "white" {}
         _SliceColor ("Slice color", Color) = (1,1,1,1)
         _SliceWidth("Slice line width", Range(0, 0.1)) = 0.05
         _Point1("Point 1", Vector) = (0, 0, 0, 0)
@@ -11,6 +12,7 @@
     SubShader
     {
         Tags { "RenderType"="Opaque" }
+        Cull Off
         LOD 200
 
         CGPROGRAM
@@ -29,6 +31,8 @@
             float3 worldPos;
         };
 
+        sampler2D _MainTex;
+
         void surf (Input IN, inout SurfaceOutputStandard o)
         {
             fixed x0 = IN.worldPos.x;
@@ -43,13 +47,15 @@
             fixed res = abs((z2 - z1) * x0 - (x2 - x1) * z0 + x2 * z1 - z2 * x1);
             res /= sqrt((z2 - z1) * (z2 - z1) + (x2 - x1) * (x2 - x1));
 
+            float4 tex = tex2D(_MainTex, IN.uv_MainTex);
+
             if(res <= _SliceWidth / 2 && res >= -_SliceWidth / 2)
             {
                 o.Albedo = _SliceColor;
             }
             else
             {
-                o.Albedo = _Color;
+                o.Albedo = tex.rgb;
             }
             o.Alpha = 1;
         }
