@@ -1,5 +1,6 @@
 ﻿using Slicer.Items.Events;
 using Slicer.Shop;
+using Slicer.Shop.Events;
 using Slicer.Tools;
 using System.Collections;
 using System.Collections.Generic;
@@ -43,6 +44,8 @@ namespace Slicer.Items
         private void Awake()
         {
             ItemEvents.ItemSelected += SelectedItemChange;
+            ShopEvents.ShopHide += ResetItems;
+
             LoadItems();
 
             if (selectedItems.Count.Equals(0))
@@ -51,10 +54,15 @@ namespace Slicer.Items
             }
         }
 
-        private void Start()
+        private void ResetItems()
         {
             ItemEvents.ItemInitialize.Call(selectedItems[ItemTypes.Khife]);
             ItemEvents.ItemInitialize.Call(selectedItems[ItemTypes.Table]);
+        }
+
+        private void Start()
+        {
+            ResetItems();
         }
 
         private void LoadDefaultItem()
