@@ -60,7 +60,8 @@ namespace SliceFramework {
             return CreateLowerHull(original, null);
         }
 
-        public GameObject CreateLowerHull(GameObject original, Material crossSectionMat) {
+        public GameObject CreateLowerHull(GameObject original, Material crossSectionMat)
+        {
             GameObject newObject = CreateLowerHull();
 
             if (newObject != null) {

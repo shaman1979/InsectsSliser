@@ -370,7 +370,8 @@ namespace SliceFramework {
             }
 
             // generate the cross section required for this particular hull
-            if (crossSection != null && crossCount > 0) {
+            if (crossSection != null && crossCount > 0) 
+            {
                 int[] crossIndices = new int[crossCount * 3];
 
                 for (int i = 0, triIndex = 0; i < crossCount; i++, triIndex += 3) {
@@ -416,11 +417,14 @@ namespace SliceFramework {
                     // add triangles in clockwise for upper
                     // and reversed for lower hulls, to ensure the mesh
                     // is facing the right direction
-                    if (isUpper) {
+                    if (isUpper)
+                    {
                         crossIndices[triIndex] = i0;
                         crossIndices[triIndex + 1] = i1;
                         crossIndices[triIndex + 2] = i2;
-                    } else {
+                    }
+                    else
+                    {
                         crossIndices[triIndex] = i0;
                         crossIndices[triIndex + 1] = i2;
                         crossIndices[triIndex + 2] = i1;
@@ -430,9 +434,12 @@ namespace SliceFramework {
                 }
 
                 // add triangles to the index for later generation
-                if (triangles.Count <= crossIndex) {
+                if (triangles.Count <= crossIndex)
+                {
                     triangles.Add(crossIndices);
-                } else {
+                }
+                else
+                {
                     // otherwise, we need to merge the triangles for the provided subsection
                     int[] prevTriangles = triangles[crossIndex];
                     int[] merged = new int[prevTriangles.Length + crossIndices.Length];
