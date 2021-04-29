@@ -2168,6 +2168,9 @@ GameObject:
   - component: {fileID: 906162188}
   - component: {fileID: 906162190}
   - component: {fileID: 906162189}
+  - component: {fileID: 906162191}
+  - component: {fileID: 906162192}
+  - component: {fileID: 906162193}
   m_Layer: 0
   m_Name: Pivot
   m_TagString: Untagged
@@ -2231,6 +2234,50 @@ MonoBehaviour:
   slicePoint: {fileID: 1533171215}
   material: {fileID: 2100000, guid: c96d4a4e497464ee084781c44681b4f8, type: 2}
   movening: {fileID: 1989545036}
+  knife: {fileID: 1249509919}
+  generator: {fileID: 906162193}
+--- !u!114 &906162191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 906162187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07c6e46efa006dd4dbcffb23297634db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectToSlice: {fileID: 1277122101}
+  slicedObjectLeftPos: {fileID: 1911845332}
+  slicedObjectRightPos: {fileID: 1552425500}
+--- !u!114 &906162192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 906162187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3983d5eee128a1648952855629a89320, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ItemMovening: {fileID: 906162191}
+--- !u!114 &906162193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 906162187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 866b95268a79489479ab0147026fe9ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectToSlice: {fileID: 1277122103}
+  itemMovening: {fileID: 906162191}
 --- !u!1 &920710753
 GameObject:
   m_ObjectHideFlags: 0
@@ -3215,6 +3262,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 3930343252740904570}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1249509919 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1249509919, guid: a0abe8336c792da40ab9fa28f999cbd0,
+    type: 3}
+  m_PrefabInstance: {fileID: 3930343252740904570}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1249509914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d23b366537b31b54197288f122deabeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1277122101
 GameObject:
   m_ObjectHideFlags: 0
@@ -3227,6 +3286,9 @@ GameObject:
   - component: {fileID: 1277122104}
   - component: {fileID: 1277122102}
   - component: {fileID: 1277122103}
+  - component: {fileID: 1277122107}
+  - component: {fileID: 1277122106}
+  - component: {fileID: 1277122108}
   m_Layer: 0
   m_Name: ObjectToSlice
   m_TagString: Untagged
@@ -3309,6 +3371,50 @@ Transform:
   m_Father: {fileID: 906162188}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1277122106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1277122101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e5cacb76cba02543ac5277e19a4100d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sliceId: 0
+  _lastSliceTime: -3.4028235e+38
+  _defaultSliceMaterial: {fileID: 2100000, guid: c96d4a4e497464ee084781c44681b4f8,
+    type: 2}
+  _asynchronously: 1
+  _delayBetweenSlices: 1
+--- !u!114 &1277122107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1277122101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb4231669f3526949a4b889196486fbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!64 &1277122108
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1277122101}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300028, guid: 90b031fd0e3ce4ae68d8823337d7a167, type: 3}
 --- !u!1 &1300414686
 GameObject:
   m_ObjectHideFlags: 0

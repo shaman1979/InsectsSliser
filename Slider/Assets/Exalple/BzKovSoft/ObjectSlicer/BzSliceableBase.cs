@@ -9,6 +9,7 @@ using System.Threading;
 using BzKovSoft.ObjectSlicer;
 using BzKovSoft.ObjectSlicer.EventHandlers;
 using UnityEngine.Profiling;
+using LightDev;
 
 namespace BzKovSoft.ObjectSlicer
 {
@@ -290,13 +291,14 @@ namespace BzKovSoft.ObjectSlicer
             result.outObjectNeg = resultObjNeg;
             result.outObjectPos = resultObjPos;
 
-            return result;
+			Events.SliceResult.Call(result);
+			return result;
         }
 
         protected virtual void GetNewObjects(out GameObject resultObjNeg, out GameObject resultObjPos)
         {
-            resultObjNeg = this.gameObject;
-            resultObjPos = Instantiate(this.gameObject, this.gameObject.transform.parent);
+            resultObjNeg = Instantiate(this.gameObject, this.gameObject.transform.parent);
+			resultObjPos = Instantiate(this.gameObject, this.gameObject.transform.parent);
 
             resultObjPos.name = resultObjNeg.name + "_pos";
 			resultObjNeg.name = resultObjNeg.name + "_neg";
