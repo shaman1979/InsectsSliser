@@ -127,7 +127,7 @@ namespace MeshSlice
               cutter.OnFinish(() =>
               {
                   knife.BeginNewSlice();
-                 // Cut(hull);
+                  //Cut(hull);
               }),
               cutter.MoveY(2, 0.6f).SetEase(Ease.InOutQuad),
               cutter.OnFinish(() =>

@@ -2168,6 +2168,7 @@ GameObject:
   - component: {fileID: 906162188}
   - component: {fileID: 906162190}
   - component: {fileID: 906162189}
+  - component: {fileID: 906162191}
   m_Layer: 0
   m_Name: Pivot
   m_TagString: Untagged
@@ -2232,6 +2233,21 @@ MonoBehaviour:
   material: {fileID: 2100000, guid: c96d4a4e497464ee084781c44681b4f8, type: 2}
   movening: {fileID: 1989545036}
   knife: {fileID: 1249509919}
+--- !u!114 &906162191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 906162187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07c6e46efa006dd4dbcffb23297634db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectToSlice: {fileID: 1277122101}
+  slicedObjectLeftPos: {fileID: 1911845332}
+  slicedObjectRightPos: {fileID: 1552425500}
 --- !u!1 &920710753
 GameObject:
   m_ObjectHideFlags: 0
