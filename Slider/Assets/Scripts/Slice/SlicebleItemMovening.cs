@@ -2,8 +2,6 @@
 using DG.Tweening;
 using LightDev;
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Slicer.Slice
@@ -11,6 +9,7 @@ namespace Slicer.Slice
     public class SlicebleItemMovening : MonoBehaviour
     {
         public event Action OnMoveFinished;
+        public event Action<Mesh, Mesh> OnMoveningStarted;
 
         [SerializeField]
         private GameObject objectToSlice;
@@ -28,15 +27,15 @@ namespace Slicer.Slice
 
         private void Movening(BzSliceTryResult result)
         {
-            RotateAll(result.outObjectPos, result.outObjectNeg, objectToSlice.transform.eulerAngles.y);
+            var left = result.outObjectPos;
+            var right = result.outObjectNeg;
 
-            AnimateSlicedObjectMovement(result.outObjectPos, slicedObjectLeftPos.position);
-            AnimateSlicedObjectMovement(result.outObjectNeg, slicedObjectRightPos.position, () => OnMoveFinished?.Invoke());
+            OnMoveningStarted?.Invoke(GetMesh(left), GetMesh(right));
 
-            //int leftPercentage, rightPercentage;
-            //CalculateSlicePercentage(left.GetComponent<MeshFilter>().mesh, right.GetComponent<MeshFilter>().mesh, out leftPercentage, out rightPercentage);
-            //IncreaseGameProgress(leftPercentage, rightPercentage);
-            //Events.SuccessfulSlice.Call(leftPercentage, rightPercentage);
+            RotateAll(left, right, objectToSlice.transform.eulerAngles.y);
+
+            AnimateSlicedObjectMovement(left, slicedObjectLeftPos.position);
+            AnimateSlicedObjectMovement(right, slicedObjectRightPos.position, () => OnMoveFinished?.Invoke());
         }
 
         private void AnimateSlicedObjectMovement(GameObject obj, Vector3 finishPos, Action onFinish = null)
@@ -46,11 +45,16 @@ namespace Slicer.Slice
             sequence.Append(obj.transform.DOMove(finishPos, 0.5f).SetEase(Ease.InSine));
             sequence.Append(obj.transform.DOMoveY(-4, 0.4f).SetEase(Ease.InSine));
             sequence.Append(DOTween.Sequence().AppendCallback(() =>
-            { 
+            {
                 Destroy(obj);
                 onFinish?.Invoke();
             }));
-           
+
+        }
+
+        private Mesh GetMesh(GameObject item)
+        {
+            return item.GetComponent<MeshFilter>().mesh;
         }
 
         private void RotateAll(GameObject left, GameObject right, float objectToSliceY)

@@ -297,8 +297,8 @@ namespace BzKovSoft.ObjectSlicer
 
         protected virtual void GetNewObjects(out GameObject resultObjNeg, out GameObject resultObjPos)
         {
-            resultObjNeg = this.gameObject;
-            resultObjPos = Instantiate(this.gameObject, this.gameObject.transform.parent);
+            resultObjNeg = Instantiate(this.gameObject, this.gameObject.transform.parent);
+			resultObjPos = Instantiate(this.gameObject, this.gameObject.transform.parent);
 
             resultObjPos.name = resultObjNeg.name + "_pos";
 			resultObjNeg.name = resultObjNeg.name + "_neg";

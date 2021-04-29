@@ -5,6 +5,7 @@ using DG.Tweening;
 using SliceFramework;
 using Slicer.Cutter;
 using BzKovSoft.ObjectSlicerSamples;
+using Slicer.Slice;
 
 namespace MeshSlice
 {
@@ -34,6 +35,9 @@ namespace MeshSlice
         [SerializeField]
         private BzKnife knife;
 
+        [SerializeField]
+        private MeshGenerator generator;
+
         private bool canCut;
 
         private void OnValidate()
@@ -46,14 +50,15 @@ namespace MeshSlice
         {
             Events.PointerUp += OnPointerUp;
             Events.PostReset += OnPostReset;
-            Events.GameStart += OnGameStart;
+
+            generator.OnFinished += OnReset;
         }
 
         private void OnDestroy()
         {
             Events.PointerUp -= OnPointerUp;
             Events.PostReset -= OnPostReset;
-            Events.GameStart -= OnGameStart;
+            generator.OnFinished -= OnReset;
         }
 
         private void Update()
@@ -75,9 +80,9 @@ namespace MeshSlice
             objectToSlice.SetActive(false);
         }
 
-        private void OnGameStart()
+        private void OnReset()
         {
-            AnimateNextMesh();
+            canCut = true; movening.StartMovening();
         }
 
         private void OnPointerUp()
@@ -126,6 +131,7 @@ namespace MeshSlice
               cutter.MoveY(0, 0.5f).SetEase(Ease.InSine),
               cutter.OnFinish(() =>
               {
+                  objectToSlice.SetActive(false);
                   knife.BeginNewSlice();
                   //Cut(hull);
               }),
@@ -139,71 +145,6 @@ namespace MeshSlice
                   }
               })
             );
-        }
-
-        private void Cut(SlicedHull sliceController)
-        {
-            if (sliceController == null) return;
-
-            objectToSlice.SetActive(false);
-
-            Base left = sliceController.CreateLowerHull(objectToSlice, material).AddComponent(typeof(Base)) as Base;
-            Base right = sliceController.CreateUpperHull(objectToSlice, material).AddComponent(typeof(Base)) as Base;
-
-            left.SetRotationY(objectToSlice.transform.eulerAngles.y);
-            right.SetRotationY(objectToSlice.transform.eulerAngles.y);
-
-            slicedObjectLeftPos.SetPositionY(left.GetPositionY());
-            slicedObjectRightPos.SetPositionY(right.GetPositionY());
-
-            AnimateSlicedObjectMovement(left, slicedObjectLeftPos.position);
-            AnimateSlicedObjectMovement(right, slicedObjectRightPos.position, () => AnimateNextMesh());
-
-            int leftPercentage, rightPercentage;
-            CalculateSlicePercentage(left.GetComponent<MeshFilter>().mesh, right.GetComponent<MeshFilter>().mesh, out leftPercentage, out rightPercentage);
-            IncreaseGameProgress(leftPercentage, rightPercentage);
-            Events.SuccessfulSlice.Call(leftPercentage, rightPercentage);
-        }
-
-        private void AnimateSlicedObjectMovement(Base obj, Vector3 finishPos, System.Action onFinish = null)
-        {
-            obj.Sequence(
-              obj.Move(finishPos, 0.5f).SetEase(Ease.InSine),
-              obj.MoveY(-4, 0.4f).SetEase(Ease.InSine),
-              obj.OnFinish(() =>
-              {
-                  onFinish?.Invoke();
-                  Destroy(obj.gameObject);
-              })
-            );
-        }
-
-        private void CalculateSlicePercentage(Mesh mesh1, Mesh mesh2, out int firstPercentage, out int secondPercentage, int deviation = 2)
-        {
-            float leftArea = mesh1.GetArea();
-            float rightArea = mesh2.GetArea();
-            float areaSum = leftArea + rightArea;
-
-            firstPercentage = (int)leftArea.Map(0, areaSum, 0, 100);
-            secondPercentage = 100 - firstPercentage;
-
-            if (firstPercentage < secondPercentage)
-            {
-                firstPercentage = Mathf.Clamp(firstPercentage + deviation, 0, 50);
-                secondPercentage = Mathf.Clamp(secondPercentage - deviation, 50, 100);
-            }
-            else
-            {
-                secondPercentage = Mathf.Clamp(secondPercentage + deviation, 0, 50);
-                firstPercentage = Mathf.Clamp(firstPercentage - deviation, 50, 100);
-            }
-        }
-
-        private void IncreaseGameProgress(int leftPercentage, int rightPercentage)
-        {
-            float percentageDelta = Mathf.Abs(leftPercentage - rightPercentage);
-            float koef = (100 - percentageDelta) / 100;
-            HPManager.IncreaseProgress(koef);
         }
 
 #if UNITY_EDITOR
