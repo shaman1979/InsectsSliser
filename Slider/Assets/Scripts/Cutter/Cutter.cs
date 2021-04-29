@@ -13,7 +13,7 @@ namespace MeshSlice
     {
         public Base cutter;
 
-        public GameObject objectToSlice;
+        public KnifeSliceableAsync objectToSlice;
 
         [Header("Slice Parameters")]
         public Transform slicePoint;
@@ -69,7 +69,7 @@ namespace MeshSlice
         {
             canCut = false;
             movening.StopMovening();
-            SlicedHull hull = objectToSlice.Slice(slicePoint.position, slicePoint.up, material);
+            SlicedHull hull = objectToSlice.gameObject.Slice(slicePoint.position, slicePoint.up, material);
 
             cutter.KillSequences();
             cutter.Sequence(
@@ -77,6 +77,7 @@ namespace MeshSlice
               cutter.MoveY(0, 0.5f).SetEase(Ease.InSine),
               cutter.OnFinish(() =>
               {
+                  objectToSlice.StartSlice();
                   knife.BeginNewSlice();
               }),
               cutter.MoveY(2, 0.6f).SetEase(Ease.InOutQuad),

@@ -2224,13 +2224,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cutter: {fileID: 1989545037}
-  minCutterLocalPosZ: -1
-  maxCutterLocalPosZ: 1
-  objectToSlice: {fileID: 1277122101}
-  objectToSliceMinLocalPosZ: -0.2
-  objectToSliceMaxLocalPosZ: 0.2
-  slicedObjectLeftPos: {fileID: 1911845332}
-  slicedObjectRightPos: {fileID: 1552425500}
+  objectToSlice: {fileID: 1277122107}
   slicePoint: {fileID: 1533171215}
   material: {fileID: 2100000, guid: c96d4a4e497464ee084781c44681b4f8, type: 2}
   movening: {fileID: 1989545036}

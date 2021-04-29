@@ -12,37 +12,42 @@ namespace BzKovSoft.ObjectSlicerSamples
 	/// IBzSliceable implementation in one of its parent.
 	/// </summary>
 	[DisallowMultipleComponent]
+	[RequireComponent(typeof(IBzSliceableAsync))]
 	public class KnifeSliceableAsync : MonoBehaviour
 	{
-		IBzSliceableAsync _sliceableAsync;
+		private BzKnife knife;
+
+		private IBzSliceableAsync sliceableAsync;
 		
-		void Start()
-		{
-			_sliceableAsync = GetComponentInParent<IBzSliceableAsync>();
+		public void StartSlice()
+        {
+			StartCoroutine(Slice(knife));
 		}
 
-		void OnTriggerEnter(Collider other)
+		private void Start()
 		{
-			var knife = other.gameObject.GetComponent<BzKnife>();
-			if (knife == null)
-				return;
+			sliceableAsync = GetComponent<IBzSliceableAsync>();
+		}
 
-			StartCoroutine(Slice(knife));
+		private void OnTriggerEnter(Collider other)
+		{
+			if(other.gameObject.TryGetComponent<BzKnife>(out var knife))
+            {
+				this.knife = knife;
+            }
 		}
 
 		private IEnumerator Slice(BzKnife knife)
 		{
-			// The call from OnTriggerEnter, so some object positions are wrong.
-			// We have to wait for next frame to work with correct values
 			yield return null;
 
 			Vector3 point = GetCollisionPoint(knife);
 			Vector3 normal = Vector3.Cross(knife.MoveDirection, knife.BladeDirection);
 			Plane plane = new Plane(normal, point);
 
-			if (_sliceableAsync != null)
+			if (sliceableAsync != null)
 			{
-				_sliceableAsync.Slice(plane, knife.SliceID, null);
+				sliceableAsync.Slice(plane, knife.SliceID, null);
 			}
 		}
 

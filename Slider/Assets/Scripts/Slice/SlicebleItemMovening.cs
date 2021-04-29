@@ -27,8 +27,8 @@ namespace Slicer.Slice
 
         private void Movening(BzSliceTryResult result)
         {
-            var left = result.outObjectPos;
-            var right = result.outObjectNeg;
+            var left = result.outObjectNeg;
+            var right = result.outObjectPos;
 
             OnMoveningStarted?.Invoke(GetMesh(left), GetMesh(right));
 
