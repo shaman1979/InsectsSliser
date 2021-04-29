@@ -49,7 +49,6 @@ namespace MeshSlice
         {
             canCut = false;
             movening.StopMovening();
-            //objectToSlice.SetActive(false);
         }
 
         private void OnReset()
@@ -65,7 +64,7 @@ namespace MeshSlice
                 AnimateCut();
             }
         }
-        
+
         private void AnimateCut()
         {
             canCut = false;
@@ -78,7 +77,6 @@ namespace MeshSlice
               cutter.MoveY(0, 0.5f).SetEase(Ease.InSine),
               cutter.OnFinish(() =>
               {
-                  objectToSlice.SetActive(false);
                   knife.BeginNewSlice();
               }),
               cutter.MoveY(2, 0.6f).SetEase(Ease.InOutQuad),

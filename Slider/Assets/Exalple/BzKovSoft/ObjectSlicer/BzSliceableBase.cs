@@ -292,6 +292,7 @@ namespace BzKovSoft.ObjectSlicer
             result.outObjectPos = resultObjPos;
 
 			Events.SliceResult.Call(result);
+			gameObject.SetActive(false);
 			return result;
         }
 
