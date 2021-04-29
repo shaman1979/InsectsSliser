@@ -4,6 +4,7 @@ using LightDev.Core;
 using DG.Tweening;
 using SliceFramework;
 using Slicer.Cutter;
+using BzKovSoft.ObjectSlicerSamples;
 
 namespace MeshSlice
 {
@@ -29,6 +30,9 @@ namespace MeshSlice
 
         [SerializeField]
         private CutterMovening movening;
+
+        [SerializeField]
+        private BzKnife knife;
 
         private bool canCut;
 
@@ -90,6 +94,7 @@ namespace MeshSlice
             {
                 MeshInfo info = LevelsManager.GetNextMeshInfo();
                 objectToSlice.GetComponent<MeshFilter>().mesh = info.mesh;
+                objectToSlice.GetComponent<MeshCollider>().sharedMesh = info.mesh;
                 Base b = objectToSlice.GetComponent<Base>();
                 b.SetLocalPositionZ(0);
                 b.SetScale(0);
@@ -121,7 +126,8 @@ namespace MeshSlice
               cutter.MoveY(0, 0.5f).SetEase(Ease.InSine),
               cutter.OnFinish(() =>
               {
-                  Cut(hull);
+                  knife.BeginNewSlice();
+                 // Cut(hull);
               }),
               cutter.MoveY(2, 0.6f).SetEase(Ease.InOutQuad),
               cutter.OnFinish(() =>
