@@ -1,4 +1,5 @@
-﻿using Slicer.Items;
+﻿using Slice.Game;
+using Slicer.Items;
 using Slicer.Shop.Events;
 using Slicer.Tools;
 using Slicer.UI.Windows;
@@ -6,6 +7,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using Zenject;
 
 namespace Slicer.Shop
 {
@@ -19,6 +21,9 @@ namespace Slicer.Shop
 
         [SerializeField]
         private string itemPath = "ShopItems/";
+
+        [Inject]
+        private LevelsInitializer levelsInitializer;
 
         private Dictionary<ItemTypes, DoublyLinkedList<ShopItem>> items;
 
@@ -76,7 +81,7 @@ namespace Slicer.Shop
         private void UpdateItem(ShopItem item)
         {
             items[currentType].ChangeCurrentElement(item);
-            ShopEvents.ItemChanged.Call(item, item.GetStatus());
+            ShopEvents.ItemChanged.Call(item, item.GetStatus(levelsInitializer));
         }
     }
 }

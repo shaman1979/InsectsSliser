@@ -8,6 +8,8 @@ using DG.Tweening;
 using MeshSlice;
 using Slicer.UI.Elements;
 using Slicer.Shop.Events;
+using Slice.Game;
+using Zenject;
 
 namespace Slicer.UI.Windows
 {
@@ -39,6 +41,9 @@ namespace Slicer.UI.Windows
 
         [SerializeField]
         private BaseText starText;
+
+        [Inject]
+        private LevelsInitializer levelsInitializer;
 
         public override void Subscribe()
         {
@@ -80,7 +85,7 @@ namespace Slicer.UI.Windows
         private void UpdateTexts()
         {
             hpText.SetText($"xp: {HPManager.GetHP()}");
-            levelText.SetText($"level: {LevelsManager.GetLevel()}");
+            levelText.SetText($"level: {levelsInitializer.GetLevel()}");
 
             float hpWidth = hpText.GetTextComponent().preferredWidth;
             float levelWidth = levelText.GetTextComponent().preferredWidth;

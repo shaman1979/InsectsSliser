@@ -4,11 +4,16 @@ using LightDev;
 using LightDev.Core;
 
 using DG.Tweening;
+using Slice.Game;
+using Zenject;
 
 namespace MeshSlice
 {
     public class HPManager : Base
     {
+        [Inject]
+        private LevelsInitializer levelsInitializer;
+
         private const int XpForSlicedObject = 50;
         private const string XpKey = "xp";
 
@@ -61,7 +66,7 @@ namespace MeshSlice
         private void OnPostReset()
         {
             currentProgress = 0;
-            maxProgress = LevelsManager.GetMeshesCountOnLevel() * XpForSlicedObject;
+            maxProgress = levelsInitializer.GetMeshesCountOnLevel() * XpForSlicedObject;
         }
 
         private void OnRequestHpFill()

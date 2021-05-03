@@ -2,16 +2,21 @@
 using LightDev;
 using LightDev.Core;
 using MeshSlice;
+using Slice.Game;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
 namespace Slicer.Slice
 {
     public class MeshGenerator : MonoBehaviour
     {
         public event Action OnFinished;
+
+        [Inject]
+        private LevelsInitializer levelsInitializer;
 
         [SerializeField]
         private Base objectToSlice;
@@ -27,9 +32,9 @@ namespace Slicer.Slice
 
         private void AnimateNextMesh()
         {
-            if (LevelsManager.HasNextMesh())
+            if (levelsInitializer.HasNextMesh())
             {
-                MeshInfo info = LevelsManager.GetNextMeshInfo();
+                MeshInfo info = levelsInitializer.GetNextMeshInfo();
                 objectToSlice.GetComponent<MeshFilter>().mesh = info.mesh;
                 objectToSlice.GetComponent<MeshCollider>().sharedMesh = info.mesh;
 

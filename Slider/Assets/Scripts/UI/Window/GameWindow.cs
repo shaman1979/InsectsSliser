@@ -7,6 +7,8 @@ using LightDev.UI;
 
 using DG.Tweening;
 using Slicer.UI;
+using Zenject;
+using Slice.Game;
 
 namespace MeshSlice.UI
 {
@@ -22,6 +24,9 @@ namespace MeshSlice.UI
 
         [Header("Progress")]
         public Image progressImage;
+
+        [Inject]
+        private LevelsInitializer levelsInitializer;
 
         public override void Subscribe()
         {
@@ -60,7 +65,7 @@ namespace MeshSlice.UI
         protected override void OnStartShowing()
         {
             UpdateProgress();
-            levelText.SetText($"Level: {LevelsManager.GetLevel()}");
+            levelText.SetText($"Level: {levelsInitializer.GetLevel()}");
 
             holder.SetPositionY(500);
             progress.SetPositionY(-400);
