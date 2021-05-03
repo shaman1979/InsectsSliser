@@ -1,14 +1,16 @@
 ﻿using UnityEngine;
 
 using LightDev;
+using Zenject;
+using System;
 
-namespace MeshSlice
+namespace Slice.Game
 {
-    public class GameManager : MonoBehaviour
+    public class GameRestarter : IInitializable, IDisposable
     {
-        private static bool isGameStarted;
+        private bool isGameStarted;
 
-        private void Awake()
+        public void Initialize()
         {
             Events.SceneLoaded += Reset;
             Events.PointerUp += OnPointerUp;
@@ -17,8 +19,7 @@ namespace MeshSlice
 
             Events.RequestReset.Call();
         }
-
-        private void OnDestroy()
+        public void Dispose()
         {
             Events.SceneLoaded -= Reset;
             Events.PointerUp -= OnPointerUp;
@@ -33,7 +34,7 @@ namespace MeshSlice
 
         private void OnPointerUp()
         {
-            if (isGameStarted == false)
+            if (!isGameStarted)
             {
                 StartGame();
             }
