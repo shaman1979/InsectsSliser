@@ -55,6 +55,7 @@ namespace Slicer.Game
         private void OnPreReset()
         {          
             randomMeshesCount = UnityEngine.Random.Range(setting.MinRandomMeshes, setting.MaxRandomMeshes + 1);
+            currentLevelIndex = PlayerPrefs.GetInt(levelKey, 0);
             nextMeshIndex = 0;
         }
 
@@ -67,6 +68,11 @@ namespace Slicer.Game
         public int GetLevel()
         {
             return currentLevelIndex + 1;
+        }
+
+        public string GetLevelName()
+        {
+            return Levels[currentLevelIndex % Levels.Length].name;
         }
 
         public int GetMeshesCountOnLevel()

@@ -65,7 +65,7 @@ namespace MeshSlice.UI
         protected override void OnStartShowing()
         {
             UpdateProgress();
-            levelText.SetText($"Level: {levelsInitializer.GetLevel()}");
+            levelText.SetText($"{levelsInitializer.GetLevelName()}");
 
             holder.SetPositionY(500);
             progress.SetPositionY(-400);
