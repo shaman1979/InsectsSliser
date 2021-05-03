@@ -1,11 +1,14 @@
 ﻿using DG.Tweening;
 using LightDev.Core;
+using System;
 using UnityEngine;
 
 namespace Slicer.Cutter
 {
     public class CutterMovening : Base
     {
+        public event Action OnFinished;
+        
         [SerializeField]
         private float speed;
 
@@ -43,6 +46,8 @@ namespace Slicer.Cutter
 
         private void MoveningState()
         {
+            OnFinished?.Invoke();
+
             Sequence(
                 transform.DOLocalMoveZ(maxPositionZ, speed, false).SetEase(Ease.InSine), 
                 transform.DOLocalMoveZ(minPositionZ, speed, false).SetEase(Ease.InSine))

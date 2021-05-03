@@ -2250,6 +2250,7 @@ MonoBehaviour:
   movening: {fileID: 1989545036}
   knife: {fileID: 1249509919}
   generator: {fileID: 906162193}
+  cutterMovening: {fileID: 1989545036}
 --- !u!114 &906162191
 MonoBehaviour:
   m_ObjectHideFlags: 0

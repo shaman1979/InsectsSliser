@@ -28,6 +28,9 @@ namespace MeshSlice
         [SerializeField]
         private MeshGenerator generator;
 
+        [SerializeField]
+        private CutterMovening cutterMovening;
+
         private bool canCut;
 
         private void Awake()
@@ -36,13 +39,16 @@ namespace MeshSlice
             Events.PostReset += OnPostReset;
 
             generator.OnFinished += OnReset;
+            cutterMovening.OnFinished += EnableCut;
         }
 
         private void OnDestroy()
         {
+            generator.OnFinished -= OnReset;
+
             Events.PointerUp -= OnPointerUp;
             Events.PostReset -= OnPostReset;
-            generator.OnFinished -= OnReset;
+            cutterMovening.OnFinished -= EnableCut;
         }
 
         private void OnPostReset()
@@ -51,9 +57,13 @@ namespace MeshSlice
             movening.StopMovening();
         }
 
-        private void OnReset()
+        private void EnableCut()
         {
             canCut = true;
+        }
+
+        private void OnReset()
+        {
             movening.StartMovening();
         }
 
@@ -80,15 +90,7 @@ namespace MeshSlice
                   objectToSlice.StartSlice();
                   knife.BeginNewSlice();
               }),
-              cutter.MoveY(2, 0.6f).SetEase(Ease.InOutQuad),
-              cutter.OnFinish(() =>
-              {
-                  if (hull == null)
-                  {
-                      canCut = true;
-                      movening.StartMovening();
-                  }
-              })
+              cutter.MoveY(2, 0.6f).SetEase(Ease.InOutQuad)
             );
         }
 
