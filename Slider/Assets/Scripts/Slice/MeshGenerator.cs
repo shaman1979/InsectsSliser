@@ -2,10 +2,8 @@
 using LightDev;
 using LightDev.Core;
 using MeshSlice;
-using Slice.Game;
+using Slicer.Game;
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 

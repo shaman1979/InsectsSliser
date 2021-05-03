@@ -1,9 +1,5 @@
-﻿using MeshSlice;
-using Slice.Game;
+﻿using Slicer.Game;
 using Slicer.Items;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
 namespace Slicer.Shop
 {
@@ -16,7 +12,7 @@ namespace Slicer.Shop
                 return ItemStatus.Selected;
             }
 
-            if(item.LevelOpen <= levelsInitializer.GetLevel())
+            if (item.LevelOpen <= levelsInitializer.GetLevel())
             {
                 return ItemStatus.Available;
             }

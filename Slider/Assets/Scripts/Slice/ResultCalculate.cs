@@ -1,8 +1,10 @@
 ﻿using LightDev;
 using MeshSlice;
+using Slicer.Game;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
 namespace Slicer.Slice
 {
@@ -10,6 +12,9 @@ namespace Slicer.Slice
     {
         [SerializeField]
         private SlicebleItemMovening ItemMovening;
+
+        [Inject]
+        private HPInitializer hpInitializer;
 
         private int deviation = 2;
 
@@ -51,7 +56,7 @@ namespace Slicer.Slice
         {
             float percentageDelta = Mathf.Abs(leftPercentage - rightPercentage);
             float koef = (100 - percentageDelta) / 100;
-            HPManager.IncreaseProgress(koef);
+            hpInitializer.IncreaseProgress(koef);
         }
     }
 }

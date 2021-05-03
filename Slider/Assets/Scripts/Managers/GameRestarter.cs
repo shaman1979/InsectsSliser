@@ -4,7 +4,7 @@ using LightDev;
 using Zenject;
 using System;
 
-namespace Slice.Game
+namespace Slicer.Game
 {
     public class GameRestarter : IInitializable, IDisposable
     {

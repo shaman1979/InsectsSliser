@@ -1,14 +1,11 @@
-﻿using UnityEngine;
-
+﻿using DG.Tweening;
 using LightDev;
 using LightDev.Core;
 using LightDev.UI;
-
-using DG.Tweening;
-using MeshSlice;
-using Slicer.UI.Elements;
+using Slicer.Game;
 using Slicer.Shop.Events;
-using Slice.Game;
+using Slicer.UI.Elements;
+using UnityEngine;
 using Zenject;
 
 namespace Slicer.UI.Windows
@@ -44,6 +41,9 @@ namespace Slicer.UI.Windows
 
         [Inject]
         private LevelsInitializer levelsInitializer;
+
+        [Inject]
+        private HPInitializer hpInitializer;
 
         public override void Subscribe()
         {
@@ -84,7 +84,7 @@ namespace Slicer.UI.Windows
 
         private void UpdateTexts()
         {
-            hpText.SetText($"xp: {HPManager.GetHP()}");
+            hpText.SetText($"xp: {hpInitializer.GetHP}");
             levelText.SetText($"level: {levelsInitializer.GetLevel()}");
 
             float hpWidth = hpText.GetTextComponent().preferredWidth;

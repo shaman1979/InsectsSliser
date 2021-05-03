@@ -1,11 +1,9 @@
-﻿using Slice.Game;
+﻿using Slicer.Game;
 using Slicer.Items;
 using Slicer.Shop.Events;
 using Slicer.Tools;
 using Slicer.UI.Windows;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using Zenject;
 

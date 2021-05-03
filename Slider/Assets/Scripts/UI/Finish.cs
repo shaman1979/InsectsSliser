@@ -5,6 +5,8 @@ using LightDev.Core;
 using LightDev.UI;
 
 using DG.Tweening;
+using Zenject;
+using Slicer.Game;
 
 namespace MeshSlice.UI
 {
@@ -15,6 +17,9 @@ namespace MeshSlice.UI
         public Base passedText;
         public BaseText hpText;
         public Base tapToReplay;
+
+        [Inject]
+        private HPInitializer hpInitializer;
 
         private bool isHpFilled;
 
@@ -99,7 +104,7 @@ namespace MeshSlice.UI
 
         private void UpdateHpText()
         {
-            hpText.SetText($"XP: {HPManager.GetHP()}");
+            hpText.SetText($"XP: {hpInitializer.GetHP}");
         }
     }
 }

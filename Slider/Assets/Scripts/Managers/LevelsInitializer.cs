@@ -5,7 +5,7 @@ using Zenject;
 using System;
 using MeshSlice;
 
-namespace Slice.Game
+namespace Slicer.Game
 {
     public class LevelsInitializer : IInitializable, IDisposable, IValidatable
     {

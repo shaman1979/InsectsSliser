@@ -1,8 +1,10 @@
 ﻿using LightDev;
 using MeshSlice;
+using Slicer.Game;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
 namespace Slicer.UI
 {
@@ -19,6 +21,9 @@ namespace Slicer.UI
 
         [SerializeField]
         private string starKey = "Stars";
+
+        [Inject]
+        private HPInitializer HPInitializer;
 
         private static int totalStar = 0;
         private static int starSession = 0;
@@ -44,7 +49,7 @@ namespace Slicer.UI
 
         private void OnProgressChanged()
         {
-            var progress = (float)HPManager.GetCurrentProgress() / HPManager.GetMaxProgress();
+            var progress = (float)HPInitializer.GetCurrentProgress / HPInitializer.GetMaxProgress;
 
             progress = Mathf.Clamp(progress, 0, 1);
 

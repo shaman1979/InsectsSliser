@@ -1,13 +1,11 @@
-﻿using UnityEngine.UI;
-using UnityEngine;
-
+﻿using DG.Tweening;
 using LightDev;
 using LightDev.Core;
 using LightDev.UI;
-
-using DG.Tweening;
+using Slicer.Game;
+using UnityEngine;
+using UnityEngine.UI;
 using Zenject;
-using Slice.Game;
 
 namespace MeshSlice.UI
 {
@@ -29,6 +27,9 @@ namespace MeshSlice.UI
 
         [Inject]
         private LevelsInitializer levelsInitializer;
+
+        [Inject]
+        private HPInitializer hpInitializer;
 
         public override void Subscribe()
         {
@@ -60,8 +61,8 @@ namespace MeshSlice.UI
 
         private void UpdateProgress()
         {
-            progressImage.fillAmount = (float)HPManager.GetCurrentProgress() / HPManager.GetMaxProgress();
-            progressText.SetText($"{HPManager.GetCurrentProgress()}/{HPManager.GetMaxProgress()}");
+            progressImage.fillAmount = (float)hpInitializer.GetCurrentProgress / hpInitializer.GetMaxProgress;
+            progressText.SetText($"{hpInitializer.GetCurrentProgress}/{hpInitializer.GetMaxProgress}");
         }
 
         protected override void OnStartShowing()
