@@ -1,4 +1,3 @@
-using MeshSlice;
 using Slicer.Game;
 using Slicer.Sound;
 using UnityEngine;
@@ -23,6 +22,7 @@ namespace Slicer.DI
             Container.BindInterfacesAndSelfTo<LevelsInitializer>().AsSingle();
             Container.BindInterfacesAndSelfTo<HPInitializer>().AsSingle();
             Container.BindInterfacesAndSelfTo<SoundActivator>().AsSingle();
+            Container.BindInterfacesAndSelfTo<SceneLoader>().AsSingle();
 
             Container.BindInstance(source);
             Container.BindInstance(sliceClip).WithId("Slice");

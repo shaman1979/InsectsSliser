@@ -6,29 +6,29 @@ using UnityEngine;
 
 namespace LightDev.Core
 {
-  /// <summary>
-  /// Run static constuctors of objects that implement IAutoLoadable before Unity scene loaded.
-  /// </summary>
-  public class AutoLoader
-  {
-    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
-    private static void LoadAutoLoadableObjects()
+    /// <summary>
+    /// Run static constuctors of objects that implement IAutoLoadable before Unity scene loaded.
+    /// </summary>
+    public class AutoLoader
     {
-      const string assemblyName = "Assembly-CSharp";
-
-      foreach (Assembly assembly in AppDomain.CurrentDomain.GetAssemblies())
-      {
-        if (assembly.GetName().Name.Equals(assemblyName))
+        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
+        private static void LoadAutoLoadableObjects()
         {
-          foreach (Type type in assembly.GetTypes())
-          {
-            if (type.GetInterfaces().Contains(typeof(IAutoLoadable)))
+            const string assemblyName = "Assembly-CSharp";
+
+            foreach (Assembly assembly in AppDomain.CurrentDomain.GetAssemblies())
             {
-              System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(type.TypeHandle);
+                if (assembly.GetName().Name.Equals(assemblyName))
+                {
+                    foreach (Type type in assembly.GetTypes())
+                    {
+                        if (type.GetInterfaces().Contains(typeof(IAutoLoadable)))
+                        {
+                            System.Runtime.CompilerServices.RuntimeHelpers.RunClassConstructor(type.TypeHandle);
+                        }
+                    }
+                }
             }
-          }
         }
-      }
     }
-  }
 }

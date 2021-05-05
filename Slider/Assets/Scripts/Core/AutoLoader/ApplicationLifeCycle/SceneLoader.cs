@@ -1,20 +1,20 @@
-﻿using UnityEngine;
+﻿using LightDev;
+using UnityEngine;
 using UnityEngine.SceneManagement;
+using Zenject;
 
-namespace LightDev.Core
+namespace Slicer.Game
 {
-    public sealed class ApplicationManager : MonoBehaviour
+    public class SceneLoader : IInitializable
     {
         private bool isNeedToChangeTimeScale = false;
 
-        private void Awake()
+        public void Initialize()
         {
-            DontDestroyOnLoad(this);
-
-            SceneManager.sceneLoaded += OnSceneLoaded;
+            OnSceneLoaded();
         }
 
-        private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+        private void OnSceneLoaded()
         {
             Events.SceneLoaded.Call();
         }
