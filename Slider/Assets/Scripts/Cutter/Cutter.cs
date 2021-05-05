@@ -23,9 +23,6 @@ namespace MeshSlice
         private CutterMovening movening;
 
         [SerializeField]
-        private BzKnife knife;
-
-        [SerializeField]
         private MeshGenerator generator;
 
         [SerializeField]
@@ -88,7 +85,6 @@ namespace MeshSlice
               cutter.OnFinish(() =>
               {
                   objectToSlice.StartSlice();
-                  knife.BeginNewSlice();
               }),
               cutter.MoveY(2, 0.6f).SetEase(Ease.InOutQuad)
             );

@@ -20,7 +20,7 @@ namespace BzKovSoft.ObjectSlicerSamples
 		{
 			if (Input.GetMouseButtonDown(0))
 			{
-				var knife = _blade.GetComponentInChildren<BzKnife>();
+				var knife = _blade.GetComponentInChildren<Knife>();
 				knife.BeginNewSlice();
 
 				StartCoroutine(SwingSword());

@@ -15,7 +15,7 @@ namespace BzKovSoft.ObjectSlicerSamples
 	[RequireComponent(typeof(IBzSliceableAsync))]
 	public class KnifeSliceableAsync : MonoBehaviour
 	{
-		private BzKnife knife;
+		private Knife knife;
 
 		private IBzSliceableAsync sliceableAsync;
 		
@@ -31,13 +31,13 @@ namespace BzKovSoft.ObjectSlicerSamples
 
 		private void OnTriggerEnter(Collider other)
 		{
-			if(other.gameObject.TryGetComponent<BzKnife>(out var knife))
+			if(other.gameObject.TryGetComponent<Knife>(out var knife))
             {
 				this.knife = knife;
             }
 		}
 
-		private IEnumerator Slice(BzKnife knife)
+		private IEnumerator Slice(Knife knife)
 		{
 			yield return null;
 
@@ -51,7 +51,7 @@ namespace BzKovSoft.ObjectSlicerSamples
 			}
 		}
 
-		private Vector3 GetCollisionPoint(BzKnife knife)
+		private Vector3 GetCollisionPoint(Knife knife)
 		{
 			Vector3 distToObject = transform.position - knife.Origin;
 			Vector3 proj = Vector3.Project(distToObject, knife.BladeDirection);
