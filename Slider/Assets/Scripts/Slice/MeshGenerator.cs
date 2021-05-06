@@ -30,22 +30,21 @@ namespace Slicer.Slice
 
         private void AnimateNextMesh()
         {
-            if (levelsInitializer.HasNextMesh())
-            {
-                MeshInfo info = levelsInitializer.GetNextMeshInfo();
-                objectToSlice.GetComponent<MeshFilter>().mesh = info.mesh;
-                objectToSlice.GetComponent<MeshCollider>().sharedMesh = info.mesh;
+            if (levelsInitializer.TryNextMesh(out var mesh))
+            {                
+                objectToSlice.GetComponent<MeshFilter>().mesh = mesh.mesh;
+                objectToSlice.GetComponent<MeshCollider>().sharedMesh = mesh.mesh;
 
                 objectToSlice.SetLocalPositionZ(0);
                 objectToSlice.SetScale(0);
-                objectToSlice.SetRotationY(info.rotation.y - 180);
+                objectToSlice.SetRotationY(mesh.rotation.y - 180);
                 objectToSlice.Activate();
                 objectToSlice.Sequence(
                   objectToSlice.Scale(1.5f, 0.4f).SetEase(Ease.OutBack)
                 );
 
                 objectToSlice.Sequence(
-                    objectToSlice.RotateY(info.rotation.y, 0.4f).SetEase(Ease.InSine),
+                    objectToSlice.RotateY(mesh.rotation.y, 0.4f).SetEase(Ease.InSine),
                     DOTween.Sequence().AppendCallback(() => OnFinished?.Invoke())
                 );
             }

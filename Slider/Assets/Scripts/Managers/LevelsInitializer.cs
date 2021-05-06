@@ -7,34 +7,21 @@ using MeshSlice;
 
 namespace Slicer.Game
 {
-    public class LevelsInitializer : IInitializable, IDisposable, IValidatable
+    public class LevelsInitializer : IInitializable, IDisposable
     {
         private readonly Setting setting;
 
-        private int currentLevelIndex;
+        private int totalLevelIndex;
         private int nextMeshIndex;
-        private int randomMeshesCount;
-        private ExlusiveRandom<Mesh> meshRandomer;
+        private LevelInfo currentLevels;
 
         private const string levelKey = "level";
 
-        private LevelInfo[] Levels
-        {
-            get
-            {
-                return setting.Levels.levels;
-            }
-        }
+        private LevelInfo[] Levels => setting.Levels.levels;
 
         public LevelsInitializer(Setting setting)
         {
             this.setting = setting;
-        }
-
-        public void Validate()
-        {
-            setting.MinRandomMeshes = Mathf.Max(setting.MinRandomMeshes, 1);
-            setting.MaxRandomMeshes = Mathf.Max(setting.MaxRandomMeshes, setting.MinRandomMeshes);
         }
 
         public void Dispose()
@@ -45,74 +32,71 @@ namespace Slicer.Game
 
         public void Initialize()
         {
-            meshRandomer = new ExlusiveRandom<Mesh>(setting.RandomMeshes);
-            currentLevelIndex = PlayerPrefs.GetInt(levelKey, 0);
-
             Events.PreReset += OnPreReset;
             Events.GameFinish += OnGameFinish;
+
+            OnPreReset();
         }
 
         private void OnPreReset()
-        {          
-            randomMeshesCount = UnityEngine.Random.Range(setting.MinRandomMeshes, setting.MaxRandomMeshes + 1);
-            currentLevelIndex = PlayerPrefs.GetInt(levelKey, 0);
+        {
+            totalLevelIndex = PlayerPrefs.GetInt(levelKey, 0);
             nextMeshIndex = 0;
+
+            currentLevels = LevelSelection();
         }
 
         private void OnGameFinish()
         {
-            if(StarsActivator.HasLevelUp())
-                PlayerPrefs.SetInt(levelKey, currentLevelIndex + 1);
+            if (StarsActivator.HasLevelUp())
+                PlayerPrefs.SetInt(levelKey, totalLevelIndex + 1);
         }
 
-        public int GetLevel()
-        {
-            return currentLevelIndex + 1;
-        }
+        public int GetLevel() => totalLevelIndex + 1;
 
         public string GetLevelName()
         {
-            return Levels[currentLevelIndex % Levels.Length].name;
+            return currentLevels.name;
         }
 
         public int GetMeshesCountOnLevel()
         {
-            return IsRandomLevel() ? randomMeshesCount : GetCurrentLevelMeshes().Length;
+            return currentLevels.meshes.Length;
         }
 
-        public bool HasNextMesh()
+        public bool TryNextMesh(out MeshInfo mesh)
         {
-            return nextMeshIndex != GetMeshesCountOnLevel();
-        }
-
-        public MeshInfo GetNextMeshInfo()
-        {
+            mesh = null;
             nextMeshIndex++;
-            return IsRandomLevel()
-                ? new MeshInfo(meshRandomer.GetNext(), new Vector3(0, UnityEngine.Random.Range(0, 360), 0)) 
-                :GetCurrentLevelMeshes()[nextMeshIndex - 1];
+
+            if (nextMeshIndex < GetMeshesCountOnLevel())
+            {
+                mesh = GetMesh(nextMeshIndex);
+                return true;
+            }
+
+            return false;
         }
 
-        private MeshInfo[] GetCurrentLevelMeshes()
+        private MeshInfo GetMesh(int meshIndex)
         {
-            return Levels[currentLevelIndex % Levels.Length].meshes;
+            return currentLevels.meshes[meshIndex];
         }
 
-        private bool IsRandomLevel()
+        private LevelInfo LevelSelection()
         {
-            return currentLevelIndex >= Levels.Length;
+            if (totalLevelIndex >= Levels.Length)
+            {
+                return Levels[UnityEngine.Random.Range(0, Levels.Length - 1)]; ;
+            }
+
+            return Levels[totalLevelIndex];
         }
 
         [Serializable]
         public class Setting
         {
             public LevelsSettings Levels;
-
-            public int MinRandomMeshes = 4;
-
-            public int MaxRandomMeshes = 5;
-
-            public Mesh[] RandomMeshes;
         }
     }
 }
