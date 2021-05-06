@@ -2,16 +2,11 @@
 
 namespace MeshSlice
 {
-  [System.Serializable]
-  public class MeshInfo
-  {
-    public Mesh mesh;
-    public Vector3 rotation;
-
-    public MeshInfo(Mesh mesh, Vector3 rotation)
+    [System.Serializable]
+    public class MeshInfo
     {
-      this.mesh = mesh;
-      this.rotation = rotation;
+        public Mesh Mesh;
+        public Vector3 Rotation;
+        public Texture2D Texture;
     }
-  }
 }

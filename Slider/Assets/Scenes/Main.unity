@@ -1744,16 +1744,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelInitializerSetting:
     Levels: {fileID: 11400000, guid: 78fccd3284a44411eb42d79e5846e4b7, type: 2}
-    MinRandomMeshes: 4
-    MaxRandomMeshes: 5
-    RandomMeshes:
-    - {fileID: 3613567641014311022, guid: 5fc49788639c1214d849eb6006b988b7, type: 3}
-    - {fileID: -5495902117074765545, guid: 76b1974876ed499499ec5061df5e3473, type: 3}
-    - {fileID: 2534964839176971238, guid: f0de51fa7e618a3488860984966fb289, type: 3}
-    - {fileID: 13562882237320842, guid: 9590bd3e7ece79f4ab7ed786dad07eec, type: 3}
-    - {fileID: 4711208715938537054, guid: 7dbbfefd9d52bad4b9a1a03c27d8289b, type: 3}
-    - {fileID: -8803937527578110353, guid: 2fece9d6aef26c447977255f9a94bbd7, type: 3}
-    - {fileID: -309684176625119091, guid: 436f0417c8b7a574dae77a1394eb76fb, type: 3}
   source: {fileID: 225661555}
   sliceClip: {fileID: 8300000, guid: 6e2f95b4c76654ebe8f807a1dba0717c, type: 3}
 --- !u!114 &694296651
@@ -2231,6 +2221,8 @@ MonoBehaviour:
   material: {fileID: 2100000, guid: c96d4a4e497464ee084781c44681b4f8, type: 2}
   firstPoint: {fileID: 1533171215}
   secondPoint: {fileID: 449454464}
+  texture: {fileID: 2800000, guid: 0761c85defcbece4aac6c2798db04e25, type: 3}
+  meshGenerator: {fileID: 906162193}
 --- !u!114 &906162190
 MonoBehaviour:
   m_ObjectHideFlags: 0

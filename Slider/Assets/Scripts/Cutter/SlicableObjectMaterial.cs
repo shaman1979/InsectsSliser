@@ -1,8 +1,8 @@
-﻿using UnityEngine;
+﻿using Slicer.Slice;
+using UnityEngine;
 
 namespace MeshSlice
 {
-    [ExecuteInEditMode]
     public class SlicableObjectMaterial : MonoBehaviour
     {
         public Material material;
@@ -11,15 +11,28 @@ namespace MeshSlice
         public Transform firstPoint;
         public Transform secondPoint;
 
+        [SerializeField]
+        private Texture2D texture;
+
+        [SerializeField]
+        private MeshGenerator meshGenerator;
+
         private readonly int firstPointId = Shader.PropertyToID("_Point1");
         private readonly int secondPointId = Shader.PropertyToID("_Point2");
+        private readonly int mainTextureId = Shader.PropertyToID("_MainTex");
+
+        private void Awake()
+        {
+            meshGenerator.OnStarted += mesh => texture = mesh.Texture;
+        }
 
         private void Update()
         {
-            if (firstPoint && secondPoint)
+            if (firstPoint && secondPoint && texture)
             {
                 material.SetVector(firstPointId, firstPoint.position);
                 material.SetVector(secondPointId, secondPoint.position);
+                material.SetTexture(mainTextureId, texture);
             }
         }
     }

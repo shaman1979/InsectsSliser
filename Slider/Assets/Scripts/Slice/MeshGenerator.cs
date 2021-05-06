@@ -12,6 +12,7 @@ namespace Slicer.Slice
     public class MeshGenerator : MonoBehaviour
     {
         public event Action OnFinished;
+        public event Action<MeshInfo> OnStarted;
 
         [Inject]
         private LevelsInitializer levelsInitializer;
@@ -31,20 +32,21 @@ namespace Slicer.Slice
         private void AnimateNextMesh()
         {
             if (levelsInitializer.TryNextMesh(out var mesh))
-            {                
-                objectToSlice.GetComponent<MeshFilter>().mesh = mesh.mesh;
-                objectToSlice.GetComponent<MeshCollider>().sharedMesh = mesh.mesh;
+            {
+                OnStarted?.Invoke(mesh);
+                objectToSlice.GetComponent<MeshFilter>().mesh = mesh.Mesh;
+                objectToSlice.GetComponent<MeshCollider>().sharedMesh = mesh.Mesh;
 
                 objectToSlice.SetLocalPositionZ(0);
                 objectToSlice.SetScale(0);
-                objectToSlice.SetRotationY(mesh.rotation.y - 180);
+                objectToSlice.SetRotationY(mesh.Rotation.y - 180);
                 objectToSlice.Activate();
                 objectToSlice.Sequence(
                   objectToSlice.Scale(1.5f, 0.4f).SetEase(Ease.OutBack)
                 );
 
                 objectToSlice.Sequence(
-                    objectToSlice.RotateY(mesh.rotation.y, 0.4f).SetEase(Ease.InSine),
+                    objectToSlice.RotateY(mesh.Rotation.y, 0.4f).SetEase(Ease.InSine),
                     DOTween.Sequence().AppendCallback(() => OnFinished?.Invoke())
                 );
             }
