@@ -67,11 +67,11 @@ namespace Slicer.Game
         public bool TryNextMesh(out MeshInfo mesh)
         {
             mesh = null;
-            nextMeshIndex++;
 
             if (nextMeshIndex < GetMeshesCountOnLevel())
             {
-                mesh = GetMesh(nextMeshIndex);
+                mesh = GetMesh(nextMeshIndex); 
+                nextMeshIndex++;
                 return true;
             }
 
