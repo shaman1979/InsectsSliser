@@ -2221,7 +2221,7 @@ MonoBehaviour:
   material: {fileID: 2100000, guid: c96d4a4e497464ee084781c44681b4f8, type: 2}
   firstPoint: {fileID: 1533171215}
   secondPoint: {fileID: 449454464}
-  texture: {fileID: 2800000, guid: 0761c85defcbece4aac6c2798db04e25, type: 3}
+  texture: {fileID: 10309, guid: 0000000000000000f000000000000000, type: 0}
   meshGenerator: {fileID: 906162193}
 --- !u!114 &906162190
 MonoBehaviour:
