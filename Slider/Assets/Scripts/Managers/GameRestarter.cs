@@ -3,12 +3,19 @@
 using LightDev;
 using Zenject;
 using System;
+using Assets.Scripts.Tools;
 
 namespace Slicer.Game
 {
     public class GameRestarter : IInitializable, IDisposable
     {
+        private readonly AsyncHelper asyncHelper;
         private bool isGameStarted;
+
+        public GameRestarter(AsyncHelper asyncHelper)
+        {
+            this.asyncHelper = asyncHelper;
+        }
 
         public void Initialize()
         {
@@ -17,7 +24,7 @@ namespace Slicer.Game
             Events.RequestFinish += OnRequestFinish;
             Events.RequestReset += Reset;
 
-            Events.RequestReset.Call();
+            asyncHelper.Run(() => Events.RequestReset.Call(), 0.5f);
         }
         public void Dispose()
         {

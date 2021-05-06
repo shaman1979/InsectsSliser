@@ -52,6 +52,11 @@ namespace Slicer.Game
                 PlayerPrefs.SetInt(levelKey, totalLevelIndex + 1);
         }
 
+        public MeshInfo GetFirstMesh()
+        {
+            return currentLevels.meshes[0];
+        }
+
         public int GetLevel() => totalLevelIndex + 1;
 
         public string GetLevelName()
@@ -68,9 +73,10 @@ namespace Slicer.Game
         {
             mesh = null;
 
+
             if (nextMeshIndex < GetMeshesCountOnLevel())
             {
-                mesh = GetMesh(nextMeshIndex); 
+                mesh = GetMesh(nextMeshIndex);
                 nextMeshIndex++;
                 return true;
             }
