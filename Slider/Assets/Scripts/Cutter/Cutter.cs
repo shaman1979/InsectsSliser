@@ -28,6 +28,9 @@ namespace MeshSlice
         [SerializeField]
         private CutterMovening cutterMovening;
 
+        [SerializeField]
+        private ParticalActivator particalActivator;
+
         private bool canCut;
 
         private void Awake()
@@ -85,6 +88,7 @@ namespace MeshSlice
               cutter.OnFinish(() =>
               {
                   objectToSlice.StartSlice();
+                  particalActivator.Activate();
               }),
               cutter.MoveY(2, 0.6f).SetEase(Ease.InOutQuad)
             );
