@@ -68,7 +68,8 @@ MonoBehaviour:
       Texture: {fileID: 0}
   - name: Number
     meshes:
-    - Mesh: {fileID: 0}
+    - Mesh: {fileID: 3668085550070551478, guid: 4d04515d3ea41ac4c8d4cc1663e12e8f,
+        type: 3}
       Rotation: {x: 0, y: 0, z: 0}
       Texture: {fileID: 0}
     - Mesh: {fileID: 3668085550070551478, guid: 4d04515d3ea41ac4c8d4cc1663e12e8f,

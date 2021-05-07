@@ -40,7 +40,7 @@ namespace Slicer.Slice
             if (levelsInitializer.TryNextMesh(out var mesh))
             {
                 OnStarted?.Invoke(mesh);
-                MeshSetup(mesh);
+                MeshSetup(mesh, () => OnFinished?.Invoke());
             }
             else
             {
@@ -48,7 +48,7 @@ namespace Slicer.Slice
             }
         }
 
-        private void MeshSetup(MeshInfo mesh)
+        private void MeshSetup(MeshInfo mesh, Action onFinished = null)
         {
             objectToSlice.GetComponent<MeshFilter>().mesh = mesh.Mesh;
             objectToSlice.GetComponent<MeshCollider>().sharedMesh = mesh.Mesh;
@@ -63,7 +63,7 @@ namespace Slicer.Slice
 
             objectToSlice.Sequence(
                 objectToSlice.RotateY(mesh.Rotation.y, 0.4f).SetEase(Ease.InSine),
-                DOTween.Sequence().AppendCallback(() => OnFinished?.Invoke())
+                DOTween.Sequence().AppendCallback(() => onFinished?.Invoke())
             );
         }
     }
