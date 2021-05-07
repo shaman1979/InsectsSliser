@@ -1,6 +1,7 @@
 ﻿using Slicer.Shop;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using static Slicer.Shop.ItemsShop;
 
@@ -20,9 +21,21 @@ namespace Slicer.Tools
             return items;
         }
 
-        public static Dictionary<ItemTypes, DoublyLinkedList<ShopItem>> ShopElementsLoad(string path)
+        public static Dictionary<ItemTypes, DoublyLinkedList<ShopItem>> ShopElementsLoad(string knifesPath, string tablesPath)
         {
-            var itemList = Load<ShopItem>(path);
+            var knifeList = Load<ShopItem>(knifesPath);
+            var tableList = Load<ShopItem>(tablesPath);
+
+            var itemList = new List<ShopItem>(knifeList.Length + tableList.Length);
+
+            itemList.AddRange(knifeList);
+            itemList.AddRange(tableList);
+
+            if(itemList.Count().Equals(0))
+            {
+                Debug.LogError($"Список элементов пуст!!!");
+                return null;
+            }
 
             var itemDictionary = new Dictionary<ItemTypes, DoublyLinkedList<ShopItem>>();
 

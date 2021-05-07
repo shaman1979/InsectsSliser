@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dc682bc672d59214bb65f5849c770cc7, type: 3}
-  m_Name: DefaultKhife 1
+  m_Name: Sword
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: "\u041A\u0438\u043D\u0436\u0430\u043B1"
+  <Name>k__BackingField: "\u041C\u0435\u0447"
   <Type>k__BackingField: 0
-  <LevelOpen>k__BackingField: 2
-  <Model>k__BackingField: {fileID: 9125916156310072063, guid: 1ca6e364c48ab614389ec47c0b13b689,
+  <LevelOpen>k__BackingField: 1
+  <Model>k__BackingField: {fileID: 4279514882882342051, guid: 4cc64d196536fae45b1b9eaaf31b50f0,
     type: 3}

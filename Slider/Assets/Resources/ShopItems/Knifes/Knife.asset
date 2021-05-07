@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dc682bc672d59214bb65f5849c770cc7, type: 3}
-  m_Name: DefaultKhife
+  m_Name: Knife
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: "\u041A\u0438\u043D\u0436\u0430\u043B"
+  <Name>k__BackingField: "\u041D\u043E\u0436"
   <Type>k__BackingField: 0
   <LevelOpen>k__BackingField: 1
-  <Model>k__BackingField: {fileID: 3930343251827201120, guid: a0abe8336c792da40ab9fa28f999cbd0,
+  <Model>k__BackingField: {fileID: 7273473971978512237, guid: 64c9e4a969783404da8700569cd1ea7d,
     type: 3}

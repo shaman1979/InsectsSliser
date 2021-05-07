@@ -11,14 +11,14 @@ namespace Slicer.Shop
 {
     public partial class ItemsShop : MonoBehaviour
     {
+        private const string knifePath = "ShopItems/Knifes/";
+        private const string tablePath = "ShopItems/Tables/";
+
         [SerializeField]
         private ShopWindow window;
 
         [SerializeField]
         private SelectedItems selectedItems;
-
-        [SerializeField]
-        private string itemPath = "ShopItems/";
 
         [Inject]
         private LevelsInitializer levelsInitializer;
@@ -29,7 +29,7 @@ namespace Slicer.Shop
 
         private void Awake()
         {
-            items = ResourcesLoader.ShopElementsLoad(itemPath);
+            items = ResourcesLoader.ShopElementsLoad(knifePath, tablePath);
 
             ShopEvents.ItemTypeChanged += ChangeCurrentType;
             ShopEvents.ShopShow += ShopEnable;

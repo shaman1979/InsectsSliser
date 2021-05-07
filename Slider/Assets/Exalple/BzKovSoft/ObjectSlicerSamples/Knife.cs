@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace BzKovSoft.ObjectSlicerSamples
 {
+	[RequireComponent(typeof(MeshCollider), typeof(Rigidbody))]
 	public class Knife : MonoBehaviour
 	{
 		public int SliceID { get; private set; }

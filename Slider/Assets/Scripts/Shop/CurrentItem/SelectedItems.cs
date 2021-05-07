@@ -4,6 +4,7 @@ using Slicer.Shop.Events;
 using Slicer.Tools;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Slicer.Items
@@ -12,7 +13,8 @@ namespace Slicer.Items
     {
         private const string CurrentKnifeSaveKey = "Knife";
         private const string CurrentTableSaveKey = "Table";
-        private const string itemPath = "ShopItems/";
+        private const string knifesPath = "ShopItems/Knifes/";
+        private const string tablesPath = "ShopItems/Tables/";
 
         private static Dictionary<ItemTypes, ShopItem> selectedItems = new Dictionary<ItemTypes, ShopItem>();
 
@@ -67,7 +69,7 @@ namespace Slicer.Items
 
         private void LoadDefaultItem()
         {
-            var items = ResourcesLoader.ShopElementsLoad(itemPath);
+            var items = ResourcesLoader.ShopElementsLoad(knifesPath, tablesPath);
 
             SelectedItemChange(items[ItemTypes.Khife].CurrentElement);
             SelectedItemChange(items[ItemTypes.Table].CurrentElement);
@@ -89,7 +91,8 @@ namespace Slicer.Items
 
         private void LoadItems()
         {
-            var items = ResourcesLoader.Load<ShopItem>(itemPath);
+            var items = ResourcesLoader.Load<ShopItem>(knifesPath).ToList();
+            items.AddRange(ResourcesLoader.Load<ShopItem>(tablesPath));
             var knifeId = PlayerPrefs.GetInt(CurrentKnifeSaveKey);
             var tableId = PlayerPrefs.GetInt(CurrentTableSaveKey);
 

@@ -14,7 +14,10 @@ namespace Slicer.Items
 
         public void UpdateView(GameObject item, int id)
         {
-            currentItem?.SetActive(false);
+            if (currentItem != null)
+            {
+                currentItem?.SetActive(false);
+            }
 
             var transformItem = currentItem.transform;
             var newItem = CreateItem(item, transformItem.position, transformItem.rotation, transformItem.parent, id);
