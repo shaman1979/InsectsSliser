@@ -1,4 +1,6 @@
-﻿namespace MeshSlice
+﻿using MeshSlice;
+
+namespace Slicer.Levels
 {
     [System.Serializable]
     public class LevelInfo
