@@ -4,6 +4,7 @@ using Slicer.UI;
 using Zenject;
 using System;
 using MeshSlice;
+using Slicer.Levels;
 
 namespace Slicer.Game
 {
@@ -54,19 +55,19 @@ namespace Slicer.Game
 
         public MeshInfo GetFirstMesh()
         {
-            return currentLevels.meshes[0];
+            return currentLevels.Meshes[0];
         }
 
         public int GetLevel() => totalLevelIndex + 1;
 
         public string GetLevelName()
         {
-            return currentLevels.name;
+            return currentLevels.Name;
         }
 
         public int GetMeshesCountOnLevel()
         {
-            return currentLevels.meshes.Length;
+            return currentLevels.Meshes.Length;
         }
 
         public bool TryNextMesh(out MeshInfo mesh)
@@ -86,7 +87,7 @@ namespace Slicer.Game
 
         private MeshInfo GetMesh(int meshIndex)
         {
-            return currentLevels.meshes[meshIndex];
+            return currentLevels.Meshes[meshIndex];
         }
 
         private LevelInfo LevelSelection()
