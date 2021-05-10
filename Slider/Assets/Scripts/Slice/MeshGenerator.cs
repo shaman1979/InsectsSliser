@@ -50,6 +50,8 @@ namespace Slicer.Slice
 
         private void MeshSetup(MeshInfo mesh, Action onFinished = null)
         {
+            OnStarted?.Invoke(mesh);
+
             objectToSlice.GetComponent<MeshFilter>().mesh = mesh.Mesh;
             objectToSlice.GetComponent<MeshCollider>().sharedMesh = mesh.Mesh;
 

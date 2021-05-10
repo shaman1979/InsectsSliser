@@ -3,6 +3,7 @@ using Slicer.Shop.Events;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace Slicer.Shop
 {
@@ -27,7 +28,11 @@ namespace Slicer.Shop
 
         private void OnMouseDown()
         {
-            ShopEvents.ItemTypeChanged.Call(item);
+            if (!EventSystem.current.IsPointerOverGameObject())
+            {
+                ShopEvents.ItemTypeChanged.Call(item);
+
+            }
         }
     }
 }
