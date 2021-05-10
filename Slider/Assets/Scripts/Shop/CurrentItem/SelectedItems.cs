@@ -20,7 +20,7 @@ namespace Slicer.Items
 
         public static bool IsItemSelected(ShopItem item)
         {
-            if(item.Id.Equals(GetCurrentKnifeID()) || item.Id.Equals(GetCurrentTableID()))
+            if (item.Id.Equals(GetCurrentKnifeID()) || item.Id.Equals(GetCurrentTableID()))
             {
                 return true;
             }
@@ -54,6 +54,7 @@ namespace Slicer.Items
             {
                 LoadDefaultItem();
             }
+
         }
 
         private void ResetItems()
@@ -77,7 +78,7 @@ namespace Slicer.Items
 
         public void SelectedItemChange(ShopItem item)
         {
-            if(selectedItems.ContainsKey(item.Type))
+            if (selectedItems.ContainsKey(item.Type))
             {
                 selectedItems[item.Type] = item;
             }
@@ -98,7 +99,7 @@ namespace Slicer.Items
 
             foreach (var item in items)
             {
-                if(knifeId.Equals(item.Id) || tableId.Equals(item.Id))
+                if (knifeId.Equals(item.Id) || tableId.Equals(item.Id))
                 {
                     SelectedItemChange(item);
                 }
