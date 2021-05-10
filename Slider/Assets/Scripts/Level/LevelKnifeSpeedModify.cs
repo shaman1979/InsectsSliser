@@ -4,15 +4,14 @@ using UnityEngine;
 
 namespace Slicer.Levels
 {
-    public class LevelKnifeSpeedModify : LevelModifyDecorator
+    public class LevelKnifeSpeedModify : ILevelModify
     {
-        public LevelKnifeSpeedModify(ILevelModify decorate) : base(decorate)
-        {
-        }
+        [SerializeField]
+        private float acceleration;
 
-        protected override void Modifycation()
+        public void Apply()
         {
-            Debug.Log("Ускорение ножа");
+            LevelModifyEvents.SpeedChanged.Call(acceleration);
         }
     }
 }

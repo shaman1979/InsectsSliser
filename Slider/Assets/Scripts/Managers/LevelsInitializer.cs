@@ -10,13 +10,16 @@ namespace Slicer.Game
 {
     public class LevelsInitializer : IInitializable, IDisposable
     {
+        public event Action<LevelInfo> OnLevelChanged;
+
+        private const string levelKey = "level";
+
         private readonly Setting setting;
 
         private int totalLevelIndex;
         private int nextMeshIndex;
         private LevelInfo currentLevels;
 
-        private const string levelKey = "level";
 
         private LevelInfo[] Levels => setting.Levels.levels;
 
@@ -45,6 +48,7 @@ namespace Slicer.Game
             nextMeshIndex = 0;
 
             currentLevels = LevelSelection();
+            OnLevelChanged?.Invoke(currentLevels);
         }
 
         private void OnGameFinish()
