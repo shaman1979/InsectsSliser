@@ -30,6 +30,9 @@ MonoBehaviour:
     - Name: 
       Entry: 7
       Data: 1|Slicer.Levels.LevelKnifeSpeedModify, Assembly-CSharp
+    - Name: acceleration
+      Entry: 4
+      Data: 2
     - Name: 
       Entry: 8
       Data: 
