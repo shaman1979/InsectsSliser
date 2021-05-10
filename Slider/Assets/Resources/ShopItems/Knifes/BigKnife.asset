@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dc682bc672d59214bb65f5849c770cc7, type: 3}
-  m_Name: DefaultTable 1
+  m_Name: BigKnife
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: "\u0421\u0442\u043E\u043B1"
-  <Type>k__BackingField: 1
+  <Name>k__BackingField: "\u0411\u043E\u043B\u044C\u0448\u043E\u0439 \u043D\u043E\u0436"
+  <Type>k__BackingField: 0
   <LevelOpen>k__BackingField: 1
-  <Model>k__BackingField: {fileID: 7988654503821498117, guid: 2834ce976e44eb248a8cd9d0da267f30,
+  <Model>k__BackingField: {fileID: 9165033256896543575, guid: 4bf77098d5476234e8a4dc9956ea005d,
     type: 3}
