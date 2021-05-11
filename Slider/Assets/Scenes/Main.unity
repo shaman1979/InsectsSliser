@@ -3271,6 +3271,7 @@ GameObject:
   - component: {fileID: 1277122107}
   - component: {fileID: 1277122106}
   - component: {fileID: 1277122108}
+  - component: {fileID: 1277122109}
   m_Layer: 0
   m_Name: ObjectToSlice
   m_TagString: Untagged
@@ -3367,7 +3368,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _sliceId: 0
   _lastSliceTime: -3.4028235e+38
-  _defaultSliceMaterial: {fileID: 2100000, guid: c96d4a4e497464ee084781c44681b4f8,
+  _defaultSliceMaterial: {fileID: 2100000, guid: fa8d87b1ff74d0d48bce731506cab63d,
     type: 2}
   _asynchronously: 1
   _delayBetweenSlices: 1
@@ -3397,6 +3398,19 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300028, guid: 90b031fd0e3ce4ae68d8823337d7a167, type: 3}
+--- !u!114 &1277122109
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1277122101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aeadfff3697ea994a94c38c57adeb473, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SectionViewMaterial: {fileID: 2100000, guid: fa8d87b1ff74d0d48bce731506cab63d, type: 2}
 --- !u!1 &1300414686
 GameObject:
   m_ObjectHideFlags: 0
