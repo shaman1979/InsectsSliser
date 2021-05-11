@@ -1,9 +1,10 @@
-﻿using UnityEngine;
+﻿using Sirenix.OdinInspector;
+using UnityEngine;
 
-namespace MeshSlice
+namespace Slicer.Levels
 {
     [CreateAssetMenu(fileName = "Levels", menuName = "PerfectSlice/Levels", order = 1)]
-    public class LevelsSettings : ScriptableObject
+    public class LevelsSettings : SerializedScriptableObject
     {
         public LevelInfo[] levels;
     }

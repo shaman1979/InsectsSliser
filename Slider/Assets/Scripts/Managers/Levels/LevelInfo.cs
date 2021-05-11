@@ -1,9 +1,15 @@
-﻿namespace MeshSlice
+﻿using MeshSlice;
+using Sirenix.OdinInspector;
+using UnityEngine;
+
+namespace Slicer.Levels
 {
-    [System.Serializable]
-    public class LevelInfo
+    [CreateAssetMenu(fileName = "Level", menuName = "PerfectSlice/LevelInfo", order = 0)]
+
+    public class LevelInfo : SerializedScriptableObject
     {
-        public string name;
-        public MeshInfo[] meshes;
+        public string Name;
+        public MeshInfo[] Meshes;
+        public ILevelModify[] Modifies; 
     }
 }

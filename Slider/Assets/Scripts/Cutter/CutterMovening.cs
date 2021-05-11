@@ -1,5 +1,6 @@
 ﻿using DG.Tweening;
 using LightDev.Core;
+using Slicer.Levels;
 using System;
 using UnityEngine;
 
@@ -10,13 +11,22 @@ namespace Slicer.Cutter
         public event Action OnFinished;
         
         [SerializeField]
-        private float speed;
+        private float defaultSpeed;
 
         [SerializeField]
         private float minPositionZ;
 
         [SerializeField]
         private float maxPositionZ;
+
+        private float speed;
+
+        private void Start()
+        {     
+            LevelModifyEvents.SpeedChanged += SpeedUp;
+            
+            SpeedUp(1);
+        }
 
         public void StartMovening()
         {
@@ -32,6 +42,11 @@ namespace Slicer.Cutter
         public void StopMovening()
         {
             KillSequences();
+        }
+
+        private void SpeedUp(float acceleration)
+        {
+            speed = defaultSpeed / acceleration;
         }
 
         private void StartIdleState()

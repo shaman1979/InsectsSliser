@@ -1,5 +1,6 @@
 using Assets.Scripts.Tools;
 using Slicer.Game;
+using Slicer.Levels;
 using Slicer.Sound;
 using UnityEngine;
 using Zenject;
@@ -24,6 +25,7 @@ namespace Slicer.DI
             Container.BindInterfacesAndSelfTo<HPInitializer>().AsSingle();
             Container.BindInterfacesAndSelfTo<SoundActivator>().AsSingle();
             Container.BindInterfacesAndSelfTo<SceneLoader>().AsSingle();
+            Container.BindInterfacesAndSelfTo<LevelModification>().AsSingle();
 
             Container.Bind<AsyncHelper>().FromNewComponentOn(new GameObject(nameof(AsyncHelper))).AsSingle();
 

@@ -12,128 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65d6ec7fc5d534d6298f7aaf20a2219a, type: 3}
   m_Name: Levels
   m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
   levels:
-  - name: Primitive
-    meshes:
-    - Mesh: {fileID: 3613567641014311022, guid: 5fc49788639c1214d849eb6006b988b7,
-        type: 3}
-      Rotation: {x: 0, y: 0, z: 0}
-      Texture: {fileID: 10309, guid: 0000000000000000f000000000000000, type: 0}
-    - Mesh: {fileID: -5495902117074765545, guid: 76b1974876ed499499ec5061df5e3473,
-        type: 3}
-      Rotation: {x: 0, y: 0, z: 0}
-      Texture: {fileID: 2800000, guid: b510deb155efddf49bc1d00839a57356, type: 3}
-    - Mesh: {fileID: 2534964839176971238, guid: f0de51fa7e618a3488860984966fb289,
-        type: 3}
-      Rotation: {x: 0, y: 0, z: 0}
-      Texture: {fileID: 2800000, guid: 57999bd3903fafe4d83bfac1f4942929, type: 3}
-    - Mesh: {fileID: 13562882237320842, guid: 9590bd3e7ece79f4ab7ed786dad07eec, type: 3}
-      Rotation: {x: 0, y: 0, z: 0}
-      Texture: {fileID: 2800000, guid: 492b6accd6d759a4d842fc68b14aae17, type: 3}
-    - Mesh: {fileID: 4711208715938537054, guid: 7dbbfefd9d52bad4b9a1a03c27d8289b,
-        type: 3}
-      Rotation: {x: 0, y: 0, z: 0}
-      Texture: {fileID: 2800000, guid: ac5b05acff67c77418510f95f0ac9bb1, type: 3}
-    - Mesh: {fileID: -8803937527578110353, guid: 2fece9d6aef26c447977255f9a94bbd7,
-        type: 3}
-      Rotation: {x: 0, y: 0, z: 0}
-      Texture: {fileID: 2800000, guid: 0761c85defcbece4aac6c2798db04e25, type: 3}
-    - Mesh: {fileID: -309684176625119091, guid: 436f0417c8b7a574dae77a1394eb76fb,
-        type: 3}
-      Rotation: {x: 0, y: 0, z: 0}
-      Texture: {fileID: 2800000, guid: f27a3713617564ccebd4455c8f43cebb, type: 3}
-  - name: Primitive 2
-    meshes:
-    - Mesh: {fileID: -9114703323446395147, guid: aa74f69c6c7be6c44a856fa7b1d08098,
-        type: 3}
-      Rotation: {x: 0, y: 0, z: 0}
-      Texture: {fileID: 10309, guid: 0000000000000000f000000000000000, type: 0}
-    - Mesh: {fileID: -8766285794052278757, guid: 6fb26b35966c629489897e69e7d4eb45,
-        type: 3}
-      Rotation: {x: 0, y: 0, z: 0}
-      Texture: {fileID: 0}
-    - Mesh: {fileID: -5451344162544451742, guid: b711a864ca5771841a2b23597978a823,
-        type: 3}
-      Rotation: {x: 0, y: 0, z: 0}
-      Texture: {fileID: 0}
-    - Mesh: {fileID: 532591105809680800, guid: 4103d14a5ebc23a45bb1df68977c7e82, type: 3}
-      Rotation: {x: 0, y: 0, z: 0}
-      Texture: {fileID: 0}
-    - Mesh: {fileID: 532591105809680800, guid: 5dbde6bacf95d334b87049e4a79ed3f2, type: 3}
-      Rotation: {x: 0, y: 0, z: 0}
-      Texture: {fileID: 0}
-    - Mesh: {fileID: -7959841479066705382, guid: ed89759c460c5f44a87d9ab998f9e9f3,
-        type: 3}
-      Rotation: {x: 0, y: 0, z: 0}
-      Texture: {fileID: 0}
-  - name: Number
-    meshes:
-    - Mesh: {fileID: 3668085550070551478, guid: 4d04515d3ea41ac4c8d4cc1663e12e8f,
-        type: 3}
-      Rotation: {x: 0, y: 0, z: 0}
-      Texture: {fileID: 0}
-    - Mesh: {fileID: 3668085550070551478, guid: 4d04515d3ea41ac4c8d4cc1663e12e8f,
-        type: 3}
-      Rotation: {x: 0, y: 0, z: 0}
-      Texture: {fileID: 0}
-    - Mesh: {fileID: 7386718088890663932, guid: e6446bb2a5da39e46b9a5f7631f182af,
-        type: 3}
-      Rotation: {x: 0, y: 0, z: 0}
-      Texture: {fileID: 0}
-    - Mesh: {fileID: 6290431648208581162, guid: bced8eb9cc7d286419f8fe9312a5fc4a,
-        type: 3}
-      Rotation: {x: 0, y: 0, z: 0}
-      Texture: {fileID: 0}
-    - Mesh: {fileID: -3943131958215907173, guid: a98e565178fbd5b4e9c1928e7035afba,
-        type: 3}
-      Rotation: {x: 0, y: 0, z: 0}
-      Texture: {fileID: 0}
-    - Mesh: {fileID: -3882611372106342973, guid: 3ffc143f7c4c96a44829e5c09f96efe9,
-        type: 3}
-      Rotation: {x: 0, y: 0, z: 0}
-      Texture: {fileID: 0}
-    - Mesh: {fileID: -7389802222989577195, guid: dcbe6ec78e070334f87d05b5c9f5de7a,
-        type: 3}
-      Rotation: {x: 0, y: 0, z: 0}
-      Texture: {fileID: 0}
-    - Mesh: {fileID: -6011460572206640370, guid: dc13843cc1ed7474d88bb72848fc8f92,
-        type: 3}
-      Rotation: {x: 0, y: 0, z: 0}
-      Texture: {fileID: 0}
-    - Mesh: {fileID: -4253596234378328231, guid: 0a0ad6166e5a762468fdb1b926a1705f,
-        type: 3}
-      Rotation: {x: 0, y: 0, z: 0}
-      Texture: {fileID: 0}
-  - name: Letters
-    meshes:
-    - Mesh: {fileID: 6157117880141131119, guid: 81256ee78db25ea43a2cb681b370f6d5,
-        type: 3}
-      Rotation: {x: 0, y: 0, z: 0}
-      Texture: {fileID: 0}
-    - Mesh: {fileID: -4909277789374002350, guid: f0b6226b67f3b3145b692df8feaccf94,
-        type: 3}
-      Rotation: {x: 0, y: 0, z: 0}
-      Texture: {fileID: 0}
-    - Mesh: {fileID: 281315202980364329, guid: b4cb2eb237a15364d8b74072a1a42225, type: 3}
-      Rotation: {x: 0, y: 0, z: 0}
-      Texture: {fileID: 0}
-    - Mesh: {fileID: -7746497135072881621, guid: 266003b93cc819c489a8d1f81b514e30,
-        type: 3}
-      Rotation: {x: 0, y: 0, z: 0}
-      Texture: {fileID: 0}
-    - Mesh: {fileID: -1644355878584749679, guid: bbdc39366bc4aab43be5622b9914642d,
-        type: 3}
-      Rotation: {x: 0, y: 0, z: 0}
-      Texture: {fileID: 0}
-    - Mesh: {fileID: 1907795020790290496, guid: 3c4df4ad59b4cb1409ddbded5bcde016,
-        type: 3}
-      Rotation: {x: 0, y: 0, z: 0}
-      Texture: {fileID: 0}
-    - Mesh: {fileID: -6048717895273133781, guid: 9a0795c34f351da499f6d92a474388d7,
-        type: 3}
-      Rotation: {x: 0, y: 0, z: 0}
-      Texture: {fileID: 0}
-    - Mesh: {fileID: 8939266724133516769, guid: f74c97446e3952c4cb74fd0a07eb4017,
-        type: 3}
-      Rotation: {x: 0, y: 0, z: 0}
-      Texture: {fileID: 0}
+  - {fileID: 11400000, guid: 9fa18244b6214b44b9bbe65c5e4d2d20, type: 2}
+  - {fileID: 11400000, guid: 98efec66ca5312d48a9b4786f86832b9, type: 2}
