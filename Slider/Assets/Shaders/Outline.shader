@@ -1,30 +1,85 @@
-﻿Shader "Example/Rim" {
-    Properties {
-      _MainTex ("Texture", 2D) = "white" {}
-      _BumpMap ("Bumpmap", 2D) = "bump" {}
-      _RimColor ("Rim Color", Color) = (0.26,0.19,0.16,0.0)
-      _RimPower ("Rim Power", Range(0.5,8.0)) = 3.0
+﻿Shader "Custom/victor_outline" {
+   Properties {
+        _MainColor ("Diffuse Color", Color) = (1,1,1,1)
+        _MainTex ("Base layer (RGB)", 2D) = "white" {}
+ 
+        _Dist ("Shift", Range(-1, 1)) = 0
     }
+ 
     SubShader {
-      Tags { "RenderType" = "Opaque" }
-      CGPROGRAM
-      #pragma surface surf Lambert
-      struct Input {
-          float2 uv_MainTex;
-          float2 uv_BumpMap;
-          float3 viewDir;
-      };
-      sampler2D _MainTex;
-      sampler2D _BumpMap;
-      float4 _RimColor;
-      float _RimPower;
-      void surf (Input IN, inout SurfaceOutput o) {
-          o.Albedo = tex2D (_MainTex, IN.uv_MainTex).rgb;
-          o.Normal = UnpackNormal (tex2D (_BumpMap, IN.uv_BumpMap));
-          half rim = 1.0 - saturate(dot (normalize(IN.viewDir), o.Normal));
-          o.Emission = _RimColor.rgb * pow (rim, _RimPower);
-      }
-      ENDCG
-    }
-    Fallback "Diffuse"
-  }
+ 
+        /// first pass
+     
+        Tags { "IgnoreProjector"="True" "RenderType"="TransparentCutout"}
+        LOD 200
+        Blend SrcAlpha OneMinusSrcAlpha
+        Lighting On
+        ZWrite On
+        ZTest LEqual
+        cull Front
+        CGPROGRAM
+ 
+        #pragma surface surf StandardSpecular fullforwardshadows addshadow alphatest:_Cutoff vertex:vert
+        #pragma target 3.0
+        #include "UnityCG.cginc"
+ 
+ 
+        float4 _MainColor;
+        float _Dist;
+ 
+     
+        struct Input {
+            float2 uv_MainTex;
+        };
+     
+        void vert (inout appdata_full v) {
+            v.vertex.xyz += float3(v.normal.xyz)*_Dist;    
+        }
+     
+        void surf (Input i, inout SurfaceOutputStandardSpecular o) {
+            o.Emission = _MainColor.rgb;  // main albedo color
+            o.Specular =0;
+            o.Smoothness = 0;
+            o.Alpha = 1;
+            ///////////////
+        }
+        ENDCG
+        //// end first pass
+     
+        /// second pass
+ 
+        Tags { "IgnoreProjector"="True" "RenderType"="Opaque"}
+        Blend SrcAlpha OneMinusSrcAlpha
+        Lighting On
+        ZWrite On
+        Cull Off
+ 
+ 
+        CGPROGRAM
+     
+        #pragma surface surf StandardSpecular fullforwardshadows addshadow alphatest:_Cutoff
+        #pragma target 3.0
+        #include "UnityCG.cginc"
+ 
+         sampler2D _MainTex;
+ 
+     
+        struct Input {
+            float2 uv_MainTex;
+            float3 norm :  TEXCOORD1;
+        };
+     
+        void surf (Input i, inout SurfaceOutputStandardSpecular o) {
+ 
+            // Main Albedo
+            fixed4 tex = tex2D (_MainTex, i.uv_MainTex);
+            o.Albedo = tex.rgb;  // main albedo
+            o.Specular = 0;
+            o.Smoothness = 0;
+            o.Alpha = tex.a;
+        }
+        ENDCG
+        // end first pass
+ 
+  } //subshader
+}//shader

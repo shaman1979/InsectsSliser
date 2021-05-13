@@ -8,25 +8,25 @@ namespace Slicer.Items
     public class ItemView : MonoBehaviour
     {
         [SerializeField]
-        private GameObject currentItem;
+        private Item currentItem;
 
-        private Dictionary<int, GameObject> pool = new Dictionary<int, GameObject>();
+        private Dictionary<int, Item> pool = new Dictionary<int, Item>();
 
-        public void UpdateView(GameObject item, int id)
+        public void UpdateView(Item item, int id)
         {
             if (currentItem != null)
             {
-                currentItem?.SetActive(false);
+                currentItem?.Deactivate();
             }
 
             var transformItem = currentItem.transform;
             var newItem = CreateItem(item, transformItem.position, transformItem.rotation, transformItem.parent, id);
 
             currentItem = newItem;
-            currentItem?.SetActive(true);
+            currentItem?.Activate();
         }
 
-        private GameObject CreateItem(GameObject prefab, Vector3 position, Quaternion rotation, Transform parent, int id)
+        private Item CreateItem(Item prefab, Vector3 position, Quaternion rotation, Transform parent, int id)
         {
             if (!pool.ContainsKey(id))
             {

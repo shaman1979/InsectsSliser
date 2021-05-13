@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Slicer.Items;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -17,7 +18,7 @@ namespace Slicer.Shop
         public int LevelOpen { get; private set; }
 
         [field: SerializeField]
-        public GameObject Model { get; private set; }
+        public Item Model { get; private set; }
 
         public int Id
         {
