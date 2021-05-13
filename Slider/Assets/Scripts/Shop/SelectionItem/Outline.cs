@@ -90,6 +90,11 @@ public class Outline : MonoBehaviour
 
     private bool needsUpdate;
 
+    public void ChangeWidth(float width)
+    {
+        OutlineWidth = width;
+    }
+
     private void Awake()
     {
 

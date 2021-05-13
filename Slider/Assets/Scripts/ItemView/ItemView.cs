@@ -1,4 +1,5 @@
 ﻿using Slicer.Shop;
+using Slicer.Shop.Events;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,11 +13,12 @@ namespace Slicer.Items
 
         private Dictionary<int, Item> pool = new Dictionary<int, Item>();
 
-        public void UpdateView(Item item, int id)
+        public void UpdateView(Item item, int id, bool isOutlineDraw = false)
         {
             if (currentItem != null)
             {
                 currentItem?.Deactivate();
+                currentItem.OutlineClear();
             }
 
             var transformItem = currentItem.transform;
@@ -24,6 +26,17 @@ namespace Slicer.Items
 
             currentItem = newItem;
             currentItem?.Activate();
+
+            if(isOutlineDraw)
+            {
+                currentItem.OutlineDraw();
+            }
+        }
+
+        private void Start()
+        {
+            ShopEvents.ShopShow += () => currentItem.OutlineDraw();
+            ShopEvents.ShopHide += () => currentItem.OutlineClear();
         }
 
         private Item CreateItem(Item prefab, Vector3 position, Quaternion rotation, Transform parent, int id)

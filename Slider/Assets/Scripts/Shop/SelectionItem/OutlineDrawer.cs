@@ -5,22 +5,32 @@ using Zenject;
 
 namespace Slicer.Shop.Select
 {
-    [RequireComponent(typeof(MeshRenderer))]
+    [RequireComponent(typeof(Outline))]
     public class OutlineDrawer : MonoBehaviour
-    {
-        private const string RIM_POWER = "_RimPower";
+    {        
+        private float outlinePower = 2f;       
+        private float clearPower = 0f;
+        private Outline outline;
+        private Color outLineColor = Color.green;
 
-        [SerializeField]
-        private float outlinePower = 3.12f;
+        private Outline Outline
+        {
+            get 
+            {
+                if(outline == null)
+                {
+                    outline = GetComponent<Outline>();
+                }
 
-        [SerializeField]
-        private float clearPower = 8f;
+                return outline;
+            }
+        }
 
-        [Inject]
-        private MaterialPropertyBlock materialProperty;
+        private void Start()
+        {
+            Outline.OutlineColor = outLineColor;
+        }
 
-        private MeshRenderer meshRenderer;
-        
         public void Draw()
         {
             ChangePower(outlinePower);
@@ -33,9 +43,7 @@ namespace Slicer.Shop.Select
 
         private void ChangePower(float power)
         {
-            meshRenderer.GetPropertyBlock(materialProperty, 0);
-            materialProperty.SetFloat(RIM_POWER, clearPower);
-            meshRenderer.SetPropertyBlock(materialProperty, 0);
+            Outline.ChangeWidth(power);
         }
     }
 }
