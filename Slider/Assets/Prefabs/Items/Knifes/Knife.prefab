@@ -1,19 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &372506560999680382
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5316527707290356954}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a5a009bcf04978442875c4acfebd858d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  outlinePower: 3.12
-  clearPower: 8
 --- !u!1 &7273473971978512237
 GameObject:
   m_ObjectHideFlags: 0
@@ -23,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8739968634415879750}
-  - component: {fileID: 65224039859963353}
   m_Layer: 0
   m_Name: Knife
   m_TagString: Untagged
@@ -46,19 +31,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 32, z: 0}
---- !u!114 &65224039859963353
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7273473971978512237}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca03167c514904842a335f1fe71cc227, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  outlineDrawer: {fileID: 372506560999680382}
 --- !u!1001 &9170309146356209850
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -66,11 +38,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8739968634415879750}
     m_Modifications:
-    - target: {fileID: 3366935371874065253, guid: a0abe8336c792da40ab9fa28f999cbd0,
-        type: 3}
-      propertyPath: outlineWidth
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3930343251827201120, guid: a0abe8336c792da40ab9fa28f999cbd0,
         type: 3}
       propertyPath: m_Name
@@ -133,12 +100,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a0abe8336c792da40ab9fa28f999cbd0, type: 3}
---- !u!1 &5316527707290356954 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3930343251827201120, guid: a0abe8336c792da40ab9fa28f999cbd0,
-    type: 3}
-  m_PrefabInstance: {fileID: 9170309146356209850}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5316527707290356955 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3930343251827201121, guid: a0abe8336c792da40ab9fa28f999cbd0,

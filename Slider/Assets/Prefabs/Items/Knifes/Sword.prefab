@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2799529486977940872}
-  - component: {fileID: -3807914020955142008}
   m_Layer: 0
   m_Name: Sword
   m_TagString: Untagged
@@ -32,33 +31,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-3807914020955142008
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4279514882882342051}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca03167c514904842a335f1fe71cc227, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  outlineDrawer: {fileID: 3183821802708501909}
---- !u!114 &3183821802708501909
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5483530406458936560}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a5a009bcf04978442875c4acfebd858d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  outlinePower: 3.12
-  clearPower: 8
 --- !u!1001 &8322568293919238681
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -128,12 +100,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c4ffb47cc2969124f823950e14a8adaa, type: 3}
---- !u!1 &5483530406458936560 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4568578697383503593, guid: c4ffb47cc2969124f823950e14a8adaa,
-    type: 3}
-  m_PrefabInstance: {fileID: 8322568293919238681}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5483530406458936561 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4568578697383503592, guid: c4ffb47cc2969124f823950e14a8adaa,

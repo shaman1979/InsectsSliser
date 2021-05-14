@@ -27,8 +27,6 @@ namespace Slicer.DI
             Container.BindInterfacesAndSelfTo<SceneLoader>().AsSingle();
             Container.BindInterfacesAndSelfTo<LevelModification>().AsSingle();
 
-            Container.Bind<MaterialPropertyBlock>().AsTransient();
-
             Container.Bind<AsyncHelper>().FromNewComponentOn(new GameObject(nameof(AsyncHelper))).AsSingle();
 
             Container.BindInstance(source);
