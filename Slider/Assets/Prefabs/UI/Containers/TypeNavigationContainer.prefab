@@ -131,6 +131,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TableChangeButton
       objectReference: {fileID: 0}
+    - target: {fileID: 4753220941173973329, guid: fd75ddc7e00143344afc3fcf9228dc0f,
+        type: 3}
+      propertyPath: item
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5706084882348372049, guid: fd75ddc7e00143344afc3fcf9228dc0f,
         type: 3}
       propertyPath: m_Pivot.x

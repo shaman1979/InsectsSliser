@@ -1,12 +1,15 @@
 ﻿using LightDev.Core;
 using Slicer.Shop.Events;
+using Slicer.UI.Elements;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 namespace Slicer.Shop
 {
+    [RequireComponent(typeof(ButtonElement))]
     public class SelectItem : Base
     {
         [SerializeField]
@@ -14,25 +17,12 @@ namespace Slicer.Shop
 
         private void Awake()
         {
-            ShopEvents.ShopShow += Activate;
-            ShopEvents.ShopHide += Deactivate;
-
-            Deactivate();
+            GetComponent<ButtonElement>().AddListener(ChangeType);
         }
 
-        private void OnDestroy()
+        private void ChangeType()
         {
-            ShopEvents.ShopShow -= Activate;
-            ShopEvents.ShopHide -= Deactivate;
-        }
-
-        private void OnMouseDown()
-        {
-            if (!EventSystem.current.IsPointerOverGameObject())
-            {
-                ShopEvents.ItemTypeChanged.Call(item);
-
-            }
+            ShopEvents.ItemTypeChanged.Call(item);
         }
     }
 }
