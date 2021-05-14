@@ -8,25 +8,46 @@ namespace Slicer.Items
     public class ItemView : MonoBehaviour
     {
         [SerializeField]
-        private GameObject currentItem;
+        private Item currentItem;
 
-        private Dictionary<int, GameObject> pool = new Dictionary<int, GameObject>();
+        [SerializeField]
+        private float offset = 7f;
 
-        public void UpdateView(GameObject item, int id)
+        [SerializeField]
+        private float speed = 2f;
+
+        private Dictionary<int, Item> pool = new Dictionary<int, Item>();
+
+        public void UpdateView(Item item, int id)
         {
             if (currentItem != null)
-            {
-                currentItem?.SetActive(false);
+            {        
+                currentItem.Move(LastPoint(transform.position), speed, currentItem.Deactivate);
             }
 
             var transformItem = currentItem.transform;
-            var newItem = CreateItem(item, transformItem.position, transformItem.rotation, transformItem.parent, id);
+            var newItem = CreateItem(item, NewPositionCalculate(transform.position), transformItem.rotation, transformItem.parent, id);
+
+            newItem.SetPosition(NewPositionCalculate(transform.position));
+            newItem.Move(transform.position, speed);
 
             currentItem = newItem;
-            currentItem?.SetActive(true);
+            currentItem.Activate();
         }
 
-        private GameObject CreateItem(GameObject prefab, Vector3 position, Quaternion rotation, Transform parent, int id)
+        private Vector3 LastPoint(Vector3 itemPosition)
+        {
+            itemPosition.x -= offset;
+            return itemPosition;
+        }
+
+        private Vector3 NewPositionCalculate(Vector3 itemPosition)
+        {
+            itemPosition.x += offset;
+            return itemPosition;
+        }
+
+        private Item CreateItem(Item prefab, Vector3 position, Quaternion rotation, Transform parent, int id)
         {
             if (!pool.ContainsKey(id))
             {
