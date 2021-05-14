@@ -54,7 +54,6 @@ namespace Slicer.Items
             {
                 LoadDefaultItem();
             }
-
         }
 
         private void ResetItems()
