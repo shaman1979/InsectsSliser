@@ -58,8 +58,8 @@ namespace Slicer.Items
 
         private void ResetItems()
         {
-            ItemEvents.ItemInitialize.Call(selectedItems[ItemTypes.Khife]);
-            ItemEvents.ItemInitialize.Call(selectedItems[ItemTypes.Table]);
+            ItemEvents.ItemInitialize.Call(selectedItems[ItemTypes.Khife], new ItemDefaultPosition());
+            ItemEvents.ItemInitialize.Call(selectedItems[ItemTypes.Table], new ItemDefaultPosition());
         }
 
         private void Start()

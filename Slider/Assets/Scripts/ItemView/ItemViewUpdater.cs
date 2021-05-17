@@ -17,19 +17,19 @@ namespace Slicer.Items
 
         private void Awake()
         {
-            ShopEvents.ItemChanged += (model, type) => UpdateModel(model);
             ItemEvents.ItemInitialize += UpdateModel;
+            ShopEvents.ItemChanged += (item, type, position) => UpdateModel(item, position);
         }
 
-        public void UpdateModel(ShopItem item)
+        public void UpdateModel(ShopItem item, IItemPosition position)
         {
             switch (item.Type)
             {
                 case ItemTypes.Khife:
-                    knifeView.UpdateView(item.Model, item.Id);
+                    knifeView.UpdateView(item.Model, item.Id, position);
                     break;
                 case ItemTypes.Table:
-                    tableView.UpdateView(item.Model, item.Id);
+                    tableView.UpdateView(item.Model, item.Id, position);
                     break;
                 default:
                     break;

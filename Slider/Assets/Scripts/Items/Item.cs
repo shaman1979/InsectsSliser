@@ -8,6 +8,7 @@ namespace Slicer.Items
     public class Item : MonoBehaviour
     {
         private ItemMovening movening;
+        public int Id { get; set; }
 
         public void Activate()
         {
