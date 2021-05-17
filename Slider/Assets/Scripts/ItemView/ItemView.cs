@@ -5,32 +5,66 @@ using UnityEngine;
 
 namespace Slicer.Items
 {
-    public class ItemView : MonoBehaviour
+    public partial class ItemView : MonoBehaviour
     {
         [SerializeField]
-        private GameObject currentItem;
+        private Item currentItem;
 
-        private Dictionary<int, GameObject> pool = new Dictionary<int, GameObject>();
+        [SerializeField]
+        private float offset = 7f;
 
-        public void UpdateView(GameObject item, int id)
+        [SerializeField]
+        private float speed = 2f;
+
+        private Dictionary<int, Item> pool = new Dictionary<int, Item>();
+
+        private Queue<ChangePosition> changePositions = new Queue<ChangePosition>();
+
+        private bool isChange = true;
+
+        private IItemPosition itemPosition;
+
+        public void UpdateView(Item item, int id, IItemPosition itemCreator)
         {
-            if (currentItem != null)
+            if (itemPosition != null && !itemPosition.GetType().Equals(itemCreator.GetType()))
             {
-                currentItem?.SetActive(false);
+                changePositions.Clear();
             }
 
-            var transformItem = currentItem.transform;
-            var newItem = CreateItem(item, transformItem.position, transformItem.rotation, transformItem.parent, id);
+            itemPosition = itemCreator;
 
-            currentItem = newItem;
-            currentItem?.SetActive(true);
+            changePositions.Enqueue(new ChangePosition(currentItem, item, id, itemCreator));
         }
 
-        private GameObject CreateItem(GameObject prefab, Vector3 position, Quaternion rotation, Transform parent, int id)
+        private void Update()
+        {
+            if (changePositions.Count > 0 && isChange)
+            {
+                UpdateView(changePositions.Dequeue());
+            }
+        }
+
+        private void UpdateView(ChangePosition changePosition)
+        {
+
+            var transformItem = currentItem.transform;
+            var newItem = CreateItem(changePosition.Item,
+                                     transform.position,
+                                     transformItem.rotation,
+                                     transformItem.parent,
+                                     changePosition.Id);
+
+            isChange = false;
+
+            currentItem = changePosition.ItemCreator.ItemPosition(newItem, currentItem, transform.position, () => isChange = true);
+        }
+
+        private Item CreateItem(Item prefab, Vector3 position, Quaternion rotation, Transform parent, int id)
         {
             if (!pool.ContainsKey(id))
             {
                 pool.Add(id, Instantiate(prefab, position, rotation, parent));
+                pool[id].Id = id;
             }
 
             return pool[id];

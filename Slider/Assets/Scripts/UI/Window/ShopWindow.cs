@@ -47,7 +47,7 @@ namespace Slicer.UI.Windows
             selectButton.AddListener(SelectedElement);
             backToMenu.AddListener(BackToMenu);
 
-            ShopEvents.ItemChanged += UpdateCurrentItem;
+            ShopEvents.ItemChanged += (item, type, position) => UpdateCurrentItem(item, type);
         }
 
         public override void Unsubscribe()

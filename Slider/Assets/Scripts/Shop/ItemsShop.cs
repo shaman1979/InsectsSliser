@@ -20,12 +20,20 @@ namespace Slicer.Shop
         [SerializeField]
         private SelectedItems selectedItems;
 
+        [SerializeField]
+        private float speed = 2f;
+
+        [SerializeField]
+        private float xOffset = 7f;
+
         [Inject]
         private LevelsInitializer levelsInitializer;
 
         private Dictionary<ItemTypes, DoublyLinkedList<ShopItem>> items;
 
         private ItemTypes currentType;
+
+        
 
         private void Awake()
         {
@@ -56,30 +64,51 @@ namespace Slicer.Shop
         private void ChangeCurrentType(ItemTypes types)
         {
             currentType = types;
-            UpdateItem(items[types].SelectedElement);
+            UpdateItem(items[types].SelectedElement, Direction.Middle);
         }
 
         private void NextElement()
         {
-            UpdateItem(items[currentType].NextElement());
+            UpdateItem(items[currentType].NextElement(), Direction.Left);
         }
 
         private void BackElement()
         {
-            UpdateItem(items[currentType].BackElement());
+            UpdateItem(items[currentType].BackElement(), Direction.Right);
         }
 
         private void SelectItem()
         {
             items[currentType].Selection();
             selectedItems.SelectedItemChange(items[currentType].CurrentElement);
-            UpdateItem(items[currentType].SelectedElement);
+            UpdateItem(items[currentType].SelectedElement, Direction.Middle);
         }
 
-        private void UpdateItem(ShopItem item)
+        private void UpdateItem(ShopItem item, Direction direction)
         {
             items[currentType].ChangeCurrentElement(item);
-            ShopEvents.ItemChanged.Call(item, item.GetStatus(levelsInitializer));
+
+            switch (direction)
+            {
+                case Direction.Left:
+                    ShopEvents.ItemChanged.Call(item, item.GetStatus(levelsInitializer), new ItemLeftPosition(speed, xOffset));
+                    break;
+                case Direction.Right:
+                    ShopEvents.ItemChanged.Call(item, item.GetStatus(levelsInitializer), new ItemRightPosition(speed, xOffset));
+                    break;
+                case Direction.Middle:
+                    ShopEvents.ItemChanged.Call(item, item.GetStatus(levelsInitializer), new ItemDefaultPosition());
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        private enum Direction
+        {
+            Left,
+            Right,
+            Middle
         }
     }
 }
