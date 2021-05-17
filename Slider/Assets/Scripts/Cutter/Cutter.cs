@@ -79,7 +79,6 @@ namespace MeshSlice
         {
             canCut = false;
             movening.StopMovening();
-            SlicedHull hull = objectToSlice.gameObject.Slice(slicePoint.position, slicePoint.up, material);
 
             cutter.KillSequences();
             cutter.Sequence(

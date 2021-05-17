@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using BzKovSoft.ObjectSlicer;
 using System.Diagnostics;
+using LightDev;
 
 namespace BzKovSoft.ObjectSlicerSamples
 {
@@ -27,6 +28,13 @@ namespace BzKovSoft.ObjectSlicerSamples
         private void Start()
         {
             sliceableAsync = GetComponent<IBzSliceableAsync>();
+            Events.RequestFinish += OnReset;
+            Events.GameStart += OnReset;
+        }
+
+        private void OnReset()
+        {
+            knife = null;
         }
 
         private void OnTriggerEnter(Collider other)
@@ -42,7 +50,6 @@ namespace BzKovSoft.ObjectSlicerSamples
             yield return null;
 
             if (knife != null)
-
             {
                 Vector3 point = GetCollisionPoint(knife);
                 Vector3 normal = Vector3.Cross(knife.MoveDirection, knife.BladeDirection);
@@ -52,6 +59,10 @@ namespace BzKovSoft.ObjectSlicerSamples
                 {
                     sliceableAsync.Slice(plane, knife.SliceID, null);
                 }
+            }
+            else
+            {
+                Events.GameFinish.Call();
             }
         }
 
