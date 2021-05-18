@@ -1,5 +1,6 @@
 ﻿using DG.Tweening;
 using LightDev;
+using Slicer.Application.Storages;
 using System;
 using UnityEngine;
 using Zenject;
@@ -9,7 +10,6 @@ namespace Slicer.Game
     public class HPInitializer : IInitializable, IDisposable
     {
         private const int XP_FOR_SLISED_OBJECT = 50;
-        private const string XP_KEY = "xp";
 
         [Inject]
         private readonly LevelsInitializer levelsInitializer;
@@ -25,7 +25,7 @@ namespace Slicer.Game
 
         public int GetHP
         {
-            get => PlayerPrefs.GetInt(XP_KEY, 0);
+            get => PlayerPrefs.GetInt(PlayerPrefsKeyStorage.XP, 0);
         }
 
         public int GetCurrentProgress
@@ -57,7 +57,7 @@ namespace Slicer.Game
 
         private void SetHP(int value)
         {
-            PlayerPrefs.SetInt(XP_KEY, value);
+            PlayerPrefs.SetInt(PlayerPrefsKeyStorage.XP, value);
             Events.HpChanged.Call();
         }
         private void SetProgress(int value)

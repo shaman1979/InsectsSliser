@@ -5,14 +5,13 @@ using Zenject;
 using System;
 using MeshSlice;
 using Slicer.Levels;
+using Slicer.Application.Storages;
 
 namespace Slicer.Game
 {
     public class LevelsInitializer : IInitializable, IDisposable
     {
         public event Action<LevelInfo> OnLevelChanged;
-
-        private const string levelKey = "level";
 
         private readonly Setting setting;
 
@@ -44,7 +43,7 @@ namespace Slicer.Game
 
         private void OnPreReset()
         {
-            totalLevelIndex = PlayerPrefs.GetInt(levelKey, 0);
+            totalLevelIndex = PlayerPrefs.GetInt(PlayerPrefsKeyStorage.LEVEL, 0);
             nextMeshIndex = 0;
 
             currentLevels = LevelSelection();
@@ -54,7 +53,7 @@ namespace Slicer.Game
         private void OnGameFinish()
         {
             if (StarsActivator.HasLevelUp())
-                PlayerPrefs.SetInt(levelKey, totalLevelIndex + 1);
+                PlayerPrefs.SetInt(PlayerPrefsKeyStorage.LEVEL, totalLevelIndex + 1);
         }
 
         public MeshInfo GetFirstMesh()

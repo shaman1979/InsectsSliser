@@ -1,4 +1,7 @@
 using Assets.Scripts.Tools;
+using Slicer.Application;
+using Slicer.DebugMode;
+using Slicer.EventAgregators;
 using Slicer.Game;
 using Slicer.Levels;
 using Slicer.Sound;
@@ -18,6 +21,9 @@ namespace Slicer.DI
         [SerializeField]
         private AudioClip sliceClip;
 
+        [SerializeField]
+        private ApplicationOptions options;
+
         public override void InstallBindings()
         {
             Container.BindInterfacesAndSelfTo<GameRestarter>().AsSingle();
@@ -32,7 +38,13 @@ namespace Slicer.DI
             Container.BindInstance(source);
             Container.BindInstance(sliceClip).WithId("Slice");
 
+            Container.BindInstance(options);
+
             Container.BindInstance(levelInitializerSetting);
+
+            Container.Bind<IEventsAgregator>().To<EventsAgregator>().AsSingle();
+
+            DebugModeInstaller.Install(Container);
         }
     }
 }

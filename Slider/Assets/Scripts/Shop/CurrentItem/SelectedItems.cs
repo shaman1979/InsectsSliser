@@ -1,4 +1,5 @@
-﻿using Slicer.Items.Events;
+﻿using Slicer.Application.Storages;
+using Slicer.Items.Events;
 using Slicer.Shop;
 using Slicer.Shop.Events;
 using Slicer.Tools;
@@ -11,8 +12,6 @@ namespace Slicer.Items
 {
     public class SelectedItems : MonoBehaviour
     {
-        private const string CurrentKnifeSaveKey = "Knife";
-        private const string CurrentTableSaveKey = "Table";
         private const string knifesPath = "ShopItems/Knifes/";
         private const string tablesPath = "ShopItems/Tables/";
 
@@ -93,8 +92,8 @@ namespace Slicer.Items
         {
             var items = ResourcesLoader.Load<ShopItem>(knifesPath).ToList();
             items.AddRange(ResourcesLoader.Load<ShopItem>(tablesPath));
-            var knifeId = PlayerPrefs.GetInt(CurrentKnifeSaveKey);
-            var tableId = PlayerPrefs.GetInt(CurrentTableSaveKey);
+            var knifeId = PlayerPrefs.GetInt(PlayerPrefsKeyStorage.KNIFE);
+            var tableId = PlayerPrefs.GetInt(PlayerPrefsKeyStorage.TABLE);
 
             foreach (var item in items)
             {
@@ -113,11 +112,11 @@ namespace Slicer.Items
             switch (types)
             {
                 case ItemTypes.Khife:
-                    key = CurrentKnifeSaveKey;
+                    key = PlayerPrefsKeyStorage.KNIFE;
                     value = GetCurrentKnifeID();
                     break;
                 case ItemTypes.Table:
-                    key = CurrentTableSaveKey;
+                    key = PlayerPrefsKeyStorage.TABLE;
                     value = GetCurrentTableID();
                     break;
                 default:

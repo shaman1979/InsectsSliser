@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEditor;
 using Slicer.Levels;
+using Slicer.Application.Storages;
 
 namespace MeshSlice
 {
@@ -27,31 +28,31 @@ namespace MeshSlice
         [MenuItem("Mesh Slice/Choose Level/Level 1", false, 1)]
         private static void Level1()
         {
-            PlayerPrefs.SetInt("level", 0);
+            PlayerPrefs.SetInt(PlayerPrefsKeyStorage.LEVEL, 0);
         }
 
         [MenuItem("Mesh Slice/Choose Level/Level 2", false, 1)]
         private static void Level2()
         {
-            PlayerPrefs.SetInt("level", 1);
+            PlayerPrefs.SetInt(PlayerPrefsKeyStorage.LEVEL, 1);
         }
 
         [MenuItem("Mesh Slice/Choose Level/Level 3", false, 1)]
         private static void Level3()
         {
-            PlayerPrefs.SetInt("level", 2);
+            PlayerPrefs.SetInt(PlayerPrefsKeyStorage.LEVEL, 2);
         }
 
         [MenuItem("Mesh Slice/Choose Level/Level 4", false, 1)]
         private static void Level4()
         {
-            PlayerPrefs.SetInt("level", 3);
+            PlayerPrefs.SetInt(PlayerPrefsKeyStorage.LEVEL, 3);
         }
 
         [MenuItem("Mesh Slice/Choose Level/Level 5", false, 1)]
         private static void Level5()
         {
-            PlayerPrefs.SetInt("level", 4);
+            PlayerPrefs.SetInt(PlayerPrefsKeyStorage.LEVEL, 4);
         }
 
         private static void SelectUtilByType(string className)

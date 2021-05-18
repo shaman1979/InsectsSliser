@@ -23,4 +23,3 @@ MonoBehaviour:
     SerializationNodes: []
   levels:
   - {fileID: 11400000, guid: 9fa18244b6214b44b9bbe65c5e4d2d20, type: 2}
-  - {fileID: 11400000, guid: 98efec66ca5312d48a9b4786f86832b9, type: 2}

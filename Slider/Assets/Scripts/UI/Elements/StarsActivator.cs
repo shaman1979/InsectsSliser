@@ -1,5 +1,6 @@
 ﻿using LightDev;
 using MeshSlice;
+using Slicer.Application.Storages;
 using Slicer.Game;
 using System.Collections;
 using System.Collections.Generic;
@@ -42,7 +43,7 @@ namespace Slicer.UI
         {
             Events.ProgressChanged += OnProgressChanged;
             Events.GameStart += ResetAll;
-            Events.GameFinish += () => totalStar += starSession;
+            Events.GameFinish += SetTotalStars;
 
             Load();
         }
@@ -53,7 +54,7 @@ namespace Slicer.UI
 
             progress = Mathf.Clamp(progress, 0, 1);
 
-            if(progress > 0.45f)
+            if (progress > 0.45f)
             {
                 StarActivator(lowStar);
                 starSession = 1;
@@ -77,6 +78,12 @@ namespace Slicer.UI
             star.StarReached();
         }
 
+        private void SetTotalStars()
+        {
+            totalStar += starSession;
+            Save();
+        }
+
         private void ResetAll()
         {
             lowStar.ResetState();
@@ -85,20 +92,14 @@ namespace Slicer.UI
             starSession = 0;
         }
 
-        private void OnDestroy()
-        {
-            Save();
-        }
-
         private void Load()
         {
-            if(PlayerPrefs.HasKey(starKey))
-                totalStar = PlayerPrefs.GetInt(starKey);
+            totalStar = PlayerPrefs.GetInt(PlayerPrefsKeyStorage.STARS, 0);
         }
 
         private void Save()
         {
-            PlayerPrefs.SetInt(starKey, totalStar);
+            PlayerPrefs.SetInt(PlayerPrefsKeyStorage.STARS, totalStar);
         }
     }
 }
