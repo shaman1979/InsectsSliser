@@ -23,13 +23,13 @@ MonoBehaviour:
     SerializationNodes:
     - Name: Modifies
       Entry: 7
-      Data: 0|Slicer.Levels.ILevelModify[], Assembly-CSharp
+      Data: 0|Slicer.Levels.ILevelModify[], Slicer
     - Name: 
       Entry: 12
       Data: 1
     - Name: 
       Entry: 7
-      Data: 1|Slicer.Levels.LevelKnifeSpeedModify, Assembly-CSharp
+      Data: 1|Slicer.Levels.LevelKnifeSpeedModify, Slicer
     - Name: acceleration
       Entry: 4
       Data: 2
