@@ -7,9 +7,14 @@ namespace Slicer.DebugMode
     {
         public static void RemoveProgress()
         {
-            PlayerPrefs.SetInt(PlayerPrefsKeyStorage.LEVEL, 0);
-            PlayerPrefs.SetInt(PlayerPrefsKeyStorage.STARS, 0);
-            PlayerPrefs.SetInt(PlayerPrefsKeyStorage.XP, 0);
+            SetProgressData(0, 0, 0);
+        }
+
+        public static void SetProgressData(int level, int stars, int xp)
+        {
+            PlayerPrefs.SetInt(PlayerPrefsKeyStorage.LEVEL, level);
+            PlayerPrefs.SetInt(PlayerPrefsKeyStorage.STARS, stars);
+            PlayerPrefs.SetInt(PlayerPrefsKeyStorage.XP, xp);
         }
     }
 }
