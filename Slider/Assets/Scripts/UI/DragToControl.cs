@@ -1,58 +1,56 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 using LightDev;
 using LightDev.Core;
 using LightDev.UI;
-
 using DG.Tweening;
+using Slicer.EventAgregators;
 
 namespace MeshSlice.UI
 {
-  public class DragToControl : CanvasElement
-  {
-    [Header("References")]
-    public Base holder;
-    public Base finger;
-
-    private int clickTime;
-
-    public override void Subscribe()
+    public class DragToControl : CanvasElement
     {
-      Events.GameStart += Show;
-      Events.PointerDown += OnPointerUp;
-    }
+        [Header("References")] public Base holder;
+        public Base finger;
 
-    public override void Unsubscribe()
-    {
-      Events.GameStart -= Show;
-      Events.PointerDown -= OnPointerUp;
-    }
+        private int clickTime;
 
-    private void OnPointerUp()
-    {
-      Hide();
-    }
+        public override void Subscribe(IEventsAgregator eventsAgregator)
+        {
+            Events.GameStart += Show;
+            Events.PointerDown += OnPointerUp;
+        }
 
-    protected override void OnStartShowing()
-    {
-      holder.Deactivate();
-    }
+        public override void Unsubscribe()
+        {
+            Events.GameStart -= Show;
+            Events.PointerDown -= OnPointerUp;
+        }
 
-    protected override void OnFinishShowing()
-    {
-      holder.Activate();
-      AnimateFinger();
-    }
+        private void OnPointerUp()
+        {
+            Hide();
+        }
 
-    private void AnimateFinger()
-    {
-      finger.SetPositionX(-153);
-      finger.Sequence(
-        finger.MoveX(213, 1.2f).SetEase(Ease.InOutQuart),
-        finger.MoveX(-153, 1.2f).SetEase(Ease.InOutQuart)
-      ).SetLoops(-1);
+        protected override void OnStartShowing()
+        {
+            holder.Deactivate();
+        }
+
+        protected override void OnFinishShowing()
+        {
+            holder.Activate();
+            AnimateFinger();
+        }
+
+        private void AnimateFinger()
+        {
+            finger.SetPositionX(-153);
+            finger.Sequence(
+                finger.MoveX(213, 1.2f).SetEase(Ease.InOutQuart),
+                finger.MoveX(-153, 1.2f).SetEase(Ease.InOutQuart)
+            ).SetLoops(-1);
+        }
     }
-  }
 }
