@@ -4,6 +4,7 @@ using LightDev;
 using LightDev.UI;
 
 using DG.Tweening;
+using Slicer.EventAgregators;
 
 namespace MeshSlice.UI
 {
@@ -12,7 +13,7 @@ namespace MeshSlice.UI
     [Header("References")]
     public BaseText text;
 
-    public override void Subscribe()
+    public override void Subscribe(IEventsAgregator eventAgregator)
     {
       Events.GameStart += Show;
       Events.GameFinish += Hide;

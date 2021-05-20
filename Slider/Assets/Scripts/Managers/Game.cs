@@ -2,6 +2,7 @@
 using LightDev;
 using LightDev.Core;
 using LightDev.UI;
+using Slicer.EventAgregators;
 using Slicer.Game;
 using UnityEngine;
 using UnityEngine.UI;
@@ -31,7 +32,7 @@ namespace MeshSlice.UI
         [Inject]
         private HPInitializer hpInitializer;
 
-        public override void Subscribe()
+        public override void Subscribe(IEventsAgregator eventAgregator)
         {
             Events.GameStart += Show;
             Events.PreReset += Hide;

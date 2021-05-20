@@ -3,15 +3,24 @@
   <component name="ChangeListManager">
     <list default="true" id="a1e75a50-876f-44a6-8d2e-7b929dbe6642" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Slider/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Slider/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Camera/CameraState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Camera/CameraState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Camera/CameraStateChanger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Camera/CameraStateChanger.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DebugMode/ProgressDataReceiver.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DebugMode/ProgressDataReceiver.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Tests/Game/ProgressDataTest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Tests/Game/ProgressDataTest.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/Sliceable.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/Sliceable.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Main.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/EventAgregator/EventsAgregator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/EventAgregator/EventsAgregator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/Game.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/Game.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/DragToControl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/DragToControl.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Elements/ButtonElement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Elements/ButtonElement.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Finish.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Finish.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/SlicePercantage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/SlicePercantage.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Splash.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Splash.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/UI/CanvasElement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/UI/CanvasElement.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/UI/CanvasManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/UI/CanvasManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Window/DebugWindow.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Window/DebugWindow.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Window/GameWindow.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Window/GameWindow.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Window/MenuWindow.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Window/MenuWindow.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Window/ShopWindow.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Window/ShopWindow.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/Artifacts/0f/0f5701b3a01fc10312c29cddd16d89a4" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/Artifacts/29/29bcb111001c106dddabdc05de5b4e11" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/Artifacts/60/607abb7fad2d91efea4a238191afc155" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,9 +39,18 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/DebugMode/Logger.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/10B6135E-6343-4FDB-A4FC-6C109928AB3B/85/c9350326/Reflect.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Tests/Game/ProgressDataTest.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/9577AC7A-62EF-4317-9789-031239BA8798/18/a0967889/List`1.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Tools/IntExtensions.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.test-framework@1.1.19/UnityEngine.TestRunner/NUnitExtensions/Commands/ImmediateEnumerableCommand.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/7A640F6C-B241-40B6-897C-AC910F849430/5d/e179ac60/Exception.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.test-framework@1.1.19/UnityEngine.TestRunner/NUnitExtensions/Runner/UnityLogCheckDelegatingCommand.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/9577AC7A-62EF-4317-9789-031239BA8798/e7/90c53cf0/Dictionary`2.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/DebugMode/Logger.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/9577AC7A-62EF-4317-9789-031239BA8798/20/5ce74156/Exception.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Tests/Game/DebugModeTest.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.test-framework@1.1.19/UnityEngine.TestRunner/NUnitExtensions/Commands/BeforeAfterTestCommandBase.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
@@ -41,10 +59,20 @@
       <option value="$PROJECT_DIR$/Assets/Tests/Editor/ProgressDataTest.cs" />
       <option value="$PROJECT_DIR$/Assets/Tests/Editor/ProgressDataTest1.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Camera/CameraState.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Tools/IntExtensions.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/DebugMode/ProgressDataReceiver.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/DebugMode/Logger.cs" />
       <option value="$PROJECT_DIR$/Assets/Tests/Game/ProgressDataTest.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Tools/IntExtensions.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/DebugMode/Logger.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/DebugMode/ProgressDataReceiver.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Slice/SlicebleItemMovening.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Slice/ResultCalculate.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UI/Elements/ButtonElement.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Managers/Game.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UI/DragToControl.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UI/UI/CanvasElement.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UI/UI/CanvasManager.cs" />
+      <option value="$PROJECT_DIR$/Assets/Tests/Game/DebugModeTest.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UI/Window/DebugWindow.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/EventAgregator/EventsAgregator.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1slV8vpZEzfIL9NRAefp5ZF1owf" />
@@ -54,13 +82,13 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="DebuggerViewTab_PTCS_FirstProportionKey" value="0.34950384" />
+    <property name="DebuggerViewTab_PTCS_FirstProportionKey" value="0.34940413" />
     <property name="DebuggerViewTab_PTCS_LastProportionKey" value="0.0" />
     <property name="Discover.Launch.Via.Unity" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="settings.editor.selected.configurable" value="ReSpellerSettingsId" />
+    <property name="settings.editor.selected.configurable" value="RiderCSharpLiveTemplatesSettingsId" />
   </component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
@@ -94,7 +122,7 @@
       <updated>1621447009783</updated>
       <workItem from="1621447019949" duration="448000" />
       <workItem from="1621448208260" duration="5370000" />
-      <workItem from="1621498793236" duration="4146000" />
+      <workItem from="1621498793236" duration="16552000" />
     </task>
     <servers />
   </component>
@@ -119,43 +147,43 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Tests/Game/ProgressDataTest.cs</url>
-          <line>66</line>
-          <properties documentPath="D:\git\InsectsSliсer\Slider\Assets\Tests\Game\ProgressDataTest.cs" initialLine="66" containingFunctionPresentation="method 'WhenSetProgressData_AndSaveDataNegative_ThenDontSaveData'">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/UI/UI/CanvasElement.cs</url>
+          <line>95</line>
+          <properties documentPath="D:\git\InsectsSliсer\Slider\Assets\Scripts\UI\UI\CanvasElement.cs" initialLine="93" containingFunctionPresentation="method 'Hide'">
             <startOffsets>
-              <option value="2535" />
+              <option value="2466" />
             </startOffsets>
             <endOffsets>
-              <option value="2605" />
+              <option value="2486" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="1" />
+          <option name="timeStamp" value="5" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/DebugMode/Logger.cs</url>
-          <line>10</line>
-          <properties documentPath="D:\git\InsectsSliсer\Slider\Assets\Scripts\DebugMode\Logger.cs" initialLine="10" containingFunctionPresentation="method 'AssertTry'">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/UI/UI/CanvasElement.cs</url>
+          <line>92</line>
+          <properties documentPath="D:\git\InsectsSliсer\Slider\Assets\Scripts\UI\UI\CanvasElement.cs" initialLine="90" containingFunctionPresentation="method 'Hide'">
             <startOffsets>
-              <option value="237" />
+              <option value="2395" />
             </startOffsets>
             <endOffsets>
-              <option value="267" />
+              <option value="2396" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="2" />
+          <option name="timeStamp" value="6" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/Tools/IntExtensions.cs</url>
-          <line>15</line>
-          <properties documentPath="D:\git\InsectsSliсer\Slider\Assets\Scripts\Tools\IntExtensions.cs" initialLine="15" containingFunctionPresentation="method 'IsNegative'">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/EventAgregator/EventsAgregator.cs</url>
+          <line>27</line>
+          <properties documentPath="D:\git\InsectsSliсer\Slider\Assets\Scripts\EventAgregator\EventsAgregator.cs" initialLine="28" containingFunctionPresentation="method 'Invoke'">
             <startOffsets>
-              <option value="331" />
+              <option value="675" />
             </startOffsets>
             <endOffsets>
-              <option value="348" />
+              <option value="675" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="3" />
+          <option name="timeStamp" value="15" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

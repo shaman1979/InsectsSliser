@@ -6,6 +6,7 @@ using Slicer.UI.Elements;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Slicer.EventAgregators;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -37,7 +38,7 @@ namespace Slicer.UI.Windows
         [SerializeField]
         private Text name;
 
-        public override void Subscribe()
+        public override void Subscribe(IEventsAgregator eventAgregator)
         {
             ShopEvents.ShopShow += Show;
             ShopEvents.ShopHide += Hide;

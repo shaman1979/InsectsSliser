@@ -2,6 +2,7 @@
 using LightDev;
 using LightDev.Core;
 using LightDev.UI;
+using Slicer.EventAgregators;
 using Slicer.Game;
 using Slicer.Shop.Events;
 using Slicer.UI.Elements;
@@ -45,7 +46,7 @@ namespace Slicer.UI.Windows
         [Inject]
         private HPInitializer hpInitializer;
 
-        public override void Subscribe()
+        public override void Subscribe(IEventsAgregator eventAgregator)
         {
             Events.PreReset += Show;
             Events.GameStart += Hide;

@@ -15,18 +15,15 @@ namespace Slicer.UI.Windows
         [SerializeField]
         private ButtonElement button;
 
-        [Inject]
-        private IEventsAgregator eventsAgregator;
-
-        public override void Subscribe()
+        public override void Subscribe(IEventsAgregator eventAgregator)
         {
-            eventsAgregator.AddListener<DebugModeActiveMessage>(message => Show());
-            eventsAgregator.AddListener<DebugModeDeactiveMessage>(message => Hide());
+            eventAgregator.AddListener<DebugModeActiveMessage>(message => Show());
+            eventAgregator.AddListener<DebugModeDeactiveMessage>(message => Hide());
         }
 
         protected override void OnStartShowing()
         {
-            button.AddListener(() => ProgressDataReceiver.RemoveProgress());
+            // button.AddListener(() => ProgressDataReceiver.RemoveProgress());
         }
     }
 }

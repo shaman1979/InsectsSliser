@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 
 using LightDev.Core;
+using Slicer.EventAgregators;
 
 namespace LightDev.UI
 {
@@ -21,10 +22,11 @@ namespace LightDev.UI
 
         /// <summary>
         /// Called by CanvasManager in Awake method.
-        ///
+        /// 
         /// Used for subscribing on events in order to know when to Show UI.
         /// </summary>
-        public virtual void Subscribe()
+        /// <param name="eventAgregator"></param>
+        public virtual void Subscribe(IEventsAgregator eventAgregator)
         {
         }
 
@@ -58,7 +60,7 @@ namespace LightDev.UI
         /// 2) Calls OnStartShowing().
         /// 3) After showTime delay calls OnFinishShowing().
         /// </summary>
-        protected void Show()
+        public void Show()
         {
             StopShowCoroutine();
             StopHideCoroutine();
@@ -87,7 +89,7 @@ namespace LightDev.UI
         /// 2) After hideTime delay calls OnFinishShowing().
         /// 3) Deactivates GameObject.
         /// </summary>
-        protected void Hide()
+        public void Hide()
         {
             if (gameObject.activeSelf == false) return;
 

@@ -5,6 +5,7 @@ using LightDev.Core;
 using LightDev.UI;
 
 using DG.Tweening;
+using Slicer.EventAgregators;
 using Zenject;
 using Slicer.Game;
 
@@ -23,7 +24,7 @@ namespace MeshSlice.UI
 
         private bool isHpFilled;
 
-        public override void Subscribe()
+        public override void Subscribe(IEventsAgregator eventAgregator)
         {
             Events.GameFinish += Show;
             Events.PreReset += Hide;

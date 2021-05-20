@@ -1,4 +1,6 @@
 ﻿using LightDev.Core;
+using Slicer.EventAgregators;
+using Zenject;
 
 namespace LightDev.UI
 {
@@ -7,6 +9,9 @@ namespace LightDev.UI
     /// </summary>
     public class CanvasManager : Base
     {
+        [Inject] 
+        private IEventsAgregator eventsAgregator;
+        
         protected CanvasElement[] canvasElements;
 
         protected virtual void Awake()
@@ -15,7 +20,7 @@ namespace LightDev.UI
             foreach (CanvasElement element in canvasElements)
             {
                 element.Activate();
-                element.Subscribe();
+                element.Subscribe(eventsAgregator);
                 element.Deactivate();
             }
         }

@@ -5,6 +5,7 @@ using LightDev.Core;
 using LightDev.UI;
 
 using DG.Tweening;
+using Slicer.EventAgregators;
 
 namespace MeshSlice.UI
 {
@@ -13,7 +14,7 @@ namespace MeshSlice.UI
         [Header("References")]
         public Base background;
 
-        public override void Subscribe()
+        public override void Subscribe(IEventsAgregator eventAgregator)
         {
             Events.RequestSplash += Show;
             Events.PostReset += Hide;

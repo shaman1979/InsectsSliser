@@ -40,6 +40,11 @@ namespace Slicer.UI.Elements
             Button.onClick.RemoveListener(() => listener.Invoke());
         }
 
+        public void Click()
+        {
+            Button.onClick?.Invoke();
+        }
+        
         public void ListenerClear()
         {
             Button.onClick.RemoveAllListeners();
