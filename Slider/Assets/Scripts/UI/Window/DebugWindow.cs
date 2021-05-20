@@ -12,7 +12,7 @@ namespace Slicer.UI.Windows
 {
     public class DebugWindow : CanvasElement
     {
-        [SerializeField]
+        [SerializeField] 
         private ButtonElement button;
 
         public override void Subscribe(IEventsAgregator eventAgregator)
@@ -23,7 +23,7 @@ namespace Slicer.UI.Windows
 
         protected override void OnStartShowing()
         {
-            // button.AddListener(() => ProgressDataReceiver.RemoveProgress());
+            button?.AddListener(ProgressDataReceiver.RemoveProgress);
         }
     }
 }

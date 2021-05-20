@@ -54,7 +54,7 @@ namespace BzKovSoft.ObjectSlicer
 		public bool Asynchronously
 		{
 			get { return _asynchronously; }
-			set { _asynchronously = value; }
+			set => _asynchronously = value;
 		}
 
 		private void OnEnable()
@@ -168,11 +168,6 @@ namespace BzKovSoft.ObjectSlicer
 
 			sliceTry.sliced = somethingOnNeg & somethingOnPos;
 
-			if (sliceTry.sliced)
-			{
-				sliceTry.sliceData.componentManager.OnSlicedWorkerThread(sliceTry.items);
-			}
-
 			OnSliceFinishedWorkerThread(sliceTry.sliced, sliceTry.sliceData.addData);
 		}
 
@@ -256,10 +251,6 @@ namespace BzKovSoft.ObjectSlicer
                 return null;
             }
 
-			Profiler.BeginSample("ComponentManager.OnSlicedMainThread");
-            sliceTry.sliceData.componentManager.OnSlicedMainThread(resultObjNeg, resultObjPos, renderersNeg, renderersPos);
-			Profiler.EndSample();
-
             BzSliceTryResult result = new BzSliceTryResult(true, sliceTry.sliceData.addData);
             result.meshItems = new BzMeshSliceResult[sliceTry.items.Length];
 
@@ -319,6 +310,7 @@ namespace BzKovSoft.ObjectSlicer
 
 		protected abstract void OnSliceFinished(BzSliceTryResult result);
 
+		// ReSharper disable Unity.PerformanceAnalysis
 		public void Slice(Plane plane, int sliceId, Action<BzSliceTryResult> callBack)
 		{
 			if (this == null)	// if this component was destroied

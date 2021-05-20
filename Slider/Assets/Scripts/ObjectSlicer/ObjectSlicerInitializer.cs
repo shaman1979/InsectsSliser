@@ -38,7 +38,7 @@ namespace BzKovSoft.ObjectSlicer
 		{
 			protected override BzSliceTryData PrepareData(Plane plane)
 			{
-				var colliders = gameObject.GetComponentsInChildren<Collider>();
+				var colliders = gameObject.GetComponentInChildren<Collider>();
 
 				return new BzSliceTryData()
 				{

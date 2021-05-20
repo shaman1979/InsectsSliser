@@ -25,7 +25,7 @@ namespace Tests
 
             //Act
             var button = new GameObject("Button").AddComponent<ButtonElement>();
-            button.AddListener(() => ProgressDataReceiver.RemoveProgress());
+            button.AddListener(ProgressDataReceiver.RemoveProgress);
             button.Click();
 
             //Assert

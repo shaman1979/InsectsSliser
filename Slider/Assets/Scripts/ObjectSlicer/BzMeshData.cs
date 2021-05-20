@@ -9,43 +9,42 @@ namespace BzKovSoft.ObjectSlicer
 {
 	public class BzMeshData
 	{
-		public List<Vector3> Vertices;
-		public List<Vector3> Normals;
+		public readonly List<Vector3> Vertices;
+		public readonly List<Vector3> Normals;
 
-		public List<Color> Colors;
-		public List<Color32> Colors32;
+		public readonly List<Color> Colors;
+		public readonly List<Color32> Colors32;
 
-		public List<Vector2> UV;
-		public List<Vector2> UV2;
-		public List<Vector2> UV3;
-		public List<Vector2> UV4;
-		public List<Vector4> Tangents;
+		public readonly List<Vector2> UV;
+		public readonly List<Vector2> UV2;
+		public readonly List<Vector2> UV3;
+		public readonly List<Vector2> UV4;
+		public readonly List<Vector4> Tangents;
 
-		public List<BoneWeight> BoneWeights;
-		public readonly Matrix4x4[] Bindposes;
+		public readonly List<BoneWeight> BoneWeights;
+		private readonly Matrix4x4[] bindposes;
 
 		public int[][] SubMeshes;
 
 		public Material[] Materials;
 
-		public bool NormalsExists { get { return Normals != null; } }
-		public bool ColorsExists { get { return Colors != null; } }
-		public bool Colors32Exists { get { return Colors32 != null; } }
-		public bool UVExists { get { return UV != null; } }
-		public bool UV2Exists { get { return UV2 != null; } }
-		public bool UV3Exists { get { return UV3 != null; } }
-		public bool UV4Exists { get { return UV4 != null; } }
-		public bool TangentsExists { get { return Tangents != null; } }
-		public bool BoneWeightsExists { get { return BoneWeights != null; } }
-		public bool MaterialsExists { get { return Materials != null; } }
-
+		public bool NormalsExists => Normals != null;
+		public bool ColorsExists => Colors != null;
+		public bool Colors32Exists => Colors32 != null;
+		public bool UVExists => UV != null;
+		public bool UV2Exists => UV2 != null;
+		public bool UV3Exists => UV3 != null;
+		public bool UV4Exists => UV4 != null;
+		public bool TangentsExists => Tangents != null;
+		public bool BoneWeightsExists => BoneWeights != null;
+		public bool MaterialsExists => Materials != null;
 
 		public BzMeshData(Mesh initFrom, Material[] materials)
         {
             Materials = materials;
             int vertCount = initFrom.vertexCount / 3;
-            Bindposes = initFrom.bindposes;
-            if (Bindposes.Length == 0)	Bindposes = null;
+            bindposes = initFrom.bindposes;
+            if (bindposes.Length == 0)	bindposes = null;
 
             Vertices = new List<Vector3>(vertCount);
             Normals = new List<Vector3>(vertCount);
@@ -56,16 +55,13 @@ namespace BzKovSoft.ObjectSlicer
             UV3 = new List<Vector2>();
             UV4 = new List<Vector2>();
             Tangents = new List<Vector4>();
-            BoneWeights = new List<BoneWeight>(Bindposes == null ? 0 : vertCount);
+            BoneWeights = new List<BoneWeight>(bindposes == null ? 0 : vertCount);
 
             initFrom.GetVertices(Vertices);
             initFrom.GetNormals(Normals);
             initFrom.GetColors(Colors);
             initFrom.GetColors(Colors32);
             initFrom.GetUVs(0, UV);
-            initFrom.GetUVs(1, UV2);
-            initFrom.GetUVs(2, UV3);
-            initFrom.GetUVs(3, UV4);
             initFrom.GetTangents(Tangents);
             initFrom.GetBoneWeights(BoneWeights);
 
@@ -112,7 +108,7 @@ namespace BzKovSoft.ObjectSlicer
 			if (BoneWeightsExists)
 			{
 				mesh.boneWeights = BoneWeights.ToArray();
-				mesh.bindposes = Bindposes;
+				mesh.bindposes = bindposes;
 			}
 			
 			mesh.subMeshCount = SubMeshes.Length;

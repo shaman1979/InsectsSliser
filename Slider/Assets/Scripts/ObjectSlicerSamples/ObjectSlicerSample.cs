@@ -28,7 +28,7 @@ namespace BzKovSoft.ObjectSlicerSamples
 			addData.stopwatch = Stopwatch.StartNew();
 
 			// colliders that will be participating in slicing
-			var colliders = gameObject.GetComponentsInChildren<Collider>();
+			var colliders = gameObject.GetComponentInChildren<Collider>();
 
 			// return data
 			return new BzSliceTryData()

@@ -13,10 +13,5 @@ namespace BzKovSoft.ObjectSlicer
 		/// Asynchronous call
 		/// </summary>
 		void OnSlicedWorkerThread(SliceTryItem[] items);
-
-		/// <summary>
-		/// Synchronous call
-		/// </summary>
-		void OnSlicedMainThread(GameObject resultObjNeg, GameObject resultObjPos, Renderer[] renderersNeg, Renderer[] renderersPos);
 	}
 }

@@ -12,11 +12,12 @@ namespace BzKovSoft.ObjectSlicer.Editor
 	{
 		protected override BzSliceTryData PrepareData(Plane plane)
 		{
-			var colliders = gameObject.GetComponentsInChildren<Collider>();
+			GameObject o;
+			var colliders = (o = gameObject).GetComponentInChildren<Collider>();
 
 			return new BzSliceTryData()
 			{
-				componentManager = new StaticComponentManager(gameObject, plane, colliders),
+				componentManager = new StaticComponentManager(o, plane, colliders),
 				plane = plane,
 			};
 		}

@@ -1,39 +1,37 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
+using Assets.Scripts.Tools;
 using UnityEngine;
 
 namespace BzKovSoft.ObjectSlicer
 {
 	public class BzMeshDataDissector
 	{
-		const float MinWidth = 0.001f;
-		readonly IBzSliceAddapter _adapter;
-		Plane _plane;
-		Material _defaultSliceMaterial;
-		bool _sliced = false;
+		private const float MinWidth = 0.001f;
+		private readonly IBzSliceAddapter adapter;
+		private Plane plane;
+		private bool sliced = false;
 
-		BzMeshData _meshDataNeg;
-		BzMeshData _meshDataPos;
-		int[][] _subMeshes;
+		private BzMeshData meshDataNeg;
+		private readonly BzMeshData meshDataPos;
+		private readonly int[][] subMeshes;
 
-		public Material DefaultSliceMaterial
-		{
-			get { return _defaultSliceMaterial; }
-			set { _defaultSliceMaterial = value; }
-		}
-		public BzMeshData SliceResultNeg { get { return _meshDataNeg; } }
-		public BzMeshData SliceResultPos { get { return _meshDataPos; } }
-		public BzSliceConfiguration Configuration { get; private set; }
+		public Material DefaultSliceMaterial { get; set; }
+
+		public BzMeshData SliceResultNeg => meshDataNeg;
+		public BzMeshData SliceResultPos => meshDataPos;
+		private BzSliceConfiguration Configuration { get; }
 		public List<PolyMeshData> CapsNeg { get; private set; }
 		public List<PolyMeshData> CapsPos { get; private set; }
 
 		public BzMeshDataDissector(Mesh mesh, Plane plane, Material[] materials, IBzSliceAddapter adapter, BzSliceConfiguration configuration)
 		{
-			_adapter = adapter;
-			_plane = plane;
+			this.adapter = adapter;
+			this.plane = plane;
 			Configuration = configuration;
 
 			if (Configuration != null && Configuration.SliceMaterial == null)
@@ -41,33 +39,34 @@ namespace BzKovSoft.ObjectSlicer
 				Configuration.SliceMaterial = null;
 			}
 
-			_meshDataNeg = new BzMeshData(mesh, materials);
-			_meshDataPos = new BzMeshData(mesh, materials);
+			meshDataNeg = new BzMeshData(mesh, materials);
+			meshDataPos = new BzMeshData(mesh, materials);
 
-			_subMeshes = new int[mesh.subMeshCount][];
-			for (int subMeshIndex = 0; subMeshIndex < mesh.subMeshCount; ++subMeshIndex)
+			subMeshes = new int[mesh.subMeshCount][];
+			for (var subMeshIndex = 0; subMeshIndex < mesh.subMeshCount; ++subMeshIndex)
 			{
-				_subMeshes[subMeshIndex] = mesh.GetTriangles(subMeshIndex);
+				subMeshes[subMeshIndex] = mesh.GetTriangles(subMeshIndex);
 			}
 		}
-
+		
+		// ReSharper disable Unity.PerformanceAnalysis
 		public SliceResult Slice()
 		{
-			if (_sliced)
+			if (sliced)
 				throw new InvalidOperationException("Object already sliced");
 
-			_sliced = true;
+			sliced = true;
 
 			if (Configuration == null)
-				return SliceMesh(_defaultSliceMaterial);
+				return SliceMesh(DefaultSliceMaterial);
 
 			switch (Configuration.SliceType)
 			{
 				case SliceType.Slice:
-					return SliceMesh(Configuration.SliceMaterial ?? _defaultSliceMaterial);
+					return SliceMesh(Configuration.SliceMaterial ? Configuration.SliceMaterial : DefaultSliceMaterial);
 
 				case SliceType.KeepOne:
-					return _plane.GetSide(_adapter.GetObjectCenterInWorldSpace()) ?
+					return plane.GetSide(adapter.GetObjectCenterInWorldSpace()) ?
 						SliceResult.Pos : SliceResult.Neg;
 
 				case SliceType.Duplicate:
@@ -79,37 +78,37 @@ namespace BzKovSoft.ObjectSlicer
 
 		private SliceResult SliceMesh(Material sectionViewMaterial)
 		{
-			var planeInverted = new Plane(-_plane.normal, -_plane.distance);
+			var planeInverted = new Plane(-plane.normal, -plane.distance);
 
-			BzMeshDataEditor meshEditorNeg = new BzMeshDataEditor(_meshDataNeg, _plane, _adapter);
-			BzMeshDataEditor meshEditorPos = new BzMeshDataEditor(_meshDataPos, planeInverted, _adapter);
+			var meshEditorNeg = new BzMeshDataEditor(meshDataNeg, plane, adapter);
+			var meshEditorPos = new BzMeshDataEditor(meshDataPos, planeInverted, adapter);
 
-			for (int subMeshIndex = 0; subMeshIndex < _subMeshes.Length; ++subMeshIndex)
+			for (var subMeshIndex = 0; subMeshIndex < subMeshes.Length; ++subMeshIndex)
 			{
-				int[] newTriangles = _subMeshes[subMeshIndex];
+				var newTriangles = subMeshes[subMeshIndex];
 
-				int trCount = newTriangles.Length / 3;
+				var trCount = newTriangles.Length / 3;
 				var trianglesNeg = new List<BzTriangle>(trCount);
 				var trianglesPos = new List<BzTriangle>(trCount);
 				var trianglesNegSliced = new List<BzTriangle>(trCount / 10);
 				var trianglesPosSliced = new List<BzTriangle>(trCount / 10);
 
-				for (int i = 0; i < trCount; ++i)
+				for (var i = 0; i < trCount; ++i)
 				{
-					int trIndex = i * 3;
+					var trIndex = i * 3;
 					var bzTriangle = new BzTriangle(
 						newTriangles[trIndex + 0],
 						newTriangles[trIndex + 1],
 						newTriangles[trIndex + 2]);
 
-					Vector3 v1 = _adapter.GetWorldPos(bzTriangle.i1);
-					Vector3 v2 = _adapter.GetWorldPos(bzTriangle.i2);
-					Vector3 v3 = _adapter.GetWorldPos(bzTriangle.i3);
-					bool side1 = _plane.GetSide(v1);
-					bool side2 = _plane.GetSide(v2);
-					bool side3 = _plane.GetSide(v3);
-					bool PosSide = side1 | side2 | side3;
-					bool NegSide = !side1 | !side2 | !side3;
+					var v1 = adapter.GetWorldPos(bzTriangle.i1);
+					var v2 = adapter.GetWorldPos(bzTriangle.i2);
+					var v3 = adapter.GetWorldPos(bzTriangle.i3);
+					var side1 = plane.GetSide(v1);
+					var side2 = plane.GetSide(v2);
+					var side3 = plane.GetSide(v3);
+					var PosSide = side1 | side2 | side3;
+					var NegSide = !side1 | !side2 | !side3;
 
 					if (NegSide & PosSide)
 					{
@@ -130,10 +129,10 @@ namespace BzKovSoft.ObjectSlicer
 						throw new InvalidOperationException();
 				}
 
-				OptimizeEdgeTriangles(meshEditorNeg, _meshDataNeg, trianglesNegSliced);
-				OptimizeEdgeTriangles(meshEditorPos, _meshDataPos, trianglesPosSliced);
-				_meshDataNeg.SubMeshes[subMeshIndex] = MakeTriangleToList(trianglesNeg, trianglesNegSliced);
-				_meshDataPos.SubMeshes[subMeshIndex] = MakeTriangleToList(trianglesPos, trianglesPosSliced);
+				OptimizeEdgeTriangles(meshEditorNeg, meshDataNeg, trianglesNegSliced);
+				OptimizeEdgeTriangles(meshEditorPos, meshDataPos, trianglesPosSliced);
+				meshDataNeg.SubMeshes[subMeshIndex] = MakeTriangleToList(trianglesNeg, trianglesNegSliced);
+				meshDataPos.SubMeshes[subMeshIndex] = MakeTriangleToList(trianglesPos, trianglesPosSliced);
 			}
 
 			CapsNeg = meshEditorNeg.CapSlice(sectionViewMaterial);
@@ -142,11 +141,11 @@ namespace BzKovSoft.ObjectSlicer
 			meshEditorNeg.DeleteUnusedVertices();
 			meshEditorPos.DeleteUnusedVertices();
 
-			if (!CheckNewMesh(_meshDataNeg))
+			if (!CheckNewMesh(meshDataNeg))
 			{
 				return SliceResult.Pos;
 			}
-			if (!CheckNewMesh(_meshDataPos))
+			if (!CheckNewMesh(meshDataPos))
 			{
 				return SliceResult.Neg;
 			}
@@ -158,7 +157,7 @@ namespace BzKovSoft.ObjectSlicer
 		{
 			var edgeLoops = meshEditor.GetEdgeLoopsByIndex();
 
-			bool[] trToDelete = new bool[bzTriangles.Count];
+			var trToDelete = new bool[bzTriangles.Count];
 
 			var edgeLoopsNode = edgeLoops.First;
 			while (edgeLoopsNode != null)
@@ -167,7 +166,7 @@ namespace BzKovSoft.ObjectSlicer
 				edgeLoopsNode = edgeLoopsNode.Next;
 
 				var edge = edgeLoop.first;
-				int counter = edgeLoop.size;
+				var counter = edgeLoop.size;
 				while (counter > 0 & edgeLoop.size >= 3)
 				{
 					--counter;
@@ -176,9 +175,9 @@ namespace BzKovSoft.ObjectSlicer
 					var edgeItem2 = edgeItem1.next;
 					var edgeItem3 = edgeItem2.next;
 
-					int i1 = edgeItem1.value;
-					int i2 = edgeItem2.value;
-					int i3 = edgeItem3.value;
+					var i1 = edgeItem1.value;
+					var i2 = edgeItem2.value;
+					var i3 = edgeItem3.value;
 
 					var v1 = meshData.Vertices[i1];
 					var v2 = meshData.Vertices[i2];
@@ -205,8 +204,8 @@ namespace BzKovSoft.ObjectSlicer
 			}
 
 			// remove empty
-			int count = 0;
-			for (int i = 0; i < bzTriangles.Count; i++)
+			var count = 0;
+			for (var i = 0; i < bzTriangles.Count; i++)
 			{
 				var value = bzTriangles[i];
 				bzTriangles[count] = value;
@@ -220,20 +219,20 @@ namespace BzKovSoft.ObjectSlicer
 
 		public void RebuildNegMesh(Renderer meshRenderer)
 		{
-			var mesh = _meshDataNeg.GenerateMesh();
-			_adapter.RebuildMesh(mesh, _meshDataNeg.Materials, meshRenderer);
+			var mesh = meshDataNeg.GenerateMesh();
+			adapter.RebuildMesh(mesh, meshDataNeg.Materials, meshRenderer);
 		}
 
 		public void RebuildPosMesh(Renderer meshRenderer)
 		{
-			var mesh = _meshDataPos.GenerateMesh();
-			_adapter.RebuildMesh(mesh, _meshDataPos.Materials, meshRenderer);
+			var mesh = meshDataPos.GenerateMesh();
+			adapter.RebuildMesh(mesh, meshDataPos.Materials, meshRenderer);
 		}
 
 		private static void EmptyRedundantIndex(int indexMiddle, int indexNext, List<BzTriangle> bzTriangles, bool[] trToDelete)
 		{
 			// make redundants empty
-			for (int i = 0; i < bzTriangles.Count; i++)
+			for (var i = 0; i < bzTriangles.Count; i++)
 			{
 				var tr = bzTriangles[i];
 				if (trToDelete[i])
@@ -272,7 +271,7 @@ namespace BzKovSoft.ObjectSlicer
 			if (!CheckMinWidth(meshData))
 				return false;
 
-			return _adapter.Check(meshData);
+			return adapter.Check(meshData);
 		}
 
 		private bool CheckMinWidth(BzMeshData meshData)
@@ -280,10 +279,10 @@ namespace BzKovSoft.ObjectSlicer
 			if (meshData.Vertices.Count < 3)
 				return false;
 
-			for (int i = 0; i < meshData.Vertices.Count; i++)
+			for (var i = 0; i < meshData.Vertices.Count; i++)
 			{
-				var pos = _adapter.GetWorldPos(meshData, i);
-				float dist = _plane.GetDistanceToPoint(pos);
+				var pos = adapter.GetWorldPos(meshData, i);
+				var dist = plane.GetDistanceToPoint(pos);
 				if (Math.Abs(dist) > MinWidth)
 					return true;
 			}
@@ -296,20 +295,20 @@ namespace BzKovSoft.ObjectSlicer
 		/// </summary>
 		static int[] MakeTriangleToList(List<BzTriangle> bzTriangles, List<BzTriangle> bzTrianglesExtra)
 		{
-			int[] triangles = new int[(bzTriangles.Count + bzTrianglesExtra.Count) * 3];
-			for (int i = 0; i < bzTriangles.Count; ++i)
+			var triangles = new int[(bzTriangles.Count + bzTrianglesExtra.Count) * 3];
+			for (var i = 0; i < bzTriangles.Count; ++i)
 			{
 				var tr = bzTriangles[i];
-				int shift = i * 3;
+				var shift = i * 3;
 				triangles[shift + 0] = tr.i1;
 				triangles[shift + 1] = tr.i2;
 				triangles[shift + 2] = tr.i3;
 			}
 
-			for (int i = 0; i < bzTrianglesExtra.Count; ++i)
+			for (var i = 0; i < bzTrianglesExtra.Count; ++i)
 			{
 				var tr = bzTrianglesExtra[i];
-				int shift = (bzTriangles.Count + i) * 3;
+				var shift = (bzTriangles.Count + i) * 3;
 				triangles[shift + 0] = tr.i1;
 				triangles[shift + 1] = tr.i2;
 				triangles[shift + 2] = tr.i3;

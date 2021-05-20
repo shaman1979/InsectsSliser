@@ -5,24 +5,24 @@ namespace BzKovSoft.ObjectSlicer
 {
 	class BzSliceColliderAddapter : IBzSliceAddapter
 	{
-		Matrix4x4 _ltw;
-		Vector3[] _vertices;
+		private Matrix4x4 localToWorldMatrix;
+		private readonly Vector3[] vertices;
 
 		public BzSliceColliderAddapter(Vector3[] vertices, GameObject gameObject)
 		{
-			_vertices = vertices;
-			_ltw = gameObject.transform.localToWorldMatrix;
+			this.vertices = vertices;
+			localToWorldMatrix = gameObject.transform.localToWorldMatrix;
 		}
 
 		public Vector3 GetWorldPos(int index)
 		{
-			Vector3 position = _vertices[index];
-			return _ltw.MultiplyPoint3x4(position);
+			Vector3 position = vertices[index];
+			return localToWorldMatrix.MultiplyPoint3x4(position);
 		}
 
 		public Vector3 GetWorldPos(BzMeshData meshData, int index)
 		{
-			return _ltw.MultiplyPoint3x4(meshData.Vertices[index]);
+			return localToWorldMatrix.MultiplyPoint3x4(meshData.Vertices[index]);
 		}
 
 		public bool Check(BzMeshData meshData)
@@ -51,7 +51,7 @@ namespace BzKovSoft.ObjectSlicer
 
 		public Vector3 GetObjectCenterInWorldSpace()
 		{
-			return _ltw.MultiplyPoint3x4(Vector3.zero);
+			return localToWorldMatrix.MultiplyPoint3x4(Vector3.zero);
 		}
 	}
 }
