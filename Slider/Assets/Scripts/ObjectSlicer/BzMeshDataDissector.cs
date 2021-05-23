@@ -47,6 +47,8 @@ namespace BzKovSoft.ObjectSlicer
 			{
 				subMeshes[subMeshIndex] = mesh.GetTriangles(subMeshIndex);
 			}
+
+			asyncHelper = new GameObject("Async").AddComponent<AsyncHelper>();
 		}
 		
 		// ReSharper disable Unity.PerformanceAnalysis
@@ -217,16 +219,18 @@ namespace BzKovSoft.ObjectSlicer
 			bzTriangles.RemoveRange(count, bzTriangles.Count - count);
 		}
 
+		private AsyncHelper asyncHelper;
+		
 		public void RebuildNegMesh(Renderer meshRenderer)
 		{
-			var mesh = meshDataNeg.GenerateMesh();
-			adapter.RebuildMesh(mesh, meshDataNeg.Materials, meshRenderer);
+			asyncHelper.StartCoroutine(meshDataNeg.GenerateMesh(mesh => 
+				adapter.RebuildMesh(mesh, meshDataNeg.Materials, meshRenderer)));
 		}
 
 		public void RebuildPosMesh(Renderer meshRenderer)
 		{
-			var mesh = meshDataPos.GenerateMesh();
-			adapter.RebuildMesh(mesh, meshDataPos.Materials, meshRenderer);
+			asyncHelper.StartCoroutine(meshDataPos.GenerateMesh(mesh =>
+				adapter.RebuildMesh(mesh, meshDataPos.Materials, meshRenderer)));
 		}
 
 		private static void EmptyRedundantIndex(int indexMiddle, int indexNext, List<BzTriangle> bzTriangles, bool[] trToDelete)

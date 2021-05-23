@@ -13,236 +13,208 @@ using LightDev;
 
 namespace BzKovSoft.ObjectSlicer
 {
-	/// <summary>
-	/// Base class for sliceable object
-	/// </summary>
-	[DisallowMultipleComponent]
-	public abstract class BzSliceableBase : MonoBehaviour, IBzSliceableAsync
-	{
-		[HideInInspector]
-		[SerializeField]
-		int _sliceId;
-		[HideInInspector]
-		[SerializeField]
-		float _lastSliceTime = float.MinValue;
+    /// <summary>
+    /// Base class for sliceable object
+    /// </summary>
+    [DisallowMultipleComponent]
+    public abstract class BzSliceableBase : MonoBehaviour, IBzSliceableAsync
+    {
+        [HideInInspector] [SerializeField] int _sliceId;
+        [HideInInspector] [SerializeField] float _lastSliceTime = float.MinValue;
 
 
 #pragma warning disable 0649
-		/// <summary>
-		/// Material that will be applied after slicing
-		/// </summary>
-		[SerializeField]
-		private Material _defaultSliceMaterial;
-		[SerializeField]
-		private bool _asynchronously = false;
-		[SerializeField]
-		/// <summary>
-		/// If your code do not use SliceId, it can relay on delay between last slice and new.
-		/// If real delay is less than this value, slice will be ignored
-		/// </summary>
-		private float _delayBetweenSlices = 1f;
+        /// <summary>
+        /// Material that will be applied after slicing
+        /// </summary>
+        [SerializeField] private Material _defaultSliceMaterial;
+
+        [SerializeField] private bool _asynchronously = false;
+        [SerializeField]
+        /// <summary>
+        /// If your code do not use SliceId, it can relay on delay between last slice and new.
+        /// If real delay is less than this value, slice will be ignored
+        /// </summary>
+        private float _delayBetweenSlices = 1f;
 #pragma warning restore 0649
 
-		Queue<SliceTry> _sliceTrys;
+        Queue<SliceTry> _sliceTrys;
 
-		public Material DefaultSliceMaterial
-		{
-			get { return _defaultSliceMaterial; }
-			set { _defaultSliceMaterial = value; }
-		}
+        public Material DefaultSliceMaterial
+        {
+            get { return _defaultSliceMaterial; }
+            set { _defaultSliceMaterial = value; }
+        }
 
-		public bool Asynchronously
-		{
-			get { return _asynchronously; }
-			set => _asynchronously = value;
-		}
+        public bool Asynchronously
+        {
+            get { return _asynchronously; }
+            set => _asynchronously = value;
+        }
 
-		private void OnEnable()
-		{
-			_sliceTrys = new Queue<SliceTry>();
-		}
+        private void OnEnable()
+        {
+            _sliceTrys = new Queue<SliceTry>();
+        }
 
-		/// <summary>
-		/// Start slicing process
-		/// </summary>
-		/// <param name="addData">You can pass any object. You will </param>
-		/// <returns>Returns true if pre-slice conditions was succeeded and task was added to the queue</returns>
-		private void StartSlice(BzSliceTryData sliceTryData, Action<BzSliceTryResult> callBack)
-		{
-			Renderer[] renderers = GetRenderers(gameObject);
-			SliceTryItem[] items = new SliceTryItem[renderers.Length];
+        /// <summary>
+        /// Start slicing process
+        /// </summary>
+        /// <param name="addData">You can pass any object. You will </param>
+        /// <returns>Returns true if pre-slice conditions was succeeded and task was added to the queue</returns>
+        private IEnumerator StartSlice(BzSliceTryData sliceTryData, Action<BzSliceTryResult> callBack)
+        {
+            var renderers = GetRenderers(gameObject);
+            yield return null;
+            
+            var items = new SliceTryItem[renderers.Length];
 
-			for (int i = 0; i < renderers.Length; i++)
-			{
-				var renderer = renderers[i];
+            for (var i = 0; i < renderers.Length; i++)
+            {
+                var renderer = renderers[i];
 
-				var adapterAndMesh = GetAdapterAndMesh(renderer);
+                var adapterAndMesh = GetAdapterAndMesh(renderer.GetComponent<MeshFilter>());
 
-				if (adapterAndMesh == null)
-					continue;
+                if (adapterAndMesh == null)
+                    continue;
 
-				Mesh mesh = adapterAndMesh.mesh;
-				IBzSliceAddapter adapter = adapterAndMesh.adapter;
+                var mesh = adapterAndMesh.mesh;
+                var adapter = adapterAndMesh.adapter;
 
-				var configuration = renderer.gameObject.GetComponent<BzSliceConfiguration>();
-				var meshDissector = new BzMeshDataDissector(mesh, sliceTryData.plane, renderer.sharedMaterials, adapter, configuration);
-				meshDissector.DefaultSliceMaterial = _defaultSliceMaterial;
+                var configuration = renderer.gameObject.GetComponent<BzSliceConfiguration>();
+                var meshDissector = new BzMeshDataDissector(mesh, sliceTryData.plane, renderer.sharedMaterials, adapter,
+                    configuration) {DefaultSliceMaterial = _defaultSliceMaterial};
 
-				SliceTryItem sliceTryItem = new SliceTryItem();
-				sliceTryItem.meshRenderer = renderer;
-				sliceTryItem.meshDissector = meshDissector;
-				items[i] = sliceTryItem;
-			}
+                var sliceTryItem = new SliceTryItem {meshRenderer = renderer, meshDissector = meshDissector};
+                items[i] = sliceTryItem;
+            }
+            
+            var sliceTry = new SliceTry {items = items, callBack = callBack, sliceData = sliceTryData};
+            StartWorker(WorkForWorker, sliceTry);
+            _sliceTrys.Enqueue(sliceTry);
+        }
 
-			SliceTry sliceTry = new SliceTry();
-			sliceTry.items = items;
-			sliceTry.callBack = callBack;
-			sliceTry.sliceData = sliceTryData;
+        protected abstract AdapterAndMesh GetAdapterAndMesh(MeshFilter meshFilter);
 
-			if (Asynchronously)
-			{
-				StartWorker(WorkForWorker, sliceTry);
-				_sliceTrys.Enqueue(sliceTry);
-			}
-			else
-			{
-				Work(sliceTry);
-				SliceTryFinished(sliceTry);
-			}
-		}
+        /// <summary>
+        /// You need to override this to use your thead pool
+        /// </summary>
+        /// <param name="method">method that you need to call</param>
+        /// <param name="obj">object that you need to pass to method</param>
+        protected virtual void StartWorker(Action<object> method, object obj)
+        {
+            ThreadPool.QueueUserWorkItem(new WaitCallback(method), obj);
+        }
 
-		protected abstract AdapterAndMesh GetAdapterAndMesh(Renderer renderer);
+        void WorkForWorker(object obj)
+        {
+            try
+            {
+                var sliceTry = (SliceTry) obj;
+                Work(sliceTry);
+                sliceTry.Finished = true;
+            }
+            catch (Exception ex)
+            {
+                UnityEngine.Debug.LogException(ex);
+            }
+        }
 
-		/// <summary>
-		/// You need to override this to use your thead pool
-		/// </summary>
-		/// <param name="method">method that you need to call</param>
-		/// <param name="obj">object that you need to pass to method</param>
-		protected virtual void StartWorker(Action<object> method, object obj)
-		{
-			ThreadPool.QueueUserWorkItem(new WaitCallback(method), obj);
-		}
+        void Work(SliceTry sliceTry)
+        {
+            var somethingOnNeg = false;
+            var somethingOnPos = false;
+            for (var i = 0; i < sliceTry.items.Length; i++)
+            {
+                var sliceTryItem = sliceTry.items[i];
 
-		void WorkForWorker(object obj)
-		{
-			try
-			{
-				var sliceTry = (SliceTry)obj;
-				Work(sliceTry);
-				sliceTry.Finished = true;
-			}
-			catch (Exception ex)
-			{
-				UnityEngine.Debug.LogException(ex);
-			}
-		}
+                if (sliceTryItem == null)
+                    continue;
 
-		void Work(SliceTry sliceTry)
-		{
-			bool somethingOnNeg = false;
-			bool somethingOnPos = false;
-			for (int i = 0; i < sliceTry.items.Length; i++)
-			{
-				var sliceTryItem = sliceTry.items[i];
+                var meshDissector = sliceTryItem.meshDissector;
+                sliceTryItem.SliceResult = meshDissector.Slice();
 
-				if (sliceTryItem == null)
-					continue;
+                if (sliceTryItem.SliceResult == SliceResult.Neg |
+                    sliceTryItem.SliceResult == SliceResult.Duplicate |
+                    sliceTryItem.SliceResult == SliceResult.Sliced)
+                {
+                    somethingOnNeg = true;
+                }
 
-				var meshDissector = sliceTryItem.meshDissector;
-				sliceTryItem.SliceResult = meshDissector.Slice();
+                if (sliceTryItem.SliceResult == SliceResult.Pos |
+                    sliceTryItem.SliceResult == SliceResult.Duplicate |
+                    sliceTryItem.SliceResult == SliceResult.Sliced)
+                {
+                    somethingOnPos = true;
+                }
+            }
 
-				if (sliceTryItem.SliceResult == SliceResult.Neg |
-					sliceTryItem.SliceResult == SliceResult.Duplicate |
-					sliceTryItem.SliceResult == SliceResult.Sliced)
-				{
-					somethingOnNeg = true;
-				}
+            sliceTry.sliced = somethingOnNeg & somethingOnPos;
+        }
 
-				if (sliceTryItem.SliceResult == SliceResult.Pos |
-					sliceTryItem.SliceResult == SliceResult.Duplicate |
-					sliceTryItem.SliceResult == SliceResult.Sliced)
-				{
-					somethingOnPos = true;
-				}
-			}
+        void Update()
+        {
+            Profiler.BeginSample("GetFinishedTask");
+            var sliceTry = GetFinishedTask();
+            Profiler.EndSample();
 
-			sliceTry.sliced = somethingOnNeg & somethingOnPos;
+            if (sliceTry == null)
+                return;
 
-			OnSliceFinishedWorkerThread(sliceTry.sliced, sliceTry.sliceData.addData);
-		}
+            Profiler.BeginSample("SliceTryFinished");
+            SliceTryFinished(sliceTry);
+            Profiler.EndSample();
+        }
 
-		protected virtual void OnSliceFinishedWorkerThread(bool sliced, object addData) { }
+        private void SliceTryFinished(SliceTry sliceTry)
+        {
+            BzSliceTryResult result = null;
+            if (sliceTry.sliced)
+            {
+                Profiler.BeginSample("ApplyChanges");
+                result = ApplyChanges(sliceTry);
+                Profiler.EndSample();
+            }
 
-		void Update()
-		{
-			Profiler.BeginSample("GetFinishedTask");
-			var sliceTry = GetFinishedTask();
-			Profiler.EndSample();
+            if (result == null)
+            {
+                result = new BzSliceTryResult(false, sliceTry.sliceData.addData);
+            }
+            else
+            {
+                Profiler.BeginSample("InvokeEvents");
+                InvokeEvents(result.outObjectNeg, result.outObjectPos);
+                Profiler.EndSample();
+            }
 
-			if (sliceTry == null)
-				return;
-			
-			Profiler.BeginSample("SliceTryFinished");
-			SliceTryFinished(sliceTry);
-			Profiler.EndSample();
-		}
+            Profiler.BeginSample("OnSliceFinished");
+            OnSliceFinished(result);
+            Profiler.EndSample();
 
-		private void SliceTryFinished(SliceTry sliceTry)
-		{
-			BzSliceTryResult result = null;
-			if (sliceTry.sliced)
-			{
-				Profiler.BeginSample("ApplyChanges");
-				result = ApplyChanges(sliceTry);
-				Profiler.EndSample();
-			}
-
-			if (result == null)
-			{
-				result = new BzSliceTryResult(false, sliceTry.sliceData.addData);
-			}
-			else
-			{
-				Profiler.BeginSample("InvokeEvents");
-				InvokeEvents(result.outObjectNeg, result.outObjectPos);
-				Profiler.EndSample();
-			}
-
-			Profiler.BeginSample("OnSliceFinished");
-			OnSliceFinished(result);
-			Profiler.EndSample();
-
-			if (result.sliced)
-			{
-				result.outObjectNeg.GetComponent<LazyActionRunner>().RunLazyActions();
-				result.outObjectPos.GetComponent<LazyActionRunner>().RunLazyActions();
-			}
-
-			if (sliceTry.callBack != null)
-			{
-				Profiler.BeginSample("CallBackMethod");
-				sliceTry.callBack(result);
-				Profiler.EndSample();
-			}
-		}
+            if (sliceTry.callBack != null)
+            {
+                Profiler.BeginSample("CallBackMethod");
+                sliceTry.callBack(result);
+                Profiler.EndSample();
+            }
+        }
 
         private void InvokeEvents(GameObject resultNeg, GameObject resultPos)
-		{
-			var events = resultNeg.GetComponents<IBzObjectSlicedEvent>();
-			for (int i = 0; i < events.Length; i++)
-				events[i].ObjectSliced(gameObject, resultNeg, resultPos);
-		}
+        {
+            var events = resultNeg.GetComponents<IBzObjectSlicedEvent>();
+            for (var i = 0; i < events.Length; i++)
+                events[i].ObjectSliced(gameObject, resultNeg, resultPos);
+        }
 
-		private BzSliceTryResult ApplyChanges(SliceTry sliceTry)
+        private BzSliceTryResult ApplyChanges(SliceTry sliceTry)
         {
             // duplicate object
             GameObject resultObjNeg, resultObjPos;
             GetNewObjects(out resultObjNeg, out resultObjPos);
+            
             var renderersNeg = GetRenderers(resultObjNeg);
             var renderersPos = GetRenderers(resultObjPos);
-			resultObjNeg.AddComponent<LazyActionRunner>();
-			resultObjPos.AddComponent<LazyActionRunner>();
-			
+
             if (renderersNeg.Length != renderersPos.Length |
                 renderersNeg.Length != sliceTry.items.Length)
             {
@@ -251,10 +223,10 @@ namespace BzKovSoft.ObjectSlicer
                 return null;
             }
 
-            BzSliceTryResult result = new BzSliceTryResult(true, sliceTry.sliceData.addData);
+            var result = new BzSliceTryResult(true, sliceTry.sliceData.addData);
             result.meshItems = new BzMeshSliceResult[sliceTry.items.Length];
 
-            for (int i = 0; i < sliceTry.items.Length; i++)
+            for (var i = 0; i < sliceTry.items.Length; i++)
             {
                 var sliceTryItem = sliceTry.items[i];
                 if (sliceTryItem == null)
@@ -271,147 +243,140 @@ namespace BzKovSoft.ObjectSlicer
                     var itemResult = GetItemResult(sliceTryItem, rendererNeg, rendererPos);
                     result.meshItems[i] = itemResult;
                 }
-
-                if (sliceTryItem.SliceResult == SliceResult.Neg)
-                    DeleteRenderer(rendererPos);
-
-                if (sliceTryItem.SliceResult == SliceResult.Pos)
-                    DeleteRenderer(rendererNeg);
             }
 
             result.outObjectNeg = resultObjNeg;
             result.outObjectPos = resultObjPos;
 
-			Events.SliceResult.Call(result);
-			gameObject.SetActive(false);
-			return result;
+            Events.SliceResult.Call(result);
+            gameObject.SetActive(false);
+            return result;
         }
 
         protected virtual void GetNewObjects(out GameObject resultObjNeg, out GameObject resultObjPos)
         {
             resultObjNeg = Instantiate(this.gameObject, this.gameObject.transform.parent);
-			resultObjPos = Instantiate(this.gameObject, this.gameObject.transform.parent);
+            resultObjPos = Instantiate(this.gameObject, this.gameObject.transform.parent);
 
             resultObjPos.name = resultObjNeg.name + "_pos";
-			resultObjNeg.name = resultObjNeg.name + "_neg";
+            resultObjNeg.name = resultObjNeg.name + "_neg";
         }
 
         private static void DeleteRenderer(Renderer renderer)
-		{
-			GameObject.Destroy(renderer);
-			var mf = renderer.gameObject.GetComponent<MeshFilter>();
-			if (mf != null)
-			{
-				GameObject.Destroy(mf);
-			}
-		}
+        {
+            GameObject.Destroy(renderer);
+            var mf = renderer.gameObject.GetComponent<MeshFilter>();
+            if (mf != null)
+            {
+                GameObject.Destroy(mf);
+            }
+        }
 
-		protected abstract BzSliceTryData PrepareData(Plane plane);
+        protected abstract BzSliceTryData PrepareData(Plane plane);
 
-		protected abstract void OnSliceFinished(BzSliceTryResult result);
+        protected abstract void OnSliceFinished(BzSliceTryResult result);
 
-		// ReSharper disable Unity.PerformanceAnalysis
-		public void Slice(Plane plane, int sliceId, Action<BzSliceTryResult> callBack)
-		{
-			if (this == null)	// if this component was destroied
-				return;
+        // ReSharper disable Unity.PerformanceAnalysis
+        public void Slice(Plane plane, int sliceId, Action<BzSliceTryResult> callBack)
+        {
+            if (this == null) // if this component was destroied
+                return;
 
-			float currentSliceTime = Time.time;
+            var currentSliceTime = Time.time;
 
-			// we should prevent slicing same object:
-			// - if _delayBetweenSlices was not exceeded
-			// - with the same sliceId
-			if ((sliceId == 0 & _lastSliceTime + _delayBetweenSlices > currentSliceTime) |
-				(sliceId != 0 & _sliceId == sliceId))
-			{
-				return;
-			}
+            // we should prevent slicing same object:
+            // - if _delayBetweenSlices was not exceeded
+            // - with the same sliceId
+            if ((sliceId == 0 & _lastSliceTime + _delayBetweenSlices > currentSliceTime) |
+                (sliceId != 0 & _sliceId == sliceId))
+            {
+                return;
+            }
 
-			// exit if it have LazyActionRunner
-			if (GetComponent<LazyActionRunner>() != null)
-				return;
+            // exit if it have LazyActionRunner
+            if (GetComponent<LazyActionRunner>() != null)
+                return;
 
-			_lastSliceTime = currentSliceTime;
-			_sliceId = sliceId;
+            _lastSliceTime = currentSliceTime;
+            _sliceId = sliceId;
 
-			if (_defaultSliceMaterial == null)
-				throw new InvalidOperationException("DefaultSliceMaterial == null");
+            if (_defaultSliceMaterial == null)
+                throw new InvalidOperationException("DefaultSliceMaterial == null");
 
-			var data = PrepareData(plane);
-			if (data == null)
-			{
-				if (callBack != null)
-					callBack(null);
-				return;
-			}
+            var data = PrepareData(plane);
+            if (data == null)
+            {
+                if (callBack != null)
+                    callBack(null);
+                return;
+            }
 
-			if (!data.componentManager.Success)
-			{
-				if (callBack != null)
-					callBack(new BzSliceTryResult(false, data.addData));
-				return;
-			}
+            if (!data.componentManager.Success)
+            {
+                if (callBack != null)
+                    callBack(new BzSliceTryResult(false, data.addData));
+                return;
+            }
 
-			StartSlice(data, callBack);
-		}
+           StartCoroutine( StartSlice(data, callBack));
+        }
 
-		private SliceTry GetFinishedTask()
-		{
-			if (_sliceTrys.Count == 0)
-				return null;
+        private SliceTry GetFinishedTask()
+        {
+            if (_sliceTrys.Count == 0)
+                return null;
 
-			var sliceTry = _sliceTrys.Peek();
+            var sliceTry = _sliceTrys.Peek();
 
-			if (sliceTry == null || !sliceTry.Finished)
-				return null;
+            if (sliceTry == null || !sliceTry.Finished)
+                return null;
 
-			_sliceTrys.Dequeue();
+            return _sliceTrys.Dequeue();
+        }
 
-			return sliceTry;
-		}
+        private static BzMeshSliceResult GetItemResult(SliceTryItem sliceTryItem, Renderer rendererNeg,
+            Renderer rendererPos)
+        {
+            var itemResult = new BzMeshSliceResult {rendererNeg = rendererNeg, rendererPos = rendererPos};
 
-		private static BzMeshSliceResult GetItemResult(SliceTryItem sliceTryItem, Renderer rendererNeg, Renderer rendererPos)
-		{
-			BzMeshSliceResult itemResult = new BzMeshSliceResult();
-			itemResult.rendererNeg = rendererNeg;
-			itemResult.rendererPos = rendererPos;
+            var sliceEdgeNegResult = new BzSliceEdgeResult[sliceTryItem.meshDissector.CapsNeg.Count];
+            for (var i = 0; i < sliceEdgeNegResult.Length; i++)
+            {
+                var edgeResult = new BzSliceEdgeResult();
+                sliceEdgeNegResult[i] = edgeResult;
+                edgeResult.capsData = sliceTryItem.meshDissector.CapsNeg[i];
+            }
 
-			var sliceEdgeNegResult = new BzSliceEdgeResult[sliceTryItem.meshDissector.CapsNeg.Count];
-			for (int i = 0; i < sliceEdgeNegResult.Length; i++)
-			{
-				var edgeResult = new BzSliceEdgeResult();
-				sliceEdgeNegResult[i] = edgeResult;
-				edgeResult.capsData = sliceTryItem.meshDissector.CapsNeg[i];
-			}
-			itemResult.sliceEdgesNeg = sliceEdgeNegResult;
+            itemResult.sliceEdgesNeg = sliceEdgeNegResult;
 
-			var sliceEdgePosResult = new BzSliceEdgeResult[sliceTryItem.meshDissector.CapsPos.Count];
-			for (int i = 0; i < sliceEdgePosResult.Length; i++)
-			{
-				var edgeResult = new BzSliceEdgeResult();
-				sliceEdgePosResult[i] = edgeResult;
-				edgeResult.capsData = sliceTryItem.meshDissector.CapsPos[i];
-			}
-			itemResult.sliceEdgesPos = sliceEdgePosResult;
+            var sliceEdgePosResult = new BzSliceEdgeResult[sliceTryItem.meshDissector.CapsPos.Count];
+            for (var i = 0; i < sliceEdgePosResult.Length; i++)
+            {
+                var edgeResult = new BzSliceEdgeResult();
+                sliceEdgePosResult[i] = edgeResult;
+                edgeResult.capsData = sliceTryItem.meshDissector.CapsPos[i];
+            }
 
-			return itemResult;
-		}
+            itemResult.sliceEdgesPos = sliceEdgePosResult;
 
-		private Renderer[] GetRenderers(GameObject gameObject)
-		{
-			return gameObject.GetComponentsInChildren<Renderer>();
-		}
+            return itemResult;
+        }
 
-		public override string ToString()
-		{
-			// prevent from accessing the name in debuge mode.
-			return GetType().Name;
-		}
+        private Renderer[] GetRenderers(GameObject gameObject)
+        {
+            return gameObject.GetComponentsInChildren<Renderer>();
+        }
 
-		protected class AdapterAndMesh
-		{
-			public IBzSliceAddapter adapter;
-			public Mesh mesh;
-		}
-	}
+        public override string ToString()
+        {
+            // prevent from accessing the name in debuge mode.
+            return GetType().Name;
+        }
+
+        protected class AdapterAndMesh
+        {
+            public IBzSliceAddapter adapter;
+            public Mesh mesh;
+        }
+    }
 }

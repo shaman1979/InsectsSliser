@@ -80,15 +80,6 @@ namespace BzKovSoft.ObjectSlicer
 				var goNeg = collider.OriginalCollider.gameObject;
 				var goPos = componentPos.gameObject;
 
-				if (collider.SliceResult == SliceResult.Sliced)
-				{
-					AddCollider(collider.MeshDissector.SliceResultNeg.GenerateMesh(), collider.OriginalCollider.material, goNeg);
-					AddCollider(collider.MeshDissector.SliceResultPos.GenerateMesh(), collider.OriginalCollider.material, goPos);
-					Destroy(componentNeg);
-					Destroy(componentPos);
-					continue;
-				}
-
 				if (collider.SliceResult == SliceResult.Neg)
 				{
 					Destroy(componentPos);

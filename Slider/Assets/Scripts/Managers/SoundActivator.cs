@@ -3,6 +3,8 @@
 using LightDev;
 using Zenject;
 using System;
+using Slicer.EventAgregators;
+using Slicer.Sound.Messages;
 
 namespace Slicer.Sound
 {
@@ -10,24 +12,23 @@ namespace Slicer.Sound
     {
         private readonly AudioSource source;
         private readonly AudioClip sliceClip;
-
-        public SoundActivator(AudioSource source, [Inject(Id = "Slice")] AudioClip sliceClip)
+        private IEventsAgregator eventsAgregator;
+        
+        public SoundActivator(AudioSource source, [Inject(Id = "Slice")] AudioClip sliceClip, IEventsAgregator agregator)
         {
+            eventsAgregator = agregator;
             this.source = source;
             this.sliceClip = sliceClip;
         }
 
         public void Initialize()
         {
-            Events.SuccessfulSlice += OnSuccessfulSlice;
+            eventsAgregator.AddListener<SliceSoundPlayMessage>((message) => PlaySound(sliceClip));
         }
 
         public void Dispose()
         {
-            Events.SuccessfulSlice -= OnSuccessfulSlice;
         }
-
-        private void OnSuccessfulSlice(int left, int right) => PlaySound(sliceClip);
 
         private void PlaySound(AudioClip clip)
         {

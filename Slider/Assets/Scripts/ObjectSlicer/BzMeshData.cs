@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -80,9 +81,9 @@ namespace BzKovSoft.ObjectSlicer
             if (BoneWeights.Count == 0)	BoneWeights = null;
         }
 
-        public Mesh GenerateMesh()
+        public IEnumerator GenerateMesh(Action<Mesh> handler)
 		{
-			Mesh mesh = new Mesh();
+			var mesh = new Mesh();
 			
 			mesh.SetVertices(Vertices);
 			if (NormalsExists)
@@ -113,9 +114,16 @@ namespace BzKovSoft.ObjectSlicer
 			
 			mesh.subMeshCount = SubMeshes.Length;
 			for (int subMeshIndex = 0; subMeshIndex < SubMeshes.Length; ++subMeshIndex)
+			{
 				mesh.SetTriangles(SubMeshes[subMeshIndex], subMeshIndex);
 
-			return mesh;
+				if (subMeshIndex % 50 == 0)
+				{
+					yield return null;
+				}
+			}
+
+			handler?.Invoke(mesh);
 		}
     }
 }

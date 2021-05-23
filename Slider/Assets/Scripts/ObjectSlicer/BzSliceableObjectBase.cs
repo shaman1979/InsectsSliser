@@ -15,15 +15,13 @@ namespace BzKovSoft.ObjectSlicer
 	/// </summary>
 	public abstract class BzSliceableObjectBase : BzSliceableBase
 	{
-		protected override AdapterAndMesh GetAdapterAndMesh(Renderer renderer)
+		protected override AdapterAndMesh GetAdapterAndMesh(MeshFilter meshFilter)
 		{
-			var meshRenderer = renderer as MeshRenderer;
-			
-			if (meshRenderer != null)
+			if (meshFilter != null)
 			{
 				var result = new AdapterAndMesh();
-				result.mesh = meshRenderer.gameObject.GetComponent<MeshFilter>().sharedMesh;
-				result.adapter = new BzSliceMeshFilterAddapter(result.mesh.vertices, meshRenderer.gameObject);
+				result.mesh = meshFilter.sharedMesh;
+				result.adapter = new BzSliceMeshFilterAddapter(result.mesh.vertices, meshFilter.gameObject);
 				return result;
 			}
 
