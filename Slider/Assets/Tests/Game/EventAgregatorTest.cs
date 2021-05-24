@@ -5,7 +5,7 @@ using Slicer.EventAgregators;
 using UnityEngine;
 using UnityEngine.TestTools;
 
-namespace Tests
+namespace Tests.Game
 {
     public class EventAgregatorTest
     {

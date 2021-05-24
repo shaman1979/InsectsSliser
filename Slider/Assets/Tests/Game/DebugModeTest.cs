@@ -12,7 +12,7 @@ using UnityEngine;
 using UnityEngine.TestTools;
 using UnityEngine.UI;
 
-namespace Tests
+namespace Tests.Game
 {
     public class DebugModeTest
     {
@@ -42,7 +42,7 @@ namespace Tests
             //arrange
             EventsAgregator eventAgregator = new EventsAgregator();
             var debugWindow = new GameObject("DebugWindow").AddComponent<DebugWindow>();
-            debugWindow.gameObject.SetActive(true);
+            debugWindow.gameObject.SetActive(false);
             
             //act
             debugWindow.Subscribe(eventAgregator);
@@ -50,6 +50,22 @@ namespace Tests
             
             //assert
             Assert.IsTrue(debugWindow.gameObject.activeSelf);
+        }
+        
+        [Test]
+        public void WhenDebugModeDeactive_AndMessagePublish_ThenDebugWindowDeactive()
+        {
+            //arrange
+            EventsAgregator eventAgregator = new EventsAgregator();
+            var debugWindow = new GameObject("DebugWindow").AddComponent<DebugWindow>();
+            debugWindow.gameObject.SetActive(false);
+            
+            //act
+            debugWindow.Subscribe(eventAgregator);
+            eventAgregator.Invoke(new DebugModeDeactiveMessage());
+            
+            //assert
+            Assert.IsFalse(debugWindow.gameObject.activeSelf);
         }
     }
 }
