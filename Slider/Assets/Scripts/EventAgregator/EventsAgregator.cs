@@ -7,6 +7,8 @@ namespace Slicer.EventAgregators
 {
 	public class EventsAgregator : IEventsAgregator
 	{
+		public Dictionary<Type, Delegate> Subscribers => delegates;
+		
 		private readonly Dictionary<Type, Delegate> delegates = new Dictionary<Type, Delegate>();
 
 		public void AddListener<T>(Action<T> action)

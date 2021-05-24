@@ -7,6 +7,8 @@ namespace Slicer.EventAgregators
 {
 	public interface IEventsAgregator
 	{
+		Dictionary<Type, Delegate> Subscribers { get; }
+
 		void RegisterType<T>();
 
 		void Invoke<T>(T obj);
