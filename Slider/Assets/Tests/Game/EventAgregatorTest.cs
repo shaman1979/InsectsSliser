@@ -10,7 +10,7 @@ namespace Tests
     public class EventAgregatorTest
     {
         [Test]
-        public void WhenObjectSubscribe_AndSubscribersIsEmpty_ThenSubscribersShoudBeOne()
+        public void WhenObjectSubscribe_AndSubscribersIsEmpty_ThenSubscribersIsNotEmpty()
         {
             //arrange
             IEventsAgregator eventsAgregator = new EventsAgregator();
@@ -21,6 +21,22 @@ namespace Tests
             
             //assert
             Assert.IsNotEmpty(eventsAgregator.Subscribers);
+        }
+
+        [Test]
+        public void WhenMessagePublish_AndSubscribeMessage_ThenSubscriberReceivedMessage()
+        {
+            //arrange
+            IEventsAgregator eventsAgregator = new EventsAgregator();
+            
+            var isMessageReceived = false;
+            eventsAgregator.AddListener<bool>(message => isMessageReceived = message);
+            
+            //act
+            eventsAgregator.Invoke(true);
+
+            //assert
+            Assert.IsTrue(isMessageReceived);
         }
     }
 }
