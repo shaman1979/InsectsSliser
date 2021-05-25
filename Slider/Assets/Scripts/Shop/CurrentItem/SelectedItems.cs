@@ -49,9 +49,14 @@ namespace Slicer.Items
 
             LoadItems();
 
-            if (selectedItems.Count.Equals(0))
+            if (!selectedItems.ContainsKey(ItemTypes.Khife))
             {
-                LoadDefaultItem();
+                LoadDefaultItem(ItemTypes.Khife);
+            }
+            
+            if (!selectedItems.ContainsKey(ItemTypes.Table))
+            {
+                LoadDefaultItem(ItemTypes.Table);
             }
         }
 
@@ -66,12 +71,11 @@ namespace Slicer.Items
             ResetItems();
         }
 
-        private void LoadDefaultItem()
+        private void LoadDefaultItem(ItemTypes type)
         {
             var items = ResourcesLoader.ShopElementsLoad(knifesPath, tablesPath);
 
-            SelectedItemChange(items[ItemTypes.Khife].CurrentElement);
-            SelectedItemChange(items[ItemTypes.Table].CurrentElement);
+            SelectedItemChange(items[type].CurrentElement);
         }
 
         public void SelectedItemChange(ShopItem item)
