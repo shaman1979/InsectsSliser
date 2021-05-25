@@ -22,6 +22,12 @@ namespace LightDev.UI
             return textComponent;
         }
 
+        public string GetText()
+        {
+            return textComponent.text;
+        }
+        
+        
         public virtual void SetText(string text)
         {
             textComponent.text = text;

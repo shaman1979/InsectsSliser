@@ -8,6 +8,7 @@ using DG.Tweening;
 using Slicer.EventAgregators;
 using Zenject;
 using Slicer.Game;
+using Slicer.HP;
 
 namespace MeshSlice.UI
 {
@@ -20,7 +21,7 @@ namespace MeshSlice.UI
         public Base tapToReplay;
 
         [Inject]
-        private HPInitializer hpInitializer;
+        private HpInitializer hpInitializer;
 
         private bool isHpFilled;
 

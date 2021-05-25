@@ -2,41 +2,36 @@
 using LightDev;
 using Slicer.Application.Storages;
 using System;
+using Slicer.EventAgregators;
+using Slicer.Game;
+using Slicer.HP.Messages;
+using Slicer.Logger;
+using Slicer.Tools;
 using UnityEngine;
 using Zenject;
 
-namespace Slicer.Game
+namespace Slicer.HP
 {
-    public class HPInitializer : IInitializable, IDisposable
+    public class HpInitializer : IInitializable, IDisposable
     {
         private const int XP_FOR_SLISED_OBJECT = 50;
-
-        [Inject]
         private readonly LevelsInitializer levelsInitializer;
+        private readonly IEventsAgregator eventsAgregator;
 
 
-        private int currentProgress;
         private int maxProgress;
 
-        public HPInitializer(LevelsInitializer levelsInitializer)
+        public HpInitializer(LevelsInitializer levelsInitializer, IEventsAgregator eventsAgregator)
         {
             this.levelsInitializer = levelsInitializer;
+            this.eventsAgregator = eventsAgregator;
         }
 
-        public int GetHP
-        {
-            get => PlayerPrefs.GetInt(PlayerPrefsKeyStorage.XP, 0);
-        }
+        public int GetHP => PlayerPrefs.GetInt(PlayerPrefsKeyStorage.XP, 0);
 
-        public int GetCurrentProgress
-        {
-            get => currentProgress;
-        }
+        public int CurrentProgress { get; private set; }
 
-        public int GetMaxProgress
-        {
-            get => levelsInitializer.GetMeshesCountOnLevel() * XP_FOR_SLISED_OBJECT;
-        }
+        public int GetMaxProgress => levelsInitializer.GetMeshesCountOnLevel() * XP_FOR_SLISED_OBJECT;
 
         public void Initialize()
         {
@@ -50,9 +45,15 @@ namespace Slicer.Game
             Events.RequestHpFill -= OnRequestHpFill;
         }
 
-        public void IncreaseProgress(float value)
+        public void IncreaseProgress(float progress)
         {
-            SetProgress(GetCurrentProgress + (int)(value * XP_FOR_SLISED_OBJECT));
+            if (progress.IsNegative().AssertTry($"Значение {nameof(progress)} не может быть отрицательным."))
+                return;
+
+            if (progress.IsMore(1).AssertTry($"Значение {nameof(progress)} не может быть больше 1."))
+                return;
+            
+            SetProgress(CurrentProgress + (int)(progress * XP_FOR_SLISED_OBJECT));
         }
 
         private void SetHP(int value)
@@ -60,28 +61,29 @@ namespace Slicer.Game
             PlayerPrefs.SetInt(PlayerPrefsKeyStorage.XP, value);
             Events.HpChanged.Call();
         }
+        
         private void SetProgress(int value)
         {
-            currentProgress = value;
-            Events.ProgressChanged.Call();
+            CurrentProgress = value;
+            eventsAgregator.Invoke(new CurrentProgressMessage(CurrentProgress, GetMaxProgress));
         }
 
         private void OnPostReset()
         {
-            currentProgress = 0;
+            CurrentProgress = 0;
         }
 
         private void OnRequestHpFill()
         {
-            int progress = currentProgress;
-            int hp = GetHP;
+            var progress = CurrentProgress;
+            var hp = GetHP;
 
             var sequences = DOTween.Sequence();
 
             sequences.Append(DOTween.Sequence().AppendInterval(0.5f));
             sequences.Append(DOTween.To((value) =>
             {
-                int p = (int)Mathf.Lerp(0, progress, value);
+                var p = (int)Mathf.Lerp(0, progress, value);
                 SetProgress(progress - p);
                 SetHP(hp + p);
             }, 0, 1, 1));

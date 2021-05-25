@@ -4,6 +4,8 @@ using LightDev.Core;
 using LightDev.UI;
 using Slicer.EventAgregators;
 using Slicer.Game;
+using Slicer.HP;
+using Slicer.HP.Messages;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
@@ -27,13 +29,15 @@ namespace MeshSlice.UI
         private LevelsInitializer levelsInitializer;
 
         [Inject]
-        private HPInitializer hpInitializer;
+        private HpInitializer hpInitializer;
+
+        private int maxProgress;
 
         public override void Subscribe(IEventsAgregator eventAgregator)
         {
             Events.GameStart += Show;
             Events.PreReset += Hide;
-            Events.ProgressChanged += OnProgressChanged;
+            eventAgregator.AddListener<CurrentProgressMessage>(message => UpdateProgress(message.Progress, message.LevelProgress));
             Events.GameFinish += OnGameFinish;
         }
 
@@ -41,7 +45,6 @@ namespace MeshSlice.UI
         {
             Events.GameStart -= Show;
             Events.PreReset -= Hide;
-            Events.ProgressChanged -= OnProgressChanged;
             Events.GameFinish -= OnGameFinish;
         }
 
@@ -52,20 +55,21 @@ namespace MeshSlice.UI
             );
         }
 
-        private void OnProgressChanged()
+        private void UpdateProgress(int currentProgress, int maxProgress)
         {
-            UpdateProgress();
+            progressImage.fillAmount = (float)currentProgress / maxProgress;
+            progressText.SetText($"{currentProgress}/{maxProgress}");
         }
 
-        private void UpdateProgress()
+        private void UpdateMaxProgress(int maxProgress)
         {
-            progressImage.fillAmount = (float)hpInitializer.GetCurrentProgress / hpInitializer.GetMaxProgress;
-            progressText.SetText($"{hpInitializer.GetCurrentProgress}/{hpInitializer.GetMaxProgress}");
+            this.maxProgress = maxProgress;
         }
+        
 
         protected override void OnStartShowing()
         {
-            UpdateProgress();
+            UpdateProgress(hpInitializer.CurrentProgress, hpInitializer.GetMaxProgress);
             levelText.SetText($"{levelsInitializer.GetLevelName()}");
 
             holder.SetPositionY(500);

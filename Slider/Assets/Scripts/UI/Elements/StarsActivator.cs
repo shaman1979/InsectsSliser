@@ -4,6 +4,9 @@ using Slicer.Application.Storages;
 using Slicer.Game;
 using System.Collections;
 using System.Collections.Generic;
+using Slicer.EventAgregators;
+using Slicer.HP;
+using Slicer.HP.Messages;
 using UnityEngine;
 using Zenject;
 
@@ -24,7 +27,9 @@ namespace Slicer.UI
         private string starKey = "Stars";
 
         [Inject]
-        private HPInitializer HPInitializer;
+        private HpInitializer HPInitializer;
+
+        [Inject] private IEventsAgregator eventsAgregator;
 
         private static int totalStar = 0;
         private static int starSession = 0;
@@ -41,16 +46,16 @@ namespace Slicer.UI
 
         private void Awake()
         {
-            Events.ProgressChanged += OnProgressChanged;
+            eventsAgregator.AddListener<CurrentProgressMessage>(message => OnProgressChanged(message.Progress));
             Events.GameStart += ResetAll;
             Events.GameFinish += SetTotalStars;
 
             Load();
         }
 
-        private void OnProgressChanged()
+        private void OnProgressChanged(float currentProgress)
         {
-            var progress = (float)HPInitializer.GetCurrentProgress / HPInitializer.GetMaxProgress;
+            var progress = (float)currentProgress / HPInitializer.GetMaxProgress;
 
             progress = Mathf.Clamp(progress, 0, 1);
 
