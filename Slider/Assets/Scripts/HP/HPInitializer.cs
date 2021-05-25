@@ -65,12 +65,18 @@ namespace Slicer.HP
         private void SetProgress(int value)
         {
             CurrentProgress = value;
-            eventsAgregator.Invoke(new CurrentProgressMessage(CurrentProgress, GetMaxProgress));
+            eventsAgregator.Invoke(new CurrentProgressMessage(CurrentProgress));
         }
 
+        private void MaxProgressPublish(int maxProgress)
+        {
+            eventsAgregator.Invoke(new MaxProgressMessage(maxProgress));
+        }
+        
         private void OnPostReset()
         {
             CurrentProgress = 0;
+            MaxProgressPublish(GetMaxProgress);
         }
 
         private void OnRequestHpFill()

@@ -34,11 +34,13 @@ namespace Tests.Game
 
         [Test]
         [TestCase(50, 100,0.5f, "50/100")]
+        [TestCase(10, 200,0.05f, "10/200")]
+        [TestCase(0, 0,0f, "0/0")]
         public void WhenIncreaseProgress_AndMessagePublish_ThenGameWindowUIProgressUpdate(int currentProgress, int allProgress, float fillAmount, string amountText)
         {
             //Arrange
             var progressImage = new GameObject("ProgressImage").AddComponent<Image>();
-            var progressText = new GameObject("ProgressImage").AddComponent<BaseText>();
+            var progressText = new GameObject("ProgressText").AddComponent<BaseText>();
 
             IEventsAgregator eventsAgregator = new EventsAgregator();
             var gameWindow = new GameObject("GameWindow").AddComponent<GameWindow>();
@@ -48,7 +50,8 @@ namespace Tests.Game
             gameWindow.progressText = progressText;
 
             //Act
-            eventsAgregator.Invoke(new CurrentProgressMessage(currentProgress, allProgress));
+            eventsAgregator.Invoke(new CurrentProgressMessage(currentProgress));
+            eventsAgregator.Invoke(new MaxProgressMessage(allProgress));
             
             //Assert
             Assert.AreEqual(fillAmount,progressImage.fillAmount);
