@@ -4,6 +4,7 @@ using LightDev.Core;
 using LightDev.UI;
 using Slicer.EventAgregators;
 using Slicer.Game;
+using Slicer.HP;
 using Slicer.Shop.Events;
 using Slicer.UI.Elements;
 using UnityEngine;
@@ -44,7 +45,7 @@ namespace Slicer.UI.Windows
         private LevelsInitializer levelsInitializer;
 
         [Inject]
-        private HPInitializer hpInitializer;
+        private HpInitializer hpInitializer;
 
         public override void Subscribe(IEventsAgregator eventAgregator)
         {

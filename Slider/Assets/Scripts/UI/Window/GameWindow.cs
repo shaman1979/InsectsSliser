@@ -4,6 +4,10 @@ using LightDev.Core;
 using LightDev.UI;
 using Slicer.EventAgregators;
 using Slicer.Game;
+using Slicer.HP;
+using Slicer.HP.Messages;
+using Slicer.Logger;
+using Slicer.Tools;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
@@ -12,60 +16,73 @@ namespace MeshSlice.UI
 {
     public class GameWindow : CanvasElement
     {
-        [Header("References")]
-        public Base holder;
+        [Header("References")] public Base holder;
         public Base progress;
 
-        [Header("Text")]
-        public BaseText levelText;
+        [Header("Text")] public BaseText levelText;
         public BaseText progressText;
 
-        [Header("Progress")]
-        public Image progressImage;
+        [Header("Progress")] public Image progressImage;
 
-        [Inject]
-        private LevelsInitializer levelsInitializer;
+        [Inject] private LevelsInitializer levelsInitializer;
 
-        [Inject]
-        private HPInitializer hpInitializer;
+        [Inject] private HpInitializer hpInitializer;
+
+        private int maxProgress;
+        private int currentProgress;
 
         public override void Subscribe(IEventsAgregator eventAgregator)
         {
             Events.GameStart += Show;
             Events.PreReset += Hide;
-            Events.ProgressChanged += OnProgressChanged;
             Events.GameFinish += OnGameFinish;
+
+            eventAgregator.AddListener<CurrentProgressMessage>(message => UpdateCurrentProgress(message.Progress));
+            eventAgregator.AddListener<MaxProgressMessage>(message => UpdateMaxProgress(message.MaxProgress));
         }
 
         public override void Unsubscribe()
         {
             Events.GameStart -= Show;
             Events.PreReset -= Hide;
-            Events.ProgressChanged -= OnProgressChanged;
             Events.GameFinish -= OnGameFinish;
         }
 
         private void OnGameFinish()
         {
             progress.Sequence(
-              progress.MoveY(-1000, 0.4f).SetEase(Ease.InOutSine)
+                progress.MoveY(-1000, 0.4f).SetEase(Ease.InOutSine)
             );
         }
 
-        private void OnProgressChanged()
+        private void UpdateCurrentProgress(int progress)
         {
+            currentProgress = progress;
+            UpdateProgress();
+        }
+
+        private void UpdateMaxProgress(int progress)
+        {
+            maxProgress = progress;
             UpdateProgress();
         }
 
         private void UpdateProgress()
         {
-            progressImage.fillAmount = (float)hpInitializer.GetCurrentProgress / hpInitializer.GetMaxProgress;
-            progressText.SetText($"{hpInitializer.GetCurrentProgress}/{hpInitializer.GetMaxProgress}");
+            if (maxProgress.IsZero().AssertTry($"Значение {progress} не может быть равно нулю"))
+            {
+                progressImage.fillAmount = 0f;
+            }
+            else
+            {
+                progressImage.fillAmount = (float) currentProgress / maxProgress;
+            }
+
+            progressText.SetText($"{currentProgress}/{maxProgress}");
         }
 
         protected override void OnStartShowing()
         {
-            UpdateProgress();
             levelText.SetText($"{levelsInitializer.GetLevelName()}");
 
             holder.SetPositionY(500);
@@ -75,7 +92,7 @@ namespace MeshSlice.UI
         protected override void OnFinishShowing()
         {
             holder.Sequence(
-              holder.MoveY(0, 0.4f).SetEase(Ease.OutBack)
+                holder.MoveY(0, 0.4f).SetEase(Ease.OutBack)
             );
         }
     }

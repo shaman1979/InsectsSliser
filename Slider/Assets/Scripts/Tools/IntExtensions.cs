@@ -15,6 +15,16 @@ namespace Slicer.Tools
         {
             return value < 0;
         }
+
+        public static bool IsZero(this int value)
+        {
+            return value.Equals(0);
+        }
+
+        public static bool IsMore(this int value, int to)
+        {
+            return value.CompareTo(to).Equals(1);
+        }
     }
 }
 

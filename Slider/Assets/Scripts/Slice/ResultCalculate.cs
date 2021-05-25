@@ -6,6 +6,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Assets.Scripts.Tools;
 using Slicer.EventAgregators;
+using Slicer.HP;
 using Slicer.Sound.Messages;
 using UnityEngine;
 using Zenject;
@@ -18,7 +19,7 @@ namespace Slicer.Slice
         private SlicebleItemMovening ItemMovening;
 
         [Inject]
-        private HPInitializer hpInitializer;
+        private HpInitializer hpInitializer;
 
         [Inject] private AsyncHelper asyncHelper;
 

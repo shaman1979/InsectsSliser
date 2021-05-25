@@ -3,6 +3,7 @@ using Slicer.Application;
 using Slicer.DebugMode;
 using Slicer.EventAgregators;
 using Slicer.Game;
+using Slicer.HP;
 using Slicer.Levels;
 using Slicer.Sound;
 using UnityEngine;
@@ -28,7 +29,7 @@ namespace Slicer.DI
         {
             Container.BindInterfacesAndSelfTo<GameRestarter>().AsSingle();
             Container.BindInterfacesAndSelfTo<LevelsInitializer>().AsSingle();
-            Container.BindInterfacesAndSelfTo<HPInitializer>().AsSingle();
+            Container.BindInterfacesAndSelfTo<HpInitializer>().AsSingle();
             Container.BindInterfacesAndSelfTo<SoundActivator>().AsSingle();
             Container.BindInterfacesAndSelfTo<SceneLoader>().AsSingle();
             Container.BindInterfacesAndSelfTo<LevelModification>().AsSingle();
