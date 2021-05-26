@@ -3,16 +3,17 @@ using LightDev;
 using Slicer.UI;
 using Zenject;
 using System;
+using Level.Messages;
 using MeshSlice;
 using Slicer.Levels;
 using Slicer.Application.Storages;
+using Slicer.EventAgregators;
 
 namespace Slicer.Game
 {
     public class LevelsInitializer : IInitializable, IDisposable
     {
-        public event Action<LevelInfo> OnLevelChanged;
-
+        private readonly IEventsAgregator eventsAgregator;
         private readonly Setting setting;
 
         private int totalLevelIndex;
@@ -22,8 +23,9 @@ namespace Slicer.Game
 
         private LevelInfo[] Levels => setting.Levels.levels;
 
-        public LevelsInitializer(Setting setting)
+        public LevelsInitializer(Setting setting, IEventsAgregator eventsAgregator)
         {
+            this.eventsAgregator = eventsAgregator;
             this.setting = setting;
         }
 
@@ -47,13 +49,16 @@ namespace Slicer.Game
             nextMeshIndex = 0;
 
             currentLevels = LevelSelection();
-            OnLevelChanged?.Invoke(currentLevels);
+            eventsAgregator.Invoke(new CurrentLevelInitializeMessage(currentLevels));
         }
 
         private void OnGameFinish()
         {
             if (StarsActivator.HasLevelUp())
-                PlayerPrefs.SetInt(PlayerPrefsKeyStorage.LEVEL, totalLevelIndex + 1);
+            {
+                totalLevelIndex++;
+                PlayerPrefs.SetInt(PlayerPrefsKeyStorage.LEVEL, totalLevelIndex);
+            }
         }
 
         public MeshInfo GetFirstMesh()
