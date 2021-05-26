@@ -2,6 +2,8 @@
 using Slicer.Game;
 using System.Collections;
 using System.Collections.Generic;
+using Level.Messages;
+using Slicer.EventAgregators;
 using UnityEngine;
 using Zenject;
 
@@ -10,15 +12,17 @@ namespace Slicer.Levels
     public class LevelModification : IInitializable
     {
         private readonly LevelsInitializer levelsInitializer;
-
-        public LevelModification(LevelsInitializer levelsInitializer)
+        private IEventsAgregator eventsAgregator;
+        
+        public LevelModification(LevelsInitializer levelsInitializer, IEventsAgregator eventsAgregator)
         {
+            this.eventsAgregator = eventsAgregator;
             this.levelsInitializer = levelsInitializer;
         }
 
         public void Initialize()
         {
-            levelsInitializer.OnLevelChanged += ModifycationApply;
+            eventsAgregator.AddListener<CurrentLevelInitializeMessage>(message => ModifycationApply(message.Level));
         }
 
         private void ModifycationApply(LevelInfo level)

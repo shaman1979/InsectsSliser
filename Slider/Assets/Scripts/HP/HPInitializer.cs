@@ -54,6 +54,7 @@ namespace Slicer.HP
                 return;
             
             SetProgress(CurrentProgress + (int)(progress * XP_FOR_SLISED_OBJECT));
+            eventsAgregator.Invoke(new ProgressCalculateEndMessage());
         }
 
         private void SetHP(int value)

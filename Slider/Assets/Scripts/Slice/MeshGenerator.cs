@@ -4,6 +4,8 @@ using LightDev.Core;
 using MeshSlice;
 using Slicer.Game;
 using System;
+using Level.Messages;
+using Slicer.EventAgregators;
 using UnityEngine;
 using Zenject;
 
@@ -16,6 +18,8 @@ namespace Slicer.Slice
 
         [Inject]
         private LevelsInitializer levelsInitializer;
+
+        [Inject] private IEventsAgregator eventsAgregator;
 
         [SerializeField]
         private Base objectToSlice;
@@ -44,7 +48,7 @@ namespace Slicer.Slice
             }
             else
             {
-                Events.RequestFinish.Call();
+                eventsAgregator.Invoke(new MeshEndMessage());
             }
         }
 
