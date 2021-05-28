@@ -9,7 +9,7 @@ namespace Slicer.Slice
     public class SlicebleItemMovening : MonoBehaviour
     {
         public event Action OnMoveFinished;
-        public event Action<Mesh, Mesh> OnMoveningStarted;
+        public event Action<int, int> OnMoveningStarted;
 
         [SerializeField]
         private GameObject objectToSlice;
@@ -25,12 +25,12 @@ namespace Slicer.Slice
             Events.SliceResult += Movening;
         }
 
-        private void Movening(BzSliceTryResult result)
+        private void Movening(BzSliceTryResult result, int negTriangels, int posTriangels)
         {
             var left = result.outObjectNeg;
             var right = result.outObjectPos;
 
-            OnMoveningStarted?.Invoke(GetMesh(left), GetMesh(right));
+            OnMoveningStarted?.Invoke(negTriangels, posTriangels);
 
             RotateAll(left, right, objectToSlice.transform.eulerAngles.y);
 

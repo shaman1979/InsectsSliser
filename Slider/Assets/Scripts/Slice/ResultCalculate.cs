@@ -37,22 +37,24 @@ namespace Slicer.Slice
             ItemMovening.OnMoveningStarted -= StartCalculate;
         }
 
-        private void StartCalculate(Mesh right, Mesh left)
+        private void StartCalculate(int right, int left)
         {
             eventsAgregator.Invoke(new SliceSoundPlayMessage());
-            StartCoroutine(CalculateSlicePercentage(right, left));
+            CalculateSlicePercentage(right, left);
         }
 
-        private IEnumerator CalculateSlicePercentage(Mesh right, Mesh left)
+        private void CalculateSlicePercentage(int right, int left)
         {
-            yield return StartAreaCalculate(right, left, Calculate);
+            Calculate(right, left);
         }
 
         private void Calculate(float leftArea, float rightArea)
         {
             var areaSum = leftArea + rightArea;
 
-            var firstPercentage = (int) leftArea.Map(0, areaSum, 0, 100);
+            Debug.Log($"LeftArea {leftArea}, RightArea{rightArea}");
+            
+            var firstPercentage = (int)((leftArea / areaSum) * 100);
             var secondPercentage = 100 - firstPercentage;
 
             if (firstPercentage < secondPercentage)
@@ -68,41 +70,6 @@ namespace Slicer.Slice
 
             IncreaseGameProgress(firstPercentage, secondPercentage);
             Events.SuccessfulSlice.Call(firstPercentage, secondPercentage);
-        }
-
-        private IEnumerator StartAreaCalculate(Mesh negMesh, Mesh posMesh, Action<float, float> onCalculateFinished)
-        {
-            var vertices = negMesh.vertices;
-            var triangles = negMesh.triangles;
-
-            var negResult = 0f;
-            for (var p = 0; p < triangles.Length; p += 3)
-            {
-                negResult += GetArea(vertices[triangles[p + 1]] - vertices[triangles[p]],
-                    vertices[triangles[p + 2]] - vertices[triangles[p]]);
-                if (p % 50 == 0)
-                {
-                    yield return new WaitForSeconds(0.01f);
-                }
-            }
-            
-            vertices = posMesh.vertices; 
-            triangles = posMesh.triangles;
-            yield return null;
-            
-            var posResult = 0f;
-            for (var p = 0; p < triangles.Length; p += 3)
-            {
-                posResult += GetArea(vertices[triangles[p + 1]] - vertices[triangles[p]],
-                    vertices[triangles[p + 2]] - vertices[triangles[p]]);
-
-                if (p % 50 == 0)
-                {
-                     yield return new WaitForSeconds(0.01f);
-                }
-            }
-            
-            onCalculateFinished?.Invoke(negResult, posResult);
         }
 
         private float GetArea(Vector3 verticeFirst, Vector3 verticeSecond)

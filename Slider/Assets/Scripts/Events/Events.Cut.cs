@@ -6,6 +6,6 @@ namespace LightDev
     public partial class Events
     {
         public static Event<int, int> SuccessfulSlice;
-        public static Event<BzSliceTryResult> SliceResult;
+        public static Event<BzSliceTryResult, int, int> SliceResult;
     }
 }

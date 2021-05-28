@@ -109,21 +109,21 @@ namespace BzKovSoft.ObjectSlicer
 					var side1 = plane.GetSide(v1);
 					var side2 = plane.GetSide(v2);
 					var side3 = plane.GetSide(v3);
-					var PosSide = side1 | side2 | side3;
-					var NegSide = !side1 | !side2 | !side3;
+					var posSide = side1 | side2 | side3;
+					var negSide = !side1 | !side2 | !side3;
 
-					if (NegSide & PosSide)
+					if (negSide & posSide)
 					{
 						bzTriangle.DivideByPlane(
 							meshEditorNeg, meshEditorPos,
 							trianglesNegSliced, trianglesPosSliced,
 							side1, side2, side3);
 					}
-					else if (NegSide)
+					else if (negSide)
 					{
 						trianglesNeg.Add(bzTriangle);
 					}
-					else if (PosSide)
+					else if (posSide)
 					{
 						trianglesPos.Add(bzTriangle);
 					}

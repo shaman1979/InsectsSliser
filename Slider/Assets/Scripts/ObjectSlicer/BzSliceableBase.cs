@@ -248,7 +248,7 @@ namespace BzKovSoft.ObjectSlicer
             result.outObjectNeg = resultObjNeg;
             result.outObjectPos = resultObjPos;
 
-            Events.SliceResult.Call(result);
+            Events.SliceResult.Call(result, sliceTry.items[0].meshDissector.SliceResultNeg.Tangents.Count,  sliceTry.items[0].meshDissector.SliceResultPos.Tangents.Count);
             gameObject.SetActive(false);
             return result;
         }
