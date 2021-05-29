@@ -23,7 +23,7 @@ namespace Tests.Game
         public void WhenIncreaseProgress_AndCurrentProgressIsEmpty_ThenCurrentProgressChanged(float value, int result)
         {
             //arrange
-            var hpInitializer = new HpInitializer(null, new EventsAgregator());
+            var hpInitializer = new HpInitializer(null, new EventsAgregator(), null);
             
             //act
             hpInitializer.IncreaseProgress(value);

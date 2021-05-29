@@ -6,6 +6,7 @@ using Slicer.EventAgregators;
 using Slicer.Game;
 using Slicer.HP.Messages;
 using Slicer.Logger;
+using Slicer.Slice;
 using Slicer.Tools;
 using UnityEngine;
 using Zenject;
@@ -17,14 +18,16 @@ namespace Slicer.HP
         private const int XP_FOR_SLISED_OBJECT = 50;
         private readonly LevelsInitializer levelsInitializer;
         private readonly IEventsAgregator eventsAgregator;
+        private readonly ResultCalculate resultCalculate;
 
 
         private int maxProgress;
 
-        public HpInitializer(LevelsInitializer levelsInitializer, IEventsAgregator eventsAgregator)
+        public HpInitializer(LevelsInitializer levelsInitializer, IEventsAgregator eventsAgregator, ResultCalculate resultCalculate)
         {
             this.levelsInitializer = levelsInitializer;
             this.eventsAgregator = eventsAgregator;
+            this.resultCalculate = resultCalculate;
         }
 
         public int GetHP => PlayerPrefs.GetInt(PlayerPrefsKeyStorage.XP, 0);
@@ -37,6 +40,7 @@ namespace Slicer.HP
         {
             Events.PostReset += OnPostReset;
             Events.RequestHpFill += OnRequestHpFill;
+            resultCalculate.OnProgressCalculateEnded += IncreaseProgress;
         }
 
         public void Dispose()

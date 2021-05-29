@@ -5,6 +5,7 @@ using Slicer.EventAgregators;
 using Slicer.Game;
 using Slicer.HP;
 using Slicer.Levels;
+using Slicer.Slice;
 using Slicer.Sound;
 using UnityEngine;
 using Zenject;
@@ -25,6 +26,10 @@ namespace Slicer.DI
         [SerializeField]
         private ApplicationOptions options;
 
+        [SerializeField] private ResultCalculate resultCalculate;
+
+        [SerializeField] private SlicebleItemMovening sliceItemMove;
+
         public override void InstallBindings()
         {
             Container.BindInterfacesAndSelfTo<GameRestarter>().AsSingle();
@@ -34,12 +39,15 @@ namespace Slicer.DI
             Container.BindInterfacesAndSelfTo<SceneLoader>().AsSingle();
             Container.BindInterfacesAndSelfTo<LevelModification>().AsSingle();
 
+            Container.BindInstance(sliceItemMove);
+            
             Container.Bind<AsyncHelper>().FromNewComponentOn(new GameObject(nameof(AsyncHelper))).AsSingle();
 
             Container.BindInstance(source);
             Container.BindInstance(sliceClip).WithId("Slice");
 
             Container.BindInstance(options);
+            Container.BindInstance(resultCalculate);
 
             Container.BindInstance(levelInitializerSetting);
 

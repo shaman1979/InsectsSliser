@@ -15,5 +15,10 @@ namespace Slicer.Tools
         {
             return value.CompareTo(to).Equals(1);
         }
+
+        public static bool IsZero(this float value)
+        {
+            return value.Equals(0f);
+        }
     }
 }

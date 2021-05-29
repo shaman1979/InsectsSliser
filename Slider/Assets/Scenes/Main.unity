@@ -1139,6 +1139,8 @@ MonoBehaviour:
   sliceClip: {fileID: 8300000, guid: 6e2f95b4c76654ebe8f807a1dba0717c, type: 3}
   options:
     IsDebugMode: 1
+  resultCalculate: {fileID: 906162192}
+  sliceItemMove: {fileID: 906162191}
 --- !u!114 &694296651
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1606,7 +1608,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3983d5eee128a1648952855629a89320, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ItemMovening: {fileID: 906162191}
+  itemMovening: {fileID: 906162191}
 --- !u!114 &906162193
 MonoBehaviour:
   m_ObjectHideFlags: 0
