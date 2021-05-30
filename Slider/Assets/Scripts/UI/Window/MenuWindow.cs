@@ -81,7 +81,7 @@ namespace Slicer.UI.Windows
 
         private void UpdateStarCount()
         {
-            starText.SetText(StarsActivator.GetTotalStar());
+            starText.SetText(StarsActivator.GetTotalStar().ToString());
         }
 
         private void UpdateTexts()

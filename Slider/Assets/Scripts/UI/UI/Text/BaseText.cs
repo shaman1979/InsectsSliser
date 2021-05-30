@@ -12,7 +12,7 @@ namespace LightDev.UI
     {
         protected Text textComponent;
 
-        protected virtual void Awake()
+        public virtual void Awake()
         {
             textComponent = GetComponent<Text>();
         }
@@ -30,14 +30,10 @@ namespace LightDev.UI
         
         public virtual void SetText(string text)
         {
+            var name = gameObject.name;
             textComponent.text = text;
         }
-
-        public virtual void SetText(int text)
-        {
-            SetText(text.ToString());
-        }
-
+        
         public virtual Tween TweenColor(Color to, float duration)
         {
             return textComponent.DOColor(to, duration);

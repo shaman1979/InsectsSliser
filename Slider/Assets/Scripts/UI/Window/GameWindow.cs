@@ -19,14 +19,15 @@ namespace MeshSlice.UI
         [Header("References")] public Base holder;
         public Base progress;
 
-        [Header("Text")] public BaseText levelText;
-        public BaseText progressText;
+        [SerializeField]
+        private Text levelText;
+        
+        [SerializeField]
+        private Text progressText;
 
         [Header("Progress")] public Image progressImage;
 
         [Inject] private LevelsInitializer levelsInitializer;
-
-        [Inject] private HpInitializer hpInitializer;
 
         private int maxProgress;
         private int currentProgress;

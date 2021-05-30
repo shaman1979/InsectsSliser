@@ -7,6 +7,7 @@ using Slicer.EventAgregators;
 using Slicer.Game;
 using Slicer.HP;
 using Slicer.HP.Messages;
+using UI.Elements;
 using UnityEngine;
 using UnityEngine.TestTools;
 using UnityEngine.UI;
@@ -40,7 +41,7 @@ namespace Tests.Game
         {
             //Arrange
             var progressImage = new GameObject("ProgressImage").AddComponent<Image>();
-            var progressText = new GameObject("ProgressText").AddComponent<BaseText>();
+            var progressText = new GameObject("ProgressText").AddComponent<Text>();
 
             IEventsAgregator eventsAgregator = new EventsAgregator();
             var gameWindow = new GameObject("GameWindow").AddComponent<GameWindow>();
