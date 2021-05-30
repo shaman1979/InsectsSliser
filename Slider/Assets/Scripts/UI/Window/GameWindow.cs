@@ -8,6 +8,7 @@ using Slicer.HP;
 using Slicer.HP.Messages;
 using Slicer.Logger;
 using Slicer.Tools;
+using UI.Elements;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
@@ -25,13 +26,21 @@ namespace MeshSlice.UI
         [SerializeField]
         private Text progressText;
 
-        [Header("Progress")] public Image progressImage;
+        [SerializeField]
+        public Image progressImage;
 
         [Inject] private LevelsInitializer levelsInitializer;
 
         private int maxProgress;
         private int currentProgress;
 
+        public void Setup(Text levelText, Text progressText, Image progressImage)
+        {
+            this.levelText = levelText;
+            this.progressText = progressText;
+            this.progressImage = progressImage;
+        }
+        
         public override void Subscribe(IEventsAgregator eventAgregator)
         {
             Events.GameStart += Show;

@@ -2084,7 +2084,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   showTime: 0
   hideTime: 0
-  timer: {fileID: 122591206}
+  timer: {fileID: 122591205}
 --- !u!1 &1123095326
 GameObject:
   m_ObjectHideFlags: 0
@@ -3271,7 +3271,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   showTime: 0
   hideTime: 0
-  text: {fileID: 1300414688}
+  percantage: {fileID: 1300414688}
 --- !u!1 &1750755773
 GameObject:
   m_ObjectHideFlags: 0
@@ -4451,8 +4451,8 @@ MonoBehaviour:
   hideTime: 0
   holder: {fileID: 1961909251}
   progress: {fileID: 408709051}
-  levelText: {fileID: 232632460}
-  progressText: {fileID: 957454976}
+  levelText: {fileID: 232632458}
+  progressText: {fileID: 957454974}
   progressImage: {fileID: 1789126958}
 --- !u!114 &2085015419
 MonoBehaviour:

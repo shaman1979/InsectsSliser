@@ -5,8 +5,10 @@ using NUnit.Framework;
 using Slicer.EventAgregators;
 using Slicer.Levels.Modifycations.Messages;
 using Slicer.UI.Windows;
+using UI.Elements;
 using UnityEngine;
 using UnityEngine.TestTools;
+using UnityEngine.UI;
 
 namespace Tests.Game
 {
@@ -22,7 +24,7 @@ namespace Tests.Game
             IEventsAgregator eventsAgregator = new EventsAgregator();
 
             var timerMenu = new GameObject("TimerMenu").AddComponent<TimerWindow>();
-            var timerText = new GameObject("TimerText").AddComponent<BaseText>();
+            var timerText = new GameObject("TimerText").AddComponent<Text>();
             timerMenu.Setup(timerText);
             
             timerMenu.Subscribe(eventsAgregator);
@@ -39,7 +41,7 @@ namespace Tests.Game
         {
             //Arrange
             var timerWindow = new GameObject("TimerMenu").AddComponent<TimerWindow>();
-            var timerText = new GameObject("Timer").AddComponent<BaseText>();
+            var timerText = new GameObject("Timer").AddComponent<Text>();
 
             IEventsAgregator eventsAgregator = new EventsAgregator();
             

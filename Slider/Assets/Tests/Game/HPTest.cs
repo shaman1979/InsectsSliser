@@ -47,8 +47,7 @@ namespace Tests.Game
             var gameWindow = new GameObject("GameWindow").AddComponent<GameWindow>();
             gameWindow.Subscribe(eventsAgregator);
 
-            gameWindow.progressImage = progressImage;
-            gameWindow.progressText = progressText;
+            gameWindow.Setup(null, progressText, progressImage);
 
             //Act
             eventsAgregator.Invoke(new CurrentProgressMessage(currentProgress));
