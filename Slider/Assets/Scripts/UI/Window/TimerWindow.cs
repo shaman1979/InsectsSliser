@@ -1,4 +1,5 @@
-﻿using LightDev.UI;
+﻿using Level.Messages.Timer;
+using LightDev.UI;
 using Slicer.EventAgregators;
 using Slicer.Levels.Modifycations.Messages;
 using UI.Elements;
@@ -23,6 +24,7 @@ namespace Slicer.UI.Windows
         {
             eventAgregator.AddListener<TimerUpdateMessage>(message => SetTimerText(message.Value));
             eventAgregator.AddListener<TimerWindowActiveMessage>(message => Show());
+            eventAgregator.AddListener<TimerWindowDeactiveMessage>(message => Hide());
         }
 
         public void SetTimerText(int value)

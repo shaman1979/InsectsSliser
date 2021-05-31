@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using Level.Messages.Timer;
 using LightDev.UI;
 using NUnit.Framework;
 using Slicer.EventAgregators;
@@ -54,6 +55,25 @@ namespace Tests.Game
             
             //Assert
             Assert.IsTrue(timerWindow.gameObject.activeSelf);
+        }
+
+        [Test]
+        public void WhenTimeActive_AndTimerWindowShow_ThenTimeWindowHide()
+        {
+            //Arrange
+            var timerWindow = new GameObject("TimerWindow").AddComponent<TimerWindow>();
+            var timerText = new GameObject("TimerText").AddComponent<Text>();
+            
+            IEventsAgregator eventsAgregator = new EventsAgregator();
+            timerWindow.Setup(timerText);
+            timerWindow.Subscribe(eventsAgregator);
+            timerWindow.gameObject.SetActive(true);
+
+            //Act
+            eventsAgregator.Invoke(new TimerWindowDeactiveMessage());
+
+            //Assert
+            Assert.IsFalse(timerWindow.gameObject.activeSelf);
         }
     }
 }
