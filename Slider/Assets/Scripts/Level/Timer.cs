@@ -16,6 +16,7 @@ namespace Slicer.Game
         private readonly AsyncHelper asyncHelper;
 
         private int currentTime = 0;
+        private Coroutine timerCoroutine = null;
 
         public Timer(IEventsAgregator eventsAgregator, AsyncHelper asyncHelper)
         {
@@ -26,12 +27,19 @@ namespace Slicer.Game
         public void Initialize()
         {
             eventsAgregator.AddListener<TimerStartMessage>(message => StartTimer(message.StartTime));
+            eventsAgregator.AddListener<GameFinishMessage>(message => StopTimer());
         }
 
         private void StartTimer(int startTime)
         {
+            if (timerCoroutine != null)
+            {
+                Debug.LogWarning($"Таймер уже запущен");
+                return;
+            }
+            
             currentTime = startTime;
-            asyncHelper.StartCoroutine(TimerCountdown());
+            timerCoroutine = asyncHelper.StartCoroutine(TimerCountdown());
         }
 
         private IEnumerator TimerCountdown()
@@ -44,9 +52,21 @@ namespace Slicer.Game
             }
             
             eventsAgregator.Invoke(new GameFinishMessage());
-            eventsAgregator.Invoke(new TimerWindowDeactiveMessage());
             Events.PostReset.Call();
             Events.GameFinish.Call();
+            
+            StopTimer();
+        }
+
+        private void StopTimer()
+        {
+            if (timerCoroutine != null)
+            {
+                asyncHelper.StopCoroutine(timerCoroutine);
+                timerCoroutine = null;
+            }
+            
+            eventsAgregator.Invoke(new TimerWindowDeactiveMessage());
         }
 
         private void TimerUpdate(int time)

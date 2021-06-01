@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Applications.Messages;
 using UnityEngine;
 using LightDev;
 using LightDev.Core;
@@ -20,6 +21,7 @@ namespace MeshSlice.UI
         {
             Events.GameStart += Show;
             Events.PointerDown += OnPointerUp;
+            eventsAgregator.AddListener<GameFinishMessage>(message => Hide());
         }
 
         public override void Unsubscribe()

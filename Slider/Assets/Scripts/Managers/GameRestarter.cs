@@ -2,6 +2,7 @@
 using LightDev;
 using Zenject;
 using System;
+using Applications.Messages;
 using Assets.Scripts.Tools;
 using Level.Messages;
 using Slicer.EventAgregators;
@@ -101,6 +102,8 @@ namespace Slicer.Game
         {
             isMeshEnd = false;
             isLevelCalculate = false;
+            
+            eventsAgregator.Invoke(new GameFinishMessage());
             Events.GameFinish.Call();
         }
     }
