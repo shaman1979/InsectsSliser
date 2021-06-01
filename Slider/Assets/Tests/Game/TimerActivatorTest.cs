@@ -4,6 +4,7 @@ using Level.Messages.Timer;
 using LightDev.UI;
 using NUnit.Framework;
 using Slicer.EventAgregators;
+using Slicer.Levels;
 using Slicer.Levels.Modifycations.Messages;
 using Slicer.UI.Windows;
 using UI.Elements;
@@ -76,6 +77,23 @@ namespace Tests.Game
             
             //Assert
             Assert.IsFalse(timerWindow.gameObject.activeSelf);
+        }
+
+        [Test]
+        public void WhenTimerModifyApplyAndSubscriberSignThenMessageShouldReach()
+        {
+            //arrange
+            var isMessageReached = false;
+            IEventsAgregator eventsAgregator = new EventsAgregator();
+
+            eventsAgregator.AddListener<TimerWindowActiveMessage>(message => isMessageReached = true);
+            
+            //act
+            var timerModify = new LevelTimerActivatorModify(eventsAgregator);
+            timerModify.Apply();
+            
+            //assert
+            Assert.IsTrue(isMessageReached);
         }
     }
 }
