@@ -70,6 +70,7 @@ namespace Slicer.Game
         private void StartGame()
         {
             isGameStarted = true;
+            eventsAgregator.Invoke(new ModifucationActiveMessage());
             Events.GameStart.Call();
         }
 

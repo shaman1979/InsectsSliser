@@ -21,7 +21,7 @@ namespace Slicer.Levels
         public void Initialize()
         {
             eventsAgregator.AddListener<CurrentLevelInitializeMessage>(message => SetCurrentLevel(message.Level));
-            eventsAgregator.AddListener<>;
+            eventsAgregator.AddListener<ModifucationActiveMessage>(message => ModifycationApply(currentLevel));
         }
 
         private void SetCurrentLevel(LevelInfo level) => currentLevel = level;

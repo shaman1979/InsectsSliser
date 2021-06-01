@@ -1,4 +1,4 @@
-namespace Slicer.Levels.Modifycations.Messages
+namespace Level.Messages.Timer
 {
     public class TimerUpdateMessage
     {
