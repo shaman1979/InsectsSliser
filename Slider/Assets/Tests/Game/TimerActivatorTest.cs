@@ -57,8 +57,8 @@ namespace Tests.Game
             Assert.IsTrue(timerWindow.gameObject.activeSelf);
         }
 
-        [Test]
-        public void WhenTimeActive_AndTimerWindowShow_ThenTimeWindowHide()
+        [UnityTest]
+        public IEnumerator WhenTimeActive_AndTimerWindowShow_ThenTimeWindowHide()
         {
             //Arrange
             var timerWindow = new GameObject("TimerWindow").AddComponent<TimerWindow>();
@@ -72,6 +72,8 @@ namespace Tests.Game
             //Act
             eventsAgregator.Invoke(new TimerWindowDeactiveMessage());
 
+            yield return null;
+            
             //Assert
             Assert.IsFalse(timerWindow.gameObject.activeSelf);
         }
