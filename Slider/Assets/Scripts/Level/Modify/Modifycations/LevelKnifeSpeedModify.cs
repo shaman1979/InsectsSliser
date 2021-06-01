@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Slicer.EventAgregators;
 using UnityEngine;
 
 namespace Slicer.Levels
@@ -9,7 +10,7 @@ namespace Slicer.Levels
         [SerializeField]
         private float acceleration;
 
-        public void Apply()
+        public void Apply(IEventsAgregator eventAgregator)
         {
             LevelModifyEvents.SpeedChanged.Call(acceleration);
         }

@@ -1,10 +1,6 @@
-﻿using LightDev;
-using Slicer.Game;
-using System.Collections;
-using System.Collections.Generic;
+﻿using Slicer.Game;
 using Level.Messages;
 using Slicer.EventAgregators;
-using UnityEngine;
 using Zenject;
 
 namespace Slicer.Levels
@@ -13,6 +9,8 @@ namespace Slicer.Levels
     {
         private readonly LevelsInitializer levelsInitializer;
         private IEventsAgregator eventsAgregator;
+
+        private LevelInfo currentLevel;
         
         public LevelModification(LevelsInitializer levelsInitializer, IEventsAgregator eventsAgregator)
         {
@@ -22,14 +20,17 @@ namespace Slicer.Levels
 
         public void Initialize()
         {
-            eventsAgregator.AddListener<CurrentLevelInitializeMessage>(message => ModifycationApply(message.Level));
+            eventsAgregator.AddListener<CurrentLevelInitializeMessage>(message => SetCurrentLevel(message.Level));
+            eventsAgregator.AddListener<>;
         }
 
+        private void SetCurrentLevel(LevelInfo level) => currentLevel = level;
+        
         private void ModifycationApply(LevelInfo level)
         {
             foreach (var modify in level.Modifies)
             {
-                modify.Apply();
+                modify.Apply(eventsAgregator);
             }
         }
     }

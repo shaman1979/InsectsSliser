@@ -30,6 +30,7 @@ namespace Slicer.DI
 
         [SerializeField] private SlicebleItemMovening sliceItemMove;
 
+        // ReSharper disable Unity.PerformanceAnalysis
         public override void InstallBindings()
         {
             Container.BindInterfacesAndSelfTo<GameRestarter>().AsSingle();
@@ -38,7 +39,8 @@ namespace Slicer.DI
             Container.BindInterfacesAndSelfTo<SoundActivator>().AsSingle();
             Container.BindInterfacesAndSelfTo<SceneLoader>().AsSingle();
             Container.BindInterfacesAndSelfTo<LevelModification>().AsSingle();
-
+            Container.BindInterfacesAndSelfTo<Timer>().AsSingle();
+            
             Container.BindInstance(sliceItemMove);
             
             Container.Bind<AsyncHelper>().FromNewComponentOn(new GameObject(nameof(AsyncHelper))).AsSingle();

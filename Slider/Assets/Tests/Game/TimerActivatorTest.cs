@@ -5,6 +5,7 @@ using Level.Messages.Timer;
 using LightDev.UI;
 using NUnit.Framework;
 using Slicer.EventAgregators;
+using Slicer.Game;
 using Slicer.Levels;
 using Slicer.Levels.Modifycations.Messages;
 using Slicer.UI.Windows;
@@ -92,15 +93,15 @@ namespace Tests.Game
             var asyncHelper = new GameObject("Async").AddComponent<AsyncHelper>();
 
             //act
-            var timerModify = new LevelTimerActivatorModify(eventsAgregator, asyncHelper);
-            timerModify.Apply();
+            var timerModify = new LevelTimerActivatorModify();
+            timerModify.Apply(eventsAgregator);
 
             //assert
             Assert.IsTrue(isMessageReached);
         }
 
         [UnityTest]
-        public IEnumerator WhenTimerApplyAndSubsctiberSignThenTimerValueReducedBy1()
+        public IEnumerator WhenTimerApplyAndTimerSubscribeThenTimerValueReducedBy1()
         {
             //arrange
             IEventsAgregator eventsAgregator = new EventsAgregator();
@@ -108,13 +109,16 @@ namespace Tests.Game
             int currentTimer = 0;
             eventsAgregator.AddListener<TimerUpdateMessage>(message => currentTimer = message.Value);
             var asyncHelper = new GameObject("Async").AddComponent<AsyncHelper>();
+
+            var timer = new Timer(eventsAgregator, asyncHelper);
+            timer.Initialize();
             
             //act
             var startTime = 10;
 
-            var timerModify = new LevelTimerActivatorModify(eventsAgregator, asyncHelper);
+            var timerModify = new LevelTimerActivatorModify();
             timerModify.SetStartTime(startTime);
-            timerModify.Apply();
+            timerModify.Apply(eventsAgregator);
 
             //assert
             Assert.AreEqual(startTime, currentTimer);
