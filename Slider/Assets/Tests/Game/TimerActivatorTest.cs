@@ -1,8 +1,7 @@
-using System;
 using System.Collections;
+using Applications.Messages;
 using Assets.Scripts.Tools;
 using Level.Messages.Timer;
-using LightDev.UI;
 using NUnit.Framework;
 using Slicer.EventAgregators;
 using Slicer.Game;
@@ -106,7 +105,7 @@ namespace Tests.Game
             //arrange
             IEventsAgregator eventsAgregator = new EventsAgregator();
 
-            int currentTimer = 0;
+            var currentTimer = 0;
             eventsAgregator.AddListener<TimerUpdateMessage>(message => currentTimer = message.Value);
             var asyncHelper = new GameObject("Async").AddComponent<AsyncHelper>();
 
@@ -124,6 +123,37 @@ namespace Tests.Game
             Assert.AreEqual(startTime, currentTimer);
             yield return new WaitForSeconds(1.5f);
             Assert.AreEqual(1, startTime - currentTimer);
+        }
+
+        [UnityTest]
+        public IEnumerator WhenTimerEnd_AndSubscribeSing_ThenTimeShouldBeZero()
+        {
+            //Arrange
+            var endTime = 0;
+            var time = 0;
+
+            var isFinish = false; 
+            
+            IEventsAgregator eventsAgregator = new EventsAgregator();
+
+            eventsAgregator.AddListener<TimerUpdateMessage>(message => time = message.Value);
+            eventsAgregator.AddListener<GameFinishMessage>(message => isFinish = true);
+            var asyncHelper = new GameObject("Async").AddComponent<AsyncHelper>();
+
+            var timer = new Timer(eventsAgregator, asyncHelper);
+            timer.Initialize();
+            //Act
+            var startTime = 1;
+
+            var timerModify = new LevelTimerActivatorModify();
+            timerModify.SetStartTime(startTime);
+            timerModify.Apply(eventsAgregator);
+
+            //Assert
+            yield return new WaitForSeconds(2f);
+            Assert.AreEqual(endTime, time);
+            yield return new WaitForSeconds(1.5f);
+            Assert.IsTrue(isFinish);
         }
     }
 }

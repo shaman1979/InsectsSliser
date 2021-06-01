@@ -1,6 +1,8 @@
 using System.Collections;
+using Applications.Messages;
 using Assets.Scripts.Tools;
 using Level.Messages.Timer;
+using LightDev;
 using Slicer.EventAgregators;
 using Slicer.Levels.Modifycations.Messages;
 using UnityEngine;
@@ -40,6 +42,11 @@ namespace Slicer.Game
                 currentTime--;
                 yield return new WaitForSeconds(1);
             }
+            
+            eventsAgregator.Invoke(new GameFinishMessage());
+            eventsAgregator.Invoke(new TimerWindowDeactiveMessage());
+            Events.PostReset.Call();
+            Events.GameFinish.Call();
         }
 
         private void TimerUpdate(int time)

@@ -51,9 +51,9 @@ namespace BzKovSoft.ObjectSlicerSamples
 
             if (knife != null)
             {
-                Vector3 point = GetCollisionPoint(knife);
-                Vector3 normal = Vector3.Cross(knife.MoveDirection, knife.BladeDirection);
-                Plane plane = new Plane(normal, point);
+                var point = GetCollisionPoint(knife);
+                var normal = Vector3.Cross(knife.MoveDirection, knife.BladeDirection);
+                var plane = new Plane(normal, point);
 
                 if (sliceableAsync != null)
                 {
@@ -68,10 +68,10 @@ namespace BzKovSoft.ObjectSlicerSamples
 
         private Vector3 GetCollisionPoint(Knife knife)
         {
-            Vector3 distToObject = transform.position - knife.Origin;
-            Vector3 proj = Vector3.Project(distToObject, knife.BladeDirection);
+            var distToObject = transform.position - knife.Origin;
+            var proj = Vector3.Project(distToObject, knife.BladeDirection);
 
-            Vector3 collisionPoint = knife.Origin + proj;
+            var collisionPoint = knife.Origin + proj;
             return collisionPoint;
         }
     }
