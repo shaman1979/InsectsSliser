@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using Assets.Scripts.Tools;
 using Level.Messages.Timer;
 using LightDev.UI;
 using NUnit.Framework;
@@ -28,7 +29,7 @@ namespace Tests.Game
             var timerMenu = new GameObject("TimerMenu").AddComponent<TimerWindow>();
             var timerText = new GameObject("TimerText").AddComponent<Text>();
             timerMenu.Setup(timerText);
-            
+
             timerMenu.Subscribe(eventsAgregator);
             //Act
             eventsAgregator.Invoke(new TimerUpdateMessage(timerValue));
@@ -46,14 +47,14 @@ namespace Tests.Game
             var timerText = new GameObject("Timer").AddComponent<Text>();
 
             IEventsAgregator eventsAgregator = new EventsAgregator();
-            
+
             timerWindow.Setup(timerText);
             timerWindow.Subscribe(eventsAgregator);
             timerWindow.gameObject.SetActive(false);
 
             //Act
             eventsAgregator.Invoke(new TimerWindowActiveMessage());
-            
+
             //Assert
             Assert.IsTrue(timerWindow.gameObject.activeSelf);
         }
@@ -64,7 +65,7 @@ namespace Tests.Game
             //Arrange
             var timerWindow = new GameObject("TimerWindow").AddComponent<TimerWindow>();
             var timerText = new GameObject("TimerText").AddComponent<Text>();
-            
+
             IEventsAgregator eventsAgregator = new EventsAgregator();
             timerWindow.Setup(timerText);
             timerWindow.Subscribe(eventsAgregator);
@@ -74,7 +75,7 @@ namespace Tests.Game
             eventsAgregator.Invoke(new TimerWindowDeactiveMessage());
 
             yield return null;
-            
+
             //Assert
             Assert.IsFalse(timerWindow.gameObject.activeSelf);
         }
@@ -87,13 +88,38 @@ namespace Tests.Game
             IEventsAgregator eventsAgregator = new EventsAgregator();
 
             eventsAgregator.AddListener<TimerWindowActiveMessage>(message => isMessageReached = true);
-            
+
+            var asyncHelper = new GameObject("Async").AddComponent<AsyncHelper>();
+
             //act
-            var timerModify = new LevelTimerActivatorModify(eventsAgregator);
+            var timerModify = new LevelTimerActivatorModify(eventsAgregator, asyncHelper);
             timerModify.Apply();
-            
+
             //assert
             Assert.IsTrue(isMessageReached);
+        }
+
+        [UnityTest]
+        public IEnumerator WhenTimerApplyAndSubsctiberSignThenTimerValueReducedBy1()
+        {
+            //arrange
+            IEventsAgregator eventsAgregator = new EventsAgregator();
+
+            int currentTimer = 0;
+            eventsAgregator.AddListener<TimerUpdateMessage>(message => currentTimer = message.Value);
+            var asyncHelper = new GameObject("Async").AddComponent<AsyncHelper>();
+            
+            //act
+            var startTime = 10;
+
+            var timerModify = new LevelTimerActivatorModify(eventsAgregator, asyncHelper);
+            timerModify.SetStartTime(startTime);
+            timerModify.Apply();
+
+            //assert
+            Assert.AreEqual(startTime, currentTimer);
+            yield return new WaitForSeconds(1.5f);
+            Assert.AreEqual(1, startTime - currentTimer);
         }
     }
 }
