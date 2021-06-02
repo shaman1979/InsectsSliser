@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3f3cbe1a01cba49059d2ce781f342f74, type: 3}
-  m_Name: FactFood
+  m_Name: FactFoodLevelTimer
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2
@@ -51,7 +51,7 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  Name: Speed
+  Name: LevelTimer
   Meshes:
   - Mesh: {fileID: -2389319911548984533, guid: d8fea91df1cb372408d6951fd5ada808, type: 3}
     Rotation: {x: 0, y: 0, z: 0}

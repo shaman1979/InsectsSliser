@@ -22,5 +22,9 @@ namespace Slicer.Levels
             eventAgregator.Invoke(new TimerWindowActiveMessage());
             eventAgregator.Invoke(new TimerStartMessage(startTime));
         }
+
+        public void Dispose()
+        {
+        }
     }
 }

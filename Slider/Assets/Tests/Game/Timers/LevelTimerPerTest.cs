@@ -3,6 +3,7 @@ using Assets.Scripts.Tools;
 using Level.Messages.Timer;
 using Level.Modify.Modifycations;
 using NUnit.Framework;
+using Slice.Messages;
 using Slicer.EventAgregators;
 using Slicer.Game;
 using Slicer.Levels;
@@ -32,7 +33,7 @@ namespace Tests.Game
         public void WhenTimerPerApply_AndTimerWindowShowMessage_ThenWindowShow()
         {
             //Arrange
-            bool isShow = false;
+            var isShow = false;
             
             eventsAgregator.AddListener<TimerWindowActiveMessage>(message => isShow = true);
             //Act
@@ -59,6 +60,28 @@ namespace Tests.Game
             Assert.AreEqual(currentTime, startTime);
         }
 
+        [UnityTest]
+        public IEnumerator WhenMeshNext_AndTimerPerObjectApply_ThenTimerRestart()
+        {
+            //Arrange
+            var currentTime = 0;
+            eventsAgregator.AddListener<TimerUpdateMessage>(message => currentTime = message.Value);
+            timer.Initialize();
+            
+            //Act
+            var startTime = 4;
+            
+            perObjectModify.SetStartTimer(4);
+            perObjectModify.Apply(eventsAgregator);
+
+            yield return new WaitForSeconds(1.5f);
+            
+            eventsAgregator.Invoke(new NextMeshMessage());
+            
+            //Assert
+            Assert.AreEqual(currentTime, startTime);
+        }
+        
         [TearDown]
         public void TearDown()
         {

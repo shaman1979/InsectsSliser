@@ -1,4 +1,6 @@
-﻿using Slicer.Game;
+﻿using System.Collections.Generic;
+using Applications.Messages;
+using Slicer.Game;
 using Level.Messages;
 using Slicer.EventAgregators;
 using Zenject;
@@ -11,6 +13,7 @@ namespace Slicer.Levels
         private IEventsAgregator eventsAgregator;
 
         private LevelInfo currentLevel;
+        private List<ILevelModify> modifies = new List<ILevelModify>();
         
         public LevelModification(LevelsInitializer levelsInitializer, IEventsAgregator eventsAgregator)
         {
@@ -22,6 +25,13 @@ namespace Slicer.Levels
         {
             eventsAgregator.AddListener<CurrentLevelInitializeMessage>(message => SetCurrentLevel(message.Level));
             eventsAgregator.AddListener<ModifucationActiveMessage>(message => ModifycationApply(currentLevel));
+            eventsAgregator.AddListener<GameFinishMessage>(message => ModificationDispose());
+        }
+
+        private void ModificationDispose()
+        {
+            modifies.ForEach(x => x.Dispose());
+            modifies.Clear();
         }
 
         private void SetCurrentLevel(LevelInfo level) => currentLevel = level;
@@ -30,6 +40,7 @@ namespace Slicer.Levels
         {
             foreach (var modify in level.Modifies)
             {
+                modifies.Add(modify);
                 modify.Apply(eventsAgregator);
             }
         }
