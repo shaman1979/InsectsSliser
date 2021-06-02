@@ -14,5 +14,9 @@ namespace Slicer.Levels
         {
             LevelModifyEvents.SpeedChanged.Call(acceleration);
         }
+
+        public void Dispose()
+        {
+        }
     }
 }

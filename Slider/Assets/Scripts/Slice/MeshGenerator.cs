@@ -5,6 +5,7 @@ using MeshSlice;
 using Slicer.Game;
 using System;
 using Level.Messages;
+using Slice.Messages;
 using Slicer.EventAgregators;
 using UnityEngine;
 using Zenject;
@@ -44,6 +45,7 @@ namespace Slicer.Slice
             if (levelsInitializer.TryNextMesh(out var mesh))
             {
                 OnStarted?.Invoke(mesh);
+                eventsAgregator.Invoke(new NextMeshMessage());
                 MeshSetup(mesh, () => OnFinished?.Invoke());
             }
             else

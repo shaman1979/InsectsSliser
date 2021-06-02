@@ -10,7 +10,7 @@ namespace Slicer.Levels
 {
     public class LevelTimerActivatorModify : ILevelModify
     {
-        [SerializeField] private int startTime = 10;
+        [SerializeField, Min(0)] private int startTime = 10;
         
         public void SetStartTime(int time)
         {
@@ -21,6 +21,10 @@ namespace Slicer.Levels
         {
             eventAgregator.Invoke(new TimerWindowActiveMessage());
             eventAgregator.Invoke(new TimerStartMessage(startTime));
+        }
+
+        public void Dispose()
+        {
         }
     }
 }

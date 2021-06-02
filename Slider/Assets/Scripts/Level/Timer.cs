@@ -28,6 +28,18 @@ namespace Slicer.Game
         {
             eventsAgregator.AddListener<TimerStartMessage>(message => StartTimer(message.StartTime));
             eventsAgregator.AddListener<GameFinishMessage>(message => StopTimer());
+            eventsAgregator.AddListener<RestartTimerMessage>(message => Restart(message.RestartTime));
+        }
+
+        private void Restart(int restartTime)
+        {
+            if (timerCoroutine != null)
+            {
+                asyncHelper.StopCoroutine(timerCoroutine);
+                timerCoroutine = null;
+            }
+
+            StartTimer(restartTime);
         }
 
         private void StartTimer(int startTime)
