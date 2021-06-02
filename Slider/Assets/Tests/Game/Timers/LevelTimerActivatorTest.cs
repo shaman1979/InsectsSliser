@@ -16,12 +16,14 @@ namespace Tests.Game
     {
         private IEventsAgregator eventsAgregator;
         private AsyncHelper asyncHelper;
+        private LevelTimerActivatorModify timerModify;
         
         [SetUp]
         public void Setup()
         {
             asyncHelper = new GameObject(nameof(asyncHelper)).AddComponent<AsyncHelper>();
             eventsAgregator = new EventsAgregator();
+            timerModify = new LevelTimerActivatorModify();
         }
         
         [Test]
@@ -32,7 +34,6 @@ namespace Tests.Game
             eventsAgregator.AddListener<TimerWindowActiveMessage>(message => isMessageReached = true);
             
             //act
-            var timerModify = new LevelTimerActivatorModify();
             timerModify.Apply(eventsAgregator);
 
             //assert
@@ -51,8 +52,7 @@ namespace Tests.Game
             
             //act
             var startTime = 10;
-
-            var timerModify = new LevelTimerActivatorModify();
+            
             timerModify.SetStartTime(startTime);
             timerModify.Apply(eventsAgregator);
 
@@ -60,6 +60,20 @@ namespace Tests.Game
             Assert.AreEqual(startTime, currentTimer);
             yield return new WaitForSeconds(1.5f);
             Assert.AreEqual(1, startTime - currentTimer);
+        }
+
+        [Test]
+        public void WhenLevelTimerApply_AndTimerWindowShowMessageSubscribe_ThenWindowShow()
+        {
+            //Arrange
+            bool isShow = false;
+            
+            eventsAgregator.AddListener<TimerWindowActiveMessage>(message => isShow = true);
+            //Act
+            timerModify.Apply(eventsAgregator);
+
+            //Assert
+            Assert.IsTrue(isShow);
         }
 
         [UnityTest]
@@ -79,7 +93,6 @@ namespace Tests.Game
             //Act
             var startTime = 1;
 
-            var timerModify = new LevelTimerActivatorModify();
             timerModify.SetStartTime(startTime);
             timerModify.Apply(eventsAgregator);
 
@@ -93,6 +106,7 @@ namespace Tests.Game
         [TearDown]
         public void TearDown()
         {
+            timerModify = null;
             Object.Destroy(asyncHelper.gameObject);
             eventsAgregator = null;
         }

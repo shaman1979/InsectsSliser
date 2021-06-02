@@ -25,7 +25,7 @@ namespace Tests.Game
         public IEnumerator WhenTimerStartMessagePublisher_AndTimerSubscribe_ThenCountdownOn()
         {
             //Arrange
-            int resultTime = 11;
+            var resultTime = 11;
             
 
             var timer = new Timer(eventsAgregator, asyncHelper);
@@ -34,7 +34,7 @@ namespace Tests.Game
             eventsAgregator.AddListener<TimerUpdateMessage>(message => resultTime = message.Value);
 
             //Act
-            int startTime = 10;
+            var startTime = 10;
             eventsAgregator.Invoke(new TimerStartMessage(startTime));
             
             yield return new WaitForSeconds(1.5f);
@@ -47,19 +47,19 @@ namespace Tests.Game
         public IEnumerator WhenTimerRestartMessagePublisher_AndTimerSubscribe_ThenTimerRestart()
         {
             //Arrange
-            int resultTime = 0;
+            var resultTime = 0;
             
             eventsAgregator.AddListener<TimerUpdateMessage>(message => resultTime = message.Value);
             var timer = new Timer(eventsAgregator, asyncHelper);
             timer.Initialize();
             
             //Act
-            int startTime = 10;
+            var startTime = 10;
             eventsAgregator.Invoke(new TimerStartMessage(startTime));
 
             yield return new WaitForSeconds(1.5f);
             
-            int restartTime = 4;
+            var restartTime = 4;
             eventsAgregator.Invoke(new RestartTimerMessage(restartTime));
 
             //Assert

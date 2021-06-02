@@ -15,12 +15,14 @@ namespace Tests.Game
     {
         private IEventsAgregator eventsAgregator;
         private TimerWindow timerWindow;
+        private Text timerText;
         
         [SetUp]
         public void Setup()
         {
             timerWindow = new GameObject("TimerWindow").AddComponent<TimerWindow>();
             eventsAgregator = new EventsAgregator();
+            timerText = new GameObject("TimerText").AddComponent<Text>();
         }
         
         [Test]
@@ -30,7 +32,6 @@ namespace Tests.Game
         public void WhenTimerActive_AndTimerInteger_ThenTextChanged(int timerValue)
         {
             //Arrange
-            var timerText = new GameObject("TimerText").AddComponent<Text>();
             timerWindow.Setup(timerText);
             timerWindow.Subscribe(eventsAgregator);
             //Act
@@ -45,8 +46,6 @@ namespace Tests.Game
         public IEnumerator WhenTimeActive_AndTimerWindowShow_ThenTimeWindowHide()
         {
             //Arrange
-            var timerText = new GameObject("TimerText").AddComponent<Text>();
-            
             timerWindow.Setup(timerText);
             timerWindow.Subscribe(eventsAgregator);
             timerWindow.gameObject.SetActive(true);
@@ -65,8 +64,6 @@ namespace Tests.Game
         public void WhenTimerActive_AndTimerWindowHide_ThenTimerWindowShow()
         {
             //Arrange
-            var timerText = new GameObject("Timer").AddComponent<Text>();
-            
             timerWindow.Setup(timerText);
             timerWindow.Subscribe(eventsAgregator);
             timerWindow.gameObject.SetActive(false);
@@ -82,6 +79,7 @@ namespace Tests.Game
         public void Teardown()
         {
             Object.Destroy(timerWindow.gameObject);
+            Object.Destroy(timerText.gameObject);
             eventsAgregator = null;
         }
     }

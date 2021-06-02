@@ -40,7 +40,7 @@ namespace Tests.Game
         public void WhenDebugModeActive_AndMessagePublish_ThenDebugWindowActive()
         {
             //arrange
-            EventsAgregator eventAgregator = new EventsAgregator();
+            var eventAgregator = new EventsAgregator();
             var debugWindow = new GameObject("DebugWindow").AddComponent<DebugWindow>();
             debugWindow.gameObject.SetActive(false);
             
@@ -56,7 +56,7 @@ namespace Tests.Game
         public void WhenDebugModeDeactive_AndMessagePublish_ThenDebugWindowDeactive()
         {
             //arrange
-            EventsAgregator eventAgregator = new EventsAgregator();
+            var eventAgregator = new EventsAgregator();
             var debugWindow = new GameObject("DebugWindow").AddComponent<DebugWindow>();
             debugWindow.gameObject.SetActive(false);
             
