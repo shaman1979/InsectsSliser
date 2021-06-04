@@ -23,10 +23,7 @@ namespace MeshSlice
 
         private readonly int firstPointId = Shader.PropertyToID("_Point1");
         private readonly int secondPointId = Shader.PropertyToID("_Point2");
-        
-        private readonly int firstRedZonePointId = Shader.PropertyToID("_RedZonePoint1");
-        private readonly int secondRedZonePointId = Shader.PropertyToID("_RedZonePoint2");
-        
+
         private readonly int mainTextureId = Shader.PropertyToID("_MainTex");
 
         private void Awake()
@@ -40,10 +37,7 @@ namespace MeshSlice
             {
                 material.SetVector(firstPointId, firstPoint.position);
                 material.SetVector(secondPointId, secondPoint.position);
-                
-                material.SetVector(firstRedZonePointId, firstRedZone.position);
-                material.SetVector(secondRedZonePointId, secondRedZone.position);
-                
+
                 material.SetTexture(mainTextureId, texture);
             }
         }
