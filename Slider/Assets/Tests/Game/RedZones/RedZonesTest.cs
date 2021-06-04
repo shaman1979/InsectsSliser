@@ -76,6 +76,27 @@ namespace Tests
         }
         
         [Test]
+        public void WhenRedZoneGenerate_AndVectorNotZero_ThenVectorsPositionInCorrect()
+        {
+            //Arrange
+            
+            redZoneView.Initialize();
+            
+            //Act
+            Vector3 firstPointPosition = Vector3.zero;
+            Vector3 secondPointPosition = Vector3.zero + new Vector3(0.5f, 0f, 0f);
+            eventsAgregator.Invoke(new RedZoneGeneratorMessage(firstPointPosition, secondPointPosition));
+
+            //Assert
+
+            Vector3 resultFirstPointPosition = redZoneView.GetFirstPoint().localPosition;
+            Vector3 resultSecondPointPosition = redZoneView.GetSecondPoint().localPosition;
+            
+            Assert.AreEqual(firstPointPosition, resultFirstPointPosition);
+            Assert.AreEqual(secondPointPosition, resultSecondPointPosition);
+        }
+        
+        [Test]
         public void WhenRedZoneApply_AndSubscribeSing_ThenMessageShouldReach()
         {
             //Arrange
