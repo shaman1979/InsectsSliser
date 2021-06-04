@@ -10,7 +10,7 @@ using UnityEngine.TestTools;
 
 namespace Tests
 {
-    public class RedZonesTest
+    public class RedZonesViewTest
     {
         private IEventsAgregator eventsAgregator;
         private RedZoneView redZoneView;
@@ -94,21 +94,6 @@ namespace Tests
             
             Assert.AreEqual(firstPointPosition, resultFirstPointPosition);
             Assert.AreEqual(secondPointPosition, resultSecondPointPosition);
-        }
-        
-        [Test]
-        public void WhenRedZoneApply_AndSubscribeSing_ThenMessageShouldReach()
-        {
-            //Arrange
-            var isGenerate = false;
-            
-            eventsAgregator.AddListener<RedZoneGeneratorMessage>(message => isGenerate = true);
-            //Act
-            var redZoneModify = new RedZoneModify();
-            redZoneModify.Apply(eventsAgregator);
-
-            //Assert
-            Assert.IsTrue(isGenerate);
         }
 
         [TearDown]
