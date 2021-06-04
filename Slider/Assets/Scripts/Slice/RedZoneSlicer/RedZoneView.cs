@@ -1,3 +1,4 @@
+using Applications;
 using Slicer.EventAgregators;
 using UnityEngine;
 using Zenject;
@@ -13,7 +14,9 @@ namespace Slice.RedZoneSlicer
         [SerializeField] private Material redZoneMaterial;
 
         private IEventsAgregator eventsAgregator;
-        
+        private Transform firstPoint;
+        private Transform secondPoint;
+
         [Inject]
         public void Setup(IEventsAgregator eventsAgregator)
         {
@@ -41,6 +44,16 @@ namespace Slice.RedZoneSlicer
             return redZoneMaterial.GetVector(secondRedZonePointId);
         }
 
+        public Transform GetFirstPoint()
+        {
+            return firstPoint;
+        }
+
+        public Transform GetSecondPoint()
+        {
+            return secondPoint;
+        }
+
         public void MaterialInitialize()
         {
             redZoneMaterial = new Material(Shader.Find(RedZoneShaderPath));
@@ -49,16 +62,19 @@ namespace Slice.RedZoneSlicer
         private void Generate(Vector3 firstRedPoint, Vector3 secondRedPoint)
         {
             transform.position = firstRedPoint;
-            var secondPoint = SecondPointCreate(secondRedPoint);
+            transform.rotation = SliceRotationStorage.RedZoneRotation;
             
-            redZoneMaterial.SetVector(firstRedZonePointId, transform.position);
+            firstPoint = transform;
+            secondPoint = SecondPointCreate(secondRedPoint);
+            
+            redZoneMaterial.SetVector(firstRedZonePointId, firstPoint.position);
             redZoneMaterial.SetVector(secondRedZonePointId, secondPoint.position);
         }
 
         private Transform SecondPointCreate(Vector3 secondRedPoint)
         {
             var secondPoint = new GameObject("SecondPoint");
-            secondPoint.transform.parent = transform;
+            secondPoint.transform.parent = firstPoint;
             secondPoint.transform.localPosition = secondRedPoint;
             secondPoint.transform.localRotation = Quaternion.identity;
             
