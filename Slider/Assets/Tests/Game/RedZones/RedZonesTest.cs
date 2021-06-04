@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Level.Modify.Modifycations;
 using NUnit.Framework;
 using Slice.RedZoneSlicer;
 using Slicer.EventAgregators;
@@ -25,7 +26,7 @@ namespace Tests
             var redZoneView = new GameObject(nameof(RedZoneView)).AddComponent<RedZoneView>();
 
             redZoneView.Setup(eventsAgregator);
-            redZoneView.Init();
+            redZoneView.Initialize();
             redZoneView.MaterialInitialize();
             //Act
             
@@ -40,6 +41,21 @@ namespace Tests
 
             Assert.AreEqual(resultFirstVector, firstRedZone);
             Assert.AreEqual(resultSecondVector, secondRedZone);
+        }
+
+        [Test]
+        public void WhenRedZoneApply_AndSubscribeSing_ThenMessageShouldReach()
+        {
+            //Arrange
+            bool isGenerate = false;
+            
+            eventsAgregator.AddListener<RedZoneGeneratorMessage>(message => isGenerate = true);
+            //Act
+            var redZoneModify = new RedZoneModify();
+            redZoneModify.Apply(eventsAgregator);
+
+            //Assert
+            Assert.IsTrue(isGenerate);
         }
 
         [TearDown]

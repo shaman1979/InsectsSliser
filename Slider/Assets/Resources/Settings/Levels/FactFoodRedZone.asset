@@ -1,0 +1,70 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f3cbe1a01cba49059d2ce781f342f74, type: 3}
+  m_Name: FactFoodRedZone
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: Modifies
+      Entry: 7
+      Data: 0|Slicer.Levels.ILevelModify[], Slicer
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 1|Level.Modify.Modifycations.RedZoneModify, Slicer
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  Name: RedZone
+  Meshes:
+  - Mesh: {fileID: -2389319911548984533, guid: d8fea91df1cb372408d6951fd5ada808, type: 3}
+    Rotation: {x: 0, y: 0, z: 0}
+    Texture: {fileID: 2800000, guid: f9f242035568af24399bb74e91b3eda7, type: 3}
+  - Mesh: {fileID: 6416302070336371891, guid: 0608c2d0d25e4724b9d8114be3875e40, type: 3}
+    Rotation: {x: 0, y: 0, z: 0}
+    Texture: {fileID: 2800000, guid: 6e9c37a0a9b7cf049a287b3dffde685d, type: 3}
+  - Mesh: {fileID: 196288640622949635, guid: 5b0496a7d2cb73d4b923d1fb3efadb24, type: 3}
+    Rotation: {x: 0, y: 0, z: 0}
+    Texture: {fileID: 2800000, guid: ce155de89faffc049b1d39503b78b061, type: 3}
+  - Mesh: {fileID: 8365540900368188375, guid: 699e1b0a1caf6f64ca0abf47ff1a648e, type: 3}
+    Rotation: {x: 0, y: 0, z: 0}
+    Texture: {fileID: 2800000, guid: f9f242035568af24399bb74e91b3eda7, type: 3}
+  - Mesh: {fileID: -2073062303095333546, guid: 0f17c2f5c31735044870f4d04f16ed65, type: 3}
+    Rotation: {x: 0, y: 0, z: 0}
+    Texture: {fileID: 2800000, guid: caad0c69c43a063449aa1f15bade9e41, type: 3}
+  - Mesh: {fileID: 7567532504055388576, guid: c395087ae6f32e54981d9c24cd502e29, type: 3}
+    Rotation: {x: 0, y: 0, z: 0}
+    Texture: {fileID: 2800000, guid: 05463e3c7e23de94fbcf1be564ae9e7f, type: 3}
+  - Mesh: {fileID: -2228417370725966487, guid: 6d68bedc6035bc9499e79397fd597b26, type: 3}
+    Rotation: {x: 0, y: 0, z: 0}
+    Texture: {fileID: 2800000, guid: 3d0bae9f34d6dd2428b4fc3dbc2a1151, type: 3}
+  - Mesh: {fileID: 1825875415147931077, guid: 2e58fb0351a250c4697d6f9e0b82376c, type: 3}
+    Rotation: {x: 0, y: 0, z: 0}
+    Texture: {fileID: 2800000, guid: 2961e1a32b5a71540ad02b9070753735, type: 3}
+  - Mesh: {fileID: -3537709356157935800, guid: 41694500d43c0c741ab4e5cb15396a82, type: 3}
+    Rotation: {x: 0, y: 0, z: 0}
+    Texture: {fileID: 2800000, guid: 884bb1b4be3e1f34c8f6d0c3ceaec9e0, type: 3}

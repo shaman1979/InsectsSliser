@@ -20,11 +20,17 @@ namespace Slice.RedZoneSlicer
             this.eventsAgregator = eventsAgregator;
         }
 
-        public void Init()
+        public void Awake()
         {
-            eventsAgregator.AddListener<RedZoneGeneratorMessage>(message => Generate(message.FirstRedZone, message.SecondRedZone));
+            Initialize();
         }
 
+        public void Initialize()
+        {
+            if(eventsAgregator != null)
+                eventsAgregator.AddListener<RedZoneGeneratorMessage>(message => Generate(message.FirstRedZone, message.SecondRedZone));
+        }
+        
         public Vector3 GetFirstVector()
         {
             return redZoneMaterial.GetVector(firstRedZonePointId);
@@ -45,15 +51,16 @@ namespace Slice.RedZoneSlicer
             transform.position = firstRedPoint;
             var secondPoint = SecondPointCreate(secondRedPoint);
             
-            redZoneMaterial.SetVector(firstRedZonePointId, firstRedPoint);
-            redZoneMaterial.SetVector(secondRedZonePointId, secondRedPoint);
+            redZoneMaterial.SetVector(firstRedZonePointId, transform.position);
+            redZoneMaterial.SetVector(secondRedZonePointId, secondPoint.position);
         }
 
         private Transform SecondPointCreate(Vector3 secondRedPoint)
         {
             var secondPoint = new GameObject("SecondPoint");
             secondPoint.transform.parent = transform;
-            secondPoint.transform.position = secondRedPoint;
+            secondPoint.transform.localPosition = secondRedPoint;
+            secondPoint.transform.localRotation = Quaternion.identity;
             
             return secondPoint.transform;
         }
