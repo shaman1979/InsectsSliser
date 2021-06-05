@@ -18,5 +18,10 @@ namespace Slice.RedZoneSlicer.Factoryes
             firstPoint = new Vector3(0f, offsetHalf + SliceDataStorage.HalfRedZoneOffset, 2f);
             secondPoint = SliceDataStorage.SecondPointPosition;
         }
+
+        public float GetWidth()
+        {
+            return SliceDataStorage.HalfRedZoneWidth;
+        }
     }
 }

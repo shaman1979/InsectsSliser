@@ -10,6 +10,7 @@ namespace Slice.RedZoneSlicer
         private const string RedZoneShaderPath = "Custom/SlicableRedZone";
         private readonly int firstRedZonePointId = Shader.PropertyToID("_RedZonePoint1");
         private readonly int secondRedZonePointId = Shader.PropertyToID("_RedZonePoint2");
+        private readonly int widthRedZoneId = Shader.PropertyToID("_RedZoneWidth");
         
         [SerializeField] private Material redZoneMaterial;
 
@@ -31,7 +32,7 @@ namespace Slice.RedZoneSlicer
         public void Initialize()
         {
             if(eventsAgregator != null)
-                eventsAgregator.AddListener<RedZoneGeneratorMessage>(message => Generate(message.FirstRedZone, message.SecondRedZone));
+                eventsAgregator.AddListener<RedZoneGeneratorMessage>(message => Generate(message.FirstRedZone, message.SecondRedZone, message.Width));
         }
         
         public Vector3 GetFirstVector()
@@ -54,12 +55,17 @@ namespace Slice.RedZoneSlicer
             return secondPoint;
         }
 
+        public float  GetLineWidth()
+        {
+            return redZoneMaterial.GetFloat(widthRedZoneId);
+        }
+
         public void MaterialInitialize()
         {
             redZoneMaterial = new Material(Shader.Find(RedZoneShaderPath));
         }
 
-        private void Generate(Vector3 firstRedPoint, Vector3 secondRedPoint)
+        private void Generate(Vector3 firstRedPoint, Vector3 secondRedPoint, float widthLine)
         {
             firstPoint = transform;
             
@@ -68,6 +74,7 @@ namespace Slice.RedZoneSlicer
 
             secondPoint = SecondPointCreate(secondRedPoint);
             
+            redZoneMaterial.SetFloat(widthRedZoneId, widthLine);
             redZoneMaterial.SetVector(firstRedZonePointId, firstPoint.position);
             redZoneMaterial.SetVector(secondRedZonePointId, secondPoint.position);
         }

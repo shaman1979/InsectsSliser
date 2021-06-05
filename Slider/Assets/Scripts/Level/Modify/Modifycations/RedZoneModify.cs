@@ -21,7 +21,7 @@ namespace Level.Modify.Modifycations
         public void Apply(IEventsAgregator eventAgregator)
         {
             factory.Create(out firstPoint, out secondPoint);
-            eventAgregator.Invoke(new RedZoneGeneratorMessage(firstPoint, secondPoint));
+            eventAgregator.Invoke(new RedZoneGeneratorMessage(firstPoint, secondPoint, factory.GetWidth()));
         }
 
         public void SetFactory(HalfRedZoneFactory zoneFactory)

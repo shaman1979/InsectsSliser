@@ -36,14 +36,16 @@ namespace Tests
             
             var firstRedZone = Vector3.zero;
             var secondRedZone = Vector3.zero + new Vector3(0.5f, 0f, 0f);
-            eventsAgregator.Invoke(new RedZoneGeneratorMessage(firstRedZone, secondRedZone));
+            eventsAgregator.Invoke(new RedZoneGeneratorMessage(firstRedZone, secondRedZone, SliceDataStorage.HalfRedZoneWidth));
 
             //Assert
             var resultFirstVector = redZoneView.GetFirstVector();
             var resultSecondVector = redZoneView.GetSecondVector();
+            var resultWidth = redZoneView.GetLineWidth();
 
             var secondRedVectorWorldPosition = new Vector3(0.424024045f, 0f, 0.264959663f);
 
+            Assert.AreEqual(SliceDataStorage.HalfRedZoneWidth, resultWidth);
             Assert.AreEqual(resultFirstVector, firstRedZone);
             Assert.AreEqual(resultSecondVector, secondRedVectorWorldPosition);
         }
@@ -61,7 +63,7 @@ namespace Tests
             var resultFirstRotation = Quaternion.identity;
             var resultSecondRotation = Quaternion.identity;
 
-            eventsAgregator.Invoke(new RedZoneGeneratorMessage(firstRedZone, secondRedZone));
+            eventsAgregator.Invoke(new RedZoneGeneratorMessage(firstRedZone, secondRedZone, SliceDataStorage.HalfRedZoneWidth));
             
             resultFirstRotation = redZoneView.GetFirstPoint().localRotation;
             resultSecondRotation = redZoneView.GetSecondPoint().localRotation;
@@ -85,7 +87,7 @@ namespace Tests
             //Act
             Vector3 firstPointPosition = Vector3.zero;
             Vector3 secondPointPosition = Vector3.zero + new Vector3(0.5f, 0f, 0f);
-            eventsAgregator.Invoke(new RedZoneGeneratorMessage(firstPointPosition, secondPointPosition));
+            eventsAgregator.Invoke(new RedZoneGeneratorMessage(firstPointPosition, secondPointPosition, SliceDataStorage.HalfRedZoneWidth));
 
             //Assert
 

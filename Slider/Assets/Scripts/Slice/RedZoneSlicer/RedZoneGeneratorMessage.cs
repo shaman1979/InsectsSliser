@@ -7,10 +7,13 @@ namespace Slice.RedZoneSlicer
         public Vector3 FirstRedZone { get; }
         public Vector3 SecondRedZone { get; }
 
-        public RedZoneGeneratorMessage(Vector3 firstRedZone, Vector3 secondRedZone)
+        public float Width { get; }
+
+        public RedZoneGeneratorMessage(Vector3 firstRedZone, Vector3 secondRedZone, float width)
         {
             FirstRedZone = firstRedZone;
             SecondRedZone = secondRedZone;
+            Width = width;
         }
     }
 }

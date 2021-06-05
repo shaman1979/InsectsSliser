@@ -10,7 +10,7 @@
         _Point2("Point 1", Vector) = (0, 0, 0, 0)
         
         _RedZoneColor ("Red Zone color", Color) = (1,1,1,1)
-        _RedZoneWidth("Red line width", Range(0, 1)) = 0.05
+        _RedZoneWidth("Red line width", Range(0, 2)) = 0.05
         _RedZonePoint1("Red Zone Point 1", Vector) = (0, 0, 0, 0)
         _RedZonePoint2("Red ZonePoint 1", Vector) = (0, 0, 0, 0)
     }
