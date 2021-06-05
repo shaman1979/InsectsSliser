@@ -61,10 +61,11 @@ namespace Slice.RedZoneSlicer
 
         private void Generate(Vector3 firstRedPoint, Vector3 secondRedPoint)
         {
-            transform.position = firstRedPoint;
-            transform.rotation = SliceRotationStorage.RedZoneRotation;
-            
             firstPoint = transform;
+            
+            firstPoint.Translate(firstRedPoint);
+            firstPoint.rotation = SliceRotationStorage.RedZoneRotation;
+
             secondPoint = SecondPointCreate(secondRedPoint);
             
             redZoneMaterial.SetVector(firstRedZonePointId, firstPoint.position);

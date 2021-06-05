@@ -30,6 +30,15 @@ MonoBehaviour:
     - Name: 
       Entry: 7
       Data: 1|Level.Modify.Modifycations.RedZoneModify, Slicer
+    - Name: factory
+      Entry: 7
+      Data: 2|Slice.RedZoneSlicer.Factoryes.HalfRedZoneFactory, Slicer
+    - Name: offsetHalf
+      Entry: 4
+      Data: 0.1
+    - Name: 
+      Entry: 8
+      Data: 
     - Name: 
       Entry: 8
       Data: 

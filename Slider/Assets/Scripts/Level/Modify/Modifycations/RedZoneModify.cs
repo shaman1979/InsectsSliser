@@ -1,4 +1,5 @@
 using Slice.RedZoneSlicer;
+using Slice.RedZoneSlicer.Factoryes;
 using Slicer.EventAgregators;
 using Slicer.Levels;
 using UnityEngine;
@@ -7,16 +8,35 @@ namespace Level.Modify.Modifycations
 {
     public class RedZoneModify : ILevelModify
     {
+        [SerializeField]
+        private HalfRedZoneFactory factory;
+
+        private Vector3 firstPoint;
+        private Vector3 secondPoint;
+
         public void Dispose()
         {
         }
 
         public void Apply(IEventsAgregator eventAgregator)
         {
-            var firstRedZone = new Vector3(0f, 2f, 0f);
-            var secondRedZone = new Vector3(0.5f, 0f,0f);
-            
-            eventAgregator.Invoke(new RedZoneGeneratorMessage(firstRedZone, secondRedZone));
+            factory.Create(out firstPoint, out secondPoint);
+            eventAgregator.Invoke(new RedZoneGeneratorMessage(firstPoint, secondPoint));
+        }
+
+        public void SetFactory(HalfRedZoneFactory zoneFactory)
+        {
+            factory = zoneFactory;
+        }
+
+        public Vector3 GetFirstPoint()
+        {
+            return firstPoint;
+        }
+
+        public Vector3 GetSecondPoint()
+        {
+            return secondPoint;
         }
     }
 }
