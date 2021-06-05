@@ -67,7 +67,7 @@ namespace Tests
             resultSecondRotation = redZoneView.GetSecondPoint().localRotation;
             
             //Assert
-            var firstVectorRotation = SliceRotationStorage.RedZoneRotation;
+            var firstVectorRotation = SliceDataStorage.RedZoneRotation;
 
             var secondVectorRotation = Quaternion.identity;
 

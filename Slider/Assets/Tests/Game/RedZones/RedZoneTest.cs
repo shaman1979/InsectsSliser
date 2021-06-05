@@ -1,4 +1,5 @@
 using System.Collections;
+using Applications;
 using Level.Modify.Modifycations;
 using NUnit.Framework;
 using Slice.RedZoneSlicer;
@@ -36,6 +37,26 @@ namespace Tests
         }
 
         [Test]
+        public void WhenHalfRedZoneGenerate_AndFirstPositionPointNetZero_ThenFirstPointsInCorrect()
+        {
+            //Arrange
+            var offset = 0.1f;
+            var zoneFactory = new HalfRedZoneFactory(0.1f);
+            
+            //Act
+            var resultFirstPoint = Vector3.zero;
+            var resultSecondPoint = Vector3.zero;
+            zoneFactory.Create(out resultFirstPoint, out resultSecondPoint);
+
+            //Assert
+            var firstPoint = new Vector3(0f, offset + SliceDataStorage.HalfRedZoneOffset, 2f);
+            var secondPoint = SliceDataStorage.SecondPointPosition;
+            
+            Assert.AreEqual(firstPoint, resultFirstPoint);
+            Assert.AreEqual(secondPoint, resultSecondPoint);
+        }
+        
+        [Test]
         public void WhenHalfRedZoneGenerate_AndPositionPointNotZero_ThenPointNotAreEquals()
         {
             //arrange
@@ -48,10 +69,10 @@ namespace Tests
             redZoneModify.Apply(eventsAgregator);
             
             //assert
-            Vector3 firstPoint = redZoneModify.GetFirstPoint();
-            Vector3 secondPoint = redZoneModify.GetSecondPoint();
+            var firstPoint = redZoneModify.GetFirstPoint();
+            var secondPoint = redZoneModify.GetSecondPoint();
             
-            Assert.AreEqual(firstPoint, new Vector3(0f, offsetHalf, 2f));
+            Assert.AreEqual(firstPoint, new Vector3(0f, offsetHalf + SliceDataStorage.HalfRedZoneOffset, 2f));
             Assert.AreNotEqual(firstPoint, secondPoint);
         }
 

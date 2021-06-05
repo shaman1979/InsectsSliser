@@ -64,7 +64,7 @@ namespace Slice.RedZoneSlicer
             firstPoint = transform;
             
             firstPoint.Translate(firstRedPoint);
-            firstPoint.rotation = SliceRotationStorage.RedZoneRotation;
+            firstPoint.rotation = SliceDataStorage.RedZoneRotation;
 
             secondPoint = SecondPointCreate(secondRedPoint);
             

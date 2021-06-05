@@ -1,3 +1,4 @@
+using Applications;
 using UnityEngine;
 
 namespace Slice.RedZoneSlicer.Factoryes
@@ -14,8 +15,8 @@ namespace Slice.RedZoneSlicer.Factoryes
 
         public void Create(out Vector3 firstPoint, out Vector3 secondPoint)
         {
-            firstPoint = new Vector3(0f, offsetHalf, 2f);
-            secondPoint = new Vector3(0.5f, 0f, 0f);
+            firstPoint = new Vector3(0f, offsetHalf + SliceDataStorage.HalfRedZoneOffset, 2f);
+            secondPoint = SliceDataStorage.SecondPointPosition;
         }
     }
 }
