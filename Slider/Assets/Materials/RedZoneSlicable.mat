@@ -67,7 +67,7 @@ Material:
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
-    - _RedZoneWidth: 0.1
+    - _RedZoneWidth: 2
     - _SliceWidth: 0.05
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
@@ -80,7 +80,7 @@ Material:
     - _Point1: {r: 0.019077092, g: 2, b: -0.03052973, a: 0}
     - _Point2: {r: 0.44310114, g: 2, b: 0.2344299, a: 0}
     - _RedZoneColor: {r: 1, g: 0, b: 0, a: 1}
-    - _RedZonePoint1: {r: 0.052991923, g: 2, b: -0.08480477, a: 0}
-    - _RedZonePoint2: {r: 0.47701597, g: 2, b: 0.18015489, a: 0}
+    - _RedZonePoint1: {r: 0.63590306, g: 2, b: -1.0176578, a: 0}
+    - _RedZonePoint2: {r: 1.0599271, g: 2, b: -0.75269806, a: 0}
     - _SliceColor: {r: 0, g: 1, b: 0.056927204, a: 1}
   m_BuildTextureStacks: []

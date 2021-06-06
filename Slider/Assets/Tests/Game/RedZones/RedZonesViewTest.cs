@@ -85,17 +85,42 @@ namespace Tests
             redZoneView.Initialize();
             
             //Act
-            Vector3 firstPointPosition = Vector3.zero;
-            Vector3 secondPointPosition = Vector3.zero + new Vector3(0.5f, 0f, 0f);
+            var firstPointPosition = Vector3.zero;
+            var secondPointPosition = Vector3.zero + new Vector3(0.5f, 0f, 0f);
             eventsAgregator.Invoke(new RedZoneGeneratorMessage(firstPointPosition, secondPointPosition, SliceDataStorage.HalfRedZoneWidth));
 
             //Assert
 
-            Vector3 resultFirstPointPosition = redZoneView.GetFirstPoint().localPosition;
-            Vector3 resultSecondPointPosition = redZoneView.GetSecondPoint().localPosition;
+            var resultFirstPointPosition = redZoneView.GetFirstPoint().localPosition;
+            var resultSecondPointPosition = redZoneView.GetSecondPoint().localPosition;
             
             Assert.AreEqual(firstPointPosition, resultFirstPointPosition);
             Assert.AreEqual(secondPointPosition, resultSecondPointPosition);
+        }
+
+        [Test]
+        public void WhenRedZoneGenerate_AndRedZoneColliderCreate_ThenBoxColliderSizeCorrect()
+        {
+            //Arrange
+            var redZoneCollider = new GameObject("RedZoneCollider").AddComponent<RedZoneCollider>();
+            redZoneCollider.Setup(eventsAgregator);
+            redZoneCollider.Initialize();
+            
+            //Act
+            float lineWidth = 2;
+            eventsAgregator.Invoke(new RedZoneGeneratorMessage(Vector3.zero, Vector3.zero, lineWidth));
+
+            //Assert
+
+            var resultSize = redZoneCollider.GetColliderSize;
+            var resultCenter = redZoneCollider.GetColliderCenter;
+            
+            var boxColliderSize = new Vector3(3f, lineWidth, 1f);
+            var boxColliderCenter = Vector3.zero;
+
+
+            Assert.AreEqual(boxColliderSize, resultSize);
+            Assert.AreEqual(boxColliderCenter, resultCenter);
         }
 
         [TearDown]

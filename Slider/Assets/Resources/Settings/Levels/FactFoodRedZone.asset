@@ -35,7 +35,7 @@ MonoBehaviour:
       Data: 2|Slice.RedZoneSlicer.Factoryes.HalfRedZoneFactory, Slicer
     - Name: offsetHalf
       Entry: 4
-      Data: 0.5
+      Data: 0.1
     - Name: 
       Entry: 8
       Data: 
