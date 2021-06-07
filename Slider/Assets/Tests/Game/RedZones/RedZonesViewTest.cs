@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using Applications;
+using Applications.Messages;
+using BzKovSoft.ObjectSlicerSamples;
 using Level.Modify.Modifycations;
 using NUnit.Framework;
 using Slice.RedZoneSlicer;
@@ -50,6 +52,22 @@ namespace Tests
             Assert.AreEqual(resultSecondVector, secondRedVectorWorldPosition);
         }
 
+        [Test]
+        public void WhenRedZoneGenerateFinished_AndRedZoneNotZero_ThenRedZonePositionEqualsZero()
+        {
+            //Arrange
+            redZoneView.Initialize();
+            //Act
+            eventsAgregator.Invoke(new RedZoneGeneratorMessage(Vector3.back, Vector3.up, 0.5f));
+            
+            Assert.AreNotEqual(Vector3.zero, redZoneView.transform.position);
+            
+            redZoneView.TransformReset();
+            
+            //Assert
+            Assert.AreEqual(Vector3.zero, redZoneView.transform.position);
+        }
+        
         [Test]
         public void WhenRedZoneGenerate_AndVectorNotZero_ThenVectorsRotationInCorrect()
         {
@@ -116,11 +134,31 @@ namespace Tests
             var resultCenter = redZoneCollider.GetColliderCenter;
             
             var boxColliderSize = new Vector3(3f, lineWidth, 1f);
-            var boxColliderCenter = Vector3.zero;
+            var boxColliderCenter = new Vector3(0f,0f,-2.20f);
 
 
             Assert.AreEqual(boxColliderSize, resultSize);
             Assert.AreEqual(boxColliderCenter, resultCenter);
+            Assert.IsTrue(redZoneCollider.IsTrigger);
+        }
+
+        [Test]
+        public void WhenRedZoneCollide_AndSubscribeSing_ThenGameFinishMessagePublisher()
+        {
+            //Arrange
+            var isFinished = false;
+            eventsAgregator.AddListener<GameFinishMessage>(message => isFinished = true);
+
+            //Act
+            var collider = new GameObject("GameObject").AddComponent<BoxCollider>();
+            collider.gameObject.AddComponent<Knife>();
+            
+            var redZoneCollider = new GameObject(nameof(RedZoneCollider)).AddComponent<RedZoneCollider>();
+            redZoneCollider.Setup(eventsAgregator);
+            redZoneCollider.OnTriggerEnter(collider);
+            
+            //Assert
+            Assert.IsTrue(isFinished);
         }
 
         [TearDown]

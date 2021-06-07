@@ -65,10 +65,16 @@ namespace Slice.RedZoneSlicer
             redZoneMaterial = new Material(Shader.Find(RedZoneShaderPath));
         }
 
+        public void TransformReset()
+        {
+            firstPoint.position = Vector3.zero;
+        }
+        
         private void Generate(Vector3 firstRedPoint, Vector3 secondRedPoint, float widthLine)
         {
             firstPoint = transform;
             
+            TransformReset();
             firstPoint.Translate(firstRedPoint);
             firstPoint.rotation = SliceDataStorage.RedZoneRotation;
 
