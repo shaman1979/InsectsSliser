@@ -38,6 +38,18 @@ namespace Tests.Game
             Assert.AreEqual(changeMaterial.shader, material.shader);
         }
 
+        [Test]
+        public void WhenGameFinished_AndMaterialChangerSubscribe_ThenMaterialDefault()
+        {
+            //Arrange
+
+            //Act
+
+            //Assert
+            Material defaultMaterial = new Material(Shader.Find(ShaderStorage.Slice));
+            Assert.AreEqual(defaultMaterial, material);
+        }
+
         [TearDown]
         public void TearDown()
         {
