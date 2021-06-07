@@ -8,7 +8,6 @@ namespace Slice.RedZoneSlicer
 {
     public class RedZoneView : MonoBehaviour
     {
-        private const string RedZoneShaderPath = "Custom/SlicableRedZone";
         private readonly int firstRedZonePointId = Shader.PropertyToID("_RedZonePoint1");
         private readonly int secondRedZonePointId = Shader.PropertyToID("_RedZonePoint2");
         private readonly int widthRedZoneId = Shader.PropertyToID("_RedZoneWidth");
@@ -68,7 +67,7 @@ namespace Slice.RedZoneSlicer
 
         public void MaterialInitialize()
         {
-            redZoneMaterial = new Material(Shader.Find(RedZoneShaderPath));
+            redZoneMaterial = new Material(Shader.Find(ShaderStorage.RedZone));
         }
 
         public void TransformReset()
