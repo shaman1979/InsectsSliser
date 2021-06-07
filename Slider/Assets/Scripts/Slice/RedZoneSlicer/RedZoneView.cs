@@ -1,4 +1,5 @@
 using Applications;
+using Applications.Messages;
 using Slicer.EventAgregators;
 using UnityEngine;
 using Zenject;
@@ -31,8 +32,13 @@ namespace Slice.RedZoneSlicer
 
         public void Initialize()
         {
-            if(eventsAgregator != null)
-                eventsAgregator.AddListener<RedZoneGeneratorMessage>(message => Generate(message.FirstRedZone, message.SecondRedZone, message.Width));
+            if (eventsAgregator != null)
+            {
+                eventsAgregator.AddListener<RedZoneGeneratorMessage>(message =>
+                    Generate(message.FirstRedZone, message.SecondRedZone, message.Width));
+                
+                eventsAgregator.AddListener<GameFinishMessage>(message => OnGameFinish());
+            }
         }
         
         public Vector3 GetFirstVector()
@@ -68,6 +74,11 @@ namespace Slice.RedZoneSlicer
         public void TransformReset()
         {
             firstPoint.position = Vector3.zero;
+        }
+
+        private void OnGameFinish()
+        {
+            transform.position = new Vector3(1000, 1000, 1000);
         }
         
         private void Generate(Vector3 firstRedPoint, Vector3 secondRedPoint, float widthLine)

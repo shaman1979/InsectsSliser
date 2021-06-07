@@ -143,6 +143,20 @@ namespace Tests
         }
 
         [Test]
+        public void WhenGameFinish_AndRedZoneGenerate_ThenRedZonePositionEquals1000()
+        {
+            //Arrange
+            redZoneView.Initialize();
+            
+            //Act
+            eventsAgregator.Invoke(new GameFinishMessage());
+            
+            //Assert
+            Vector3 redZonePosition = new Vector3(1, 1,1) * 1000;
+            Assert.AreEqual(redZonePosition, redZoneView.transform.position);
+        }
+        
+        [Test]
         public void WhenRedZoneCollide_AndSubscribeSing_ThenGameFinishMessagePublisher()
         {
             //Arrange
