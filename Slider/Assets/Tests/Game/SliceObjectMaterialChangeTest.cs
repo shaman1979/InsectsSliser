@@ -1,5 +1,6 @@
 using System.Collections;
 using Applications;
+using Applications.Messages;
 using NUnit.Framework;
 using Slicer.EventAgregators;
 using UnityEngine;
@@ -42,18 +43,23 @@ namespace Tests.Game
         public void WhenGameFinished_AndMaterialChangerSubscribe_ThenMaterialDefault()
         {
             //Arrange
+            changer.Setup(eventsAgregator);
+            changer.Initialize();
 
             //Act
+            eventsAgregator.Invoke(new GameFinishMessage());
+            var material = changer.GetMaterial();
 
             //Assert
-            Material defaultMaterial = new Material(Shader.Find(ShaderStorage.Slice));
-            Assert.AreEqual(defaultMaterial, material);
+            var defaultMaterial = new Material(Shader.Find(ShaderStorage.Slice));
+            Assert.AreEqual(defaultMaterial.shader, material.shader);
         }
 
         [TearDown]
         public void TearDown()
         {
             eventsAgregator.Clear();
+            Object.DestroyImmediate(changer.gameObject);
         }
     }
 }

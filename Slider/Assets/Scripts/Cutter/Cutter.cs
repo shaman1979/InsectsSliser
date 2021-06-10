@@ -17,7 +17,6 @@ namespace MeshSlice
 
         [Header("Slice Parameters")]
         public Transform slicePoint;
-        public Material material;
 
         [SerializeField]
         private CutterMovening movening;
