@@ -35,7 +35,6 @@ namespace MeshSlice
         
         private void Awake()
         {
-            eventsAgregator.AddListener<MaterialChangeMessage>(message => MaterialChange(message.CurrentMaterial));
             meshGenerator.OnStarted += mesh => texture = mesh.Texture;
         }
 
