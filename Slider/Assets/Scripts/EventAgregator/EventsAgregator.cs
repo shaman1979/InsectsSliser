@@ -24,6 +24,11 @@ namespace Slicer.EventAgregators
 				delegates[typeof(T)] = Delegate.Remove(delegates[typeof(T)], action);
 		}
 
+		public void Clear()
+		{
+			Subscribers.Clear();
+		}
+
 		public void Invoke<T>(T obj)
 		{
 			if (!delegates.ContainsKey(typeof(T)))

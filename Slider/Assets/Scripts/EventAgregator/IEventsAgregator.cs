@@ -16,5 +16,7 @@ namespace Slicer.EventAgregators
 		void AddListener<T>(Action<T> action);
 
 		void RemoveListener<T>(Action<T> action);
+
+		void Clear();
 	}
 }

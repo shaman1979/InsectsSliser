@@ -1705,7 +1705,6 @@ MonoBehaviour:
   cutter: {fileID: 1989545037}
   objectToSlice: {fileID: 1277122107}
   slicePoint: {fileID: 1533171215}
-  material: {fileID: 2100000, guid: c96d4a4e497464ee084781c44681b4f8, type: 2}
   movening: {fileID: 1989545036}
   generator: {fileID: 906162193}
   cutterMovening: {fileID: 1989545036}
@@ -2499,7 +2498,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1277122101}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.39, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 906162188}
@@ -2519,7 +2518,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _sliceId: 0
   _lastSliceTime: -3.4028235e+38
-  _defaultSliceMaterial: {fileID: 2100000, guid: fa8d87b1ff74d0d48bce731506cab63d,
+  _defaultSliceMaterial: {fileID: 2100000, guid: c96d4a4e497464ee084781c44681b4f8,
     type: 2}
   _asynchronously: 1
   _delayBetweenSlices: 1
@@ -4215,7 +4214,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1989545034}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2, z: 0}
+  m_LocalPosition: {x: 0, y: 2, z: -0.036}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1663958341}
@@ -5208,6 +5207,14 @@ PrefabInstance:
     - target: {fileID: 19898814, guid: 82bf03917e16d3d4cad30518cca28308, type: 3}
       propertyPath: playOnAwake
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 19898814, guid: 82bf03917e16d3d4cad30518cca28308, type: 3}
+      propertyPath: InitialModule.startRotationX.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 19898814, guid: 82bf03917e16d3d4cad30518cca28308, type: 3}
+      propertyPath: InitialModule.startRotationY.minMaxState
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 82bf03917e16d3d4cad30518cca28308, type: 3}
