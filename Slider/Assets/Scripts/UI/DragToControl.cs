@@ -7,6 +7,7 @@ using LightDev.Core;
 using LightDev.UI;
 using DG.Tweening;
 using Slicer.EventAgregators;
+using Tools;
 
 namespace MeshSlice.UI
 {
@@ -37,12 +38,12 @@ namespace MeshSlice.UI
 
         protected override void OnStartShowing()
         {
-            holder.Deactivate();
+            holder.gameObject.Deactivate();
         }
 
         protected override void OnFinishShowing()
         {
-            holder.Activate();
+            holder.gameObject.Activate();
             AnimateFinger();
         }
 

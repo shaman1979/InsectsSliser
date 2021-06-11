@@ -7,16 +7,6 @@ namespace LightDev.Core
 {
     public partial class Base : MonoBehaviour
     {
-        public void Activate()
-        {
-            gameObject.SetActive(true);
-        }
-        
-        public void Deactivate()
-        {
-            gameObject.SetActive(false);
-        }
-
         private protected Coroutine DelayAction(float delay, Action action)
         {
             return StartCoroutine(DelayCoroutine(delay, action));

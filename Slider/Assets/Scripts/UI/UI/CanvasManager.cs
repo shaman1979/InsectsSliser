@@ -1,5 +1,6 @@
 ﻿using LightDev.Core;
 using Slicer.EventAgregators;
+using Tools;
 using Zenject;
 
 namespace LightDev.UI
@@ -19,9 +20,9 @@ namespace LightDev.UI
             canvasElements = GetComponentsInChildren<CanvasElement>(true);
             foreach (CanvasElement element in canvasElements)
             {
-                element.Activate();
+                element.gameObject.Activate();
                 element.Subscribe(eventsAgregator);
-                element.Deactivate();
+                element.gameObject.Deactivate();
             }
         }
 
