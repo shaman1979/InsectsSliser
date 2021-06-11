@@ -4,56 +4,6 @@ namespace LightDev.Core
 {
     public partial class Base
     {
-        public Quaternion GetRotation()
-        {
-            return transform.rotation;
-        }
-
-        public Quaternion GetLocalRotation()
-        {
-            return transform.localRotation;
-        }
-
-        public Vector3 GetEulerRotation()
-        {
-            return transform.eulerAngles;
-        }
-
-        public Vector3 GetLocalEulerRotation()
-        {
-            return transform.localEulerAngles;
-        }
-
-        public float GetRotationX()
-        {
-            return transform.eulerAngles.x;
-        }
-
-        public float GetRotationY()
-        {
-            return transform.eulerAngles.y;
-        }
-
-        public float GetRotationZ()
-        {
-            return transform.eulerAngles.z;
-        }
-
-        public float GetLocalRotationX()
-        {
-            return transform.localEulerAngles.x;
-        }
-
-        public float GetLocalRotationY()
-        {
-            return transform.localEulerAngles.y;
-        }
-
-        public float GetLocalRotationZ()
-        {
-            return transform.localEulerAngles.z;
-        }
-
         public Vector3 GetScale()
         {
             return transform.localScale;

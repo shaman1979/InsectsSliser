@@ -72,6 +72,56 @@ namespace Tools
 
             return transform.localPosition.z;
         }
+
+        public static Quaternion GetRotation(this Transform transform)
+        {
+            return transform.rotation;
+        }
+
+        public static Quaternion GetLocalRotation(this Transform transform)
+        {
+            return transform.localRotation;
+        }
+
+        public static Vector3 GetEulerRotation(this Transform transform)
+        {
+            return transform.eulerAngles;
+        }
+
+        public static Vector3 GetLocalEulerRotation(this Transform transform)
+        {
+            return transform.localEulerAngles;
+        }
+        
+        public static float GetEulerRotationX(this Transform transform)
+        {
+            return transform.eulerAngles.x;
+        }
+
+        public static float GetEulerRotationY(this Transform transform)
+        {
+            return transform.eulerAngles.y;
+        }
+
+        public static float GetEulerRotationZ(this Transform transform)
+        {
+            return transform.eulerAngles.z;
+        }
+
+        public static float GetEulerLocalRotationX(this Transform transform)
+        {
+            return transform.localEulerAngles.x;
+        }
+
+        public static float GetEulerLocalRotationY(this Transform transform)
+        {
+            return transform.localEulerAngles.y;
+        }
+
+        public static float GetEulerLocalRotationZ(this Transform transform)
+        {
+            return transform.localEulerAngles.z;
+        }
         
         public static Vector3 Vector3Multiplication(this Vector3 first, Vector3 second)
         {
