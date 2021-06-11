@@ -107,7 +107,7 @@ namespace Slicer.UI.Windows
             tapToStart.SetFade(1);
             tapToStart.Sequence(
                 tapToStart.Fade(0, 1).SetEase(Ease.InSine),
-                tapToStart.Fade(1, 0.2f).SetEase(Ease.InSine)
+                tapToStart.Fade(1, 0.5f).SetEase(Ease.InSine)
             ).SetLoops(-1);
         }
 
@@ -115,7 +115,7 @@ namespace Slicer.UI.Windows
         {
             logoHolder.SetPositionY(500);
             logoHolder.Sequence(
-                logoHolder.MoveY(-354, 0.5f).SetEase(Ease.OutBack)
+                logoHolder.MoveY(-128.4f, 0.5f).SetEase(Ease.OutBack)
             );
         }
 
