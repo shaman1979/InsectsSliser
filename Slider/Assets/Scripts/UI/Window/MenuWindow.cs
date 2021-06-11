@@ -14,18 +14,15 @@ namespace Slicer.UI.Windows
 {
     public class MenuWindow : CanvasElement
     {
-        [Header("Buttons")]
         [SerializeField]
         private ButtonElement shopButton;
-
-        [Header("References")]
+        
         [SerializeField]
         private Base tapToStart;
 
         [SerializeField]
         private Base logoHolder;
-
-        [Header("Info Text")]
+        
         [SerializeField]
         private Base knob;
 
@@ -89,16 +86,16 @@ namespace Slicer.UI.Windows
             hpText.SetText($"xp: {hpInitializer.GetHP}");
             levelText.SetText($"level: {levelsInitializer.GetLevel()}");
 
-            float hpWidth = hpText.GetTextComponent().preferredWidth;
-            float levelWidth = levelText.GetTextComponent().preferredWidth;
+            var hpWidth = hpText.GetTextComponent().preferredWidth;
+            var levelWidth = levelText.GetTextComponent().preferredWidth;
 
-            float fullSize = hpWidth + knobWidth + levelWidth;
+            var fullSize = hpWidth + knobWidth + levelWidth;
 
             UpdateStarCount();
 
-            float hpPos = -fullSize / 2 + hpWidth / 2;
-            float knobPos = hpPos + hpWidth / 2 + knobWidth / 2;
-            float levelPos = knobPos + knobWidth / 2 + levelWidth / 2;
+            var hpPos = -fullSize / 2 + hpWidth / 2;
+            var knobPos = hpPos + hpWidth / 2 + knobWidth / 2;
+            var levelPos = knobPos + knobWidth / 2 + levelWidth / 2;
 
             hpText.SetPositionX(hpPos);
             knob.SetPositionX(knobPos);
@@ -110,7 +107,7 @@ namespace Slicer.UI.Windows
             tapToStart.SetFade(1);
             tapToStart.Sequence(
                 tapToStart.Fade(0, 1).SetEase(Ease.InSine),
-                tapToStart.Fade(1, 0.2f).SetEase(Ease.InSine)
+                tapToStart.Fade(1, 0.5f).SetEase(Ease.InSine)
             ).SetLoops(-1);
         }
 
@@ -118,7 +115,7 @@ namespace Slicer.UI.Windows
         {
             logoHolder.SetPositionY(500);
             logoHolder.Sequence(
-                logoHolder.MoveY(-354, 0.5f).SetEase(Ease.OutBack)
+                logoHolder.MoveY(-128.4f, 0.5f).SetEase(Ease.OutBack)
             );
         }
 

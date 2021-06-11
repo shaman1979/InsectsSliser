@@ -2,6 +2,7 @@
 
 using LightDev.Core;
 using Slicer.EventAgregators;
+using Tools;
 
 namespace LightDev.UI
 {
@@ -65,7 +66,7 @@ namespace LightDev.UI
             StopShowCoroutine();
             StopHideCoroutine();
 
-            Activate();
+            gameObject.Activate();
             OnStartShowing();
             showCoroutine = DelayAction(showTime, OnFinishShowing);
         }
@@ -79,7 +80,7 @@ namespace LightDev.UI
             StopShowCoroutine();
             StopHideCoroutine();
 
-            Activate();
+            gameObject.Activate();
             OnStartShowing();
             OnFinishShowing();
         }
@@ -100,7 +101,7 @@ namespace LightDev.UI
             hideCoroutine = DelayAction(hideTime, () =>
             {
                 OnFinishHiding();
-                Deactivate();
+                gameObject.Deactivate();
             });
         }
 
@@ -117,7 +118,7 @@ namespace LightDev.UI
 
             OnStartHiding();
             OnFinishHiding();
-            Deactivate();
+            gameObject.Deactivate();
         }
 
         private void StopShowCoroutine()

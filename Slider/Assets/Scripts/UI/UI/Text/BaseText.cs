@@ -17,8 +17,12 @@ namespace LightDev.UI
             textComponent = GetComponent<Text>();
         }
 
-        public virtual Text GetTextComponent()
+        public Text GetTextComponent()
         {
+            if (textComponent == null)
+            {
+                textComponent = GetComponent<Text>();
+            }
             return textComponent;
         }
 
@@ -30,8 +34,8 @@ namespace LightDev.UI
         
         public virtual void SetText(string text)
         {
-            var name = gameObject.name;
-            textComponent.text = text;
+            
+            GetTextComponent().text = text;
         }
         
         public virtual Tween TweenColor(Color to, float duration)

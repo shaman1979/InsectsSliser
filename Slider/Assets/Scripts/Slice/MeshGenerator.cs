@@ -7,6 +7,7 @@ using System;
 using Level.Messages;
 using Slice.Messages;
 using Slicer.EventAgregators;
+using Tools;
 using UnityEngine;
 using Zenject;
 
@@ -64,7 +65,7 @@ namespace Slicer.Slice
             objectToSlice.SetLocalPositionZ(0);
             objectToSlice.SetScale(0);
             objectToSlice.SetRotationY(mesh.Rotation.y - 180);
-            objectToSlice.Activate();
+            objectToSlice.gameObject.Activate();
             objectToSlice.Sequence(
               objectToSlice.Scale(1.5f, 0.4f).SetEase(Ease.OutBack)
             );
