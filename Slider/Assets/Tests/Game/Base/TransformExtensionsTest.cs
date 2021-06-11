@@ -42,6 +42,37 @@ namespace Tests.Game.Base
             //Assert
             Assert.AreEqual(position, currentPosition);
         }
+
+        [Test]
+        public void WhenGetPositionCurrentAxis_AndTransformHasPosition_ThenPositionEqualsOne()
+        {
+            //Arrange
+            transform.position = new Vector3(1f, 2f, 3f);
+            
+            //Act
+            var x = transform.GetPositionX();
+            var y = transform.GetPositionY();
+            var z = transform.GetPositionZ();
+
+            //Assert
+            Assert.AreEqual(1, x);
+            Assert.AreEqual(2, y);
+            Assert.AreEqual(3, z);
+        }
+
+        [Test]
+        public void WhenVector3Multiplication_AndVectorNotEqualsZero_ThenVectorMultiplied()
+        {
+            //Arrange
+            var multiplier = new Vector3(1f, 1f, 1f);
+            var multipliable = new Vector3(2f, 2f, 2f);
+            
+            //Act
+            var result = multipliable.Vector3Multiplication(multiplier);
+
+            //Assert
+            Assert.AreEqual(new Vector3(2f,2f,2f), result);
+        }
         
         [TearDown]
         public void TearDown()
