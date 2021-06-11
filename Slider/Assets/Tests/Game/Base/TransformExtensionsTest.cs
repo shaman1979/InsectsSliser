@@ -74,6 +74,44 @@ namespace Tests.Game.Base
             Assert.AreEqual(new Vector3(2f,2f,2f), result);
         }
         
+        [Test]
+        public void WhenGetLocalPosition_AndTransformHasParent_ThenLocalPositionEqualOne()
+        {
+            //Arrange
+            var parent = new GameObject("Parent").transform;
+            transform.SetParent(parent);
+            transform.localPosition = Vector3.one;
+            
+            //Act
+            Vector3 relustLocalPosition = transform.GetLocalPosition();
+
+            //Assert
+            Assert.AreEqual(transform.localPosition, relustLocalPosition);
+            
+            transform.UnParent();
+            Object.Destroy(parent.gameObject);
+        }
+
+        [Test]
+        public void WhenGetLocalPositionAxis_AndTransformHasParent_ThenLocalPositionEqualsOne()
+        {
+            //Arrange
+            var parent = new GameObject("Parent").transform;
+            transform.SetParent(parent);
+            transform.localPosition = new Vector3(1, 2, 3);
+            
+            //Act
+            var localPosition = transform.localPosition;
+            
+            //Assert
+            Assert.AreEqual(localPosition.x, transform.GetLocalPositionX());
+            Assert.AreEqual(localPosition.y, transform.GetLocalPositionY());
+            Assert.AreEqual(localPosition.z, transform.GetLocalPositionZ());
+            
+            transform.UnParent();
+            Object.Destroy(parent.gameObject);
+        }
+        
         [TearDown]
         public void TearDown()
         {

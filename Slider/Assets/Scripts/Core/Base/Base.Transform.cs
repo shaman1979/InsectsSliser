@@ -4,62 +4,6 @@ namespace LightDev.Core
 {
     public partial class Base
     {
-        public float GetPositionX()
-        {
-            if (transform is RectTransform)
-                return ((RectTransform)transform).anchoredPosition.x;
-
-            return transform.position.x;
-        }
-
-        public float GetPositionY()
-        {
-            if (transform is RectTransform)
-                return ((RectTransform)transform).anchoredPosition.y;
-
-            return transform.position.y;
-        }
-
-        public float GetPositionZ()
-        {
-            if (transform is RectTransform)
-                throw new System.NotImplementedException("RectTransfrom does not have anchoredPosition.z");
-
-            return transform.position.z;
-        }
-
-        public Vector3 GetLocalPosition()
-        {
-            if (transform is RectTransform)
-                return ((RectTransform)transform).anchoredPosition;
-
-            return transform.localPosition;
-        }
-
-        public float GetLocalPositionX()
-        {
-            if (transform is RectTransform)
-                return ((RectTransform)transform).anchoredPosition.x;
-
-            return transform.localPosition.x;
-        }
-
-        public float GetLocalPositionY()
-        {
-            if (transform is RectTransform)
-                return ((RectTransform)transform).anchoredPosition.y;
-
-            return transform.localPosition.y;
-        }
-
-        public float GetLocalPositionZ()
-        {
-            if (transform is RectTransform)
-                throw new System.NotImplementedException("RectTransfrom does not have anchoredPosition.z");
-
-            return transform.localPosition.z;
-        }
-
         public Quaternion GetRotation()
         {
             return transform.rotation;
