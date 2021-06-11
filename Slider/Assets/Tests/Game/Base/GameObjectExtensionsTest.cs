@@ -20,7 +20,6 @@ namespace Tests.Game.Base
         public void WhenGameObjectDeActive_AndGameObjectActiveInStart_ThenGameObjectActiveSelfIsFalse()
         {
             //Arrange
-            gameObject = new GameObject("GameObject");
             gameObject.SetActive(true);
 
             //Act
@@ -28,6 +27,18 @@ namespace Tests.Game.Base
 
             //Assert
             Assert.IsFalse(gameObject.activeSelf);
+        }
+
+        [Test]
+        public void WhenGameObjectActive_AndGameObjectDeActiveInStart_ThenGameObjectActiveSelfIsTrue()
+        {
+            //Arrange
+            gameObject.SetActive(false);
+            //Act
+            gameObject.Activate();
+            
+            //Assert
+            Assert.IsTrue(gameObject.activeSelf);
         }
 
         [TearDown]
