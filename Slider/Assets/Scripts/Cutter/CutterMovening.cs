@@ -2,6 +2,7 @@
 using LightDev.Core;
 using Slicer.Levels;
 using System;
+using Tools;
 using UnityEngine;
 
 namespace Slicer.Cutter
@@ -51,8 +52,8 @@ namespace Slicer.Cutter
 
         private void StartIdleState()
         {
-            float upPosition = GetPositionY() + 0.1f;
-            float position = GetPositionY();
+            float upPosition = transform.GetPositionY() + 0.1f;
+            float position = transform.GetPositionY();
             Sequence(
               MoveY(upPosition, 0.6f).SetEase(Ease.InOutQuad),
               MoveY(position, 0.6f).SetEase(Ease.InOutQuad)

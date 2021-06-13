@@ -42,6 +42,161 @@ namespace Tests.Game.Base
             //Assert
             Assert.AreEqual(position, currentPosition);
         }
+
+        [Test]
+        public void WhenGetPositionCurrentAxis_AndTransformHasPosition_ThenPositionEqualsOne()
+        {
+            //Arrange
+            transform.position = new Vector3(1f, 2f, 3f);
+            
+            //Act
+            var x = transform.GetPositionX();
+            var y = transform.GetPositionY();
+            var z = transform.GetPositionZ();
+
+            //Assert
+            Assert.AreEqual(1, x);
+            Assert.AreEqual(2, y);
+            Assert.AreEqual(3, z);
+        }
+
+        [Test]
+        public void WhenVector3Multiplication_AndVectorNotEqualsZero_ThenVectorMultiplied()
+        {
+            //Arrange
+            var multiplier = new Vector3(1f, 1f, 1f);
+            var multipliable = new Vector3(2f, 2f, 2f);
+            
+            //Act
+            var result = multipliable.Vector3Multiplication(multiplier);
+
+            //Assert
+            Assert.AreEqual(new Vector3(2f,2f,2f), result);
+        }
+        
+        [Test]
+        public void WhenGetLocalPosition_AndTransformHasParent_ThenLocalPositionEqualOne()
+        {
+            //Arrange
+            var parent = new GameObject("Parent").transform;
+            transform.SetParent(parent);
+            transform.localPosition = Vector3.one;
+            
+            //Act
+            var relustLocalPosition = transform.GetLocalPosition();
+
+            //Assert
+            Assert.AreEqual(transform.localPosition, relustLocalPosition);
+            
+            transform.UnParent();
+            Object.Destroy(parent.gameObject);
+        }
+
+        [Test]
+        public void WhenGetLocalPositionAxis_AndTransformHasParent_ThenLocalPositionEqualsOne()
+        {
+            //Arrange
+            var parent = new GameObject("Parent").transform;
+            transform.SetParent(parent);
+            transform.localPosition = new Vector3(1, 2, 3);
+            
+            //Act
+            var localPosition = transform.localPosition;
+            
+            //Assert
+            Assert.AreEqual(localPosition.x, transform.GetLocalPositionX());
+            Assert.AreEqual(localPosition.y, transform.GetLocalPositionY());
+            Assert.AreEqual(localPosition.z, transform.GetLocalPositionZ());
+            
+            transform.UnParent();
+            Object.Destroy(parent.gameObject);
+        }
+
+        [Test]
+        public void WhenGetRotation_AndTransformHasRotation_ThenRotationEqualsIdentity()
+        {
+            //Arrange
+            var rotation = transform.rotation;
+            
+            //Act
+            var result = transform.GetRotation();
+            
+            //Assert
+            Assert.AreEqual(rotation, result);
+        }
+        
+        [Test]
+        public void WhenGetLocalRotation_AndTransformHasLocalRotation_ThenLocalRotationEqualsIdentity()
+        {
+            //Arrange
+            var rotation = transform.localRotation;
+            
+            //Act
+            var result = transform.GetLocalRotation();
+            
+            //Assert
+            Assert.AreEqual(rotation, result);
+        }
+        
+        [Test]
+        public void WhenGetEulerRotation_AndTransformHasEulerRotation_ThenEulerRotationEqualsZero()
+        {
+            //Arrange
+            var rotation = transform.eulerAngles;
+            
+            //Act
+            var result = transform.GetEulerRotation();
+            
+            //Assert
+            Assert.AreEqual(rotation, result);
+        }
+        
+        [Test]
+        public void WhenGetLocalEulerRotation_AndTransformHasLocalEulerRotation_ThenLocalEulerRotationEqualsZero()
+        {
+            //Arrange
+            var rotation = transform.localEulerAngles;
+            
+            //Act
+            var result = transform.GetLocalEulerRotation();
+            
+            //Assert
+            Assert.AreEqual(rotation, result);
+        }
+
+        [Test]
+        public void WhenGetEulerRotationAxis_AndVectorNotEqualsZero_ThenAxisEqualsOne()
+        {
+            //Arrange
+
+            //Act
+            var x = transform.GetEulerRotationX();
+            var y = transform.GetEulerRotationY();
+            var z = transform.GetEulerRotationZ();
+
+            //Assert
+            
+            Assert.AreEqual(transform.eulerAngles.x, x);
+            Assert.AreEqual(transform.eulerAngles.y, y);
+            Assert.AreEqual(transform.eulerAngles.z, z);
+        }
+        
+        [Test]
+        public void WhenGetEulerLocalRotationAxis_AndVectorNotEqualsZero_ThenAxisEqualsOne()
+        {
+            //Arrange
+
+            //Act
+            var x = transform.GetEulerLocalRotationX();
+            var y = transform.GetEulerLocalRotationY();
+            var z = transform.GetEulerLocalRotationZ();
+
+            //Assert
+            
+            Assert.AreEqual(transform.localEulerAngles.x, x);
+            Assert.AreEqual(transform.localEulerAngles.y, y);
+            Assert.AreEqual(transform.localEulerAngles.z, z);
+        }
         
         [TearDown]
         public void TearDown()

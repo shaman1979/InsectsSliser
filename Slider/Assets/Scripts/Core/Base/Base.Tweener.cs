@@ -1,6 +1,7 @@
 ﻿using DG.Tweening;
 using System;
 using System.Collections.Generic;
+using Tools;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -202,17 +203,17 @@ namespace LightDev.Core
 
         public virtual Tween RotateX(float endValue, float duration)
         {
-            return transform.DORotate(new Vector3(endValue, GetRotationY(), GetRotationZ()), duration);
+            return transform.DORotate(new Vector3(endValue, transform.GetEulerRotationY(), transform.GetEulerRotationZ()), duration);
         }
 
         public virtual Tween RotateY(float endValue, float duration)
         {
-            return transform.DORotate(new Vector3(GetRotationX(), endValue, GetRotationZ()), duration);
+            return transform.DORotate(new Vector3(transform.GetEulerRotationX(), endValue, transform.GetEulerRotationZ()), duration);
         }
 
         public virtual Tween RotateZ(float endValue, float duration)
         {
-            return transform.DORotate(new Vector3(GetRotationX(), GetRotationY(), endValue), duration);
+            return transform.DORotate(new Vector3(transform.GetEulerRotationX(), transform.GetEulerRotationY(), endValue), duration);
         }
 
         public virtual Tween RotateLocal(Quaternion endValue, float duration)
@@ -227,17 +228,17 @@ namespace LightDev.Core
 
         public virtual Tween RotateLocalX(float endValue, float duration)
         {
-            return transform.DOLocalRotate(new Vector3(endValue, GetLocalRotationY(), GetLocalRotationZ()), duration);
+            return transform.DOLocalRotate(new Vector3(endValue, transform.GetEulerLocalRotationX(), transform.GetEulerLocalRotationZ()), duration);
         }
 
         public virtual Tween RotateLocalY(float endValue, float duration)
         {
-            return transform.DOLocalRotate(new Vector3(GetLocalRotationX(), endValue, GetLocalRotationZ()), duration);
+            return transform.DOLocalRotate(new Vector3(transform.GetEulerLocalRotationX(), endValue,transform.GetEulerLocalRotationZ()), duration);
         }
 
         public virtual Tween RotateLocalZ(float endValue, float duration)
         {
-            return transform.DOLocalRotate(new Vector3(GetLocalRotationX(), GetLocalRotationY(), endValue), duration);
+            return transform.DOLocalRotate(new Vector3(transform.GetEulerLocalRotationX(), transform.GetEulerLocalRotationY(), endValue), duration);
         }
 
         public virtual Tween Scale(Vector3 endValue, float duration)
