@@ -1,23 +1,31 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-
 using DG.Tweening;
+using LightDev.Core;
 
 namespace LightDev.UI
 {
-  [RequireComponent(typeof(Image))]
-  public class ButtonScale : BaseButton
-  {
-    protected override void AnimatePress()
+    [RequireComponent(typeof(Image))]
+    public class ButtonScale : BaseButton
     {
-      KillSequences();
-      Sequence(target.transform.DOScale(0.8f, 0.1f));
-    }
+        private SequenceHelper sequenceHelper;
 
-    protected override void AnimateUnpress()
-    {
-      KillSequences();
-      Sequence(target.transform.DOScale(1f, 0.1f));
+        protected override void Awake()
+        {
+            sequenceHelper = new SequenceHelper(transform);
+            base.Awake();
+        }
+
+        protected override void AnimatePress()
+        {
+            sequenceHelper.KillSequences();
+            sequenceHelper.Sequence(target.transform.DOScale(0.8f, 0.1f));
+        }
+
+        protected override void AnimateUnpress()
+        {
+            sequenceHelper.KillSequences();
+            sequenceHelper.Sequence(target.transform.DOScale(1f, 0.1f));
+        }
     }
-  }
 }

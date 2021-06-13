@@ -20,29 +20,32 @@ namespace Slicer.Cutter
         [SerializeField]
         private float maxPositionZ;
 
+        public SequenceHelper SequenceHelper { get; private set; }
+
         private float speed;
 
         private void Start()
-        {     
+        {
+            SequenceHelper = new SequenceHelper(transform);
             LevelModifyEvents.SpeedChanged += SpeedUp;
             
             SpeedUp(1);
         }
-
+        
         public void StartMovening()
         {
-            KillSequences();
+            SequenceHelper.KillSequences();
 
-            Sequence(
+            SequenceHelper.Sequence(
                 transform.DOLocalMoveZ(minPositionZ, 0.5f).SetEase(Ease.InSine),
-                OnFinish(MoveningState));
+                SequenceHelper.OnFinish(MoveningState));
 
             StartIdleState();
         }
 
         public void StopMovening()
         {
-            KillSequences();
+            SequenceHelper.KillSequences();
         }
 
         private void SpeedUp(float acceleration)
@@ -52,11 +55,11 @@ namespace Slicer.Cutter
 
         private void StartIdleState()
         {
-            float upPosition = transform.GetPositionY() + 0.1f;
-            float position = transform.GetPositionY();
-            Sequence(
-              MoveY(upPosition, 0.6f).SetEase(Ease.InOutQuad),
-              MoveY(position, 0.6f).SetEase(Ease.InOutQuad)
+            var upPosition = transform.GetPositionY() + 0.1f;
+            var position = transform.GetPositionY();
+            SequenceHelper.Sequence(
+                SequenceHelper. MoveY(upPosition, 0.6f).SetEase(Ease.InOutQuad),
+                SequenceHelper.MoveY(position, 0.6f).SetEase(Ease.InOutQuad)
             ).SetLoops(-1);
         }
 
@@ -64,7 +67,7 @@ namespace Slicer.Cutter
         {
             OnFinished?.Invoke();
 
-            Sequence(
+            SequenceHelper.Sequence(
                 transform.DOLocalMoveZ(maxPositionZ, speed, false).SetEase(Ease.InSine), 
                 transform.DOLocalMoveZ(minPositionZ, speed, false).SetEase(Ease.InSine))
                 .SetLoops(-1);

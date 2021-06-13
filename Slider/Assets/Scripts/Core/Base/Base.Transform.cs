@@ -51,9 +51,8 @@ namespace LightDev.Core
 
         public void SetPositionY(float y)
         {
-            if (transform is RectTransform)
+            if (transform is RectTransform rectTransform)
             {
-                RectTransform rectTransform = (RectTransform)transform;
                 rectTransform.anchoredPosition = new Vector2(rectTransform.anchoredPosition.x, y);
             }
             else

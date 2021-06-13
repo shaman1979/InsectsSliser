@@ -62,14 +62,15 @@ namespace LightDev.UI
 
         private void ShowAnimationUtil(System.Action preAction, Tween tween, float delay)
         {
-            KillSequences();
-            SetIsInteractable(false);
-            preAction?.Invoke();
-            Sequence(
-              Delay(delay),
-              tween,
-              OnFinish(() => SetIsInteractable(true))
-            );
+            //TODO: Доделать потом
+            // KillSequences();
+            // SetIsInteractable(false);
+            // preAction?.Invoke();
+            // Sequence(
+            //   Delay(delay),
+            //   tween,
+            //   OnFinish(() => SetIsInteractable(true))
+            // );
         }
 
         protected abstract void AnimatePress();

@@ -49,11 +49,12 @@ namespace MeshSlice.UI
 
         private void AnimateFinger()
         {
-            finger.SetPositionX(-153);
-            finger.Sequence(
-                finger.MoveX(213, 1.2f).SetEase(Ease.InOutQuart),
-                finger.MoveX(-153, 1.2f).SetEase(Ease.InOutQuart)
-            ).SetLoops(-1);
+            //TODO: Доделать позже
+            // finger.SetPositionX(-153);
+            // finger.Sequence(
+            //     finger.MoveX(213, 1.2f).SetEase(Ease.InOutQuart),
+            //     finger.MoveX(-153, 1.2f).SetEase(Ease.InOutQuart)
+            // ).SetLoops(-1);
         }
     }
 }

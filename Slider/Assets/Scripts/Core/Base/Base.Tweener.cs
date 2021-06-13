@@ -7,23 +7,29 @@ using UnityEngine.UI;
 
 namespace LightDev.Core
 {
-    public partial class Base
+    public class SequenceHelper : IDisposable
     {
-        protected List<Sequence> sequences = new List<Sequence>();
+        private readonly List<Sequence> sequences = new List<Sequence>();
+        private Transform transform;
 
-        protected virtual void OnDisable()
+        public SequenceHelper(Transform transform)
+        {
+            this.transform = transform;
+        }
+
+        public void Dispose()
         {
             KillSequences();
         }
 
         public virtual Sequence Sequence(params Tween[] tweens)
         {
-            Sequence sequence = DOTween.Sequence();
-            if (gameObject.layer == LayerMask.NameToLayer("UI"))
+            var sequence = DOTween.Sequence();
+            if (transform.gameObject.layer == LayerMask.NameToLayer("UI"))
             {
                 sequence.SetUpdate(true);
             }
-            foreach (Tween tween in tweens)
+            foreach (var tween in tweens)
             {
                 sequence.Append(tween);
             }
@@ -40,7 +46,7 @@ namespace LightDev.Core
 
         public virtual void PauseSequence(string id)
         {
-            for (int i = 0; i < sequences.Count; i++)
+            for (var i = 0; i < sequences.Count; i++)
             {
                 if (sequences[i].stringId != null && sequences[i].stringId.Equals(id))
                 {
@@ -51,7 +57,7 @@ namespace LightDev.Core
 
         public virtual void PauseSequences()
         {
-            foreach (Sequence sequence in sequences)
+            foreach (var sequence in sequences)
             {
                 sequence.Pause();
             }
@@ -59,7 +65,7 @@ namespace LightDev.Core
 
         public virtual void ResumeSequence(string id)
         {
-            for (int i = 0; i < sequences.Count; i++)
+            for (var i = 0; i < sequences.Count; i++)
             {
                 if (sequences[i].stringId != null && sequences[i].stringId.Equals(id))
                 {
@@ -70,7 +76,7 @@ namespace LightDev.Core
 
         public virtual void ResumeSequences()
         {
-            foreach (Sequence sequence in sequences)
+            foreach (var sequence in sequences)
             {
                 sequence.Play();
             }
@@ -78,7 +84,7 @@ namespace LightDev.Core
 
         public virtual void KillSequence(string id, bool complete = false)
         {
-            for (int i = sequences.Count - 1; i >= 0; i--)
+            for (var i = sequences.Count - 1; i >= 0; i--)
             {
                 if (sequences[i].stringId != null && sequences[i].stringId.Equals(id))
                 {
@@ -91,7 +97,7 @@ namespace LightDev.Core
 
         public virtual void KillSequences(bool complete = false)
         {
-            for (int i = sequences.Count - 1; i >= 0; i--)
+            for (var i = sequences.Count - 1; i >= 0; i--)
             {
                 sequences[i].Kill(complete);
             }
@@ -101,7 +107,7 @@ namespace LightDev.Core
 
         public virtual bool ContainsSequence(string id)
         {
-            for (int i = 0; i < sequences.Count; i++)
+            for (var i = 0; i < sequences.Count; i++)
             {
                 if (sequences[i].stringId != null && sequences[i].stringId.Equals(id))
                 {
@@ -268,14 +274,14 @@ namespace LightDev.Core
 
         public virtual Tween Fade(float endValue, float duration)
         {
-            if (GetComponent<Image>())
+            if (transform.GetComponent<Image>())
             {
-                return GetComponent<Image>().DOFade(endValue, duration);
+                return transform.GetComponent<Image>().DOFade(endValue, duration);
             }
 
-            if (GetComponent<Text>())
+            if (transform.GetComponent<Text>())
             {
-                return GetComponent<Text>().DOFade(endValue, duration);
+                return transform.GetComponent<Text>().DOFade(endValue, duration);
             }
 
             throw new NotImplementedException();
@@ -283,14 +289,14 @@ namespace LightDev.Core
 
         public virtual Tween Color(Color endValue, float duration)
         {
-            if (GetComponent<Image>())
+            if (transform.GetComponent<Image>())
             {
-                return GetComponent<Image>().DOColor(endValue, duration);
+                return transform.GetComponent<Image>().DOColor(endValue, duration);
             }
 
-            if (GetComponent<Text>())
+            if (transform.GetComponent<Text>())
             {
-                return GetComponent<Text>().DOColor(endValue, duration);
+                return transform.GetComponent<Text>().DOColor(endValue, duration);
             }
 
             throw new NotImplementedException();

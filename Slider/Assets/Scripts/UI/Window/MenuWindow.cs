@@ -7,6 +7,7 @@ using Slicer.Game;
 using Slicer.HP;
 using Slicer.Shop.Events;
 using Slicer.UI.Elements;
+using UI.Elements;
 using UnityEngine;
 using Zenject;
 
@@ -21,7 +22,7 @@ namespace Slicer.UI.Windows
         private Base tapToStart;
 
         [SerializeField]
-        private Base logoHolder;
+        private UIMove logoHolder;
         
         [SerializeField]
         private Base knob;
@@ -104,27 +105,32 @@ namespace Slicer.UI.Windows
 
         private void ShowTapToStart()
         {
-            tapToStart.SetFade(1);
-            tapToStart.Sequence(
-                tapToStart.Fade(0, 1).SetEase(Ease.InSine),
-                tapToStart.Fade(1, 0.5f).SetEase(Ease.InSine)
-            ).SetLoops(-1);
+            //TODO: Доделать потом
+            // tapToStart.SetFade(1);
+            // tapToStart.Sequence(
+            //     tapToStart.Fade(0, 1).SetEase(Ease.InSine),
+            //     tapToStart.Fade(1, 0.5f).SetEase(Ease.InSine)
+            // ).SetLoops(-1);
         }
 
         private void ShowLogoHolder()
         {
-            logoHolder.SetPositionY(500);
-            logoHolder.Sequence(
-                logoHolder.MoveY(-128.4f, 0.5f).SetEase(Ease.OutBack)
-            );
+            // logoHolder.Activate();
+            
+            // logoHolder.SetPositionY(500);
+            // logoHolder.Sequence(
+            //     logoHolder.MoveY(-128.4f, 0.5f).SetEase(Ease.OutBack)
+            // );
         }
 
         private void HideLogoHolder()
         {
-            logoHolder.KillSequences();
-            logoHolder.Sequence(
-              logoHolder.MoveY(500, 0.3f).SetEase(Ease.OutBack)
-          );
+          //   logoHolder.DeActive();
+          //   
+          //   logoHolder.KillSequences();
+          //   logoHolder.Sequence(
+          //     logoHolder.MoveY(500, 0.3f).SetEase(Ease.OutBack)
+          // );
         }
 
         private void ShopButtonInitialize()
@@ -135,10 +141,11 @@ namespace Slicer.UI.Windows
 
         private void HideTapToStart()
         {
-            tapToStart.KillSequences();
-            tapToStart.Sequence(
-                tapToStart.Fade(0, 0.2f).SetEase(Ease.InSine)
-            );
+            //TODO: Доделать потом
+            // tapToStart.KillSequences();
+            // tapToStart.Sequence(
+            //     tapToStart.Fade(0, 0.2f).SetEase(Ease.InSine)
+            // );
         }
     }
 }
