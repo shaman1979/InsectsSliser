@@ -69,10 +69,11 @@ namespace MeshSlice.UI
 
         protected override void OnStartShowing()
         {
-            background.SetFade(0);
-            passedText.SetFade(0);
-            hpText.SetFade(0);
-            tapToReplay.SetFade(0);
+            //TODO: Доделать потом
+            // background.SetFade(0);
+            // passedText.SetFade(0);
+            // hpText.SetFade(0);
+            // tapToReplay.SetFade(0);
         }
 
         protected override void OnFinishShowing()

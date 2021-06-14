@@ -10,8 +10,8 @@ namespace Tests.UI
 {
     public class UIElementsTest
     {
-        private UIMove uiElementMove = null;
-        private UIFade uiElementFade = null;
+        private UIMove uiElementMove;
+        private UIFade uiElementFade;
 
         [SetUp]
         public void Setup()
@@ -67,6 +67,35 @@ namespace Tests.UI
             Assert.IsTrue(uiElementFade.gameObject.activeSelf);
             yield return new WaitForSeconds(0.1f);
             Assert.IsFalse(uiElementFade.gameObject.activeSelf);
+        }
+
+        [Test]
+        public void WhenSetFade_AndFadeZero_ThenFadeEqualsOne()
+        {
+            //Arrange
+            uiElementFade.Awake();
+            uiElementFade.Setup(new GameObject("Text").AddComponent<Text>());
+            
+            //Act
+            uiElementFade.SetFade(1);
+            
+            //Assert
+            Assert.AreEqual(1, uiElementFade.GetFade());
+        }
+        
+        [Test]
+        public void WhenGetFade_AndFadeOne_ThenFadeEqualsOne()
+        {
+            //Arrange
+            uiElementFade.Awake();
+            var text = new GameObject("Text").AddComponent<Text>();
+            uiElementFade.Setup(text);
+            
+            //Act
+            var resultFade = uiElementFade.GetFade();
+            
+            //Assert
+            Assert.AreEqual(text.color.a, resultFade);
         }
 
         [Test]
@@ -177,6 +206,7 @@ namespace Tests.UI
         public void TearDown()
         {
             Object.Destroy(uiElementMove);
+            Object.Destroy(uiElementFade);
         }
     }
 }

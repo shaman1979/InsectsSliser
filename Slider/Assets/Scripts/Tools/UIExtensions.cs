@@ -5,48 +5,26 @@ namespace Tools
 {
     public static class UIExtensions
     {
-        public static float GetFade(this Image image)
+        public static float GetFade(this Graphic graphic)
         {
-            return image.color.a;
+            return graphic.color.a;
         }
-
-        public static float GetFade(this Text text)
+        
+        public static void SetFade(this Graphic graphic, float fade)
         {
-            return text.color.a;
-        }
-
-        public static void SetFade(this Image image, float fade)
-        {
-            var color = image.color;
+            var color = graphic.color;
             color.a = fade;
-            image.color = color;
+            graphic.color = color;
         }
 
-        public static void SetFade(this Text text, float fade)
+        public static Color GetColor(this Graphic graphic)
         {
-            var color = text.color;
-            color.a = fade;
-            text.color = color;
+            return graphic.color;
         }
 
-        public static Color GetColor(this Image image)
+        public static void SetColor(this Graphic graphic, Color color)
         {
-            return image.color;
-        }
-
-        public static Color GetColor(this Text text)
-        {
-            return text.color;
-        }
-
-        public static void SetColor(this Image image, Color color)
-        {
-            image.color = color;
-        }
-
-        public static void SetColor(this Text text, Color color)
-        {
-            text.color = color;
+            graphic.color = color;
         }
     }
 }

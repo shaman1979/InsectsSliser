@@ -2,14 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a1e75a50-876f-44a6-8d2e-7b929dbe6642" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Elements/UIFade.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Elements/UIFade.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Slider/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Slider/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/Windows/Start.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/Windows/Start.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Cutter/CutterMovening.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Cutter/CutterMovening.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Window/MenuWindow.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Window/MenuWindow.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Tests/Game/Base/UIMoveTest.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Tests/Game/Base/UIMoveTest.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/Base/Base.UI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Core/Base/Base.UI.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Tools/UIExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Tools/UIExtensions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Elements/UIFade.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Elements/UIFade.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Finish.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Finish.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/SlicePercantage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/SlicePercantage.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Tests/Game/UI/UIElementsTest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Tests/Game/UI/UIElementsTest.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,13 +61,13 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Cutter/Cutter.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.test-framework@1.1.19/UnityEngine.TestRunner/NUnitExtensions/Runner/UnityLogCheckDelegatingCommand.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/2A3947FE-34A6-499A-A6AB-6B20FE95EBAC/3e/01823412/Collider.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://D:/unity/2020.1.16f1/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.ugui/Runtime/UI/Core/Graphic.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Cutter/CutterMovening.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Tests/Game/LevelModifycationTest.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Tools/UIExtensions.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
-      <option value="$PROJECT_DIR$/Assets/Shaders/SlicableRedZone.shader" />
       <option value="$PROJECT_DIR$/Assets/Tests/Game/RedZones/RedZoneTest.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Slice/RedZoneSlicer/RedZoneGeneratorMessage.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Application/SliceDataStorage.cs" />
@@ -100,8 +99,6 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/UI/UI/Button/ButtonScale.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UI/Splash.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UI/UI/Button/ButtonColor.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/UI/SlicePercantage.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/UI/Finish.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UI/UI/Button/BaseButton.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Cutter/Cutter.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UI/DragToControl.cs" />
@@ -115,9 +112,12 @@
       <option value="$PROJECT_DIR$/Assets/Tests/Game/Base/UIElements.cs" />
       <option value="$PROJECT_DIR$/Assets/Tests/Game/Base/UIElementsTest.cs" />
       <option value="$PROJECT_DIR$/Assets/Tests/UI/UIElementsTest.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Core/Base/Base.UI.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UI/SlicePercantage.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Tools/UIExtensions.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/UI/Elements/UIFade.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UI/Window/MenuWindow.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UI/Finish.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UI/Elements/UIFade.cs" />
       <option value="$PROJECT_DIR$/Assets/Tests/Game/UI/UIElementsTest.cs" />
     </changedPaths>
   </component>
@@ -180,7 +180,7 @@
       <workItem from="1622278859250" duration="12796000" />
       <workItem from="1622396173888" duration="56347000" />
       <workItem from="1623245391620" duration="27604000" />
-      <workItem from="1623679988204" duration="3643000" />
+      <workItem from="1623679988204" duration="4910000" />
     </task>
     <servers />
   </component>

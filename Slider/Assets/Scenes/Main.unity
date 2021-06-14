@@ -2641,6 +2641,7 @@ MonoBehaviour:
   showTime: 0
   hideTime: 0
   percantage: {fileID: 1300414688}
+  percantageFade: {fileID: 0}
 --- !u!1 &1779926523
 GameObject:
   m_ObjectHideFlags: 0
