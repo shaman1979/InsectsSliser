@@ -3,12 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="a1e75a50-876f-44a6-8d2e-7b929dbe6642" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Slider/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Slider/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Odin Inspector/Config/Resources/Sirenix/GlobalSerializationConfig.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Sirenix/Odin Inspector/Config/Resources/Sirenix/GlobalSerializationConfig.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Settings/Levels.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Settings/Levels.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Cutter/SlicableObjectMaterial.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Cutter/SlicableObjectMaterial.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/View/MaterialChanger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/View/MaterialChanger.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Tests/Game/SliceObjectMaterialChangeTest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Tests/Game/SliceObjectMaterialChangeTest.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/APIUpdater/project-dependencies.graph" beforeDir="false" afterPath="$PROJECT_DIR$/Library/APIUpdater/project-dependencies.graph" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/Sliceable.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/Sliceable.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/Windows/Start.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/Windows/Start.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Main.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Tools/Extensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Tools/Extensions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Tools/TransformExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Tools/TransformExtensions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Window/MenuWindow.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Window/MenuWindow.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Tests/Game/Base/TransformExtensionsTest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Tests/Game/Base/TransformExtensionsTest.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -28,64 +29,45 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ads@3.5.2/Runtime/Advertisement/Platform/Platform.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Tests/Game/ProgressDataTest.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/Window/MenuWindow.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.test-framework@1.1.19/UnityEngine.TestRunner/NUnitExtensions/Commands/BeforeAfterTestCommandBase.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Tools/IntExtensions.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Tests/Game/Base/GameObjectExtensionsTest.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Level/Modify/ILevelModify.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Level/Modify/Modifycations/RedZoneModify.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/FE84F4A7-54DA-4A6B-B64F-CA409D40938A/4d/f33ecb98/UnitySynchronizationContext.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Level/Modify/LevelModification.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ads@3.5.2/Runtime/Advertisement/Purchasing/IPurchase.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/FE84F4A7-54DA-4A6B-B64F-CA409D40938A/88/63dfad03/MonoBehaviour.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/FE84F4A7-54DA-4A6B-B64F-CA409D40938A/5b/d44167b7/SetupCoroutine.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.purchasing@2.1.1/Runtime/managed/Purchasing/IInternalStoreListener.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ads@3.5.2/Runtime/Advertisement/Purchasing/Purchase.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/10B6135E-6343-4FDB-A4FC-6C109928AB3B/85/c9350326/Reflect.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Tests/Game/ResultCalculateTest.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Slice/FakeSlice/FakeSliceInStart.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Tests/Game/SliceObjectMaterialChangeTest.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Tools/GameObjectExtensions.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Slice/SlicebleItemMovening.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Slice/MeshGenerator.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.test-framework@1.1.19/UnityEngine.TestRunner/NUnitExtensions/Commands/ImmediateEnumerableCommand.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.test-framework@1.1.19/UnityEditor.TestRunner/Api/CallbacksHolder.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Tests/Game/DebugModeTest.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.test-framework@1.1.19/UnityEngine.TestRunner/NUnitExtensions/Runner/UnityLogCheckDelegatingCommand.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/2A3947FE-34A6-499A-A6AB-6B20FE95EBAC/3e/01823412/Collider.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/FE84F4A7-54DA-4A6B-B64F-CA409D40938A/4b/b7c8d528/Material.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Tests/Game/LevelModifycationTest.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/DebugMode/Logger.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Sound/Messages/SliceSoundPlayMessage.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ads@3.5.2/Runtime/Advertisement/Platform/Platform.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Tests/Game/ProgressDataTest.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Tools/IntExtensions.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Tests/Game/Base/UIMoveTest.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/FE84F4A7-54DA-4A6B-B64F-CA409D40938A/88/63dfad03/MonoBehaviour.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/10B6135E-6343-4FDB-A4FC-6C109928AB3B/85/c9350326/Reflect.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Slice/FakeSlice/FakeSliceInStart.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/UI/Text/BaseText.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Tests/Game/SliceObjectMaterialChangeTest.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Cutter/SlicableObjectMaterial.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.test-framework@1.1.19/UnityEditor.TestRunner/Api/CallbacksHolder.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Cutter/Cutter.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.test-framework@1.1.19/UnityEngine.TestRunner/NUnitExtensions/Runner/UnityLogCheckDelegatingCommand.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/2A3947FE-34A6-499A-A6AB-6B20FE95EBAC/3e/01823412/Collider.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Cutter/CutterMovening.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Tests/Game/LevelModifycationTest.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
-      <option value="$PROJECT_DIR$/Assets/Scripts/UI/Elements/TextExtensions.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/UI/SlicePercantage.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/UI/UI/Text/BaseText.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/UI/Window/MenuWindow.cs" />
-      <option value="$PROJECT_DIR$/Assets/Tests/Game/HPTest.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Level/Messages/Timer/TimerWindowDeactiveMessage.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/UI/Window/TimerWindow.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Camera/TargetFrameRate.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/ObjectSlicer/ConvexSetResult.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Application/Messages/GameFinishMessage.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/ObjectSlicerSamples/KnifeSliceableAsync.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/UI/Window/GameWindow.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Slice/ResultCalculate.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Managers/GameRestarter.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/UI/DragToControl.cs" />
-      <option value="$PROJECT_DIR$/Assets/Tests/Game/TimerActivatorTest.cs" />
-      <option value="$PROJECT_DIR$/Assets/Tests/Game/TimerWindowTest.cs" />
-      <option value="$PROJECT_DIR$/Assets/Tests/Game/LevelTimerActivatorTest.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Level/Modify/Modifycations/TimerTest.cs" />
-      <option value="$PROJECT_DIR$/Assets/Tests/Game/TimerTest.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Level/Messages/Timer/RestartTimerMessage.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Level/Timer.cs" />
-      <option value="$PROJECT_DIR$/Assets/Tests/Game/Timers/TimerWindowTest.cs" />
-      <option value="$PROJECT_DIR$/Assets/Tests/Game/Timers/LevelTimerActivatorTest.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Slice/Messages/MeshNextMessage.cs" />
-      <option value="$PROJECT_DIR$/Assets/Tests/Game/Timers/LevelTimerPerTest.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Slice/MeshGenerator.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Level/Modify/ILevelModify.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Level/Modify/Modifycations/LevelTimerPerObjectModify.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Level/Modify/LevelModification.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Level/Modify/Modifycations/LevelKnifeSpeedModify.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Level/Modify/Modifycations/LevelTimerActivatorModify.cs" />
       <option value="$PROJECT_DIR$/Assets/Shaders/Slicable.shader" />
       <option value="$PROJECT_DIR$/Assets/Scripts/EventAgregator/IEventsAgregator.cs" />
@@ -106,6 +88,37 @@
       <option value="$PROJECT_DIR$/Assets/Tests/Game/SliceObjectMaterialChangeTest.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/View/MaterialChanger.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Cutter/SlicableObjectMaterial.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Level/Modify/ILevelModify.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UI/UI/Text/BaseText.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Tools/GameObjectExtensions.cs" />
+      <option value="$PROJECT_DIR$/Assets/Tests/Game/Base/GameObjectExtensionsTest.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Core/Base/Base.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UI/UI/CanvasManager.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UI/UI/CanvasElement.cs" />
+      <option value="$PROJECT_DIR$/Assets/Tests/Game/Base/UIMoveningTest.cs" />
+      <option value="$PROJECT_DIR$/Assets/Tests/Game/Base/UIMove.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UI/Elements/UIMoveTest.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Core/Base/Base.Transform.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Core/Base/Base.Tweener.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Camera/CameraStateChanger.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UI/Gradient/GradientColorChange.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UI/Window/GameWindow.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UI/UI/Button/ButtonScale.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UI/Splash.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UI/UI/Button/ButtonColor.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UI/SlicePercantage.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UI/Finish.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UI/UI/Button/BaseButton.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Cutter/CutterMovening.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Cutter/Cutter.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UI/DragToControl.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Slice/MeshGenerator.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Tools/TransformExtensions.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Tools/Extensions.cs" />
+      <option value="$PROJECT_DIR$/Assets/Tests/Game/Base/TransformExtensionsTest.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UI/Window/MenuWindow.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UI/Elements/UIMove.cs" />
+      <option value="$PROJECT_DIR$/Assets/Tests/Game/Base/UIMoveTest.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1slV8vpZEzfIL9NRAefp5ZF1owf" />
@@ -123,6 +136,7 @@
     <property name="Discover.Launch.Via.Unity" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="TODO_SCOPE" value="All Places" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="settings.editor.selected.configurable" value="RiderCSharpLiveTemplatesSettingsId" />
   </component>
@@ -137,10 +151,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="5056">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="5056" />
+      <option name="pid" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -165,12 +179,13 @@
       <workItem from="1622054641201" duration="11125000" />
       <workItem from="1622278859250" duration="12796000" />
       <workItem from="1622396173888" duration="56347000" />
-      <workItem from="1623245391620" duration="1979000" />
+      <workItem from="1623245391620" duration="27604000" />
+      <workItem from="1623679988204" duration="290000" />
     </task>
     <servers />
   </component>
   <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
-  <component name="UnityUnitTestConfiguration" currentTestLauncher="EditMode" />
+  <component name="UnityUnitTestConfiguration" currentTestLauncher="Both" />
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
@@ -223,26 +238,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/View/MaterialChanger.cs</url>
-          <line>38</line>
-          <properties documentPath="C:\Projects\InsectsSliser\Slider\Assets\Scripts\View\MaterialChanger.cs" initialLine="38" containingFunctionPresentation="method 'Initialize'">
-            <startOffsets>
-              <option value="851" />
-            </startOffsets>
-            <endOffsets>
-              <option value="895" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="28" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/View/MaterialChanger.cs</url>
-          <line>46</line>
+          <line>40</line>
           <properties documentPath="C:\Projects\InsectsSliser\Slider\Assets\Scripts\View\MaterialChanger.cs" initialLine="46" containingFunctionPresentation="method 'ChangeMaterial'">
             <startOffsets>
-              <option value="1282" />
+              <option value="1008" />
             </startOffsets>
             <endOffsets>
-              <option value="1315" />
+              <option value="1041" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="29" />
@@ -259,6 +261,45 @@
             </endOffsets>
           </properties>
           <option name="timeStamp" value="30" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/Cutter/Cutter.cs</url>
+          <line>54</line>
+          <properties documentPath="C:\Projects\InsectsSliser\Slider\Assets\Scripts\Cutter\Cutter.cs" initialLine="55" containingFunctionPresentation="method 'OnPostReset'">
+            <startOffsets>
+              <option value="1243" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1258" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="31" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/Cutter/Cutter.cs</url>
+          <line>60</line>
+          <properties documentPath="C:\Projects\InsectsSliser\Slider\Assets\Scripts\Cutter\Cutter.cs" initialLine="61" containingFunctionPresentation="method 'EnableCut'">
+            <startOffsets>
+              <option value="1362" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1376" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="32" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/Cutter/Cutter.cs</url>
+          <line>65</line>
+          <properties documentPath="C:\Projects\InsectsSliser\Slider\Assets\Scripts\Cutter\Cutter.cs" initialLine="66" containingFunctionPresentation="method 'OnReset'">
+            <startOffsets>
+              <option value="1441" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1466" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="33" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
