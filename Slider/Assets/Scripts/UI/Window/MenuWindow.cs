@@ -103,7 +103,8 @@ namespace Slicer.UI.Windows
 
         private void ShowTapToStart()
         {
-            //TODO: Доделать потом
+            // tapToStart.StartFade();
+            //
             // tapToStart.SetFade(1);
             // tapToStart.Sequence(
             //     tapToStart.Fade(0, 1).SetEase(Ease.InSine),

@@ -24,7 +24,7 @@ namespace Slicer.Cutter
 
         private float speed;
 
-        private void Start()
+        private void Awake()
         {
             SequenceHelper = new SequenceHelper(transform);
             LevelModifyEvents.SpeedChanged += SpeedUp;
