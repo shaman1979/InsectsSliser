@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 using LightDev;
 using LightDev.Core;
@@ -14,6 +15,13 @@ namespace MeshSlice.UI
         [Header("References")]
         public Base background;
 
+        private SequenceHelper sequenceHelper;
+
+        private void Awake()
+        {
+            sequenceHelper = new SequenceHelper(transform);
+        }
+
         public override void Subscribe(IEventsAgregator eventAgregator)
         {
             Events.RequestSplash += Show;
@@ -28,19 +36,21 @@ namespace MeshSlice.UI
 
         protected override void OnStartShowing()
         {
-            background.SetFade(0);
-            background.Sequence(
-              background.Fade(1, 0.5f).SetEase(Ease.InSine),
-              OnFinish(() => Events.RequestReset.Call())
-            );
+            //TODO: Доделать потом   
+            //background.SetFade(0);
+            // background.Sequence(
+            //   background.Fade(1, 0.5f).SetEase(Ease.InSine),
+            //   OnFinish(() => Events.RequestReset.Call())
+            // );
         }
 
         protected override void OnStartHiding()
         {
-            background.KillSequences();
-            background.Sequence(
-              background.Fade(0, 0.4f).SetEase(Ease.InSine)
-            );
+            //TODO: Доделать потом 
+            // background.KillSequences();
+            // background.Sequence(
+            //   background.Fade(0, 0.4f).SetEase(Ease.InSine)
+            // );
         }
     }
 }

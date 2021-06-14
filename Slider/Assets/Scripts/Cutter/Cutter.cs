@@ -79,17 +79,18 @@ namespace MeshSlice
             canCut = false;
             movening.StopMovening();
 
-            cutter.KillSequences();
-            cutter.Sequence(
-              cutter.MoveY(2.5f, 0.3f).SetEase(Ease.InSine),
-              cutter.MoveY(0, 0.5f).SetEase(Ease.InSine),
-              cutter.OnFinish(() =>
-              {
-                  objectToSlice.StartSlice();
-                  particalActivator.Activate();
-              }),
-              cutter.MoveY(2, 0.6f).SetEase(Ease.InOutQuad)
-            );
+            //TODO: Доделать позже
+            // cutter.KillSequences();
+            // cutter.Sequence(
+            //   cutter.MoveY(2.5f, 0.3f).SetEase(Ease.InSine),
+            //   cutter.MoveY(0, 0.5f).SetEase(Ease.InSine),
+            //   cutter.OnFinish(() =>
+            //   {
+            //       objectToSlice.StartSlice();
+            //       particalActivator.Activate();
+            //   }),
+            //   cutter.MoveY(2, 0.6f).SetEase(Ease.InOutQuad)
+            // );
         }
 
 #if UNITY_EDITOR

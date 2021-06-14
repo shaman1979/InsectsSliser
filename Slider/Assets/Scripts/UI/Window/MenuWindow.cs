@@ -7,6 +7,7 @@ using Slicer.Game;
 using Slicer.HP;
 using Slicer.Shop.Events;
 using Slicer.UI.Elements;
+using UI.Elements;
 using UnityEngine;
 using Zenject;
 
@@ -14,35 +15,27 @@ namespace Slicer.UI.Windows
 {
     public class MenuWindow : CanvasElement
     {
-        [SerializeField]
-        private ButtonElement shopButton;
-        
-        [SerializeField]
-        private Base tapToStart;
+        [SerializeField] private ButtonElement shopButton;
 
-        [SerializeField]
-        private Base logoHolder;
-        
-        [SerializeField]
-        private Base knob;
+        [SerializeField] private Base tapToStart;
 
-        [SerializeField]
-        private float knobWidth;
+        [SerializeField] private UIMove logoHolder;
 
-        [SerializeField]
-        private BaseText levelText;
+        [SerializeField] private Base knob;
 
-        [SerializeField]
-        private BaseText hpText;
+        [SerializeField] private float knobWidth;
 
-        [SerializeField]
-        private BaseText starText;
+        [SerializeField] private BaseText levelText;
 
-        [Inject]
-        private LevelsInitializer levelsInitializer;
+        [SerializeField] private BaseText hpText;
 
-        [Inject]
-        private HpInitializer hpInitializer;
+        [SerializeField] private BaseText starText;
+
+        [SerializeField] private UIMove buttonContainer;
+
+        [Inject] private LevelsInitializer levelsInitializer;
+
+        [Inject] private HpInitializer hpInitializer;
 
         public override void Subscribe(IEventsAgregator eventAgregator)
         {
@@ -66,7 +59,7 @@ namespace Slicer.UI.Windows
 
             ShowTapToStart();
             ShowLogoHolder();
-
+            ShowButtonContainer();
             ShopButtonInitialize();
         }
 
@@ -74,6 +67,12 @@ namespace Slicer.UI.Windows
         {
             HideTapToStart();
             HideLogoHolder();
+            HideButtonContainer();
+        }
+
+        private void HideButtonContainer()
+        {
+            buttonContainer.Deactivate();
         }
 
         private void UpdateStarCount()
@@ -104,27 +103,22 @@ namespace Slicer.UI.Windows
 
         private void ShowTapToStart()
         {
-            tapToStart.SetFade(1);
-            tapToStart.Sequence(
-                tapToStart.Fade(0, 1).SetEase(Ease.InSine),
-                tapToStart.Fade(1, 0.5f).SetEase(Ease.InSine)
-            ).SetLoops(-1);
+            //TODO: Доделать потом
+            // tapToStart.SetFade(1);
+            // tapToStart.Sequence(
+            //     tapToStart.Fade(0, 1).SetEase(Ease.InSine),
+            //     tapToStart.Fade(1, 0.5f).SetEase(Ease.InSine)
+            // ).SetLoops(-1);
         }
 
         private void ShowLogoHolder()
         {
-            logoHolder.SetPositionY(500);
-            logoHolder.Sequence(
-                logoHolder.MoveY(-128.4f, 0.5f).SetEase(Ease.OutBack)
-            );
+            logoHolder.Activate();
         }
 
         private void HideLogoHolder()
         {
-            logoHolder.KillSequences();
-            logoHolder.Sequence(
-              logoHolder.MoveY(500, 0.3f).SetEase(Ease.OutBack)
-          );
+            logoHolder.Deactivate();
         }
 
         private void ShopButtonInitialize()
@@ -135,10 +129,16 @@ namespace Slicer.UI.Windows
 
         private void HideTapToStart()
         {
-            tapToStart.KillSequences();
-            tapToStart.Sequence(
-                tapToStart.Fade(0, 0.2f).SetEase(Ease.InSine)
-            );
+            //TODO: Доделать потом
+            // tapToStart.KillSequences();
+            // tapToStart.Sequence(
+            //     tapToStart.Fade(0, 0.2f).SetEase(Ease.InSine)
+            // );
+        }
+
+        private void ShowButtonContainer()
+        {
+            buttonContainer.Activate();
         }
     }
 }

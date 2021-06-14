@@ -1,4 +1,5 @@
 using System.Collections;
+using MeshSlice;
 using NUnit.Framework;
 using Tools;
 using UnityEngine;
@@ -196,6 +197,25 @@ namespace Tests.Game.Base
             Assert.AreEqual(transform.localEulerAngles.x, x);
             Assert.AreEqual(transform.localEulerAngles.y, y);
             Assert.AreEqual(transform.localEulerAngles.z, z);
+        }
+
+        [Test]
+        public void WhenSetPositionAxis_AndTransformPositionEqualsZero_ThenPositionEqualsNewPosition()
+        {
+            //Arrange
+            transform.position = Vector3.zero;
+            
+            //Act
+            var newPosition = new Vector3(1f,2f,3f);
+            
+            transform.SetPositionX(newPosition.x);
+            transform.SetPositionY(newPosition.y);
+            transform.SetPositionZ(newPosition.z);
+
+            //Assert
+            Assert.AreEqual(newPosition.x, transform.GetPositionX());
+            Assert.AreEqual(newPosition.y, transform.GetPositionY());
+            Assert.AreEqual(newPosition.z, transform.GetPositionZ());
         }
         
         [TearDown]

@@ -23,9 +23,11 @@ namespace MeshSlice
         private CameraState shopState;
 
         private new Camera camera;
+        private SequenceHelper sequenceHelper;
 
         private void Awake()
         {
+            sequenceHelper = new SequenceHelper(transform);
             camera = GetComponent<Camera>();
 
             ChangeStateInstantly(startState);
@@ -76,14 +78,14 @@ namespace MeshSlice
 
         private void OnSuccessfulCut(int left, int right)
         {
-            Sequence(
+            sequenceHelper.Sequence(
               camera.DOShakePosition(.4f, .1f, 14, 45)
             );
         }
 
         private void ChangeStateInstantly(CameraState state)
         {
-            KillSequences();
+            sequenceHelper.KillSequences();
             SetLocalPosition(state.position);
             SetLocalRotation(state.rotation);
             camera.fieldOfView = state.fov;
@@ -91,14 +93,14 @@ namespace MeshSlice
 
         public void ChangeState(CameraState state)
         {
-            KillSequences();
-            Sequence(
-              MoveLocal(state.position, state.duration).SetEase(state.ease)
+            sequenceHelper.KillSequences();
+            sequenceHelper.Sequence(
+                sequenceHelper.MoveLocal(state.position, state.duration).SetEase(state.ease)
             );
-            Sequence(
-              RotateLocal(state.rotation, state.duration).SetEase(state.ease)
+            sequenceHelper.Sequence(
+                sequenceHelper.RotateLocal(state.rotation, state.duration).SetEase(state.ease)
             );
-            Sequence(
+            sequenceHelper.Sequence(
               camera.DOFieldOfView(state.fov, state.duration).SetEase(state.ease)
             );
         }

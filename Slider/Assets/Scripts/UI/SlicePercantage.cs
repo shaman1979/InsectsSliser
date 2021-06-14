@@ -36,11 +36,13 @@ namespace MeshSlice.UI
         private void OnSuccessfulCut(int left, int right)
         {
             percantage.SetText($"{GetImpression(Mathf.Abs(left - right))}\n{left}/{right}");
-            percantage.Sequence(
-                percantage.Fade(1, 0.2f).SetEase(Ease.InSine),
-                percantage.Delay(1),
-                percantage.Fade(0, 0.3f).SetEase(Ease.InSine)
-            );
+            
+            //TODO: Доделать потом
+            // percantage.Sequence(
+            //     percantage.Fade(1, 0.2f).SetEase(Ease.InSine),
+            //     percantage.Delay(1),
+            //     percantage.Fade(0, 0.3f).SetEase(Ease.InSine)
+            // );
         }
 
         private string[] awesome = {"AWESOME", "BEAUTIFUL", "STUNNING", "CRAZY"};

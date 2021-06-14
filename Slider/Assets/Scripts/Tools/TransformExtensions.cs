@@ -40,6 +40,43 @@ namespace Tools
 
             return transform.position.z;
         }
+        
+        public static void SetPositionX(this Transform transform, float x)
+        {
+            if (transform is RectTransform rectTransform)
+            {
+                rectTransform.anchoredPosition = new Vector2(x, rectTransform.anchoredPosition.y);
+            }
+            else
+            {
+                transform.position = new Vector3(x, transform.position.y, transform.position.z);
+            }
+        }
+
+        public static void SetPositionY(this Transform transform, float y)
+        {
+            if (transform is RectTransform rectTransform)
+            {
+                rectTransform.anchoredPosition = new Vector2(rectTransform.anchoredPosition.x, y);
+            }
+            else
+            {
+                transform.position = new Vector3(transform.position.x, y, transform.position.z);
+            }
+        }
+
+        public static void SetPositionZ(this Transform transform, float z)
+        {
+            if (transform is RectTransform)
+            {
+                throw new System.NotImplementedException("RectTransfrom does not have anchoredPosition.z");
+            }
+            else
+            {
+                transform.position = new Vector3(transform.position.x, transform.position.y, z);
+            }
+        }
+
 
         public static Vector3 GetLocalPosition(this Transform transform)
         {

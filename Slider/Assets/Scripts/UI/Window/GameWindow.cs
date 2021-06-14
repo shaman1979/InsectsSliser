@@ -17,8 +17,10 @@ namespace MeshSlice.UI
 {
     public class GameWindow : CanvasElement
     {
-        [Header("References")] public Base holder;
-        public Base progress;
+        [SerializeField] private UIMove holder;
+        
+        [SerializeField]
+        private UIMove progress;
 
         [SerializeField]
         private Text levelText;
@@ -64,10 +66,10 @@ namespace MeshSlice.UI
             {
                 return;
             }
-            
-            progress.Sequence(
-                progress.MoveY(-1000, 0.4f).SetEase(Ease.InOutSine)
-            );
+
+            // progress.Sequence(
+            //     progress.MoveY(-1000, 0.4f).SetEase(Ease.InOutSine)
+            // );
         }
 
         private void UpdateCurrentProgress(int progress)
@@ -100,15 +102,15 @@ namespace MeshSlice.UI
         {
             levelText.SetText($"{levelsInitializer.GetLevelName()}");
 
-            holder.SetPositionY(500);
-            progress.SetPositionY(-400);
+            // holder.SetPositionY(500);
+            // progress.SetPositionY(-400);
         }
 
         protected override void OnFinishShowing()
         {
-            holder.Sequence(
-                holder.MoveY(0, 0.4f).SetEase(Ease.OutBack)
-            );
+            // holder.Sequence(
+            //     holder.MoveY(0, 0.4f).SetEase(Ease.OutBack)
+            // );
         }
     }
 }

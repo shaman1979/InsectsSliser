@@ -60,10 +60,11 @@ namespace MeshSlice.UI
 
         private void ShowTapToReplay()
         {
-            tapToReplay.Sequence(
-              tapToReplay.Fade(1, 0.2f).SetEase(Ease.InSine),
-              tapToReplay.Fade(0, 1).SetEase(Ease.InSine)
-            ).SetLoops(-1);
+            //TODO: Доделать потом
+            // tapToReplay.Sequence(
+            //   tapToReplay.Fade(1, 0.2f).SetEase(Ease.InSine),
+            //   tapToReplay.Fade(0, 1).SetEase(Ease.InSine)
+            // ).SetLoops(-1);
         }
 
         protected override void OnStartShowing()
@@ -83,25 +84,29 @@ namespace MeshSlice.UI
 
         private void ShowBackground()
         {
-            background.Sequence(
-              background.Fade(0.4f, 0.2f).SetEase(Ease.InSine),
-              OnFinish(() => Events.RequestHpFill.Call())
-            );
+            //TODO: Доделать потом
+            // background.Sequence(
+            //   background.Fade(0.4f, 0.2f).SetEase(Ease.InSine),
+            //   OnFinish(() => Events.RequestHpFill.Call())
+            // );
         }
 
         private void ShowPassedText()
         {
-            passedText.Sequence(
-              passedText.Fade(1, 0.2f).SetEase(Ease.InSine)
-            );
+            //TODO: Доделать потом
+            // passedText.Sequence(
+            //   passedText.Fade(1, 0.2f).SetEase(Ease.InSine)
+            // );
         }
 
         private void ShowHP()
         {
             UpdateHpText();
-            hpText.Sequence(
-              hpText.Fade(1, 0.2f).SetEase(Ease.InSine)
-            );
+            
+                //TODO: Доделать потом
+            // hpText.Sequence(
+            //   hpText.Fade(1, 0.2f).SetEase(Ease.InSine)
+            // );
         }
 
         private void UpdateHpText()

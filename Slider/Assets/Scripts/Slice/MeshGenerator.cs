@@ -66,14 +66,16 @@ namespace Slicer.Slice
             objectToSlice.SetScale(0);
             objectToSlice.SetRotationY(mesh.Rotation.y - 180);
             objectToSlice.gameObject.Activate();
-            objectToSlice.Sequence(
-              objectToSlice.Scale(1.5f, 0.4f).SetEase(Ease.OutBack)
-            );
+            
+            //TODO: Доделать позже
+            // objectToSlice.Sequence(
+            //   objectToSlice.Scale(1.5f, 0.4f).SetEase(Ease.OutBack)
+            // );
 
-            objectToSlice.Sequence(
-                objectToSlice.RotateY(mesh.Rotation.y, 0.4f).SetEase(Ease.InSine),
-                DOTween.Sequence().AppendCallback(() => onFinished?.Invoke())
-            );
+            // objectToSlice.Sequence(
+            //     objectToSlice.RotateY(mesh.Rotation.y, 0.4f).SetEase(Ease.InSine),
+            //     DOTween.Sequence().AppendCallback(() => onFinished?.Invoke())
+            // );
         }
     }
 }
