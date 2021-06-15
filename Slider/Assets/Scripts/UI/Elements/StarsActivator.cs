@@ -15,16 +15,7 @@ namespace Slicer.UI
     public class StarsActivator : MonoBehaviour
     {
         [SerializeField]
-        private StarView lowStar;
-
-        [SerializeField]
-        private StarView middleStar;
-
-        [SerializeField]
-        private StarView highStar;
-
-        [SerializeField]
-        private string starKey = "Stars";
+        private StarView starView;
 
         [Inject]
         private HpInitializer HPInitializer;
@@ -49,39 +40,33 @@ namespace Slicer.UI
             eventsAgregator.AddListener<CurrentProgressMessage>(message => OnProgressChanged(message.Progress));
             Events.GameStart += ResetAll;
             Events.GameFinish += SetTotalStars;
-
+            
+            ResetAll();
             Load();
         }
 
         private void OnProgressChanged(float currentProgress)
         {
-            return;
             var progress = (float)currentProgress / HPInitializer.GetMaxProgress;
 
             progress = Mathf.Clamp(progress, 0, 1);
 
             if (progress > 0.45f)
             {
-                StarActivator(lowStar);
                 starSession = 1;
             }
 
             if (progress >= 0.68f)
             {
-                StarActivator(middleStar);
                 starSession = 2;
             }
 
             if (progress >= 0.89f)
             {
-                StarActivator(highStar);
                 starSession = 3;
             }
-        }
-
-        private void StarActivator(StarView star)
-        {
-            star.StarReached();
+            
+            starView.StarReached(starSession);
         }
 
         private void SetTotalStars()
@@ -92,10 +77,8 @@ namespace Slicer.UI
 
         private void ResetAll()
         {
-            lowStar.ResetState();
-            middleStar.ResetState();
-            highStar.ResetState();
             starSession = 0;
+            starView.StarReached(starSession);
         }
 
         private void Load()
