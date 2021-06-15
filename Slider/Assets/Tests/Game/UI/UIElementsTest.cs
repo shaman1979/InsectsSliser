@@ -71,6 +71,24 @@ namespace Tests.UI
             Assert.AreNotEqual(0f, uiElementFade.GetFade());
         }
 
+        [UnityTest]
+        public IEnumerator WhenFadeStart_AndUIDeActive_ThenUIFadeStop()
+        {
+            //arrange
+            var text = uiElementFade.gameObject.AddComponent<Text>();
+            uiElementFade.Awake();
+            uiElementFade.Setup(text);
+
+            uiElementFade.SetFade(1f);
+            
+            //act
+            uiElementFade.StopFade();
+            
+            //assert
+            yield return new WaitForSeconds(0.2f);
+            Assert.AreEqual(0f, uiElementFade.GetFade());
+        }
+
         [Test]
         public void WhenSetFade_AndFadeZero_ThenFadeEqualsOne()
         {

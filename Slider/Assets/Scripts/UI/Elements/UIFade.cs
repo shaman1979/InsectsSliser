@@ -38,6 +38,14 @@ namespace UI.Elements
             ).SetLoops(-1);
         }
 
+        public void StopFade()
+        {
+            sequenceHelper.KillSequences();
+            sequenceHelper.Sequence(
+                sequenceHelper.Fade(0, 0.2f).SetEase(Ease.InSine)
+            );
+        }
+
         public float GetFade()
         {
             return graphic.GetFade();

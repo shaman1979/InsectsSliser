@@ -124,11 +124,7 @@ namespace Slicer.UI.Windows
 
         private void HideTapToStart()
         {
-            //TODO: Доделать потом
-            // tapToStart.KillSequences();
-            // tapToStart.Sequence(
-            //     tapToStart.Fade(0, 0.2f).SetEase(Ease.InSine)
-            // );
+            tapToStart.StopFade();
         }
 
         private void ShowButtonContainer()
