@@ -9,6 +9,7 @@ using Slicer.EventAgregators;
 using Zenject;
 using Slicer.Game;
 using Slicer.HP;
+using UI.Elements;
 
 namespace MeshSlice.UI
 {
@@ -18,7 +19,9 @@ namespace MeshSlice.UI
         public Base background;
         public Base passedText;
         public BaseText hpText;
-        public Base tapToReplay;
+        
+        [SerializeField]
+        public UIFade tapToReplay;
 
         [Inject]
         private HpInitializer hpInitializer;
@@ -60,11 +63,7 @@ namespace MeshSlice.UI
 
         private void ShowTapToReplay()
         {
-            //TODO: Доделать потом
-            // tapToReplay.Sequence(
-            //   tapToReplay.Fade(1, 0.2f).SetEase(Ease.InSine),
-            //   tapToReplay.Fade(0, 1).SetEase(Ease.InSine)
-            // ).SetLoops(-1);
+            tapToReplay.StartFade();
         }
 
         protected override void OnStartShowing()
@@ -73,7 +72,7 @@ namespace MeshSlice.UI
             // background.SetFade(0);
             // passedText.SetFade(0);
             // hpText.SetFade(0);
-            // tapToReplay.SetFade(0);
+            tapToReplay.SetFade(0);
         }
 
         protected override void OnFinishShowing()
