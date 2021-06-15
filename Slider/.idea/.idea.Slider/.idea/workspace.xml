@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a1e75a50-876f-44a6-8d2e-7b929dbe6642" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Slider/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Slider/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/Windows/Start.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/Windows/Start.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Window/MenuWindow.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Window/MenuWindow.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/UI/Menu/MeshSlice_atlas1.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/UI/Menu/MeshSlice_atlas1.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/DragToControl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/DragToControl.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,8 +66,6 @@
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
-      <option value="$PROJECT_DIR$/Assets/Tests/Game/RedZones/RedZoneTest.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Slice/RedZoneSlicer/RedZoneGeneratorMessage.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Application/SliceDataStorage.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Slice/RedZoneSlicer/Factoryes/HalfRedZoneFactory.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Level/Modify/Modifycations/RedZoneModify.cs" />
@@ -96,13 +91,9 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/Core/Base/Base.Tweener.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Camera/CameraStateChanger.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UI/Gradient/GradientColorChange.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/UI/Window/GameWindow.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UI/UI/Button/ButtonScale.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UI/Splash.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UI/UI/Button/ButtonColor.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Cutter/Cutter.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/UI/DragToControl.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Slice/MeshGenerator.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Tools/TransformExtensions.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Tools/Extensions.cs" />
       <option value="$PROJECT_DIR$/Assets/Tests/Game/Base/TransformExtensionsTest.cs" />
@@ -113,13 +104,19 @@
       <option value="$PROJECT_DIR$/Assets/Tests/Game/Base/UIElementsTest.cs" />
       <option value="$PROJECT_DIR$/Assets/Tests/UI/UIElementsTest.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Core/Base/Base.UI.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/UI/SlicePercantage.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Tools/UIExtensions.cs" />
       <option value="$PROJECT_DIR$/Assets/Tests/Game/UI/UIElementsTest.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/UI/Elements/UIFade.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UI/UI/Button/BaseButton.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UI/Finish.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UI/Window/MenuWindow.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UI/Window/GameWindow.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UI/Elements/StarView.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UI/Elements/StarsActivator.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UI/Elements/UIFade.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UI/SlicePercantage.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Cutter/Cutter.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Slice/MeshGenerator.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UI/DragToControl.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1slV8vpZEzfIL9NRAefp5ZF1owf" />
@@ -182,7 +179,7 @@
       <workItem from="1622396173888" duration="56347000" />
       <workItem from="1623245391620" duration="27604000" />
       <workItem from="1623679988204" duration="9124000" />
-      <workItem from="1623782409603" duration="4760000" />
+      <workItem from="1623782409603" duration="8479000" />
     </task>
     <servers />
   </component>
@@ -265,71 +262,6 @@
           <option name="timeStamp" value="30" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/Cutter/Cutter.cs</url>
-          <line>54</line>
-          <properties documentPath="C:\Projects\InsectsSliser\Slider\Assets\Scripts\Cutter\Cutter.cs" initialLine="55" containingFunctionPresentation="method 'OnPostReset'">
-            <startOffsets>
-              <option value="1243" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1258" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="31" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/Cutter/Cutter.cs</url>
-          <line>60</line>
-          <properties documentPath="C:\Projects\InsectsSliser\Slider\Assets\Scripts\Cutter\Cutter.cs" initialLine="61" containingFunctionPresentation="method 'EnableCut'">
-            <startOffsets>
-              <option value="1362" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1376" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="32" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/Cutter/Cutter.cs</url>
-          <line>65</line>
-          <properties documentPath="C:\Projects\InsectsSliser\Slider\Assets\Scripts\Cutter\Cutter.cs" initialLine="66" containingFunctionPresentation="method 'OnReset'">
-            <startOffsets>
-              <option value="1441" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1466" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="33" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/UI/Elements/UIFade.cs</url>
-          <line>33</line>
-          <properties documentPath="C:\Projects\InsectsSliser\Slider\Assets\Scripts\UI\Elements\UIFade.cs" initialLine="33" containingFunctionPresentation="method 'StartFade'">
-            <startOffsets>
-              <option value="700" />
-            </startOffsets>
-            <endOffsets>
-              <option value="711" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="34" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/Core/Base/Base.Tweener.cs</url>
-          <line>276</line>
-          <properties documentPath="C:\Projects\InsectsSliser\Slider\Assets\Scripts\Core\Base\Base.Tweener.cs" initialLine="276" containingFunctionPresentation="method 'Fade'">
-            <startOffsets>
-              <option value="8679" />
-            </startOffsets>
-            <endOffsets>
-              <option value="8715" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="35" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Tests/Game/UI/UIElementsTest.cs</url>
           <line>228</line>
           <properties documentPath="C:\Projects\InsectsSliser\Slider\Assets\Tests\Game\UI\UIElementsTest.cs" initialLine="210" containingFunctionPresentation="method 'TearDown'">
@@ -356,17 +288,43 @@
           <option name="timeStamp" value="37" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/UI/Elements/UIFade.cs</url>
-          <line>55</line>
-          <properties documentPath="C:\Projects\InsectsSliser\Slider\Assets\Scripts\UI\Elements\UIFade.cs" initialLine="47" containingFunctionPresentation="method 'OnDestroy'">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/UI/Elements/StarsActivator.cs</url>
+          <line>49</line>
+          <properties documentPath="C:\Projects\InsectsSliser\Slider\Assets\Scripts\UI\Elements\StarsActivator.cs" initialLine="48" containingFunctionPresentation="method 'OnProgressChanged'">
             <startOffsets>
-              <option value="1287" />
+              <option value="1185" />
             </startOffsets>
             <endOffsets>
-              <option value="1318" />
+              <option value="1254" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="38" />
+          <option name="timeStamp" value="39" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/UI/Elements/StarsActivator.cs</url>
+          <line>78</line>
+          <properties documentPath="C:\Projects\InsectsSliser\Slider\Assets\Scripts\UI\Elements\StarsActivator.cs" initialLine="77" containingFunctionPresentation="method 'ResetAll'">
+            <startOffsets>
+              <option value="1825" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1826" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="40" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/UI/Elements/StarsActivator.cs</url>
+          <line>41</line>
+          <properties documentPath="C:\Projects\InsectsSliser\Slider\Assets\Scripts\UI\Elements\StarsActivator.cs" initialLine="41" containingFunctionPresentation="method 'Awake'">
+            <startOffsets>
+              <option value="997" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1032" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="41" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

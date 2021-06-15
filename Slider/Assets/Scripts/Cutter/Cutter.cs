@@ -15,20 +15,17 @@ namespace MeshSlice
 
         public KnifeSliceableAsync objectToSlice;
 
-        [Header("Slice Parameters")]
-        public Transform slicePoint;
+        [Header("Slice Parameters")] public Transform slicePoint;
 
-        [SerializeField]
-        private CutterMovening movening;
+        [SerializeField] private CutterMovening movening;
 
-        [SerializeField]
-        private MeshGenerator generator;
+        [SerializeField] private MeshGenerator generator;
 
-        [SerializeField]
-        private CutterMovening cutterMovening;
+        [SerializeField] private CutterMovening cutterMovening;
 
-        [SerializeField]
-        private ParticalActivator particalActivator;
+        [SerializeField] private ParticalActivator particalActivator;
+
+        private SequenceHelper sequenceHelper;
 
         private bool canCut;
 
@@ -39,6 +36,8 @@ namespace MeshSlice
 
             generator.OnFinished += OnReset;
             cutterMovening.OnFinished += EnableCut;
+
+            sequenceHelper = new SequenceHelper(cutter.transform);
         }
 
         private void OnDestroy()
@@ -79,18 +78,17 @@ namespace MeshSlice
             canCut = false;
             movening.StopMovening();
 
-            //TODO: Доделать позже
-            // cutter.KillSequences();
-            // cutter.Sequence(
-            //   cutter.MoveY(2.5f, 0.3f).SetEase(Ease.InSine),
-            //   cutter.MoveY(0, 0.5f).SetEase(Ease.InSine),
-            //   cutter.OnFinish(() =>
-            //   {
-            //       objectToSlice.StartSlice();
-            //       particalActivator.Activate();
-            //   }),
-            //   cutter.MoveY(2, 0.6f).SetEase(Ease.InOutQuad)
-            // );
+            sequenceHelper.KillSequences();
+            sequenceHelper.Sequence(
+                sequenceHelper.MoveY(2.5f, 0.3f).SetEase(Ease.InSine),
+                sequenceHelper.MoveY(0, 0.5f).SetEase(Ease.InSine),
+                sequenceHelper.OnFinish(() =>
+                {
+                    objectToSlice.StartSlice();
+                    particalActivator.Activate();
+                }),
+                sequenceHelper.MoveY(2, 0.6f).SetEase(Ease.InOutQuad)
+            );
         }
 
 #if UNITY_EDITOR

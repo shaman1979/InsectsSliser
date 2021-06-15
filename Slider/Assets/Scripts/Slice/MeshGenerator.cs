@@ -29,8 +29,12 @@ namespace Slicer.Slice
         [SerializeField]
         private SlicebleItemMovening itemMovening;
 
+        private SequenceHelper sequenceHelper;
+
         private void Start()
         {
+            sequenceHelper = new SequenceHelper(objectToSlice.transform);
+            
             itemMovening.OnMoveFinished += AnimateNextMesh;
             Events.GameStart += AnimateNextMesh;
             Events.PostReset += FirstMeshInitialize;
@@ -67,15 +71,14 @@ namespace Slicer.Slice
             objectToSlice.SetRotationY(mesh.Rotation.y - 180);
             objectToSlice.gameObject.Activate();
             
-            //TODO: Доделать позже
-            // objectToSlice.Sequence(
-            //   objectToSlice.Scale(1.5f, 0.4f).SetEase(Ease.OutBack)
-            // );
+            sequenceHelper.Sequence(
+                sequenceHelper.Scale(1.5f, 0.4f).SetEase(Ease.OutBack)
+            );
 
-            // objectToSlice.Sequence(
-            //     objectToSlice.RotateY(mesh.Rotation.y, 0.4f).SetEase(Ease.InSine),
-            //     DOTween.Sequence().AppendCallback(() => onFinished?.Invoke())
-            // );
+            sequenceHelper.Sequence(
+                sequenceHelper.RotateY(mesh.Rotation.y, 0.4f).SetEase(Ease.InSine),
+                DOTween.Sequence().AppendCallback(() => onFinished?.Invoke())
+            );
         }
     }
 }
