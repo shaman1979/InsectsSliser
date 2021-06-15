@@ -21,10 +21,6 @@ namespace Slicer.UI.Windows
 
         [SerializeField] private UIMove logoHolder;
 
-        [SerializeField] private Base knob;
-
-        [SerializeField] private float knobWidth;
-
         [SerializeField] private BaseText levelText;
 
         [SerializeField] private BaseText hpText;
@@ -75,30 +71,11 @@ namespace Slicer.UI.Windows
             buttonContainer.Deactivate();
         }
 
-        private void UpdateStarCount()
-        {
-            starText.SetText(StarsActivator.GetTotalStar().ToString());
-        }
-
         private void UpdateTexts()
         {
-            hpText.SetText($"xp: {hpInitializer.GetHP}");
-            levelText.SetText($"level: {levelsInitializer.GetLevel()}");
-
-            var hpWidth = hpText.GetTextComponent().preferredWidth;
-            var levelWidth = levelText.GetTextComponent().preferredWidth;
-
-            var fullSize = hpWidth + knobWidth + levelWidth;
-
-            UpdateStarCount();
-
-            var hpPos = -fullSize / 2 + hpWidth / 2;
-            var knobPos = hpPos + hpWidth / 2 + knobWidth / 2;
-            var levelPos = knobPos + knobWidth / 2 + levelWidth / 2;
-
-            hpText.SetPositionX(hpPos);
-            knob.SetPositionX(knobPos);
-            levelText.SetPositionX(levelPos);
+            hpText.SetText($"{hpInitializer.GetHP}");
+            levelText.SetText($"{levelsInitializer.GetLevel()}");
+            starText.SetText(StarsActivator.GetTotalStar().ToString());
         }
 
         private void ShowTapToStart()
