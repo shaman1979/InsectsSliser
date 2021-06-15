@@ -62,11 +62,6 @@ namespace MeshSlice.UI
 
         private void OnGameFinish()
         {
-            if (progress == null)
-            {
-                return;
-            }
-
             // progress.Sequence(
             //     progress.MoveY(-1000, 0.4f).SetEase(Ease.InOutSine)
             // );
