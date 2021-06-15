@@ -10,7 +10,8 @@ namespace UI.Elements
     public class UIFade : MonoBehaviour
     {
         [SerializeField] private Graphic graphic;
-        [SerializeField] private float duration = 0.5f;
+        [SerializeField] private float showDuration = 0.5f;
+        [SerializeField] private float hideDuration = 0.5f;
 
         private SequenceHelper sequenceHelper = null;
 
@@ -33,8 +34,8 @@ namespace UI.Elements
         {
             SetFade(1);
             sequenceHelper.Sequence(
-                sequenceHelper.Fade(0, duration).SetEase(Ease.InSine),
-                sequenceHelper.Fade(1, duration).SetEase(Ease.InSine)
+                sequenceHelper.Fade(0, showDuration).SetEase(Ease.InSine),
+                sequenceHelper.Fade(1, hideDuration).SetEase(Ease.InSine)
             ).SetLoops(-1);
         }
 
@@ -42,7 +43,16 @@ namespace UI.Elements
         {
             sequenceHelper.KillSequences();
             sequenceHelper.Sequence(
-                sequenceHelper.Fade(0, 0.2f).SetEase(Ease.InSine)
+                sequenceHelper.Fade(0, hideDuration).SetEase(Ease.InSine)
+            );
+        }
+
+        public void DelayFade()
+        {
+            sequenceHelper.Sequence(
+                sequenceHelper.Fade(1, showDuration).SetEase(Ease.InSine),
+                sequenceHelper.Delay(1),
+                sequenceHelper.Fade(0, hideDuration).SetEase(Ease.InSine)
             );
         }
 

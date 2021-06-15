@@ -32,19 +32,14 @@ namespace MeshSlice.UI
 
         protected override void OnStartShowing()
         {
-            //percantageFade.SetFade(0);
+            percantageFade.SetFade(0);
         }
 
         private void OnSuccessfulCut(int left, int right)
         {
             percantage.SetText($"{GetImpression(Mathf.Abs(left - right))}\n{left}/{right}");
-            
-            //TODO: Доделать потом
-            // percantageFade.Sequence(
-            //     percantageFade.Fade(1, 0.2f).SetEase(Ease.InSine),
-            //     percantageFade.Delay(1),
-            //     percantageFade.Fade(0, 0.3f).SetEase(Ease.InSine)
-            // );
+
+            percantageFade.DelayFade();
         }
 
         private string[] awesome = {"AWESOME", "BEAUTIFUL", "STUNNING", "CRAZY"};
