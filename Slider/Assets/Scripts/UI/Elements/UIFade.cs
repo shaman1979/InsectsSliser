@@ -1,4 +1,5 @@
 using System;
+using DG.Tweening;
 using LightDev.Core;
 using Tools;
 using UnityEngine;
@@ -8,8 +9,8 @@ namespace UI.Elements
 {
     public class UIFade : MonoBehaviour
     {
-        [SerializeField]
-        private Graphic graphic;
+        [SerializeField] private Graphic graphic;
+        [SerializeField] private float duration = 0.5f;
 
         private SequenceHelper sequenceHelper = null;
 
@@ -22,7 +23,7 @@ namespace UI.Elements
         {
             this.graphic = graphic;
         }
-        
+
         public void SetFade(float fade)
         {
             graphic.SetFade(fade);
@@ -30,16 +31,21 @@ namespace UI.Elements
 
         public void StartFade()
         {
-            // tapToStart.SetFade(1);
-            // tapToStart.Sequence(
-            //     tapToStart.Fade(0, 1).SetEase(Ease.InSine),
-            //     tapToStart.Fade(1, 0.5f).SetEase(Ease.InSine)
-            // ).SetLoops(-1);
+            SetFade(1);
+            sequenceHelper.Sequence(
+                sequenceHelper.Fade(0, duration).SetEase(Ease.InSine),
+                sequenceHelper.Fade(1, duration).SetEase(Ease.InSine)
+            ).SetLoops(-1);
         }
 
         public float GetFade()
         {
             return graphic.GetFade();
+        }
+
+        public void OnDestroy()
+        {
+            sequenceHelper.KillSequences();
         }
     }
 }

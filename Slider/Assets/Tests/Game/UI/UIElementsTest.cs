@@ -58,15 +58,17 @@ namespace Tests.UI
         public IEnumerator WhenFadeStop_AndUIActive_ThenUIFadeStart()
         {
             //arrange
-
-
+            var text = uiElementFade.gameObject.AddComponent<Text>();
+            uiElementFade.Awake();
+            uiElementFade.Setup(text);
+            
             //act
             uiElementFade.StartFade();
 
             //assert
-            Assert.IsTrue(uiElementFade.gameObject.activeSelf);
-            yield return new WaitForSeconds(0.1f);
-            Assert.IsFalse(uiElementFade.gameObject.activeSelf);
+            Assert.AreEqual(1f, uiElementFade.GetFade());
+            yield return new WaitForSeconds(1f); 
+            Assert.AreNotEqual(0f, uiElementFade.GetFade());
         }
 
         [Test]
@@ -205,7 +207,7 @@ namespace Tests.UI
         [TearDown]
         public void TearDown()
         {
-            Object.Destroy(uiElementMove);
+            Object.Destroy(uiElementMove); 
             Object.Destroy(uiElementFade);
         }
     }
