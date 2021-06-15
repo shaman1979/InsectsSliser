@@ -14,6 +14,8 @@ namespace MeshSlice.UI
         [SerializeField]
         private BaseText percantage;
 
+        [SerializeField] private UIFade percantageFade;
+
         public override void Subscribe(IEventsAgregator eventAgregator)
         {
             Events.GameStart += Show;
@@ -30,7 +32,7 @@ namespace MeshSlice.UI
 
         protected override void OnStartShowing()
         {
-            percantage.SetFade(0);
+            percantageFade.SetFade(0);
         }
 
         private void OnSuccessfulCut(int left, int right)
@@ -38,10 +40,10 @@ namespace MeshSlice.UI
             percantage.SetText($"{GetImpression(Mathf.Abs(left - right))}\n{left}/{right}");
             
             //TODO: Доделать потом
-            // percantage.Sequence(
-            //     percantage.Fade(1, 0.2f).SetEase(Ease.InSine),
-            //     percantage.Delay(1),
-            //     percantage.Fade(0, 0.3f).SetEase(Ease.InSine)
+            // percantageFade.Sequence(
+            //     percantageFade.Fade(1, 0.2f).SetEase(Ease.InSine),
+            //     percantageFade.Delay(1),
+            //     percantageFade.Fade(0, 0.3f).SetEase(Ease.InSine)
             // );
         }
 

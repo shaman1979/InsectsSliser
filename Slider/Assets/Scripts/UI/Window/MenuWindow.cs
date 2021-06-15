@@ -17,7 +17,7 @@ namespace Slicer.UI.Windows
     {
         [SerializeField] private ButtonElement shopButton;
 
-        [SerializeField] private Base tapToStart;
+        [SerializeField] private UIFade tapToStart;
 
         [SerializeField] private UIMove logoHolder;
 
@@ -103,12 +103,7 @@ namespace Slicer.UI.Windows
 
         private void ShowTapToStart()
         {
-            //TODO: Доделать потом
-            // tapToStart.SetFade(1);
-            // tapToStart.Sequence(
-            //     tapToStart.Fade(0, 1).SetEase(Ease.InSine),
-            //     tapToStart.Fade(1, 0.5f).SetEase(Ease.InSine)
-            // ).SetLoops(-1);
+            tapToStart.StartFade();
         }
 
         private void ShowLogoHolder()
@@ -129,11 +124,7 @@ namespace Slicer.UI.Windows
 
         private void HideTapToStart()
         {
-            //TODO: Доделать потом
-            // tapToStart.KillSequences();
-            // tapToStart.Sequence(
-            //     tapToStart.Fade(0, 0.2f).SetEase(Ease.InSine)
-            // );
+            tapToStart.StopFade();
         }
 
         private void ShowButtonContainer()

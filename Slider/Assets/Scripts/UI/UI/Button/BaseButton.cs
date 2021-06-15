@@ -42,37 +42,6 @@ namespace LightDev.UI
             AnimateUnpress();
         }
 
-        public virtual void AnimateFadeShow(float delay = 0, float showTime = 0.6f)
-        {
-            ShowAnimationUtil(
-              () => target.color = new Color(target.color.r, target.color.g, target.color.b, 0),
-              target.DOFade(1, showTime).SetEase(Ease.InSine),
-              delay
-            );
-        }
-
-        public virtual void AnimateScaleShow(float delay = 0, float showTime = 0.3f)
-        {
-            ShowAnimationUtil(
-              () => target.transform.localScale = Vector3.zero,
-              target.transform.DOScale(1, showTime).SetEase(Ease.OutBack),
-              delay
-            );
-        }
-
-        private void ShowAnimationUtil(System.Action preAction, Tween tween, float delay)
-        {
-            //TODO: Доделать потом
-            // KillSequences();
-            // SetIsInteractable(false);
-            // preAction?.Invoke();
-            // Sequence(
-            //   Delay(delay),
-            //   tween,
-            //   OnFinish(() => SetIsInteractable(true))
-            // );
-        }
-
         protected abstract void AnimatePress();
         protected abstract void AnimateUnpress();
     }
