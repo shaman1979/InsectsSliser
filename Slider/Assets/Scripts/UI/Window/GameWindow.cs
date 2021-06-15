@@ -8,6 +8,7 @@ using Slicer.HP;
 using Slicer.HP.Messages;
 using Slicer.Logger;
 using Slicer.Tools;
+using Tools;
 using UI.Elements;
 using UnityEngine;
 using UnityEngine.UI;
@@ -19,9 +20,6 @@ namespace MeshSlice.UI
     {
         [SerializeField] private UIMove holder;
         
-        [SerializeField]
-        private UIMove progress;
-
         [SerializeField]
         private Text levelText;
         
@@ -62,9 +60,7 @@ namespace MeshSlice.UI
 
         private void OnGameFinish()
         {
-            // progress.Sequence(
-            //     progress.MoveY(-1000, 0.4f).SetEase(Ease.InOutSine)
-            // );
+            holder.Deactivate();
         }
 
         private void UpdateCurrentProgress(int progress)
@@ -81,7 +77,7 @@ namespace MeshSlice.UI
 
         private void UpdateProgress()
         {
-            if (maxProgress.IsZero().AssertTry($"Значение {progress} не может быть равно нулю"))
+            if (maxProgress.IsZero().AssertTry($"Значение {maxProgress} не может быть равно нулю"))
             {
                 progressImage.fillAmount = 0f;
             }
@@ -97,15 +93,12 @@ namespace MeshSlice.UI
         {
             levelText.SetText($"{levelsInitializer.GetLevelName()}");
 
-            // holder.SetPositionY(500);
-            // progress.SetPositionY(-400);
+            holder.transform.SetPositionY(500);
         }
 
         protected override void OnFinishShowing()
         {
-            // holder.Sequence(
-            //     holder.MoveY(0, 0.4f).SetEase(Ease.OutBack)
-            // );
+            holder.Activate();
         }
     }
 }

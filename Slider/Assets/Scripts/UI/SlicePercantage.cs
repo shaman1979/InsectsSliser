@@ -32,7 +32,7 @@ namespace MeshSlice.UI
 
         protected override void OnStartShowing()
         {
-            percantageFade.SetFade(0);
+            //percantageFade.SetFade(0);
         }
 
         private void OnSuccessfulCut(int left, int right)

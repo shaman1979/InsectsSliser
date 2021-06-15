@@ -51,7 +51,7 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  Name: LevelTimer
+  Name: Timer
   Meshes:
   - Mesh: {fileID: -2389319911548984533, guid: d8fea91df1cb372408d6951fd5ada808, type: 3}
     Rotation: {x: 0, y: 0, z: 0}

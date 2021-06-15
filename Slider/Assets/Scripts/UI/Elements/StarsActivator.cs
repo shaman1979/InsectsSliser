@@ -55,6 +55,7 @@ namespace Slicer.UI
 
         private void OnProgressChanged(float currentProgress)
         {
+            return;
             var progress = (float)currentProgress / HPInitializer.GetMaxProgress;
 
             progress = Mathf.Clamp(progress, 0, 1);
