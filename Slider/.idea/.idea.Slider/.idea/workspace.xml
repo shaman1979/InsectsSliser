@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a1e75a50-876f-44a6-8d2e-7b929dbe6642" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/Windows/Game.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/Windows/Game.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Elements/UIFade.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Elements/UIFade.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/SlicePercantage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/SlicePercantage.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/DragToControl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/DragToControl.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,9 +94,6 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/UI/UI/Button/ButtonScale.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UI/Splash.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UI/UI/Button/ButtonColor.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Cutter/Cutter.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/UI/DragToControl.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Slice/MeshGenerator.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Tools/TransformExtensions.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Tools/Extensions.cs" />
       <option value="$PROJECT_DIR$/Assets/Tests/Game/Base/TransformExtensionsTest.cs" />
@@ -117,8 +112,11 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/UI/Window/GameWindow.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UI/Elements/StarView.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UI/Elements/StarsActivator.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/UI/SlicePercantage.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UI/Elements/UIFade.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UI/SlicePercantage.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Cutter/Cutter.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/Slice/MeshGenerator.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UI/DragToControl.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1slV8vpZEzfIL9NRAefp5ZF1owf" />
@@ -181,7 +179,7 @@
       <workItem from="1622396173888" duration="56347000" />
       <workItem from="1623245391620" duration="27604000" />
       <workItem from="1623679988204" duration="9124000" />
-      <workItem from="1623782409603" duration="7931000" />
+      <workItem from="1623782409603" duration="8479000" />
     </task>
     <servers />
   </component>

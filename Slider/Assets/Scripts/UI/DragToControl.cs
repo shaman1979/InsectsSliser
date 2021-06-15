@@ -8,15 +8,13 @@ using LightDev.UI;
 using DG.Tweening;
 using Slicer.EventAgregators;
 using Tools;
+using UI.Elements;
 
 namespace MeshSlice.UI
 {
     public class DragToControl : CanvasElement
     {
-        [Header("References")] public Base holder;
-        public Base finger;
-
-        private int clickTime;
+        [SerializeField] private UIFade tapToSlice;
 
         public override void Subscribe(IEventsAgregator eventsAgregator)
         {
@@ -36,25 +34,9 @@ namespace MeshSlice.UI
             Hide();
         }
 
-        protected override void OnStartShowing()
-        {
-            holder.gameObject.Deactivate();
-        }
-
         protected override void OnFinishShowing()
         {
-            holder.gameObject.Activate();
-            AnimateFinger();
-        }
-
-        private void AnimateFinger()
-        {
-            //TODO: Доделать позже
-            // finger.SetPositionX(-153);
-            // finger.Sequence(
-            //     finger.MoveX(213, 1.2f).SetEase(Ease.InOutQuart),
-            //     finger.MoveX(-153, 1.2f).SetEase(Ease.InOutQuart)
-            // ).SetLoops(-1);
+            tapToSlice.StartFade();
         }
     }
 }
