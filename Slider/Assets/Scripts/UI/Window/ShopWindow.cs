@@ -7,6 +7,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Slicer.EventAgregators;
+using Tools;
 using UI.UI.Button;
 using UnityEngine;
 using UnityEngine.UI;
@@ -38,6 +39,8 @@ namespace Slicer.UI.Windows
 
         [SerializeField]
         private Text name;
+
+        [SerializeField] private Image block;
 
         public override void Subscribe(IEventsAgregator eventAgregator)
         {
@@ -82,14 +85,17 @@ namespace Slicer.UI.Windows
                 case ItemStatus.Unavailable:
                     UpdateLevelText(item.LevelOpen.ToString());
                     selectButton.Unavaliable();
+                    block.gameObject.Activate();
                     break;
                 case ItemStatus.Available:
                     UpdateLevelText(string.Empty);
                     selectButton.Avaliable();
+                    block.gameObject.Deactivate();
                     break;
                 case ItemStatus.Selected:
                     UpdateLevelText(string.Empty);
                     selectButton.Select();
+                    block.gameObject.Deactivate();
                     break;
                 default:
                     break;
@@ -98,7 +104,7 @@ namespace Slicer.UI.Windows
 
         private void UpdateLevelText(string text)
         {
-            level.text = text;
+            level.text = $"Level {text}";
         }
 
         private void BackToMenu()
