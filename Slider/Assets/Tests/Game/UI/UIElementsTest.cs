@@ -85,7 +85,7 @@ namespace Tests.UI
             uiElementFade.StopFade();
             
             //assert
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(0.5f);
             Assert.AreEqual(0f, uiElementFade.GetFade());
         }
 

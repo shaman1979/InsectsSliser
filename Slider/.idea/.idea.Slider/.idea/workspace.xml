@@ -3,18 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="a1e75a50-876f-44a6-8d2e-7b929dbe6642" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Slider/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Slider/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/Buttons/TypeChangeButton.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/Buttons/TypeChangeButton.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/Containers/NavigationContainer.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/Containers/NavigationContainer.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/Containers/TypeNavigationContainer.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/Containers/TypeNavigationContainer.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/Windows/ShopWindow.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/Windows/ShopWindow.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/Windows/Start.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/Windows/Start.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Main.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/UI/Menu/UI_Slice.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/UI/Menu/UI_Slice.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/Artifacts/0f/0f5701b3a01fc10312c29cddd16d89a4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/Artifacts/29/29bcb111001c106dddabdc05de5b4e11" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/Artifacts/60/607abb7fad2d91efea4a238191afc155" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Window/GameWindow.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Window/GameWindow.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Tests/Game/HPTest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Tests/Game/HPTest.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,7 +55,6 @@
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
-      <option value="$PROJECT_DIR$/Assets/Scripts/Application/SliceDataStorage.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Slice/RedZoneSlicer/Factoryes/HalfRedZoneFactory.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Level/Modify/Modifycations/RedZoneModify.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Slice/RedZoneSlicer/RedZoneCollider.cs" />
@@ -108,7 +97,6 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/UI/UI/Button/BaseButton.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UI/Finish.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UI/Window/MenuWindow.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/UI/Window/GameWindow.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UI/Elements/StarView.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UI/Elements/StarsActivator.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UI/Elements/UIFade.cs" />
@@ -116,6 +104,8 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/Cutter/Cutter.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Slice/MeshGenerator.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UI/DragToControl.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UI/Window/GameWindow.cs" />
+      <option value="$PROJECT_DIR$/Assets/Tests/Game/HPTest.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1slV8vpZEzfIL9NRAefp5ZF1owf" />
@@ -148,10 +138,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="11448">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" />
+      <option name="pid" value="11448" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -179,7 +169,7 @@
       <workItem from="1623245391620" duration="27604000" />
       <workItem from="1623679988204" duration="9124000" />
       <workItem from="1623782409603" duration="8479000" />
-      <workItem from="1623834320625" duration="603000" />
+      <workItem from="1623834320625" duration="2556000" />
     </task>
     <servers />
   </component>
@@ -262,6 +252,19 @@
           <line>41</line>
           <properties documentPath="C:\Projects\InsectsSliser\Slider\Assets\Scripts\UI\Elements\StarsActivator.cs" initialLine="41" containingFunctionPresentation="method 'Awake'" />
           <option name="timeStamp" value="41" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Tests/Game/UI/UIElementsTest.cs</url>
+          <line>88</line>
+          <properties documentPath="D:\git\InsectsSliсer\Slider\Assets\Tests\Game\UI\UIElementsTest.cs" initialLine="88" containingFunctionPresentation="method 'WhenFadeStart_AndUIDeActive_ThenUIFadeStop'">
+            <startOffsets>
+              <option value="2642" />
+            </startOffsets>
+            <endOffsets>
+              <option value="2687" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="42" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

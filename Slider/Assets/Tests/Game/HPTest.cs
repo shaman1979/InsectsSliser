@@ -42,12 +42,13 @@ namespace Tests.Game
             //Arrange
             var progressImage = new GameObject("ProgressImage").AddComponent<Image>();
             var progressText = new GameObject("ProgressText").AddComponent<Text>();
+            var progressMove = new GameObject("UIMove").AddComponent<UIMove>();
 
             IEventsAgregator eventsAgregator = new EventsAgregator();
             var gameWindow = new GameObject("GameWindow").AddComponent<GameWindow>();
             gameWindow.Subscribe(eventsAgregator);
 
-            gameWindow.Setup(null, progressText, progressImage);
+            gameWindow.Setup(null, progressText, progressImage, progressMove);
 
             //Act
             eventsAgregator.Invoke(new CurrentProgressMessage(currentProgress));
