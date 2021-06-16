@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a1e75a50-876f-44a6-8d2e-7b929dbe6642" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/DragToControl.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/DragToControl.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Slider/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Slider/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/Windows/ShopWindow.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/Windows/ShopWindow.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Window/ShopWindow.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Window/ShopWindow.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,11 +26,13 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/Window/MenuWindow.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.test-framework@1.1.19/UnityEngine.TestRunner/NUnitExtensions/Commands/BeforeAfterTestCommandBase.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Tests/Game/Base/GameObjectExtensionsTest.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://D:/unity/2020.1.16f1/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.ugui/Runtime/UI/Core/Selectable.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Level/Modify/ILevelModify.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Level/Modify/Modifycations/RedZoneModify.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/FE84F4A7-54DA-4A6B-B64F-CA409D40938A/4d/f33ecb98/UnitySynchronizationContext.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Level/Modify/LevelModification.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ads@3.5.2/Runtime/Advertisement/Purchasing/IPurchase.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/FE84F4A7-54DA-4A6B-B64F-CA409D40938A/68/6bd15a51/Sprite.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.test-framework@1.1.19/UnityEngine.TestRunner/NUnitExtensions/Commands/EnumerableTestMethodCommand.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/FE84F4A7-54DA-4A6B-B64F-CA409D40938A/5b/d44167b7/SetupCoroutine.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.purchasing@2.1.1/Runtime/managed/Purchasing/IInternalStoreListener.cs" root0="SKIP_HIGHLIGHTING" />
@@ -36,6 +40,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Tests/Game/UI/UIElementsTest.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Tests/Game/ResultCalculateTest.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Tools/GameObjectExtensions.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Tests/Game/UI/UIButtonTest.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Slice/SlicebleItemMovening.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Slice/MeshGenerator.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.test-framework@1.1.19/UnityEngine.TestRunner/NUnitExtensions/Commands/ImmediateEnumerableCommand.cs" root0="SKIP_HIGHLIGHTING" />
@@ -58,6 +63,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Cutter/Cutter.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.test-framework@1.1.19/UnityEngine.TestRunner/NUnitExtensions/Runner/UnityLogCheckDelegatingCommand.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/2A3947FE-34A6-499A-A6AB-6B20FE95EBAC/3e/01823412/Collider.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/UI/Button/ShopButton.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://D:/unity/2020.1.16f1/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.ugui/Runtime/UI/Core/Graphic.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Cutter/CutterMovening.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Tests/Game/LevelModifycationTest.cs" root0="FORCE_HIGHLIGHTING" />
@@ -66,11 +72,6 @@
   </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
-      <option value="$PROJECT_DIR$/Assets/Scripts/Application/SliceDataStorage.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Slice/RedZoneSlicer/Factoryes/HalfRedZoneFactory.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Level/Modify/Modifycations/RedZoneModify.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/Slice/RedZoneSlicer/RedZoneCollider.cs" />
-      <option value="$PROJECT_DIR$/Assets/Tests/Game/RedZones/RedZonesViewTest.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/View/Messages/MaterialChangeMessage.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Application/ShaderStorage.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Slice/RedZoneSlicer/RedZoneView.cs" />
@@ -109,7 +110,6 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/UI/UI/Button/BaseButton.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UI/Finish.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UI/Window/MenuWindow.cs" />
-      <option value="$PROJECT_DIR$/Assets/Scripts/UI/Window/GameWindow.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UI/Elements/StarView.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UI/Elements/StarsActivator.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UI/Elements/UIFade.cs" />
@@ -117,6 +117,12 @@
       <option value="$PROJECT_DIR$/Assets/Scripts/Cutter/Cutter.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/Slice/MeshGenerator.cs" />
       <option value="$PROJECT_DIR$/Assets/Scripts/UI/DragToControl.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UI/Window/GameWindow.cs" />
+      <option value="$PROJECT_DIR$/Assets/Tests/Game/HPTest.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UI/Elements/ButtonElement.cs" />
+      <option value="$PROJECT_DIR$/Assets/Tests/Game/UI/UIButtonTest.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UI/UI/Button/ShopButton.cs" />
+      <option value="$PROJECT_DIR$/Assets/Scripts/UI/Window/ShopWindow.cs" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="1slV8vpZEzfIL9NRAefp5ZF1owf" />
@@ -149,10 +155,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="18576">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="18576" />
+      <option name="pid" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -180,6 +186,7 @@
       <workItem from="1623245391620" duration="27604000" />
       <workItem from="1623679988204" duration="9124000" />
       <workItem from="1623782409603" duration="8479000" />
+      <workItem from="1623834320625" duration="2556000" />
     </task>
     <servers />
   </component>
@@ -206,27 +213,13 @@
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/Managers/GameRestarter.cs</url>
           <line>106</line>
-          <properties documentPath="C:\Projects\InsectsSliser\Slider\Assets\Scripts\Managers\GameRestarter.cs" initialLine="73" containingFunctionPresentation="method 'FinishGame'">
-            <startOffsets>
-              <option value="1593" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1595" />
-            </endOffsets>
-          </properties>
+          <properties documentPath="C:\Projects\InsectsSliser\Slider\Assets\Scripts\Managers\GameRestarter.cs" initialLine="73" containingFunctionPresentation="method 'FinishGame'" />
           <option name="timeStamp" value="6" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/Slice/SlicebleItemMovening.cs</url>
           <line>56</line>
-          <properties documentPath="C:\Projects\InsectsSliser\Slider\Assets\Scripts\Slice\SlicebleItemMovening.cs" initialLine="56" containingFunctionPresentation="method 'GetMesh'">
-            <startOffsets>
-              <option value="1712" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1756" />
-            </endOffsets>
-          </properties>
+          <properties documentPath="C:\Projects\InsectsSliser\Slider\Assets\Scripts\Slice\SlicebleItemMovening.cs" initialLine="56" containingFunctionPresentation="method 'GetMesh'" />
           <option name="timeStamp" value="15" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
@@ -238,93 +231,50 @@
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/View/MaterialChanger.cs</url>
           <line>40</line>
-          <properties documentPath="C:\Projects\InsectsSliser\Slider\Assets\Scripts\View\MaterialChanger.cs" initialLine="46" containingFunctionPresentation="method 'ChangeMaterial'">
-            <startOffsets>
-              <option value="1008" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1041" />
-            </endOffsets>
-          </properties>
+          <properties documentPath="C:\Projects\InsectsSliser\Slider\Assets\Scripts\View\MaterialChanger.cs" initialLine="46" containingFunctionPresentation="method 'ChangeMaterial'" />
           <option name="timeStamp" value="29" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/Slice/RedZoneSlicer/RedZoneCollider.cs</url>
           <line>63</line>
-          <properties documentPath="C:\Projects\InsectsSliser\Slider\Assets\Scripts\Slice\RedZoneSlicer\RedZoneCollider.cs" initialLine="63" containingFunctionPresentation="method 'GameFinish'">
-            <startOffsets>
-              <option value="1676" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1700" />
-            </endOffsets>
-          </properties>
+          <properties documentPath="C:\Projects\InsectsSliser\Slider\Assets\Scripts\Slice\RedZoneSlicer\RedZoneCollider.cs" initialLine="63" containingFunctionPresentation="method 'GameFinish'" />
           <option name="timeStamp" value="30" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Tests/Game/UI/UIElementsTest.cs</url>
           <line>228</line>
-          <properties documentPath="C:\Projects\InsectsSliser\Slider\Assets\Tests\Game\UI\UIElementsTest.cs" initialLine="210" containingFunctionPresentation="method 'TearDown'">
-            <startOffsets>
-              <option value="6395" />
-            </startOffsets>
-            <endOffsets>
-              <option value="6425" />
-            </endOffsets>
-          </properties>
+          <properties documentPath="C:\Projects\InsectsSliser\Slider\Assets\Tests\Game\UI\UIElementsTest.cs" initialLine="210" containingFunctionPresentation="method 'TearDown'" />
           <option name="timeStamp" value="36" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Tests/Game/UI/UIElementsTest.cs</url>
           <line>70</line>
-          <properties documentPath="C:\Projects\InsectsSliser\Slider\Assets\Tests\Game\UI\UIElementsTest.cs" initialLine="70" containingFunctionPresentation="method 'WhenFadeStop_AndUIActive_ThenUIFadeStart'">
-            <startOffsets>
-              <option value="2108" />
-            </startOffsets>
-            <endOffsets>
-              <option value="2156" />
-            </endOffsets>
-          </properties>
+          <properties documentPath="C:\Projects\InsectsSliser\Slider\Assets\Tests\Game\UI\UIElementsTest.cs" initialLine="70" containingFunctionPresentation="method 'WhenFadeStop_AndUIActive_ThenUIFadeStart'" />
           <option name="timeStamp" value="37" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/UI/Elements/StarsActivator.cs</url>
           <line>49</line>
-          <properties documentPath="C:\Projects\InsectsSliser\Slider\Assets\Scripts\UI\Elements\StarsActivator.cs" initialLine="48" containingFunctionPresentation="method 'OnProgressChanged'">
-            <startOffsets>
-              <option value="1185" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1254" />
-            </endOffsets>
-          </properties>
+          <properties documentPath="C:\Projects\InsectsSliser\Slider\Assets\Scripts\UI\Elements\StarsActivator.cs" initialLine="48" containingFunctionPresentation="method 'OnProgressChanged'" />
           <option name="timeStamp" value="39" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/UI/Elements/StarsActivator.cs</url>
           <line>78</line>
-          <properties documentPath="C:\Projects\InsectsSliser\Slider\Assets\Scripts\UI\Elements\StarsActivator.cs" initialLine="77" containingFunctionPresentation="method 'ResetAll'">
-            <startOffsets>
-              <option value="1825" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1826" />
-            </endOffsets>
-          </properties>
+          <properties documentPath="C:\Projects\InsectsSliser\Slider\Assets\Scripts\UI\Elements\StarsActivator.cs" initialLine="77" containingFunctionPresentation="method 'ResetAll'" />
           <option name="timeStamp" value="40" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/UI/Elements/StarsActivator.cs</url>
           <line>41</line>
-          <properties documentPath="C:\Projects\InsectsSliser\Slider\Assets\Scripts\UI\Elements\StarsActivator.cs" initialLine="41" containingFunctionPresentation="method 'Awake'">
-            <startOffsets>
-              <option value="997" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1032" />
-            </endOffsets>
-          </properties>
+          <properties documentPath="C:\Projects\InsectsSliser\Slider\Assets\Scripts\UI\Elements\StarsActivator.cs" initialLine="41" containingFunctionPresentation="method 'Awake'" />
           <option name="timeStamp" value="41" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Tests/Game/UI/UIElementsTest.cs</url>
+          <line>88</line>
+          <properties documentPath="D:\git\InsectsSliсer\Slider\Assets\Tests\Game\UI\UIElementsTest.cs" initialLine="88" containingFunctionPresentation="method 'WhenFadeStart_AndUIDeActive_ThenUIFadeStop'" />
+          <option name="timeStamp" value="42" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

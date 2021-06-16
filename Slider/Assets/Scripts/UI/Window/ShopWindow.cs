@@ -7,6 +7,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Slicer.EventAgregators;
+using Tools;
+using UI.Elements;
+using UI.UI.Button;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -27,7 +30,7 @@ namespace Slicer.UI.Windows
         private ButtonElement nextButton;
 
         [SerializeField]
-        private ButtonElement selectButton;
+        private ShopButton selectButton;
 
         [SerializeField]
         private ButtonElement backToMenu;
@@ -37,6 +40,13 @@ namespace Slicer.UI.Windows
 
         [SerializeField]
         private Text name;
+
+        [SerializeField] private Image block;
+
+        [SerializeField] private UIMove info;
+        [SerializeField] private UIMove backToMenuMove;
+        [SerializeField] private UIMove navigationContainer;
+        [SerializeField] private UIMove typeNavigationContainer;
 
         public override void Subscribe(IEventsAgregator eventAgregator)
         {
@@ -49,6 +59,22 @@ namespace Slicer.UI.Windows
             backToMenu.AddListener(BackToMenu);
 
             ShopEvents.ItemChanged += (item, type, position) => UpdateCurrentItem(item, type);
+        }
+
+        protected override void OnFinishShowing()
+        {
+            info.Activate();
+            backToMenuMove.Activate();
+            navigationContainer.Activate();
+            typeNavigationContainer.Activate();
+        }
+
+        protected override void OnStartHiding()
+        {
+            info.Deactivate();
+            backToMenuMove.Deactivate();
+            navigationContainer.Deactivate();
+            typeNavigationContainer.Deactivate();
         }
 
         public override void Unsubscribe()
@@ -80,15 +106,18 @@ namespace Slicer.UI.Windows
             {
                 case ItemStatus.Unavailable:
                     UpdateLevelText(item.LevelOpen.ToString());
-                    SetSelectedButtonInterectable(false);
+                    selectButton.Unavaliable();
+                    block.gameObject.Activate();
                     break;
                 case ItemStatus.Available:
                     UpdateLevelText(string.Empty);
-                    SetSelectedButtonInterectable(true);
+                    selectButton.Avaliable();
+                    block.gameObject.Deactivate();
                     break;
                 case ItemStatus.Selected:
                     UpdateLevelText(string.Empty);
-                    SetSelectedButtonInterectable(false);
+                    selectButton.Select();
+                    block.gameObject.Deactivate();
                     break;
                 default:
                     break;
@@ -97,12 +126,7 @@ namespace Slicer.UI.Windows
 
         private void UpdateLevelText(string text)
         {
-            level.text = text;
-        }
-
-        private void SetSelectedButtonInterectable(bool isInterectable)
-        {
-            selectButton.SetInteractable(isInterectable);
+            level.text = $"Level {text}";
         }
 
         private void BackToMenu()

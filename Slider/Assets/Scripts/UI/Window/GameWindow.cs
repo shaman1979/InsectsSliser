@@ -34,11 +34,12 @@ namespace MeshSlice.UI
         private int maxProgress;
         private int currentProgress;
 
-        public void Setup(Text levelText, Text progressText, Image progressImage)
+        public void Setup(Text levelText, Text progressText, Image progressImage, UIMove holder)
         {
             this.levelText = levelText;
             this.progressText = progressText;
             this.progressImage = progressImage;
+            this.holder = holder;
         }
         
         public override void Subscribe(IEventsAgregator eventAgregator)
