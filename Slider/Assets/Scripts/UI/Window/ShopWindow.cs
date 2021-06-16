@@ -8,6 +8,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Slicer.EventAgregators;
 using Tools;
+using UI.Elements;
 using UI.UI.Button;
 using UnityEngine;
 using UnityEngine.UI;
@@ -42,6 +43,11 @@ namespace Slicer.UI.Windows
 
         [SerializeField] private Image block;
 
+        [SerializeField] private UIMove info;
+        [SerializeField] private UIMove backToMenuMove;
+        [SerializeField] private UIMove navigationContainer;
+        [SerializeField] private UIMove typeNavigationContainer;
+
         public override void Subscribe(IEventsAgregator eventAgregator)
         {
             ShopEvents.ShopShow += Show;
@@ -53,6 +59,22 @@ namespace Slicer.UI.Windows
             backToMenu.AddListener(BackToMenu);
 
             ShopEvents.ItemChanged += (item, type, position) => UpdateCurrentItem(item, type);
+        }
+
+        protected override void OnFinishShowing()
+        {
+            info.Activate();
+            backToMenuMove.Activate();
+            navigationContainer.Activate();
+            typeNavigationContainer.Activate();
+        }
+
+        protected override void OnStartHiding()
+        {
+            info.Deactivate();
+            backToMenuMove.Deactivate();
+            navigationContainer.Deactivate();
+            typeNavigationContainer.Deactivate();
         }
 
         public override void Unsubscribe()
