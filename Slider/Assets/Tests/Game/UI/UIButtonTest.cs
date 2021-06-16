@@ -57,7 +57,7 @@ namespace Tests
         }
         
         [Test]
-        public void WhenButtonSelectClick_AndButtonAvailable_ThenButtonButtonChangeImage()
+        public void WhenButtonAvaliable_AndAvaliableSpriteIsNotNull_ThenButtonChangeImage()
         {
             //Arrange
 
@@ -68,6 +68,30 @@ namespace Tests
             Assert.AreEqual(avaliableItem, shopButton.GetImage());
         }
 
+        [Test]
+        public void WhenButtonUnavaliable_AndUnavaliableSpriteIsNotNull_ThenButtonImageChange()
+        {
+            //Arrange
+
+            //Act
+            shopButton.Unavaliable();
+
+            //Assert
+            Assert.AreEqual(unavailableItem, shopButton.GetImage());
+        }
+
+        [Test]
+        public void WhenSelectedButton_AndSelectedSpriteIsNotNull_ThenButtonImageChange()
+        {
+            //Arrange
+
+            //Act
+            shopButton.Select();
+            
+            //Assert
+            Assert.AreEqual(selectedItem, shopButton.GetImage());
+        }
+        
         [TearDown]
         public void TearDown()
         {

@@ -7,6 +7,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Slicer.EventAgregators;
+using UI.UI.Button;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -27,7 +28,7 @@ namespace Slicer.UI.Windows
         private ButtonElement nextButton;
 
         [SerializeField]
-        private ButtonElement selectButton;
+        private ShopButton selectButton;
 
         [SerializeField]
         private ButtonElement backToMenu;
@@ -80,15 +81,15 @@ namespace Slicer.UI.Windows
             {
                 case ItemStatus.Unavailable:
                     UpdateLevelText(item.LevelOpen.ToString());
-                    SetSelectedButtonInterectable(false);
+                    selectButton.Unavaliable();
                     break;
                 case ItemStatus.Available:
                     UpdateLevelText(string.Empty);
-                    SetSelectedButtonInterectable(true);
+                    selectButton.Avaliable();
                     break;
                 case ItemStatus.Selected:
                     UpdateLevelText(string.Empty);
-                    SetSelectedButtonInterectable(false);
+                    selectButton.Select();
                     break;
                 default:
                     break;
@@ -98,11 +99,6 @@ namespace Slicer.UI.Windows
         private void UpdateLevelText(string text)
         {
             level.text = text;
-        }
-
-        private void SetSelectedButtonInterectable(bool isInterectable)
-        {
-            selectButton.SetInteractable(isInterectable);
         }
 
         private void BackToMenu()

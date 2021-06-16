@@ -24,6 +24,19 @@ namespace UI.UI.Button
         public void Avaliable()
         {
             SetImage(avalible);
+            SetInteractable(true);
+        }
+
+        public void Unavaliable()
+        {
+            SetImage(unavalible);
+            SetInteractable(false);
+        }
+
+        public void Select()
+        {
+            SetImage(selected);
+            SetInteractable(false);
         }
     }
 }
