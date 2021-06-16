@@ -8,9 +8,11 @@ using UnityEngine.UI;
 namespace Slicer.UI.Elements
 {
     [RequireComponent(typeof(Button))]
+    [RequireComponent(typeof(Image))]
     public class ButtonElement : Base
     {
         private Button button;
+        private Image image;
 
         private Button Button
         {
@@ -19,9 +21,23 @@ namespace Slicer.UI.Elements
                 if(button == null)
                 {
                     button = GetComponent<Button>();
+                    button.image = Image;
                 }
 
                 return button;
+            }
+        }
+        
+        public Image Image
+        {
+            get
+            {
+                if(image == null)
+                {
+                    image = GetComponent<Image>();
+                }
+
+                return image;
             }
         }
 
@@ -48,6 +64,16 @@ namespace Slicer.UI.Elements
         public void ListenerClear()
         {
             Button.onClick.RemoveAllListeners();
+        }
+
+        public Sprite GetImage()
+        {
+            return Image.sprite;
+        }
+
+        public void SetImage(Sprite image)
+        {
+            Image.sprite = image;
         }
     }
 }
