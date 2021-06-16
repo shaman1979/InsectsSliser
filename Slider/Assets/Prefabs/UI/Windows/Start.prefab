@@ -243,7 +243,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   graphic: {fileID: 7677022030841880868}
-  duration: 0.5
+  showDuration: 0.5
+  hideDuration: 0.5
 --- !u!114 &6562345054562725981
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -257,7 +258,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   graphic: {fileID: 7677022030841880868}
-  duration: 0.5
+  showDuration: 0.5
+  hideDuration: 0.5
 --- !u!1 &5782594047616448095
 GameObject:
   m_ObjectHideFlags: 0
@@ -524,7 +526,7 @@ MonoBehaviour:
   m_FontData:
     m_Font: {fileID: 12800000, guid: 4101524f40768f84095eaace2c9ef22b, type: 3}
     m_FontSize: 72
-    m_FontStyle: 1
+    m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
     m_MaxSize: 165
@@ -604,7 +606,7 @@ MonoBehaviour:
   m_FontData:
     m_Font: {fileID: 12800000, guid: 4101524f40768f84095eaace2c9ef22b, type: 3}
     m_FontSize: 14
-    m_FontStyle: 1
+    m_FontStyle: 0
     m_BestFit: 1
     m_MinSize: 10
     m_MaxSize: 75
@@ -890,7 +892,7 @@ MonoBehaviour:
   m_FontData:
     m_Font: {fileID: 12800000, guid: 4101524f40768f84095eaace2c9ef22b, type: 3}
     m_FontSize: 72
-    m_FontStyle: 1
+    m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
     m_MaxSize: 165

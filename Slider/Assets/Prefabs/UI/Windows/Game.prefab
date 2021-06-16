@@ -409,7 +409,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activePosition: {x: 0, y: 0, z: 0}
-  deActivePosition: {x: 0, y: 668, z: 0}
+  deActivePosition: {x: 0, y: 1000, z: 0}
   duration: 0.5
 --- !u!1 &8358355230796782310
 GameObject:
