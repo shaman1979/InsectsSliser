@@ -6,10 +6,13 @@ using System.Diagnostics;
 using System.Text;
 using System.Linq;
 using System.Threading;
+using Applications.Messages;
 using BzKovSoft.ObjectSlicer;
 using BzKovSoft.ObjectSlicer.EventHandlers;
 using UnityEngine.Profiling;
 using LightDev;
+using Slicer.EventAgregators;
+using Zenject;
 
 namespace BzKovSoft.ObjectSlicer
 {
@@ -39,6 +42,9 @@ namespace BzKovSoft.ObjectSlicer
 #pragma warning restore 0649
 
         Queue<SliceTry> _sliceTrys;
+        
+        [Inject]
+        private IEventsAgregator eventsAgregator;
 
         public Material DefaultSliceMaterial
         {
@@ -174,6 +180,12 @@ namespace BzKovSoft.ObjectSlicer
                 Profiler.BeginSample("ApplyChanges");
                 result = ApplyChanges(sliceTry);
                 Profiler.EndSample();
+            }
+            else
+            {
+                eventsAgregator.Invoke(new GameFinishMessage());
+                Events.PostReset.Call();
+                Events.GameFinish.Call();
             }
 
             if (result == null)

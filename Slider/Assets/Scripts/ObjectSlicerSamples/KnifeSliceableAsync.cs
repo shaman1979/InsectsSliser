@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using BzKovSoft.ObjectSlicer;
@@ -59,10 +60,6 @@ namespace BzKovSoft.ObjectSlicerSamples
                 {
                     sliceableAsync.Slice(plane, knife.SliceID, null);
                 }
-            }
-            else
-            {
-                Events.GameFinish.Call();
             }
         }
 
