@@ -10,18 +10,25 @@ using Zenject;
 using Slicer.Game;
 using Slicer.HP;
 using UI.Elements;
+using UnityEngine.Serialization;
 
 namespace MeshSlice.UI
 {
-    public class Finish : CanvasElement
+    public class FinishWindow : CanvasElement
     {
-        [Header("References")]
-        public Base background;
-        public Base passedText;
-        public BaseText hpText;
+        [SerializeField]
+        private UIFade background;
+        
+        [SerializeField]
+        private UIFade passedText;
+        
+        [SerializeField]
+        private UIFade hpTextFade;
         
         [SerializeField]
         public UIFade tapToReplay;
+
+        [SerializeField] private BaseText hpText;
 
         [Inject]
         private HpInitializer hpInitializer;
@@ -68,10 +75,9 @@ namespace MeshSlice.UI
 
         protected override void OnStartShowing()
         {
-            //TODO: Доделать потом
-            // background.SetFade(0);
-            // passedText.SetFade(0);
-            // hpText.SetFade(0);
+            background.SetFade(0);
+            passedText.SetFade(0);
+            hpTextFade.SetFade(0);
             tapToReplay.SetFade(0);
         }
 
@@ -84,29 +90,19 @@ namespace MeshSlice.UI
 
         private void ShowBackground()
         {
-            //TODO: Доделать потом
-            // background.Sequence(
-            //   background.Fade(0.4f, 0.2f).SetEase(Ease.InSine),
-            //   OnFinish(() => Events.RequestHpFill.Call())
-            // );
+            background.Fade(0.4f, 0.2f,Events.RequestHpFill.Call);
         }
 
         private void ShowPassedText()
         {
-            //TODO: Доделать потом
-            // passedText.Sequence(
-            //   passedText.Fade(1, 0.2f).SetEase(Ease.InSine)
-            // );
+            passedText.Fade(1, 0.2f, null);
         }
 
         private void ShowHP()
         {
             UpdateHpText();
             
-                //TODO: Доделать потом
-            // hpText.Sequence(
-            //   hpText.Fade(1, 0.2f).SetEase(Ease.InSine)
-            // );
+            hpTextFade.Fade(1, 0.2f, null);
         }
 
         private void UpdateHpText()

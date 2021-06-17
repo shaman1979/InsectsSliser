@@ -56,6 +56,14 @@ namespace UI.Elements
             );
         }
 
+        public void Fade(float endValue, float duration, Action onFinish)
+        {
+            sequenceHelper.Sequence(
+                sequenceHelper.Fade(endValue: endValue, duration).SetEase(Ease.InSine),
+                sequenceHelper.OnFinish(() => onFinish?.Invoke())
+            );
+        }
+
         public float GetFade()
         {
             return graphic.GetFade();

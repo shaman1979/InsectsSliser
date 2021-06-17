@@ -7,20 +7,13 @@ using LightDev.UI;
 
 using DG.Tweening;
 using Slicer.EventAgregators;
+using UI.Elements;
 
 namespace MeshSlice.UI
 {
     public class Splash : CanvasElement
     {
-        [Header("References")]
-        public Base background;
-
-        private SequenceHelper sequenceHelper;
-
-        private void Awake()
-        {
-            sequenceHelper = new SequenceHelper(transform);
-        }
+        [SerializeField] private UIFade background;
 
         public override void Subscribe(IEventsAgregator eventAgregator)
         {
@@ -36,21 +29,13 @@ namespace MeshSlice.UI
 
         protected override void OnStartShowing()
         {
-            //TODO: Доделать потом   
-            //background.SetFade(0);
-            // background.Sequence(
-            //   background.Fade(1, 0.5f).SetEase(Ease.InSine),
-            //   OnFinish(() => Events.RequestReset.Call())
-            // );
+            background.SetFade(0);
+            background.Fade(1, 0.5f, Events.RequestReset.Call);
         }
 
         protected override void OnStartHiding()
         {
-            //TODO: Доделать потом 
-            // background.KillSequences();
-            // background.Sequence(
-            //   background.Fade(0, 0.4f).SetEase(Ease.InSine)
-            // );
+            background.StopFade();
         }
     }
 }

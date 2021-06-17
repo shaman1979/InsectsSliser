@@ -21,7 +21,7 @@ namespace UI.Elements
             sequenceHelper = new SequenceHelper(transform);
         }
         
-        private void Awake()
+        public void Awake()
         {
             sequenceHelper = new SequenceHelper(transform);
         }

@@ -59,6 +59,11 @@ namespace Slicer.UI.Windows
             backToMenu.AddListener(BackToMenu);
 
             ShopEvents.ItemChanged += (item, type, position) => UpdateCurrentItem(item, type);
+
+            info.Awake();
+            backToMenuMove.Awake();
+            navigationContainer.Awake();
+            typeNavigationContainer.Awake();
         }
 
         protected override void OnFinishShowing()
