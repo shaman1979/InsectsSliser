@@ -1,0 +1,909 @@
+fileFormatVersion: 2
+guid: bb2e6731a390ae64a93b9a2be1452b29
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 4117813575051995035
+    second: Start_LevelsXP_Bar
+  - first:
+      213: -5168951253968688570
+    second: Start_LogoBg
+  - first:
+      213: -8706495773027126419
+    second: Start_Logo
+  - first:
+      213: -280503345147817563
+    second: Start_LevelsBg
+  - first:
+      213: 2616810065635195086
+    second: Start_XPBg
+  - first:
+      213: -2953382267982303926
+    second: Start_StarsShop_Bar
+  - first:
+      213: -8935490303281479830
+    second: Start_StarsBg
+  - first:
+      213: 1609235183847363976
+    second: Shop_ButtonBack
+  - first:
+      213: 2894919486367514812
+    second: Shop_ButtonBuy
+  - first:
+      213: -4465357897752717843
+    second: Shop_ButtonForward
+  - first:
+      213: 3290018645480590819
+    second: Shop_ButtonChooseKnife
+  - first:
+      213: 7424197168802440626
+    second: Shop_ButtonChooseDesk
+  - first:
+      213: -8349021481377945204
+    second: Start_ButtonToShop
+  - first:
+      213: 9198978451560655403
+    second: Shop_ChooseSmthBar
+  - first:
+      213: -7321567525230551785
+    second: MenuButton
+  - first:
+      213: -5138473396011653692
+    second: Shop_ButtonsBgBottom
+  - first:
+      213: 4265575964487032844
+    second: End_XPbg
+  - first:
+      213: 6615994805578320566
+    second: MenuButton_Bar
+  - first:
+      213: 8435803255419460807
+    second: InGame_Timer
+  - first:
+      213: -3841475452285676377
+    second: InGame_End_ProgressLine
+  - first:
+      213: 5769436217015073745
+    second: End_MainEndBar
+  - first:
+      213: -3402258016605156626
+    second: InGame_Icon_Timer
+  - first:
+      213: 7432994552163030360
+    second: End_StarsBg
+  - first:
+      213: 1627142429659885659
+    second: InGame_Boom
+  - first:
+      213: -4100143128267501122
+    second: End_DecorHead_MainEndBar
+  - first:
+      213: 2348956077974968723
+    second: Shop_ItemLocked
+  - first:
+      213: 2148172374273315022
+    second: InGame_End_XPBar
+  - first:
+      213: 6082250729391745563
+    second: InGame_End_XPBar_Star1
+  - first:
+      213: -3371751033968584679
+    second: InGame_End_XPBar_Star2
+  - first:
+      213: -2715141231589876741
+    second: InGame_End_XPBar_Star3
+  - first:
+      213: -4968871491306313643
+    second: End_TapTo
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: -1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 50
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Start_LevelsXP_Bar
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 912
+        width: 283
+        height: 108
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b97614021a9652930800000000000000
+      internalID: 4117813575051995035
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Start_LogoBg
+      rect:
+        serializedVersion: 2
+        x: 317
+        y: 852
+        width: 367
+        height: 166
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 64ae2e588323448b0800000000000000
+      internalID: -5168951253968688570
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Start_Logo
+      rect:
+        serializedVersion: 2
+        x: 712
+        y: 814
+        width: 284
+        height: 207
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d63374239305c2780800000000000000
+      internalID: -8706495773027126419
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Start_LevelsBg
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 836
+        width: 100
+        height: 58
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a1d72a91b37b1cf0800000000000000
+      internalID: -280503345147817563
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Start_XPBg
+      rect:
+        serializedVersion: 2
+        x: 156
+        y: 832
+        width: 116
+        height: 63
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ec83ad6e3e6c05420800000000000000
+      internalID: 2616810065635195086
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Start_StarsShop_Bar
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 608
+        width: 104
+        height: 222
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4d2af6997a7307d0800000000000000
+      internalID: -2953382267982303926
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Start_StarsBg
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 717
+        width: 108
+        height: 91
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a6fb5f259e2cef380800000000000000
+      internalID: -8935490303281479830
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shop_ButtonBack
+      rect:
+        serializedVersion: 2
+        x: 248
+        y: 708
+        width: 108
+        height: 121
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8855845afd6255610800000000000000
+      internalID: 1609235183847363976
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shop_ButtonBuy
+      rect:
+        serializedVersion: 2
+        x: 373
+        y: 709
+        width: 107
+        height: 121
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb0ca465fe1dc2820800000000000000
+      internalID: 2894919486367514812
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shop_ButtonForward
+      rect:
+        serializedVersion: 2
+        x: 496
+        y: 708
+        width: 108
+        height: 121
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de5d67586acd702c0800000000000000
+      internalID: -4465357897752717843
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shop_ButtonChooseKnife
+      rect:
+        serializedVersion: 2
+        x: 617
+        y: 696
+        width: 82
+        height: 93
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3ed484cd68e78ad20800000000000000
+      internalID: 3290018645480590819
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shop_ButtonChooseDesk
+      rect:
+        serializedVersion: 2
+        x: 716
+        y: 693
+        width: 80
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b52eec6dfb080760800000000000000
+      internalID: 7424197168802440626
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Start_ButtonToShop
+      rect:
+        serializedVersion: 2
+        x: 808
+        y: 692
+        width: 88
+        height: 99
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c89ac5c9231522c80800000000000000
+      internalID: -8349021481377945204
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shop_ChooseSmthBar
+      rect:
+        serializedVersion: 2
+        x: 912
+        y: 585
+        width: 104
+        height: 222
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b2aeeb5d92659af70800000000000000
+      internalID: 9198978451560655403
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MenuButton
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 500
+        width: 84
+        height: 95
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 71dd89b8021946a90800000000000000
+      internalID: -7321567525230551785
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shop_ButtonsBgBottom
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 555
+        width: 415
+        height: 142
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c52eeecba970b8b0800000000000000
+      internalID: -5138473396011653692
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: End_XPbg
+      rect:
+        serializedVersion: 2
+        x: 656
+        y: 588
+        width: 204
+        height: 84
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c00a1bd5dbe523b30800000000000000
+      internalID: 4265575964487032844
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MenuButton_Bar
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 377
+        width: 128
+        height: 110
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ba435ef83cb0db50800000000000000
+      internalID: 6615994805578320566
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: InGame_Timer
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 430
+        width: 264
+        height: 114
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -132, y: -57}
+        - {x: -132, y: 57}
+        - {x: 132, y: 57}
+        - {x: 132, y: -37}
+        - {x: 113, y: -57}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7cc5c52bd5ef11570800000000000000
+      internalID: 8435803255419460807
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: InGame_End_ProgressLine
+      rect:
+        serializedVersion: 2
+        x: 457
+        y: 482
+        width: 147
+        height: 26
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 9, y: 0, z: 10, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7a4112ddd6650bac0800000000000000
+      internalID: -3841475452285676377
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: End_MainEndBar
+      rect:
+        serializedVersion: 2
+        x: 642
+        y: 134
+        width: 375
+        height: 446
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1dbf47deba7211050800000000000000
+      internalID: 5769436217015073745
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: InGame_Icon_Timer
+      rect:
+        serializedVersion: 2
+        x: 290
+        y: 325
+        width: 57
+        height: 73
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eea460e1c50c8c0d0800000000000000
+      internalID: -3402258016605156626
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: End_StarsBg
+      rect:
+        serializedVersion: 2
+        x: 387
+        y: 304
+        width: 241
+        height: 139
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -120.5, y: -69.5}
+        - {x: -120.5, y: 30.5}
+        - {x: -81.5, y: 51.5}
+        - {x: -47.5, y: 35.5}
+        - {x: -5.5, y: 48.5}
+        - {x: 5.5, y: 69.5}
+        - {x: 51.5, y: 69.5}
+        - {x: 120.5, y: 69.5}
+        - {x: 120.5, y: -69.5}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 855571bd92d472760800000000000000
+      internalID: 7432994552163030360
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: InGame_Boom
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 231
+        width: 138
+        height: 129
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -69, y: -64.5}
+        - {x: -69, y: 64.5}
+        - {x: 69, y: 64.5}
+        - {x: 69, y: 34.5}
+        - {x: 69, y: -1.5}
+        - {x: 52, y: -50.5}
+        - {x: 20, y: -64.5}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b50f7d63b65c49610800000000000000
+      internalID: 1627142429659885659
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: End_DecorHead_MainEndBar
+      rect:
+        serializedVersion: 2
+        x: 175
+        y: 310
+        width: 89
+        height: 82
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb15b5f5c8d5917c0800000000000000
+      internalID: -4100143128267501122
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shop_ItemLocked
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 88
+        width: 129
+        height: 144
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -64.5, y: -72}
+        - {x: -64.5, y: 54}
+        - {x: -15.5, y: 72}
+        - {x: 64.5, y: 72}
+        - {x: 64.5, y: -72}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 39951bc8b1b299020800000000000000
+      internalID: 2348956077974968723
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: InGame_End_XPBar
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 136
+        width: 374
+        height: 158
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ec05ed49467dfcd10800000000000000
+      internalID: 2148172374273315022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: InGame_End_XPBar_Star1
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 5
+        width: 46
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b1a614030de786450800000000000000
+      internalID: 6082250729391745563
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: InGame_End_XPBar_Star2
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 10
+        width: 52
+        height: 55
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9181f358c422531d0800000000000000
+      internalID: -3371751033968584679
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: InGame_End_XPBar_Star3
+      rect:
+        serializedVersion: 2
+        x: 214
+        y: 5
+        width: 45
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bfb91107f61e15ad0800000000000000
+      internalID: -2715141231589876741
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: End_TapTo
+      rect:
+        serializedVersion: 2
+        x: 343
+        y: 0
+        width: 308
+        height: 132
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5582f1274b50b0bb0800000000000000
+      internalID: -4968871491306313643
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Start_TapTo
+      rect:
+        serializedVersion: 2
+        x: 685
+        y: 0
+        width: 263
+        height: 130
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ba56d4c6977c9340800000000000000
+      internalID: 4871900386339216053
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: f366511b2b61bfe41a83ed668a454dd3
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
