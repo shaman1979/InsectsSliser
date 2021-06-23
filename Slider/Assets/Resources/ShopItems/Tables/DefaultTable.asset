@@ -12,8 +12,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc682bc672d59214bb65f5849c770cc7, type: 3}
   m_Name: DefaultTable
   m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: <OpenItem>k__BackingField
+      Entry: 7
+      Data: 0|Shop.StarsOpenItem, Slicer
+    - Name: <OpenValue>k__BackingField
+      Entry: 3
+      Data: 6
+    - Name: 
+      Entry: 8
+      Data: 
   <Name>k__BackingField: "\u0421\u0442\u043E\u043B"
   <Type>k__BackingField: 1
-  <LevelOpen>k__BackingField: 2
   <Model>k__BackingField: {fileID: 3747381274409146546, guid: 2834ce976e44eb248a8cd9d0da267f30,
     type: 3}

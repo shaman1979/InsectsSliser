@@ -1,5 +1,7 @@
-﻿using Slicer.Game;
+﻿using Shop;
+using Slicer.Game;
 using Slicer.Items;
+using Slicer.UI;
 
 namespace Slicer.Shop
 {
@@ -12,12 +14,27 @@ namespace Slicer.Shop
                 return ItemStatus.Selected;
             }
 
-            if (item.LevelOpen <= levelsInitializer.GetLevel())
+            if (item.OpenItem is LevelOpenItem openItem)
             {
-                return ItemStatus.Available;
+                return GetStatusNotSelectedItem(openItem, levelsInitializer);
+            }
+
+            if (item.OpenItem is StarsOpenItem starsOpenItem)
+            {
+                return GetStatusNotSelectedItem(starsOpenItem);
             }
 
             return ItemStatus.Unavailable;
+        }
+
+        private static ItemStatus GetStatusNotSelectedItem(LevelOpenItem item, LevelsInitializer levelsInitializer)
+        {
+            return item.OpenValue <= levelsInitializer.GetLevel() ? ItemStatus.Available : ItemStatus.Unavailable;
+        }
+
+        private static ItemStatus GetStatusNotSelectedItem(StarsOpenItem item)
+        {
+            return item.OpenValue <= StarsActivator.GetTotalStar() ? ItemStatus.Available : ItemStatus.Unavailable;
         }
     }
 }

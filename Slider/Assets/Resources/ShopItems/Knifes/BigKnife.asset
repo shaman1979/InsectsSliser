@@ -12,8 +12,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc682bc672d59214bb65f5849c770cc7, type: 3}
   m_Name: BigKnife
   m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: <OpenItem>k__BackingField
+      Entry: 7
+      Data: 0|Shop.LevelOpenItem, Slicer
+    - Name: <OpenValue>k__BackingField
+      Entry: 3
+      Data: 2
+    - Name: 
+      Entry: 8
+      Data: 
   <Name>k__BackingField: "\u0411\u043E\u043B\u044C\u0448\u043E\u0439 \u043D\u043E\u0436"
   <Type>k__BackingField: 0
-  <LevelOpen>k__BackingField: 1
   <Model>k__BackingField: {fileID: 5984994780654927872, guid: 4bf77098d5476234e8a4dc9956ea005d,
     type: 3}

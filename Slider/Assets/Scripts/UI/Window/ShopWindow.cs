@@ -110,7 +110,7 @@ namespace Slicer.UI.Windows
             switch (status)
             {
                 case ItemStatus.Unavailable:
-                    UpdateLevelText(item.LevelOpen.ToString());
+                    UpdateLevelText(item.OpenItem.OpenValue.ToString());
                     selectButton.Unavaliable();
                     block.gameObject.Activate();
                     break;
