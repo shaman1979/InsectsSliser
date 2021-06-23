@@ -1,11 +1,14 @@
-﻿using UnityEngine;
+﻿using Applications.Messages;
+using UnityEngine;
 using LightDev;
 using LightDev.Core;
 using DG.Tweening;
 using SliceFramework;
 using Slicer.Cutter;
 using BzKovSoft.ObjectSlicerSamples;
+using Slicer.EventAgregators;
 using Slicer.Slice;
+using Zenject;
 
 namespace MeshSlice
 {
@@ -17,16 +20,14 @@ namespace MeshSlice
 
         [Header("Slice Parameters")] public Transform slicePoint;
 
-        [SerializeField] private CutterMovening movening;
-
         [SerializeField] private MeshGenerator generator;
 
         [SerializeField] private CutterMovening cutterMovening;
 
         [SerializeField] private ParticalActivator particalActivator;
 
-        private SequenceHelper sequenceHelper;
-
+        [Inject] private IEventsAgregator eventsAgregator;
+        
         private bool canCut;
 
         private void Awake()
@@ -36,8 +37,12 @@ namespace MeshSlice
 
             generator.OnFinished += OnReset;
             cutterMovening.OnFinished += EnableCut;
+            eventsAgregator.AddListener<GameFinishMessage>(message => ResetCutter());
+        }
 
-            sequenceHelper = new SequenceHelper(cutter.transform);
+        private void ResetCutter()
+        {
+            cutterMovening.StartPositionMove();
         }
 
         private void OnDestroy()
@@ -52,7 +57,8 @@ namespace MeshSlice
         private void OnPostReset()
         {
             canCut = false;
-            movening.StopMovening();
+            cutterMovening.StopMovening();
+            cutterMovening.StartPositionMove();
         }
 
         private void EnableCut()
@@ -62,7 +68,7 @@ namespace MeshSlice
 
         private void OnReset()
         {
-            movening.StartMovening();
+            cutterMovening.StartMovening();
         }
 
         private void OnPointerUp()
@@ -76,18 +82,18 @@ namespace MeshSlice
         private void AnimateCut()
         {
             canCut = false;
-            movening.StopMovening();
+            cutterMovening.StopMovening();
 
-            sequenceHelper.KillSequences();
-            sequenceHelper.Sequence(
-                sequenceHelper.MoveY(2.5f, 0.3f).SetEase(Ease.InSine),
-                sequenceHelper.MoveY(0, 0.5f).SetEase(Ease.InSine),
-                sequenceHelper.OnFinish(() =>
+            cutterMovening.SequenceHelper.KillSequences();
+            cutterMovening.SequenceHelper.Sequence(
+                cutterMovening.SequenceHelper.MoveY(2.5f, 0.3f).SetEase(Ease.InSine),
+                cutterMovening.SequenceHelper.MoveY(0, 0.5f).SetEase(Ease.InSine),
+                cutterMovening.SequenceHelper.OnFinish(() =>
                 {
                     objectToSlice.StartSlice();
                     particalActivator.Activate();
                 }),
-                sequenceHelper.MoveY(2, 0.6f).SetEase(Ease.InOutQuad)
+                cutterMovening.SequenceHelper.MoveY(2, 0.6f).SetEase(Ease.InOutQuad)
             );
         }
 

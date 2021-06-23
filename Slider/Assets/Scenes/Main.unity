@@ -1031,7 +1031,6 @@ MonoBehaviour:
   cutter: {fileID: 1989545037}
   objectToSlice: {fileID: 1277122107}
   slicePoint: {fileID: 1533171215}
-  movening: {fileID: 1989545036}
   generator: {fileID: 906162193}
   cutterMovening: {fileID: 1989545036}
   particalActivator: {fileID: 1663958342}
@@ -2320,6 +2319,7 @@ MonoBehaviour:
   defaultSpeed: 2
   minPositionZ: -1
   maxPositionZ: 1
+  startPosition: {x: 0, y: 2, z: -0.036}
 --- !u!114 &1989545037
 MonoBehaviour:
   m_ObjectHideFlags: 0

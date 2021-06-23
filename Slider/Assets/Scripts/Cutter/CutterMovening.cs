@@ -20,6 +20,9 @@ namespace Slicer.Cutter
         [SerializeField]
         private float maxPositionZ;
 
+        [SerializeField]
+        private Vector3 startPosition;
+
         public SequenceHelper SequenceHelper { get; private set; }
 
         private float speed;
@@ -53,6 +56,13 @@ namespace Slicer.Cutter
             speed = defaultSpeed / acceleration;
         }
 
+        public void StartPositionMove()
+        {
+            SequenceHelper.KillSequences();
+            SequenceHelper.Sequence(
+                SequenceHelper.Move(startPosition, 0.1f)).SetEase(Ease.Flash);
+        }
+        
         private void StartIdleState()
         {
             var upPosition = transform.GetPositionY() + 0.1f;
